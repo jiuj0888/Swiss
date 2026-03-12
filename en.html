@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Swiss Travel Pass Check</title>
+  <style>
+    :root{
+      --bd:#e6e6e6; --txt:#111; --mut:#666; --bg:#fafafa; --card:#fff;
+      --warn:#b45309; --good:#166534;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      margin:16px; color:var(--txt); background:var(--bg); line-height:1.45;
+      font-size:14px;
+    }
+    .container{max-width:1180px;margin:0 auto}
+    h1{margin:0 0 6px;font-size:20px}
+    h2{margin:0 0 8px;font-size:16px}
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:none}
+
+    .muted{color:var(--mut);font-size:12.5px}
+    .wrap{display:grid;grid-template-columns: 390px 1fr; gap:12px; align-items:start}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btnRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;align-items:center}
+    .col{display:flex;flex-direction:column;gap:8px}
+    .grid2{display:grid;grid-template-columns: 1fr 1fr; gap:10px}
+    label{cursor:pointer}
+
+    input[type="number"]{
+      width:96px;padding:6px 8px;border:1px solid var(--bd);border-radius:10px;background:#fff
+    }
+    input[type="date"], input[type="text"], select{
+      padding:6px 8px;border:1px solid var(--bd);border-radius:10px;background:#fff
+    }
+    input[disabled]{background:#f5f5f5;color:#888}
+
+    details{border:1px solid var(--bd);border-radius:12px;padding:10px;background:#fff}
+    summary{cursor:pointer;font-weight:900}
+
+    .nested{
+      margin:8px 0 0 14px;padding-left:12px;border-left:2px solid #f0f0f0;
+      display:flex;flex-direction:column;gap:6px
+    }
+
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;padding:2px 8px;
+      border:1px solid var(--bd);border-radius:999px;background:#f3f3f3;font-size:12px;color:#333
+    }
+    .pill.warn{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}
+    .pill.good{background:#f0fdf4;border-color:#bbf7d0;color:var(--good)}
+    .hr{border-top:1px solid var(--bd); margin:10px 0}
+    .big{font-size:26px;font-weight:900}
+    .small{font-size:13px}
+
+    .routes{display:flex;flex-direction:column;gap:10px}
+    .routeItem{border:1px solid var(--bd);border-radius:12px;padding:10px;background:#fff}
+    .routeTop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .routeTitle{display:flex;gap:10px;align-items:flex-start}
+    .routeMeta{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+    .priceInputs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .priceInputs .box{display:flex;align-items:center;gap:6px}
+
+    .btn{
+      padding:8px 10px;border:1px solid var(--bd);border-radius:12px;background:#fff;
+      cursor:pointer;font-weight:900;color:inherit
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.smallBtn{padding:6px 8px;border-radius:10px;font-weight:700}
+    .danger{border-color:#fecaca;background:#fff1f2;color:#991b1b}
+
+    .table{display:flex;flex-direction:column;gap:6px}
+    .line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #eee}
+    .line:last-child{border-bottom:none}
+    .k{font-weight:900}
+    .sticky{position:sticky;top:12px}
+    .warnText{color:var(--warn);font-weight:900}
+
+    .callout{border:1px solid #e5e7eb; background:#f9fafb; border-radius:12px; padding:10px; margin:10px 0;}
+    ul{margin:6px 0 0 18px}
+    li{margin:2px 0}
+    .disabled {opacity: 0.55; pointer-events: none; filter: grayscale(0.3);}
+    .mini{font-size:12px;color:var(--mut)}
+    .inlineInput{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+
+    .grid2 > label.row{
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    /* ✅ Allow children inside row to shrink */
+    .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .row > * { min-width:0; }
+
+    /* ✅ Prevent select overflow */
+    select.full {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Stack label above input (for grid2 rows) */
+    .grid2 > label.row{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .grid2 input[type="date"],
+    .grid2 select{
+      width: 100%;
+      min-width: 0;
+    }
+
+    @media (max-width: 980px){
+      .wrap{grid-template-columns: 1fr}
+      .sticky{position:static}
+    }
+
+    /* Date/select can get too narrow → keep min width */
+    .grid2 input[type="date"],
+    .grid2 select{
+      min-width: 140px;
+    }
+
+    /* ✅ In the date/season section, stack label above input */
+    #travel_date, #season_mode { width: 100%; }
+    #travel_date { min-width: 0; }
+    #season_mode { min-width: 0; }
+
+    /* =========================================================
+       ✅ Mobile-only: keep TOTAL bar pinned to bottom
+       - Desktop/Web: unchanged (sticky left card stays)
+       - Mobile: total block becomes fixed bottom bar
+       ========================================================= */
+    @media (max-width: 980px){
+      /* give enough space so content won't be hidden behind the fixed total bar */
+      body{ padding-bottom: 170px; }
+
+      .totalBar{
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 12px;
+        z-index: 999;
+
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-radius: 14px;
+        padding: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+      }
+      .totalBar .big{ font-size: 22px; }
+      .totalBar .hr{ margin: 8px 0; }
+      .totalBar .row{ justify-content: space-between; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Swiss Travel Pass Check</h1>
+  <div class="muted"></div>
+
+  <!-- HOW TO USE (same content as KR version, translated; no coupon/provider references) -->
+  <details class="card" style="margin:12px 0;">
+    <summary class="k" style="font-size:16px; cursor:pointer;">
+      How to use Swiss Travel Pass Check
+      <span class="muted" style="font-weight:400; margin-left:8px;">(click to expand)</span>
+    </summary>
+
+    <div class="hr"></div>
+
+    <div class="small" style="display:flex; flex-direction:column; gap:10px;">
+      <div>
+        <div class="k">1) Enter travelers</div>
+        <div class="muted">- Start by entering the number of Adults (25+), Youth (16–25), Children (6–15), and Infants (0–5).</div>
+      </div>
+
+      <div>
+        <div class="k">2) Select season (Summer/Winter)</div>
+        <div class="muted">- Pick a travel date on the calendar and the season is determined automatically.</div>
+        <div class="muted">- If your trip is on the boundary, you can lock the season using the dropdown.</div>
+      </div>
+
+      <div>
+        <div class="k">3) Select passes/tickets</div>
+        <div class="muted">- Select the passes you plan to use.</div>
+      </div>
+
+      <div>
+        <div class="k">4) Select regions/routes you’ll actually take</div>
+        <div class="muted">- On the right, expand a region and check the routes you will take.</div>
+      </div>
+
+      <div>
+        <div class="k">5) Enter prices</div>
+        <div class="muted">- First choose the “Price mode (Baseline/Deal)”. Baseline = regular fare. Deal = Saver/Super Saver (may exclude certain trains/times).</div>
+        <div class="muted">- Click “SBB One-click” to search that segment directly on SBB.</div>
+        <div class="muted">- After selecting a date, check the price for your preferred time, then enter it here.</div>
+        <div class="muted">- Enter fares considering all travelers (Adults/Youth/Children), and account for one-way vs round-trip when selecting routes.</div>
+        <div class="muted">- If you catch a Super Saver deal, you’re a lucky guy⭐</div>
+        <div class="muted">- Routes included in your selected pass are automatically set to CHF 0 and locked, so you don’t need to enter anything.</div>
+      </div>
+
+      <div>
+        <div class="k">6) Review results</div>
+        <div class="muted">- On the left, check the total “Passes/Tickets + Routes”.</div>
+        <div class="muted">- In the breakdown, you can see what was counted as free/discounted.</div>
+      </div>
+
+      <div>
+        <div class="k">7) Category legend</div>
+        <div class="muted">public - public transport (trains/buses)</div>
+        <div class="muted">boat - lake boats / cruises</div>
+        <div class="muted">scenic - panoramic trains / scenic routes</div>
+        <div class="muted">mountain - mountain railways / cable cars</div>
+        <div class="muted">special - extra fee applies</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- NOTICE (same intent as KR version, translated; coupon/provider references removed) -->
+  <details class="card" style="margin:12px 0;">
+    <summary class="k" style="font-size:16px; cursor:pointer;">
+      Notice
+      <span class="muted" style="font-weight:400; margin-left:8px;">(click to expand)</span>
+    </summary>
+    <div class="hr"></div>
+
+    <div class="small" style="display:flex; flex-direction:column; gap:10px;">
+      <div>
+        <div class="muted">- VIP included routes can vary by season (Summer/Winter) and may change due to operations/maintenance.</div>
+        <div class="muted">- Some panoramic trains may require an additional seat reservation fee.</div>
+        <div class="muted">- Prices/discount rules may change depending on timing and conditions.</div>
+      </div>
+    </div>
+  </details>
+
+  <div class="wrap">
+    <!-- LEFT -->
+    <div class="card sticky">
+      <div class="col">
+        <div class="k">1) Travelers</div>
+        <div class="grid2">
+          <label class="row"><span>Adults (25+)</span><input id="n_adult" type="number" min="0" value="0"></label>
+          <label class="row"><span>Youth (16–25)</span><input id="n_youth" type="number" min="0" value="0"></label>
+          <label class="row"><span>Children (6–15)</span><input id="n_child" type="number" min="0" value="0"></label>
+          <label class="row"><span>Infants (0–5)</span><input id="n_infant" type="number" min="0" value="0"></label>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="k">2) Date / Season</div>
+        <div class="grid2">
+          <label class="row"><span>Travel date</span><input id="travel_date" type="date"></label>
+          <label class="row">
+            <span>Season</span>
+            <select id="season_mode">
+              <option value="auto" selected>Auto (by date)</option>
+              <option value="summer">Lock to Summer</option>
+              <option value="winter">Lock to Winter</option>
+            </select>
+          </label>
+        </div>
+        <div class="muted" id="season_hint"></div>
+
+        <div class="hr"></div>
+
+        <div class="k">3) Select passes / tickets</div>
+        <div class="muted">They’re collapsed by default. Open only what you need.</div>
+
+        <details>
+          <summary>Swiss Travel Pass (Continuous)</summary>
+          <div class="nested">
+            <div class="muted">When selected, “included routes” will be auto-locked (CHF 0).</div>
+            <div class="muted">Swiss Family Card: available for free on request (online or at counters). Children 6–16 travel free when accompanied by at least one parent (no other relatives).</div>
+            <label><input type="checkbox" id="pick_stp"> Use</label>
+            <div id="stp_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Swiss Travel Pass Flex (Selected days)</summary>
+          <div class="nested">
+            <div class="muted">When selected, “included routes” will be auto-locked (CHF 0).</div>
+            <div class="muted">Swiss Family Card: available for free on request (online or at counters). Children 6–16 travel free when accompanied by at least one parent (no other relatives).</div>
+            <label><input type="checkbox" id="pick_stpf"> Use</label>
+            <div id="stpf_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Swiss Half Fare Card</summary>
+          <div class="nested">
+            <div class="muted">A card that lets you buy most public transport tickets at 50% price.</div>
+            <label><input type="checkbox" id="pick_half"> Use</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>Jungfrau VIP Pass</summary>
+          <div class="nested">
+            <div class="muted">If you select VIP together with Half Fare / Swiss Travel Pass / Flex, a <b>combined discount</b> is applied automatically for 16+ fares.</div>
+            <div class="muted">When VIP is selected, included routes show as <b>CHF 0 / locked + (VIP included)</b>.</div>
+            <div class="muted"><b>One Jungfraujoch round trip (Eigergletscher–Jungfraujoch) is treated as included in VIP.</b></div>
+            <label><input type="checkbox" id="pick_jvip"> Use</label>
+            <div id="jvip_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <div class="hr"></div>
+
+        <!-- ✅ Wrapped Total/Reset into .totalBar (desktop unchanged; mobile fixed bottom) -->
+        <div class="totalBar">
+          <div class="k">Total</div>
+          <div class="row">
+            <div>
+              <div class="big" id="grand_total">CHF 0.00</div>
+              <div class="muted">Passes/Tickets: <b id="pass_total">CHF 0.00</b> · Routes: <b id="route_total">CHF 0.00</b></div>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+          <div class="row">
+            <button class="btn danger" id="btn_reset">Reset selections</button>
+          </div>
+        </div>
+        <!-- ✅ end totalBar -->
+
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="k">4) Choose regions & routes</div>
+          <div class="muted">Sections are collapsed by default. Searching will auto-expand matching sections.</div>
+        </div>
+        <div class="row">
+          <input id="route_search" type="text" placeholder="Search routes (e.g., First, Harder Kulm, Titlis…)" style="width:340px;">
+          <button class="btn" id="btn_open_all">Expand all</button>
+          <button class="btn" id="btn_close_all">Collapse all</button>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="row">
+          <div class="k">How to enter prices</div>
+          <div class="inlineInput">
+            <span class="pill">Price mode</span>
+            <label class="mini"><input type="radio" name="price_mode" id="mode_baseline" value="baseline" checked> Baseline (regular fare)</label>
+            <label class="mini"><input type="radio" name="price_mode" id="mode_deal" value="deal"> Deal (Saver/Super Saver)</label>
+          </div>
+        </div>
+        <div class="muted" id="price_mode_hint" style="margin-top:6px;"></div>
+
+        <ul class="small">
+          <li>Train/bus/boat fares can vary by date and time.</li>
+          <li>Search on <b>SBB</b>, then enter the <b>standard adult fare per person</b> in the route card’s <b>Price CHF</b> field (Baseline/Deal as applicable).</li>
+          <li>Routes included (free) in Swiss Travel Pass / Flex / VIP are auto-locked.</li>
+        </ul>
+
+        <div class="btnRow" style="margin-top:8px">
+          <a class="btn" href="https://www.sbb.ch/en" target="_blank" rel="noopener">Check prices on SBB</a>
+          <a class="btn" href="https://maps.trafimage.ch/ch.sbb.sts?baselayers=ch.sbb.sts.validity.data,ch.sbb.direktverbindungen.data&layers=ch.sbb.sts.validity.other,ch.sbb.sts.validity.routes_highlight,ch.sbb.sts.validity.gttos&lang=en&x=953392.38&y=5903613.91&z=8" target="_blank" rel="noopener">Swiss Travel Pass validity map</a>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="routes" id="routes"></div>
+
+      <div class="hr"></div>
+      <div class="k">Breakdown</div>
+      <div id="breakdown" class="table small"></div>
+    </div>
+  </div>
+
+  <!-- OTHER (same content as KR version, translated; contact/support same) -->
+  <div class="card" style="margin-top:12px;">
+    <h2>Other</h2>
+    <div class="hr"></div>
+    <ul>
+      <li>This site was made because the developer got tired of re-studying Swiss fares every trip. Use it freely for price comparison!</li>
+      <li>Routes/discount rules may change depending on timing and conditions.</li>
+      <li>Since this is a solo project, there may be bugs or incorrect values—please contact me anytime at the email below.</li>
+      <li>If you like it, please share it with other Switzerland travelers!</li>
+    </ul>
+    <div style="margin-top:10px; font-size:12px; color:#777; line-height:1.5;">
+      <div><b>Buy the developer a coffee🖤</b> : Toss 1000-3296-6395</div>
+      <div><b>Reports & inquiries👀</b> : jiuj0888@gmail.com</div>
+    </div>
+  </div>
+
+<script>
+/* =========================
+   Swiss Travel Check — SCRIPT (EN FINAL)
+   ✅ No provider/coupon references.
+   ✅ Keeps:
+   - Season logic (auto + lock)
+   - Swiss Travel Pass / Flex free-lock
+   - Half Fare discount
+   - Jungfrau VIP (your provided EN prices: 3–8 days)
+   - Jungfraujoch 1x included via VIP (route lock)
+   - Price mode Baseline/Deal (Deal eligible: public/scenic)
+   - SBB One-click links
+========================= */
+
+(() => {
+  /* ---------- DOM helpers ---------- */
+  const el = (id) => document.getElementById(id);
+  const money = (n) => `CHF ${Number(n || 0).toFixed(2)}`;
+
+  const SBB_HOME = "https://www.sbb.ch/en";
+  const SBB_FP = "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml";
+  const SAVER_DAY_PASS_URL = "https://www.sbb.ch/en/offers/saver-day-pass";
+
+  function localISODate() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  /* ---------- Season ---------- */
+  function getSeason(date) {
+    const m = date.getMonth(); // 0-11
+    return m >= 4 && m <= 9 ? "summer" : "winter"; // May-Oct vs Nov-Apr
+  }
+  function getSeasonEffective() {
+    const mode = el("season_mode")?.value || "auto";
+    const todayISO = localISODate();
+    const d = new Date((el("travel_date")?.value || todayISO) + "T00:00:00");
+    if (mode === "auto") return getSeason(d);
+    return mode;
+  }
+  function seasonLabel(s) {
+    return s === "summer" ? "Summer (May–Oct)" : "Winter (Nov–Apr)";
+  }
+
+  /* ---------- Travelers ---------- */
+  function travelers() {
+    return {
+      adult: Number(el("n_adult")?.value || 0),
+      youth: Number(el("n_youth")?.value || 0),
+      child: Number(el("n_child")?.value || 0),
+      infant: Number(el("n_infant")?.value || 0),
+    };
+  }
+
+  /* ---------- Pass pricing ---------- */
+  const PASS = {
+    stp: {
+      label: "Swiss Travel Pass (Continuous)",
+      options: [
+        { id: "stp_3",  label: "3 days",  adult2: 254, adult1: 405, youth2: 179, youth1: 285, child1: 202.50, child2: 127.00 },
+        { id: "stp_4",  label: "4 days",  adult2: 309, adult1: 492, youth2: 218, youth1: 346, child1: 246.00, child2: 154.50 },
+        { id: "stp_6",  label: "6 days",  adult2: 399, adult1: 634, youth2: 282, youth1: 447, child1: 317.00, child2: 199.50 },
+        { id: "stp_8",  label: "8 days",  adult2: 439, adult1: 697, youth2: 311, youth1: 492, child1: 348.50, child2: 219.50 },
+        { id: "stp_15", label: "15 days", adult2: 499, adult1: 787, youth2: 356, youth1: 557, child1: 393.50, child2: 249.50 },
+      ],
+    },
+    stpf: {
+      label: "Swiss Travel Pass Flex",
+      options: [
+        { id: "stpf_3",  label: "3 days / 1 month",  adult2: 289, adult1: 461, youth2: 204, youth1: 325, child1: 230.50, child2: 144.50 },
+        { id: "stpf_4",  label: "4 days / 1 month",  adult2: 349, adult1: 555, youth2: 246, youth1: 390, child1: 277.50, child2: 174.50 },
+        { id: "stpf_6",  label: "6 days / 1 month",  adult2: 424, adult1: 674, youth2: 300, youth1: 475, child1: 337.00, child2: 212.00 },
+        { id: "stpf_8",  label: "8 days / 1 month",  adult2: 459, adult1: 729, youth2: 325, youth1: 514, child1: 364.50, child2: 229.50 },
+        { id: "stpf_15", label: "15 days / 1 month", adult2: 519, adult1: 819, youth2: 370, youth1: 580, child1: 409.50, child2: 259.50 },
+      ],
+    },
+    half: { label: "Swiss Half Fare Card", price16plus: 150 },
+
+    /* ✅ Jungfrau VIP Pass — YOUR provided EN prices (3–8 days) */
+    jvip: {
+      label: "Jungfrau VIP Pass",
+      summer: [
+        { days: 3, adult_coupon: 210, adult_overlap: 165, child_6_15: 30 },
+        { days: 4, adult_coupon: 235, adult_overlap: 180, child_6_15: 30 },
+        { days: 5, adult_coupon: 270, adult_overlap: 210, child_6_15: 30 },
+        { days: 6, adult_coupon: 290, adult_overlap: 225, child_6_15: 30 },
+        { days: 7, adult_coupon: 310, adult_overlap: 240, child_6_15: 30 },
+        { days: 8, adult_coupon: 330, adult_overlap: 255, child_6_15: 30 },
+      ],
+      winter: [
+        { days: 3, adult_coupon: 210, adult_overlap: 165, child_6_15: 30 },
+        { days: 4, adult_coupon: 235, adult_overlap: 180, child_6_15: 30 },
+        { days: 5, adult_coupon: 270, adult_overlap: 210, child_6_15: 30 },
+        { days: 6, adult_coupon: 290, adult_overlap: 225, child_6_15: 30 },
+        { days: 7, adult_coupon: 310, adult_overlap: 240, child_6_15: 30 },
+        { days: 8, adult_coupon: 330, adult_overlap: 255, child_6_15: 30 },
+      ],
+    },
+  };
+
+  /* ---------- ROUTE DATA ---------- */
+  const REGIONS = [
+    { id: "zurich", name: "Zurich & Northern Switzerland (Schaffhausen, etc.)", routes: [
+      { id: "zrh_lucerne", label: "Zurich ↔ Lucerne", category: "public" },
+      { id: "zrh_interlaken", label: "Zurich ↔ Interlaken", category: "public" },
+      { id: "rhine_falls", label: "Zurich ↔ Rhine Falls (Neuhausen Rheinfall)", category: "public" },
+      { id: "stein_am_rhein", label: "Schaffhausen ↔ Stein am Rhein", category: "public" },
+    ]},
+    { id: "basel", name: "Basel & Northwest", routes: [
+      { id: "zrh_basel", label: "Zurich ↔ Basel", category: "public" },
+      { id: "basel_bern", label: "Basel ↔ Bern", category: "public" },
+      { id: "basel_lucerne", label: "Basel ↔ Lucerne", category: "public" },
+    ]},
+    { id: "bern", name: "Bern (Capital) & nearby", routes: [
+      { id: "bern_interlaken", label: "Bern ↔ Interlaken", category: "public" },
+      { id: "bern_thun", label: "Bern ↔ Thun", category: "public" },
+      { id: "bern_spiez", label: "Bern ↔ Spiez", category: "public" },
+      { id: "thun_lake_boat", label: "Lake Thun boat cruise (Thun–Spiez etc.)", category: "boat" },
+    ]},
+    { id: "lucerne", name: "Lucerne & Central Switzerland (Rigi/Pilatus/Titlis/Stoos/Stanserhorn)", routes: [
+      { id: "lake_lucerne_boat", label: "Lake Lucerne boat", category: "boat" },
+      { id: "rigi", label: "Rigi (Rigi Kulm)", category: "mountain", stpFree: true },
+      { id: "pilatus", label: "Pilatus (Pilatus Kulm)", category: "mountain" },
+      { id: "titlis", label: "Titlis", category: "mountain" },
+      { id: "stoos", label: "Stoos", category: "mountain", stpFree: true },
+      { id: "klewenalp", label: "Klewenalp", category: "mountain", stpFree: true },
+      { id: "brunni_engelberg", label: "Brunni (Engelberg)", category: "mountain", stpFree: true },
+      { id: "stanserhorn", label: "Stanserhorn (Stanserhorn)", category: "mountain", stpFree: true },
+    ]},
+    { id: "interlaken", name: "Interlaken (Bernese Oberland core)", routes: [
+      { id: "int_thun", label: "Interlaken ↔ Thun", category: "public" },
+      { id: "int_spiez", label: "Interlaken ↔ Spiez", category: "public" },
+      { id: "int_brienz", label: "Interlaken ↔ Brienz", category: "public" },
+      { id: "brienz_lake_boat", label: "Lake Brienz boat cruise (Brienz–Interlaken etc.)", category: "boat" },
+      { id: "harder_kulm", label: "Harder Kulm", category: "mountain" },
+    ]},
+    { id: "jungfrau", name: "Grindelwald/Lauterbrunnen/Wengen/Mürren (Jungfrau region)", routes: [
+      { id: "int_grindelwald", label: "Interlaken ↔ Grindelwald", category: "public" },
+      { id: "int_lauterbrunnen", label: "Interlaken ↔ Lauterbrunnen", category: "public"},
+      { id: "lauterbrunnen_wengen", label: "Lauterbrunnen ↔ Wengen", category: "public" },
+      { id: "wengen_kleine", label: "Wengen ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25},
+      { id: "grindelwald_kleine", label: "Grindelwald ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25},
+      { id: "grindelwald_terminal", label: "Grindelwald ↔ Grindelwald Terminal", category: "public" },
+      { id: "eiger_express", label: "Eiger Express (Grindelwald Terminal ↔ Eigergletscher)", category: "mountain", stpDiscount: 0.25},
+      { id: "eiger_kleine", label: "Eigergletscher ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25},
+      { id: "eiger_jungfraujoch", label: "Eigergletscher ↔ Jungfraujoch", category: "mountain", stpDiscount: 0.25 },
+      { id: "mannlichen_wengen", label: "Männlichen (Wengen ↔ Männlichen)", category: "mountain" },
+      { id: "mannlichen_grindelwald", label: "Männlichen (Grindelwald ↔ Männlichen)", category: "mountain" },
+      { id: "grindelwald_first", label: "First (Grindelwald ↔ First)", category: "mountain" },
+      { id: "lauterbrunnen_murren", label: "Lauterbrunnen ↔ Grütschalp ↔ Mürren", category: "mountain", stpFree: true},
+      { id: "allmendhubel", label: "Allmendhubel (Mürren ↔ Allmendhubel)", category: "mountain" },
+      { id: "schynige_platte", label: "Schynige Platte (Wilderswil ↔ Schynige Platte)", category: "mountain" },
+      { id: "schilthorn", label: "Schilthorn (Mürren ↔ Schilthorn)", category: "mountain" },
+    ]},
+    { id: "zermatt", name: "Zermatt & Valais (Gornergrat / Matterhorn)", routes: [
+      { id: "visp_zermatt", label: "Visp/Brig ↔ Zermatt", category: "public" },
+      { id: "gornergrat", label: "Gornergrat", category: "mountain" },
+      { id: "mggp", label: "Matterhorn Glacier Paradise", category: "mountain" },
+      { id: "sunnegga", label: "Sunnegga", category: "mountain" },
+    ]},
+    { id: "valais_more", name: "More Valais (Saas-Fee / Verbier, etc.)", routes: [
+      { id: "saas_fee", label: "Saas-Fee (access varies)", category: "mountain" },
+      { id: "verbier", label: "Verbier (Le Châble ↔ Verbier)", category: "mountain", stpFree: true},
+      { id: "martigny_verbier", label: "Martigny ↔ Verbier access (Le Châble etc.)", category: "public" },
+    ]},
+    { id: "geneva_lake", name: "Geneva/Lausanne/Montreux (Lake Geneva)", routes: [
+      { id: "geneva_lausanne", label: "Geneva ↔ Lausanne", category: "public" },
+      { id: "lausanne_montreux", label: "Lausanne ↔ Montreux", category: "public" },
+      { id: "lake_geneva_boat", label: "Lake Geneva boat", category: "boat" },
+      { id: "rochers_de_naye", label: "Rochers-de-Naye (Montreux ↔ Rochers-de-Naye)", category: "mountain" },
+      { id: "lavaux", label: "Lavaux (vineyard) train segments (varies)", category: "public" },
+    ]},
+    { id: "ticino", name: "Ticino (Lugano/Locarno/Bellinzona)", routes: [
+      { id: "lugano_locarno", label: "Lugano ↔ Locarno", category: "public" },
+      { id: "bellinzona_lugano", label: "Bellinzona ↔ Lugano", category: "public" },
+      { id: "centovalli", label: "Centovalli Railway (Locarno ↔ Domodossola)", category: "scenic" },
+      { id: "monte_bre", label: "Monte Brè", category: "mountain" },
+      { id: "monte_tamaro", label: "Monte Tamaro (access varies)", category: "mountain" },
+    ]},
+    { id: "graubuenden", name: "Graubünden (St. Moritz/Engadin/Chur)", routes: [
+      { id: "albula", label: "Albula Line (Chur ↔ St. Moritz)", category: "scenic" },
+      { id: "bernina_express", label: "Bernina Line (St. Moritz ↔ Tirano etc.)", category: "scenic" },
+      { id: "diavolezza", label: "Diavolezza", category: "mountain", stpNoDiscount: true},
+      { id: "muottas_muragl", label: "Muottas Muragl", category: "mountain", stpNoDiscount: true},
+    ]},
+    { id: "davos_arosa", name: "Davos/Arosa/Flims-Laax", routes: [
+      { id: "davos_access", label: "Davos access / transfers (varies)", category: "public" },
+      { id: "arosa_line", label: "Arosa Line (Chur ↔ Arosa)", category: "scenic" },
+      { id: "flims_laax", label: "Flims/Laax (varies)", category: "mountain"},
+      { id: "flims_falera", label: "Falera (varies)", category: "mountain", stpNoDiscount: true},
+    ]},
+    { id: "andermatt_gotthard", name: "Andermatt/Gotthard/Panorama trains", routes: [
+      { id: "gotthard_base", label: "Gotthard Base Tunnel segment (Zurich ↔ Lugano etc.)", category: "public" },
+      { id: "lucerne_interlaken_express", label: "Lucerne–Interlaken Express (train)", category: "scenic" },
+      { id: "glacier_express", label: "Glacier Express segments (train)", category: "scenic" },
+      { id: "seat_reservation", label: "Panorama train seat reservation fee (extra)", category: "special" },
+    ]},
+    { id: "eastern", name: "Eastern (St. Gallen/Appenzell/Säntis)", routes: [
+      { id: "stgallen", label: "St. Gallen ↔ (major stations)", category: "public" },
+      { id: "appenzell", label: "Appenzell ↔ (major stations)", category: "public" },
+      { id: "saentis", label: "Säntis (access varies)", category: "mountain" },
+      { id: "liechtenstein", label: "Liechtenstein access (Sargans ↔ Vaduz)", category: "public" },
+    ]},
+    { id: "jura", name: "Jura / Neuchâtel", routes: [
+      { id: "neuchatel", label: "Neuchâtel ↔ (major stations)", category: "public" },
+      { id: "lac_neuchatel_boat", label: "Lake Neuchâtel boat (varies)", category: "boat" },
+      { id: "la_chaux", label: "La Chaux-de-Fonds ↔ (major stations)", category: "public" },
+    ]},
+  ];
+
+  /* ---------- State ---------- */
+  const state = {
+    selectedRoutes: new Set(),
+    priceMode: "baseline", // "baseline" | "deal"
+    routePrices: { baseline: new Map(), deal: new Map() },
+    backup: { baseline: new Map(), deal: new Map() },
+
+    selected: { stp: false, stpf: false, half: false, jvip: false },
+    stpOpt: null,
+    stpClass: 2,
+    stpfOpt: null,
+    stpfClass: 2,
+    jvipDays: null,
+  };
+
+  /* ---------- Lookup ---------- */
+  function routeById(id) {
+    for (const reg of REGIONS) {
+      const f = reg.routes.find((x) => x.id === id);
+      if (f) return f;
+    }
+    return null;
+  }
+
+  function ensureRoutesInit() {
+    for (const reg of REGIONS) {
+      for (const rt of reg.routes) {
+        if (!state.routePrices.baseline.has(rt.id)) state.routePrices.baseline.set(rt.id, 0);
+        if (!state.routePrices.deal.has(rt.id)) state.routePrices.deal.set(rt.id, 0);
+        if (!state.backup.baseline.has(rt.id)) state.backup.baseline.set(rt.id, 0);
+        if (!state.backup.deal.has(rt.id)) state.backup.deal.set(rt.id, 0);
+      }
+    }
+  }
+
+  /* ---------- SwissPass free lock ---------- */
+  function isSwissPassFree(route) {
+    const on = state.selected.stp || state.selected.stpf;
+    if (!on) return false;
+    if (route.stpFree === true) return true;
+    if (route.stpNoDiscount === true) return false;
+    if (route.stpDiscount != null) return false;
+    return ["public", "boat", "scenic"].includes(route.category);
+  }
+  function swissPassLabel() {
+    if (state.selected.stp) return "(Swiss Travel Pass free route)";
+    if (state.selected.stpf) return "(Swiss Travel Pass Flex free route)";
+    return "";
+  }
+
+  /* ---------- VIP include lock (season-aware) ---------- */
+  function vipIncludedSet(season) {
+    const set = new Set([
+      "int_grindelwald",
+      "int_lauterbrunnen",
+      "lauterbrunnen_wengen",
+      "wengen_kleine",
+      "grindelwald_kleine",
+      "grindelwald_terminal",
+      "eiger_express",
+      "eiger_kleine",
+      "eiger_jungfraujoch", // Jungfraujoch 1x
+      "grindelwald_first",
+      "mannlichen_wengen",
+      "mannlichen_grindelwald",
+      "lauterbrunnen_murren",
+    ]);
+    if (season === "summer") {
+      set.add("harder_kulm");
+      set.add("schynige_platte");
+    }
+    return set;
+  }
+  function isVipIncluded(routeId, season) {
+    if (!state.selected.jvip) return false;
+    return vipIncludedSet(season).has(routeId);
+  }
+  const vipLabel = "(VIP included)";
+
+  /* ---------- Deal eligibility ---------- */
+  function isDealEligible(route) {
+    if (!route) return false;
+    return route.category === "public" || route.category === "scenic";
+  }
+
+  /* ---------- Apply locks ---------- */
+  function applyLocks(season) {
+    ensureRoutesInit();
+    for (const reg of REGIONS) {
+      for (const rt of reg.routes) {
+        const rid = rt.id;
+        const vipInc = isVipIncluded(rid, season);
+        const stpFree = isSwissPassFree(rt);
+        const shouldLock = vipInc || stpFree;
+
+        for (const mode of ["baseline", "deal"]) {
+          const cur = Number(state.routePrices[mode].get(rid) || 0);
+          if (shouldLock) {
+            if (cur !== 0) state.backup[mode].set(rid, cur);
+            state.routePrices[mode].set(rid, 0);
+          } else {
+            state.routePrices[mode].set(rid, Number(state.backup[mode].get(rid) || 0));
+          }
+        }
+      }
+    }
+  }
+
+  /* ---------- VIP pricing table by season ---------- */
+  function getJvipTableBySeason() {
+    const s = getSeasonEffective();
+    return PASS.jvip[s] || PASS.jvip.summer;
+  }
+
+  /* ---------- SBB one-click overrides ---------- */
+  const SBB_BY_ROUTE_ID = {
+    rigi: { from: "Vitznau", to: "Rigi Kulm" },
+    pilatus: { from: "Kriens", to: "Pilatus Kulm" },
+    titlis: { from: "Engelberg", to: "Titlis" },
+    stoos: { from: "Schwyz", to: "Stoos" },
+    klewenalp: { from: "Beckenried", to: "Klewenalp" },
+    brunni_engelberg: { from: "Engelberg", to: "Brunni" },
+    stanserhorn: { from: "Stans", to: "Stanserhorn" },
+
+    harder_kulm: { from: "Interlaken Ost", to: "Harder Kulm" },
+    eiger_express: { from: "Grindelwald Terminal", to: "Eigergletscher" },
+    eiger_jungfraujoch: { from: "Eigergletscher", to: "Jungfraujoch" },
+    grindelwald_first: { from: "Grindelwald", to: "First" },
+    mannlichen_wengen: { from: "Wengen", to: "Männlichen" },
+    mannlichen_grindelwald: { from: "Grindelwald", to: "Männlichen" },
+    lauterbrunnen_murren: { from: "Lauterbrunnen", to: "Mürren" },
+    allmendhubel: { from: "Mürren", to: "Allmendhubel" },
+    schynige_platte: { from: "Wilderswil", to: "Schynige Platte" },
+    schilthorn: { from: "Mürren", to: "Schilthorn" },
+
+    gornergrat: { from: "Zermatt", to: "Gornergrat" },
+    sunnegga: { from: "Zermatt", to: "Sunnegga" },
+    mggp: { from: "Zermatt", to: "Matterhorn Glacier Paradise" },
+
+    centovalli: { from: "Locarno", to: "Domodossola" },
+    albula: { from: "Chur", to: "St. Moritz" },
+    bernina_express: { from: "St. Moritz", to: "Tirano" },
+    arosa_line: { from: "Chur", to: "Arosa" },
+
+    lucerne_interlaken_express: { from: "Luzern", to: "Interlaken Ost" },
+    glacier_express: { from: "Zermatt", to: "St. Moritz" },
+
+    zrh_lucerne: { from: "Zürich HB", to: "Luzern" },
+    zrh_interlaken: { from: "Zürich HB", to: "Interlaken Ost" },
+    zrh_basel: { from: "Zürich HB", to: "Basel SBB" },
+    basel_bern: { from: "Basel SBB", to: "Bern" },
+    basel_lucerne: { from: "Basel SBB", to: "Luzern" },
+    bern_interlaken: { from: "Bern", to: "Interlaken Ost" },
+    bern_thun: { from: "Bern", to: "Thun" },
+    bern_spiez: { from: "Bern", to: "Spiez" },
+    int_thun: { from: "Interlaken Ost", to: "Thun" },
+    int_spiez: { from: "Interlaken Ost", to: "Spiez" },
+    int_brienz: { from: "Interlaken Ost", to: "Brienz" },
+
+    int_grindelwald: { from: "Interlaken Ost", to: "Grindelwald" },
+    int_lauterbrunnen: { from: "Interlaken Ost", to: "Lauterbrunnen" },
+    lauterbrunnen_wengen: { from: "Lauterbrunnen", to: "Wengen" },
+    wengen_kleine: { from: "Wengen", to: "Kleine Scheidegg" },
+    grindelwald_kleine: { from: "Grindelwald", to: "Kleine Scheidegg" },
+    grindelwald_terminal: { from: "Grindelwald", to: "Grindelwald Terminal" },
+
+    visp_zermatt: { from: "Visp", to: "Zermatt" },
+    geneva_lausanne: { from: "Genève", to: "Lausanne" },
+    lausanne_montreux: { from: "Lausanne", to: "Montreux" },
+    lugano_locarno: { from: "Lugano", to: "Locarno" },
+    bellinzona_lugano: { from: "Bellinzona", to: "Lugano" },
+
+    liechtenstein: { from: "Sargans", to: "Vaduz" },
+    rhine_falls: { from: "Zürich HB", to: "Neuhausen Rheinfall" },
+    stein_am_rhein: { from: "Schaffhausen", to: "Stein am Rhein" },
+  };
+
+  function buildSbbLink(rt) {
+    if (!rt) return SBB_HOME;
+    if (rt.category === "special") return SBB_HOME;
+    if (String(rt.label || "").includes("(major stations)")) return SBB_HOME;
+    if (String(rt.label || "").toLowerCase().includes("varies")) return SBB_HOME;
+
+    const ov = SBB_BY_ROUTE_ID[rt.id];
+    if (ov?.from && ov?.to) {
+      return `${SBB_FP}?von=${encodeURIComponent(ov.from)}&nach=${encodeURIComponent(ov.to)}`;
+    }
+    return SBB_HOME;
+  }
+
+  /* ---------- Price mode UI (radio) ---------- */
+  function findPriceModeRadios() {
+    const candidates = Array.from(document.querySelectorAll('input[type="radio"]'))
+      .filter(r => ["baseline","deal"].includes(String(r.value || "").toLowerCase()));
+
+    const byName = new Map();
+    for (const r of candidates) {
+      const name = r.name || "__noname__";
+      if (!byName.has(name)) byName.set(name, { name, baseline: null, deal: null });
+      const g = byName.get(name);
+      if (String(r.value).toLowerCase() === "baseline") g.baseline = r;
+      if (String(r.value).toLowerCase() === "deal") g.deal = r;
+    }
+    for (const g of byName.values()) {
+      if (g.baseline && g.deal) return g;
+    }
+    return null;
+  }
+
+  function updatePriceModeHint() {
+    const hint = el("price_mode_hint");
+    if (!hint) return;
+    hint.textContent =
+      state.priceMode === "deal"
+        ? "※ Deal is mostly for public trains (and some scenic). Mountain lifts/cable cars are usually not eligible."
+        : "";
+  }
+
+  function syncPriceModeUI() {
+    const rg = findPriceModeRadios();
+    if (rg) {
+      rg.baseline.checked = state.priceMode === "baseline";
+      rg.deal.checked = state.priceMode === "deal";
+    }
+    updatePriceModeHint();
+
+    document.querySelectorAll(".price_base").forEach((x) => {
+      x.style.display = state.priceMode === "baseline" ? "" : "none";
+    });
+    document.querySelectorAll(".price_deal").forEach((x) => {
+      x.style.display = state.priceMode === "deal" ? "" : "none";
+    });
+    document.querySelectorAll(".deal_badge").forEach((x) => {
+      x.style.display = state.priceMode === "deal" ? "" : "none";
+    });
+  }
+
+  function attachPriceModeListeners() {
+    const rg = findPriceModeRadios();
+    if (!rg) return;
+
+    rg.baseline.addEventListener("change", () => {
+      if (rg.baseline.checked) {
+        state.priceMode = "baseline";
+        syncPriceModeUI();
+        recalc();
+      }
+    });
+    rg.deal.addEventListener("change", () => {
+      if (rg.deal.checked) {
+        state.priceMode = "deal";
+        syncPriceModeUI();
+        recalc();
+      }
+    });
+  }
+
+  /* ---------- Option UI rendering ---------- */
+  function renderStpOpts() {
+    const cls = state.stpClass;
+    const clsLabel = cls === 2 ? "2nd class" : "1st class";
+
+    el("stp_opts").innerHTML = `
+      <div class="row">
+        <label class="row"><span>Class</span>
+          <select id="stp_class">
+            <option value="2" selected>2nd class</option>
+            <option value="1">1st class</option>
+          </select>
+        </label>
+        <span class="pill">3/4/6/8/15 days</span>
+      </div>
+      <div class="nested" id="stp_radios"></div>
+    `;
+
+    el("stp_radios").innerHTML = PASS.stp.options
+      .map((o) => {
+        const adult = cls === 2 ? o.adult2 : o.adult1;
+        const youth = cls === 2 ? o.youth2 : o.youth1;
+        const child = cls === 2 ? o.child2 : o.child1;
+        return `
+<label class="row">
+  <span><input type="radio" name="stp_opt" value="${o.id}"> ${o.label}</span>
+  <span class="muted">${clsLabel} Adult ${money(adult)} / Youth ${money(youth)} / Child ${money(child)}</span>
+</label>`;
+      })
+      .join("");
+
+    el("stp_class").value = String(state.stpClass);
+    el("stp_class").addEventListener("change", () => {
+      state.stpClass = Number(el("stp_class").value);
+      renderStpOpts();
+      recalc();
+    });
+
+    document.querySelectorAll('input[name="stp_opt"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.stpOpt = r.value;
+        renderRoutes();
+        recalc();
+      });
+      if (state.stpOpt === r.value) r.checked = true;
+    });
+  }
+
+  function renderStpfOpts() {
+    const cls = state.stpfClass;
+    const clsLabel = cls === 2 ? "2nd class" : "1st class";
+
+    el("stpf_opts").innerHTML = `
+      <div class="row">
+        <label class="row"><span>Class</span>
+          <select id="stpf_class">
+            <option value="2" selected>2nd class</option>
+            <option value="1">1st class</option>
+          </select>
+        </label>
+        <span class="pill">3/4/6/8/15 days</span>
+      </div>
+      <div class="nested" id="stpf_radios"></div>
+    `;
+
+    el("stpf_radios").innerHTML = PASS.stpf.options
+      .map((o) => {
+        const adult = cls === 2 ? o.adult2 : o.adult1;
+        const youth = cls === 2 ? o.youth2 : o.youth1;
+        const child = cls === 2 ? o.child2 : o.child1;
+        return `
+<label class="row">
+  <span><input type="radio" name="stpf_opt" value="${o.id}"> ${o.label}</span>
+  <span class="muted">${clsLabel} Adult ${money(adult)} / Youth ${money(youth)} / Child ${money(child)}</span>
+</label>`;
+      })
+      .join("");
+
+    el("stpf_class").value = String(state.stpfClass);
+    el("stpf_class").addEventListener("change", () => {
+      state.stpfClass = Number(el("stpf_class").value);
+      renderStpfOpts();
+      recalc();
+    });
+
+    document.querySelectorAll('input[name="stpf_opt"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.stpfOpt = r.value;
+        renderRoutes();
+        recalc();
+      });
+      if (state.stpfOpt === r.value) r.checked = true;
+    });
+  }
+
+  function renderJvipOpts() {
+    el("jvip_opts").innerHTML = `<div class="nested" id="jvip_radios"></div>`;
+    renderJvipRadios();
+  }
+
+  function renderJvipRadios() {
+    const s = getSeasonEffective();
+    const list = getJvipTableBySeason();
+    const box = el("jvip_radios");
+    if (!box) return;
+
+    box.innerHTML = list
+      .map((o) => `
+        <label class="row">
+          <span><input type="radio" name="jvip_days" value="${o.days}"> ${o.days}-day pass</span>
+          <span class="muted">(${seasonLabel(s)}) 16+ ${money(o.adult_coupon)} / (combined discount) 16+ ${money(o.adult_overlap)} / Child (6–15) ${money(o.child_6_15)}</span>
+        </label>
+      `)
+      .join("");
+
+    document.querySelectorAll('input[name="jvip_days"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.jvipDays = Number(r.value);
+        recalc();
+      });
+      if (state.jvipDays != null && Number(r.value) === state.jvipDays) r.checked = true;
+    });
+  }
+
+  function initPassOptions() {
+    renderStpOpts();
+    renderStpfOpts();
+    renderJvipOpts();
+  }
+
+  /* ---------- Pass/Route calc ---------- */
+  function calcPassTicketTotal() {
+    const t = travelers();
+    let total = 0;
+    const lines = [];
+
+    if (state.selected.stp) {
+      const picked = state.stpOpt || document.querySelector('input[name="stp_opt"]:checked')?.value;
+      if (picked) state.stpOpt = picked;
+      const opt = PASS.stp.options.find((o) => o.id === picked);
+      const cls = state.stpClass;
+      if (opt) {
+        const adultPrice = cls === 2 ? opt.adult2 : opt.adult1;
+        const youthPrice = cls === 2 ? opt.youth2 : opt.youth1;
+        const childPrice = cls === 2 ? opt.child2 : opt.child1;
+        const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * t.child;
+        total += sum;
+        lines.push({ label: `Swiss Travel Pass (Continuous) ${opt.label} · ${cls}nd class`, price: sum });
+      } else {
+        lines.push({ label: "Please select an option for Swiss Travel Pass (Continuous).", price: 0, warn: true });
+      }
+    }
+
+    if (state.selected.stpf) {
+      const picked = state.stpfOpt || document.querySelector('input[name="stpf_opt"]:checked')?.value;
+      if (picked) state.stpfOpt = picked;
+      const opt = PASS.stpf.options.find((o) => o.id === picked);
+      const cls = state.stpfClass;
+      if (opt) {
+        const adultPrice = cls === 2 ? opt.adult2 : opt.adult1;
+        const youthPrice = cls === 2 ? opt.youth2 : opt.youth1;
+        const childPrice = cls === 2 ? opt.child2 : opt.child1;
+        const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * t.child;
+        total += sum;
+        lines.push({ label: `Swiss Travel Pass Flex ${opt.label} · ${cls}nd class`, price: sum });
+      } else {
+        lines.push({ label: "Please select an option for Swiss Travel Pass Flex.", price: 0, warn: true });
+      }
+    }
+
+    if (state.selected.half) {
+      const c = PASS.half.price16plus;
+      const sum = c * (t.adult + t.youth);
+      total += sum;
+      lines.push({ label: "Swiss Half Fare Card (1 month)", price: sum });
+    }
+
+    if (state.selected.jvip) {
+      const season = getSeasonEffective();
+      const table = getJvipTableBySeason();
+      const opt = table.find((o) => o.days === state.jvipDays);
+      if (opt) {
+        const hasOverlap = state.selected.half || state.selected.stp || state.selected.stpf;
+        const unit16plus = hasOverlap ? opt.adult_overlap : opt.adult_coupon;
+        const sum = unit16plus * (t.adult + t.youth) + opt.child_6_15 * t.child;
+        total += sum;
+        lines.push({
+          label: `Jungfrau VIP ${opt.days}-day pass · ${seasonLabel(season)}${hasOverlap ? " (combined discount)" : ""}`,
+          price: sum,
+        });
+      } else {
+        lines.push({ label: "Please choose the Jungfrau VIP duration (3–8 days).", price: 0, warn: true });
+      }
+    }
+
+    return { total, lines };
+  }
+
+  function bestPriceForRoute(baseAdult, route, season) {
+    const base = Number(baseAdult || 0);
+
+    if (isVipIncluded(route.id, season)) return { adult: 0, reason: "VIP included (CHF 0)" };
+    if (isSwissPassFree(route)) return { adult: 0, reason: `${swissPassLabel().replace(/[()]/g, "")} (CHF 0)` };
+
+    let best = { adult: base, reason: base === 0 ? "Standard fare (not entered)" : "Standard fare" };
+
+    if (state.selected.stp || state.selected.stpf) {
+      let rate = null;
+      if (route.stpNoDiscount === true) rate = 0;
+      else if (route.stpDiscount != null) rate = route.stpDiscount;
+      else if (route.category === "mountain") rate = 0.5;
+
+      if (rate != null) {
+        const v = base * (1 - rate);
+        const pct = Math.round(rate * 100);
+        if (rate === 0) best = { adult: base, reason: "Swiss Travel Pass/Flex: no discount" };
+        else if (v < best.adult) best = { adult: v, reason: `Swiss Travel Pass/Flex ${pct}% off` };
+      }
+    }
+
+    if (state.selected.half) {
+      const v = base * 0.5;
+      if (v < best.adult) best = { adult: v, reason: "Half Fare 50%" };
+    }
+
+    if (route.category === "special") return { adult: base, reason: base === 0 ? "Extra fee (not entered)" : "Extra fee" };
+    return best;
+  }
+
+  function inputBaseForCalc(routeId) {
+    const rt = routeById(routeId);
+    if (!rt) return 0;
+
+    const b = Number(state.routePrices.baseline.get(routeId) || 0);
+    const d = Number(state.routePrices.deal.get(routeId) || 0);
+
+    if (state.priceMode === "deal") {
+      if (isDealEligible(rt) && d > 0) return d;
+      return b;
+    }
+    return b;
+  }
+
+  function calcRouteTotal() {
+    const t = travelers();
+    const season = getSeasonEffective();
+    let total = 0;
+    const lines = [];
+
+    for (const rid of state.selectedRoutes) {
+      const rt = routeById(rid);
+      if (!rt) continue;
+
+      const baseAdult = inputBaseForCalc(rid);
+      const best = bestPriceForRoute(baseAdult, rt, season);
+
+      const cost = best.adult * (t.adult + t.youth);
+      total += cost;
+
+      const usedMode =
+        state.priceMode === "deal"
+          ? (isDealEligible(rt) && Number(state.routePrices.deal.get(rid) || 0) > 0 ? "Deal" : "Baseline")
+          : "Baseline";
+
+      lines.push({
+        label: rt.label,
+        price: cost,
+        reason: `${best.reason} · Input mode: ${usedMode}${baseAdult === 0 ? " · (price not entered)" : ""}`,
+      });
+    }
+
+    return { total, lines };
+  }
+
+  /* ---------- Extra UI (Saver Day Pass button + note) ---------- */
+  function ensureExtrasUI() {
+    const callout = document.querySelector(".callout");
+    if (!callout) return;
+
+    const btnRow = callout.querySelector(".btnRow");
+    if (btnRow && !el("btn_saver_day_pass")) {
+      const a = document.createElement("a");
+      a.className = "btn";
+      a.id = "btn_saver_day_pass";
+      a.href = SAVER_DAY_PASS_URL;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "Buy Saver Day Pass (SBB)";
+      btnRow.appendChild(a);
+    }
+
+    const ul = callout.querySelector("ul");
+    if (ul && !el("sdp_note")) {
+      const li = document.createElement("li");
+      li.id = "sdp_note";
+      li.innerHTML =
+        `In Deal mode, you can enter <b>Saver/Super Saver</b> fares. If you travel a lot in one day, compare with Saver Day Pass too. ` +
+        `<a href="${SAVER_DAY_PASS_URL}" target="_blank" rel="noopener"></a>`;
+      ul.appendChild(li);
+    }
+  }
+
+  /* ---------- Render routes ---------- */
+  function renderRoutes() {
+    ensureRoutesInit();
+    const season = getSeasonEffective();
+    applyLocks(season);
+
+    const q = (el("route_search")?.value || "").trim().toLowerCase();
+    const container = el("routes");
+    if (!container) return;
+    container.innerHTML = "";
+
+    for (const region of REGIONS) {
+      const regionRoutes = region.routes.filter((rt) => {
+        const hay = (rt.label + " " + region.name).toLowerCase();
+        return q ? hay.includes(q) : true;
+      });
+      if (q && regionRoutes.length === 0) continue;
+
+      const det = document.createElement("details");
+      det.open = q ? true : false;
+      det.className = "routeItem";
+
+      const summary = document.createElement("summary");
+      summary.textContent = region.name;
+      det.appendChild(summary);
+
+      const inner = document.createElement("div");
+      inner.className = "nested";
+
+      for (const rt of regionRoutes) {
+        const checked = state.selectedRoutes.has(rt.id);
+
+        const vipInc = isVipIncluded(rt.id, season);
+        const stpFree = isSwissPassFree(rt);
+        const locked = vipInc || stpFree;
+
+        const baseVal = Number(state.routePrices.baseline.get(rt.id) || 0);
+        const dealVal = Number(state.routePrices.deal.get(rt.id) || 0);
+
+        const labels = [];
+        if (vipInc) labels.push(vipLabel);
+        if (stpFree) labels.push(swissPassLabel());
+        const extraLabel = labels.length ? ` <span class="muted">${labels.join(" ")}</span>` : "";
+
+        const stpOn = state.selected.stp || state.selected.stpf;
+        let discPill = "";
+        if (stpOn && !locked) {
+          if (rt.stpNoDiscount === true) discPill = `<span class="pill">No discount</span>`;
+          else if (rt.stpDiscount != null) discPill = `<span class="pill">${Math.round(rt.stpDiscount * 100)}% off</span>`;
+          else if (rt.category === "mountain") discPill = `<span class="pill">50% off</span>`;
+        }
+
+        const dealEligible = isDealEligible(rt);
+        const dealBadge = !dealEligible
+          ? `<span class="pill warn deal_badge" style="display:${state.priceMode === "deal" ? "inline-flex" : "none"}">Deal not eligible</span>`
+          : `<span class="pill good deal_badge" style="display:${state.priceMode === "deal" ? "inline-flex" : "none"}">Deal eligible</span>`;
+
+        const pills = `
+          <span class="pill">${rt.category}</span>
+          ${discPill}
+          ${dealBadge}
+          ${vipInc ? `<span class="pill good">VIP included</span>` : ``}
+        `;
+
+        const sbbUrl = buildSbbLink(rt);
+        const sbbBtnLabel = sbbUrl === SBB_HOME ? "SBB (search)" : "SBB One-click";
+
+        const line = document.createElement("div");
+        line.className = "routeItem";
+        line.style.border = "1px solid #f0f0f0";
+        line.innerHTML = `
+          <div class="routeTop">
+            <div class="routeTitle">
+              <label>
+                <input type="checkbox" class="route_chk" data-id="${rt.id}" ${checked ? "checked" : ""}>
+                <b>${rt.label}</b>${extraLabel}
+              </label>
+            </div>
+            <div class="routeMeta">${pills}</div>
+          </div>
+
+          <div class="priceInputs">
+            <div class="box">
+              <span class="muted">Price CHF</span>
+              <input type="number" min="0" step="0.05"
+                class="price_in price_base"
+                data-id="${rt.id}"
+                value="${baseVal}"
+                ${locked ? "disabled" : ""}
+                style="${state.priceMode === "baseline" ? "" : "display:none"}">
+            </div>
+
+            <div class="box">
+              <span class="muted">Deal CHF</span>
+              <input type="number" min="0" step="0.05"
+                class="price_in price_deal"
+                data-id="${rt.id}"
+                value="${dealVal}"
+                ${locked || !dealEligible ? "disabled" : ""}
+                style="${state.priceMode === "deal" ? "" : "display:none"}">
+            </div>
+
+            <a class="btn" href="${sbbUrl}" target="_blank" rel="noopener" style="padding:6px 8px;border-radius:10px;font-weight:900">
+              ${sbbBtnLabel}
+            </a>
+          </div>
+
+          <div class="mini" data-reason="${rt.id}" style="margin-top:6px;"></div>
+        `;
+        inner.appendChild(line);
+
+        const inpBase = line.querySelector(".price_base");
+        inpBase?.addEventListener("input", () => {
+          const id = inpBase.dataset.id;
+          const v = inpBase.value === "" ? 0 : Number(inpBase.value);
+          state.routePrices.baseline.set(id, v);
+          state.backup.baseline.set(id, v);
+          recalc();
+        });
+
+        const inpDeal = line.querySelector(".price_deal");
+        inpDeal?.addEventListener("input", () => {
+          const id = inpDeal.dataset.id;
+          const v = inpDeal.value === "" ? 0 : Number(inpDeal.value);
+          state.routePrices.deal.set(id, v);
+          state.backup.deal.set(id, v);
+          recalc();
+        });
+      }
+
+      det.appendChild(inner);
+      container.appendChild(det);
+    }
+
+    document.querySelectorAll(".route_chk").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        const id = cb.dataset.id;
+        if (cb.checked) state.selectedRoutes.add(id);
+        else state.selectedRoutes.delete(id);
+        recalc();
+      });
+    });
+
+    syncPriceModeUI();
+  }
+
+  function updateRouteReasonTexts() {
+    for (const rid of state.selectedRoutes) {
+      const rt = routeById(rid);
+      if (!rt) continue;
+
+      const season = getSeasonEffective();
+      const baseAdult = inputBaseForCalc(rid);
+      const best = bestPriceForRoute(baseAdult, rt, season);
+
+      const usedMode =
+        state.priceMode === "deal"
+          ? (isDealEligible(rt) && Number(state.routePrices.deal.get(rid) || 0) > 0 ? "Deal" : "Baseline")
+          : "Baseline";
+
+      const reasonEl = document.querySelector(`[data-reason="${rid}"]`);
+      if (reasonEl) {
+        const extra = best.adult === 0 ? " (no input needed)" : (baseAdult === 0 ? " (enter price)" : "");
+        reasonEl.textContent = `Applied: ${best.reason} · Input mode: ${usedMode}${extra}`;
+      }
+    }
+
+    document.querySelectorAll("[data-reason]").forEach((x) => {
+      const rid = x.getAttribute("data-reason");
+      if (!state.selectedRoutes.has(rid)) x.textContent = "";
+    });
+  }
+
+  function recalc() {
+    const season = getSeasonEffective();
+    el("season_hint") && (el("season_hint").textContent = `Current season: ${seasonLabel(season)} (date: ${el("travel_date")?.value || ""})`);
+
+    const pass = calcPassTicketTotal();
+    const route = calcRouteTotal();
+    const grand = pass.total + route.total;
+
+    el("pass_total").textContent = money(pass.total);
+    el("route_total").textContent = money(route.total);
+    el("grand_total").textContent = money(grand);
+
+    updateRouteReasonTexts();
+
+    const bd = el("breakdown");
+    if (!bd) return;
+
+    const passLines =
+      pass.lines.map((x) => `
+        <div class="line">
+          <div>
+            <div class="k">${x.label}</div>
+            ${x.warn ? `<div class="warnText">Please select an option.</div>` : ``}
+          </div>
+          <div><b>${money(x.price)}</b></div>
+        </div>`).join("") || `<div class="muted">No pass/ticket selected.</div>`;
+
+    const routeLines =
+      route.lines.map((x) => `
+        <div class="line">
+          <div>
+            <div class="k">${x.label}</div>
+            <div class="muted">${x.reason}</div>
+          </div>
+          <div><b>${money(x.price)}</b></div>
+        </div>`).join("") || `<div class="muted">No routes selected.</div>`;
+
+    const passPills =
+      (state.selected.stp || state.selected.stpf || state.selected.half || state.selected.jvip)
+        ? ["stp","stpf","half","jvip"].filter(k => state.selected[k]).map(k => `<span class="pill">${PASS[k]?.label || k}</span>`).join(" ")
+        : "-";
+
+    const modePill = state.priceMode === "deal"
+      ? `<span class="pill warn">Price mode: Deal</span>`
+      : `<span class="pill">Price mode: Baseline</span>`;
+
+    bd.innerHTML = `
+      <div class="pill">Selected passes: ${passPills}</div>
+      ${modePill}
+      <div class="hr"></div>
+      <div class="k">Passes / Tickets</div>
+      <div>${passLines}</div>
+      <div class="hr"></div>
+      <div class="k">Routes</div>
+      <div>${routeLines}</div>
+    `;
+  }
+
+  function bind() {
+    el("travel_date")?.addEventListener("change", () => {
+      renderJvipRadios();
+      renderRoutes();
+      recalc();
+    });
+    el("season_mode")?.addEventListener("change", () => {
+      renderJvipRadios();
+      renderRoutes();
+      recalc();
+    });
+
+    ["n_adult", "n_youth", "n_child", "n_infant"].forEach((id) => {
+      el(id)?.addEventListener("input", recalc);
+      el(id)?.addEventListener("change", recalc);
+    });
+
+    el("route_search")?.addEventListener("input", renderRoutes);
+
+    el("btn_open_all")?.addEventListener("click", () => {
+      document.querySelectorAll("#routes details").forEach((d) => (d.open = true));
+    });
+    el("btn_close_all")?.addEventListener("click", () => {
+      document.querySelectorAll("#routes details").forEach((d) => (d.open = false));
+    });
+
+    el("pick_stp")?.addEventListener("change", () => {
+      state.selected.stp = el("pick_stp").checked;
+      el("stp_opts").style.display = state.selected.stp ? "block" : "none";
+      renderRoutes();
+      recalc();
+    });
+    el("pick_stpf")?.addEventListener("change", () => {
+      state.selected.stpf = el("pick_stpf").checked;
+      el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
+      renderRoutes();
+      recalc();
+    });
+    el("pick_half")?.addEventListener("change", () => {
+      state.selected.half = el("pick_half").checked;
+      recalc();
+    });
+
+    el("pick_jvip")?.addEventListener("change", () => {
+      state.selected.jvip = el("pick_jvip").checked;
+      el("jvip_opts").style.display = state.selected.jvip ? "block" : "none";
+      renderRoutes();
+      recalc();
+    });
+
+    el("btn_reset")?.addEventListener("click", () => {
+      state.selectedRoutes.clear();
+      state.routePrices.baseline.clear();
+      state.routePrices.deal.clear();
+      state.backup.baseline.clear();
+      state.backup.deal.clear();
+
+      state.selected = { stp: false, stpf: false, half: false, jvip: false };
+      state.stpOpt = null;
+      state.stpfOpt = null;
+      state.stpClass = 2;
+      state.stpfClass = 2;
+      state.jvipDays = null;
+      state.priceMode = "baseline";
+
+      el("pick_stp").checked = false;
+      el("pick_stpf").checked = false;
+      el("pick_half").checked = false;
+      el("pick_jvip").checked = false;
+
+      el("stp_opts").style.display = "none";
+      el("stpf_opts").style.display = "none";
+      el("jvip_opts").style.display = "none";
+
+      document.querySelectorAll('input[name="stp_opt"]').forEach((r) => (r.checked = false));
+      document.querySelectorAll('input[name="stpf_opt"]').forEach((r) => (r.checked = false));
+      document.querySelectorAll('input[name="jvip_days"]').forEach((r) => (r.checked = false));
+
+      ensureRoutesInit();
+      syncPriceModeUI();
+      renderRoutes();
+      recalc();
+    });
+  }
+
+  function boot() {
+    const todayISO = localISODate();
+    const dateEl = el("travel_date");
+    if (dateEl && (!dateEl.value || dateEl.value === "2026-04-03")) dateEl.value = todayISO;
+
+    ensureRoutesInit();
+    ensureExtrasUI();
+    attachPriceModeListeners();
+
+    initPassOptions();
+    bind();
+
+    syncPriceModeUI();
+    renderRoutes();
+    recalc();
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>

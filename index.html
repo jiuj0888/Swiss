@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>스위스 여행 패스 체크</title>
+  <style>
+    :root{
+      --bd:#e6e6e6; --txt:#111; --mut:#666; --bg:#fafafa; --card:#fff;
+      --warn:#b45309; --good:#166534;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      margin:16px; color:var(--txt); background:var(--bg); line-height:1.45;
+      font-size:14px;
+    }
+    .container{max-width:1180px;margin:0 auto}
+    h1{margin:0 0 6px;font-size:20px}
+    h2{margin:0 0 8px;font-size:16px}
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:none}
+
+    .muted{color:var(--mut);font-size:12.5px}
+    .wrap{display:grid;grid-template-columns: 390px 1fr; gap:12px; align-items:start}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btnRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;align-items:center}
+    .col{display:flex;flex-direction:column;gap:8px}
+    .grid2{display:grid;grid-template-columns: 1fr 1fr; gap:10px}
+    label{cursor:pointer}
+
+    input[type="number"]{
+      width:96px;padding:6px 8px;border:1px solid var(--bd);border-radius:10px;background:#fff
+    }
+    input[type="date"], input[type="text"], select{
+      padding:6px 8px;border:1px solid var(--bd);border-radius:10px;background:#fff
+    }
+    input[disabled]{background:#f5f5f5;color:#888}
+
+    details{border:1px solid var(--bd);border-radius:12px;padding:10px;background:#fff}
+    summary{cursor:pointer;font-weight:900}
+
+    .nested{
+      margin:8px 0 0 14px;padding-left:12px;border-left:2px solid #f0f0f0;
+      display:flex;flex-direction:column;gap:6px
+    }
+
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;padding:2px 8px;
+      border:1px solid var(--bd);border-radius:999px;background:#f3f3f3;font-size:12px;color:#333
+    }
+    .pill.warn{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}
+    .pill.good{background:#f0fdf4;border-color:#bbf7d0;color:var(--good)}
+    .hr{border-top:1px solid var(--bd); margin:10px 0}
+    .big{font-size:26px;font-weight:900}
+    .small{font-size:13px}
+
+    .routes{display:flex;flex-direction:column;gap:10px}
+    .routeItem{border:1px solid var(--bd);border-radius:12px;padding:10px;background:#fff}
+    .routeTop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .routeTitle{display:flex;gap:10px;align-items:flex-start}
+    .routeMeta{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+    .priceInputs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .priceInputs .box{display:flex;align-items:center;gap:6px}
+
+    .btn{
+      padding:8px 10px;border:1px solid var(--bd);border-radius:12px;background:#fff;
+      cursor:pointer;font-weight:900;color:inherit
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.smallBtn{padding:6px 8px;border-radius:10px;font-weight:700}
+    .danger{border-color:#fecaca;background:#fff1f2;color:#991b1b}
+
+    .table{display:flex;flex-direction:column;gap:6px}
+    .line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #eee}
+    .line:last-child{border-bottom:none}
+    .k{font-weight:900}
+    .sticky{position:sticky;top:12px}
+    .warnText{color:var(--warn);font-weight:900}
+
+    .callout{border:1px solid #e5e7eb; background:#f9fafb; border-radius:12px; padding:10px; margin:10px 0;}
+    ul{margin:6px 0 0 18px}
+    li{margin:2px 0}
+    .disabled {opacity: 0.55; pointer-events: none; filter: grayscale(0.3);}
+    .mini{font-size:12px;color:var(--mut)}
+    .inlineInput{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+
+   .grid2 > label.row{
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* ✅ row 안 요소들이 폭 줄어들 수 있게 */
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.row > * { min-width:0; }
+
+/* ✅ select가 부모 폭을 넘지 않게 */
+select.full {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+/* 글자가 길어도 줄바꿈 안 함 */
+.grid2 > label.row{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.grid2 input[type="date"],
+.grid2 select{
+  width: 100%;
+  min-width: 0;
+}
+
+    @media (max-width: 980px){
+      .wrap{grid-template-columns: 1fr}
+      .sticky{position:static}
+    }
+
+   /* 날짜/드롭다운은 가끔 너무 길어서 → 최소 폭 확보 */
+.grid2 input[type="date"],
+.grid2 select{
+  min-width: 140px;
+}
+
+/* ✅ 날짜/시즌(2번 섹션) 안의 grid2는 ‘라벨 위, 입력 아래’로 */
+#travel_date, #season_mode { width: 100%; }
+
+#travel_date { min-width: 0; }
+#season_mode { min-width: 0; }
+
+/* 날짜/시즌 줄의 label은 세로 배치 */
+#travel_date_label,
+#season_mode_label{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* =========================
+   ✅ 추가: 모바일에서만 "총액"을 하단 고정
+   - 웹(데스크탑) 레이아웃은 그대로
+========================= */
+@media (max-width: 980px){
+  body{ padding-bottom: 150px; } /* 하단 고정바에 가려지지 않게 공간 확보 */
+
+  .totalBar{
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 12px;
+    z-index: 999;
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .totalBar .hr{ margin: 8px 0; }
+}
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>스위스 여행 패스 체크</h1>
+  <div class="muted">
+  </div>
+
+<details class="card" style="margin:12px 0;">
+  <summary class="k" style="font-size:16px; cursor:pointer;">
+    스위스 여행 패스 체크 사용 방법
+    <span class="muted" style="font-weight:400; margin-left:8px;">(눌러서 펼치기)</span>
+  </summary>
+
+  <div class="hr"></div>
+
+  <div class="small" style="display:flex; flex-direction:column; gap:10px;">
+    <div>
+      <div class="k">1) 인원수 입력</div>
+      <div class="muted">- 성인(25+), 유스(16–25), 아동(6–15), 유아(0–5) 인원수를 먼저 넣어주세요.</div>
+    </div>
+
+    <div>
+      <div class="k">2) 시즌 선택(여름/겨울)</div>
+      <div class="muted">- 달력에서 여행 날짜를 선택하면 자동으로 시즌이 결정돼요.</div>
+      <div class="muted">- 여행이 겨울/여름 경계에 걸리면 드롭다운에서 시즌을 고정할 수 있어요.</div>
+    </div>
+
+    <div>
+      <div class="k">3) 패스/티켓 체크</div>
+      <div class="muted">- 구매하고자 하는 패스를 선택해주세요.</div>
+    </div>
+
+    <div>
+      <div class="k">4) 가고 싶은 지역/노선 체크</div>
+      <div class="muted">- 오른쪽에서 지역을 펼치고 실제로 탈 노선을 체크하세요.</div>
+    </div>
+
+    <div>
+      <div class="k">5) 가격 입력</div>
+
+      <div class="muted">- 상단의 “가격 모드(Baseline/Deal)”를 먼저 선택하세요. Baseline은 정가, Deal은 세이버/슈퍼세이버(특정 시간·열차 제외) 기준이에요.</div>
+     <div class="muted">- 우측 "SBB 원클릭"을 누르면 해당 구간이 SBB에 바로 검색됩니다.</div>
+     <div class="muted">- 날짜를 선택 후 원하는 시간대의 가격을 보고 기입해주세요!</div>
+      <div class="muted">- 탑승자 모두(성인/유스/아동)의 금액과 왕복 및 편도를 계산해서 입력해주세요.</div>
+     <div class="muted">- 특가(슈퍼세이버티켓)를 잡는다면 당신은 럭키가이⭐</div>
+      <div class="muted">- 패스에 포함된 구간은 자동으로 0원/잠금 처리돼서 입력할 필요가 없어요.</div>
+    </div>
+
+    <div>
+      <div class="k">6) 결과 확인</div>
+      <div class="muted">- 왼쪽의 총액에서 “패스/티켓 + 노선” 합계를 확인할 수 있어요.</div>
+      <div class="muted">- 아래 상세 내역에서 어떤 구간이 무료/할인으로 계산됐는지도 볼 수 있어요.</div>
+    </div>
+    <div>
+     <div class="k">7) 참고사항</div>
+     <div class="muted">public - 대중교통(열차/버스)</div>
+     <div class="muted">boat - 유람선</div>
+     <div class="muted">scenic - 파노라마열차</div>
+     <div class="muted">mountatin - 산악열차/케이블카</div>
+     <div class="muted">special - 추가비용발생</div>
+         </div>
+  </div>
+</details>
+
+ <details class="card" style="margin:12px 0;">
+   <summary class="k" style="font-size:16px; cursor:pointer;">안내    
+   <span class="muted" style="font-weight:400; margin-left:8px;">(눌러서 펼치기)</span>
+  </summary>
+   <div class="hr"></div>
+    <div class="small" style="display:flex; flex-direction:column; gap:10px;">
+    <div>
+      <div class="muted">- VIP 패스 가격은 “동신항운 할인쿠폰 소지자 기준”으로 계산됩니다.</div>
+     <div class="muted">- VIP 포함 노선은 여름/겨울 시즌에 따라 달라질 수 있고, 운행/보수 기간에 따라 일부 제외될 수 있습니다.</div>
+     <div class="muted">- 긴/짧은 코스(6구간/4구간): 인터라켄 출발이면 “긴 코스”, 그린델발트/라우터브루넨 출발이면 “짧은 코스”</div>
+     <div class="muted">- 융프라우 지역 왕복권은 스위스패스를 이용한 할인가보다 쿠폰 할인가가 더 저렴합니다.</div>
+     <div class="muted">- 현지 발권/이용 시 동신항운 할인쿠폰 출력이 필요합니다.</div>
+    </div>
+
+    <div class="btnRow" style="margin-top:10px">
+      <a class="btn" href="https://www.jungfrau.co.kr/coupon/couponlist.asp" target="_blank" rel="noopener">동신항운 할인쿠폰 안내</a>
+      <a class="btn" href="https://www.jungfrau.co.kr/coupon/apply_2023_01.asp" target="_blank" rel="noopener">할인쿠폰 신청하기</a>
+     <a class="btn" href="en.html" target="_blank" rel="noopener">English site (Foreign nationals only)</a>
+    </div>
+</details>
+
+  <div class="wrap">
+    <!-- LEFT -->
+    <div class="card sticky">
+      <div class="col">
+        <div class="k">1) 인원수</div>
+        <div class="grid2">
+          <label class="row"><span>성인(25+)</span><input id="n_adult" type="number" min="0" value="0"></label>
+          <label class="row"><span>유스(16–25)</span><input id="n_youth" type="number" min="0" value="0"></label>
+          <label class="row"><span>아동(6–15)</span><input id="n_child" type="number" min="0" value="0"></label>
+          <label class="row"><span>유아(0–5)</span><input id="n_infant" type="number" min="0" value="0"></label>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="k">2) 날짜/시즌</div>
+        <div class="grid2">
+          <label class="row"><span>여행 날짜</span><input id="travel_date" type="date"></label>
+          <label class="row">
+            <span>시즌</span>
+            <select id="season_mode">
+              <option value="auto" selected>자동(날짜 기준)</option>
+              <option value="summer">여름 고정</option>
+              <option value="winter">겨울 고정</option>
+            </select>
+          </label>
+        </div>
+        <div class="muted" id="season_hint"></div>
+
+        <div class="hr"></div>
+
+        <div class="k">3) 패스/티켓 선택</div>
+        <div class="muted">처음엔 전부 접혀 있어요. 필요한 것만 열어서 체크하세요.</div>
+
+        <details>
+          <summary>Swiss Travel Pass (연속)</summary>
+          <div class="nested">
+            <div class="muted">선택 시 “무료 구간”은 입력칸이 자동 잠깁니다.</div>
+         <div class="muted">스위스 패밀리 카드는 요청시 현장&온라인에서 무료 발급 가능하며, 1명 이상의 부모(친척 불가)가 동반하는 6~16세 자녀는 무료로 여행 가능합니다.</div>
+            <label><input type="checkbox" id="pick_stp"> 사용</label>
+            <div id="stp_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Swiss Travel Pass Flex (원하는 날만)</summary>
+          <div class="nested">
+            <div class="muted">선택 시 “무료 구간”은 입력칸이 자동 잠깁니다.</div>
+         <div class="muted">스위스 패밀리 카드는 요청시 현장&온라인에서 무료 발급 가능하며, 1명 이상의 부모(친척 불가)가 동반하는 6~16세 자녀는 무료로 여행 가능합니다.</div>
+            <label><input type="checkbox" id="pick_stpf"> 사용</label>
+            <div id="stpf_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Swiss Half Fare Card (하프페어: 반값 카드)</summary>
+          <div class="nested">
+            <div class="muted">대부분 교통 티켓을 50% 가격으로 구매하는 카드입니다.</div>
+            <label><input type="checkbox" id="pick_half"> 사용</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>융프라우 VIP 패스 (Jungfrau VIP Pass)</summary>
+          <div class="nested">
+            <div class="muted">VIP 가격은 <b>동신항운 할인쿠폰 소지자 기준</b>으로 계산합니다.<br/></div>
+              <div class="muted"> VIP + (하프페어/스위스패스/플렉스) 동시 선택 시 VIP 가격은 자동으로 <b>중복할인가</b>가 적용됩니다.<br/></div>
+              <div class="muted">VIP 선택 시 포함 구간은 <b>0원/잠금 + (VIP 포함)</b>으로 표시됩니다.<br/></div>
+              <div class="muted"><b>융프라우요흐 왕복 1회(아이거글렛셔–요흐)는 VIP에 포함</b>으로 처리합니다.</div>
+            <label><input type="checkbox" id="pick_jvip"> 사용</label>
+            <div id="jvip_opts" class="nested" style="display:none;"></div>
+          </div>
+        </details>
+
+        <details id="jjo_discount_details">
+          <summary>동신항운 융프라우요흐 왕복권(쿠폰 할인 전용)</summary>
+          <div class="nested">
+            <div class="muted">
+              VIP를 선택하면 요흐 왕복 1회가 포함되므로, 이 항목은 선택할 수 없습니다.<br/>
+              <b>긴/짧은 코스:</b> 인터라켄 출발이면 “긴 코스”, 그린델발트/라우터브루넨 출발이면 “짧은 코스”
+            </div>
+            <label><input type="checkbox" id="pick_jjo_discount"> 사용</label>
+            <div id="jjo_discount_opts" class="nested" style="display:none;"></div>
+            <div class="muted" id="jjo_discount_disabled_msg" style="margin-top:6px;"></div>
+          </div>
+        </details>
+
+        <div class="hr"></div>
+
+        <!-- ✅ 변경: 총액+초기화를 totalBar로 감싸기(웹은 변화 없고, 모바일만 하단 고정) -->
+        <div class="totalBar">
+          <div class="k">총액</div>
+          <div class="row">
+            <div>
+              <div class="big" id="grand_total">CHF 0.00</div>
+              <div class="muted">패스/티켓: <b id="pass_total">CHF 0.00</b> · 노선: <b id="route_total">CHF 0.00</b></div>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+          <div class="row">
+            <button class="btn danger" id="btn_reset">선택 초기화</button>
+          </div>
+        </div>
+        <!-- ✅ 변경 끝 -->
+
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="k">4) 지역/노선 선택</div>
+          <div class="muted">권역은 기본 닫힘. 검색하면 관련 권역만 자동으로 열립니다.</div>
+        </div>
+        <div class="row">
+          <input id="route_search" type="text" placeholder="노선 검색 (예: 피르스트, 하더쿨룸, 티틀리스…)" style="width:340px;">
+          <button class="btn" id="btn_open_all">모두 펼치기</button>
+          <button class="btn" id="btn_close_all">모두 접기</button>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="row">
+          <div class="k">가격 입력은 이렇게 하세요</div>
+          <div class="inlineInput">
+            <span class="pill">가격 모드</span>
+            <label class="mini"><input type="radio" name="price_mode" id="mode_baseline" value="baseline" checked> Baseline(정가)</label>
+            <label class="mini"><input type="radio" name="price_mode" id="mode_deal" value="deal"> Deal(세이버/슈퍼세이버)</label>
+          </div>
+        </div>
+        <div class="muted" id="price_mode_hint" style="margin-top:6px;"></div>
+
+        <ul class="small">
+          <li>열차/버스/유람선 요금은 날짜·시간에 따라 달라요.</li>
+          <li>SBB에서 출발지/도착지를 검색해 가격을 확인한 뒤, 노선 카드의 가격 CHF 칸에 성인 1인 운임(정가/딜가)을 적어주세요.</li>
+          <li>스위스패스/플렉스/VIP에서 “포함(무료)”인 곳은 자동 잠금됩니다.</li>
+     
+        </ul>
+        <div class="btnRow" style="margin-top:8px">
+          <a class="btn" href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB에서 가격 확인</a>
+          <a class="btn" href="https://maps.trafimage.ch/ch.sbb.sts?baselayers=ch.sbb.sts.validity.data,ch.sbb.direktverbindungen.data&layers=ch.sbb.sts.validity.other,ch.sbb.sts.validity.routes_highlight,ch.sbb.sts.validity.gttos&lang=de&x=953392.38&y=5903613.91&z=8" target="_blank" rel="noopener">스위스패스 유효범위 지도</a>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="routes" id="routes"></div>
+
+      <div class="hr"></div>
+      <div class="k">상세 내역</div>
+      <div id="breakdown" class="table small"></div>
+    </div>
+  </div>
+
+    <div class="card" style="margin-top:12px;">
+    <h2>기타</h2>
+    <div class="hr"></div>
+    <ul>
+      <li>이 사이트는 개발자가 스위스 여행 시 매번 공부하기 힘들어 만든 사이트에요! 가격 비교용으로 마음껏 사용해주세요~</li>
+     <li>노선/할인 규정은 시기와 조건에 따라 달라질 수 있어요.</li>
+     <li>1인 개발이기 때문에 이상한 점이나 값에서 오류가 날 수 있으니 언제든 아래 메일로 연락 주시기 바랍니다.</li>
+     <li>마음에 드셨다면 주변의 스위스 여행객들에게 널리널리 공유해주세요!</li>
+    </ul>
+    <div style="margin-top:10px; font-size:12px; color:#777; line-height:1.5;">
+    <div><b>개발자에게 커피 사주기🖤</b> : 토스 1000-3296-6395</div>
+    <div><b>제보 및 문의👀</b> : jiuj0888@gmail.com</div>
+  </div>
+</div>
+
+<script>
+/* =========================
+   Swiss Travel Check — SCRIPT (KOR FINAL v2)
+   ✅ 수정: 가격 모드 UI가 "드롭다운 + 라디오"로 중복 노출될 때 → 하나만 보이게 정리
+   - 라디오( baseline/deal )가 이미 있으면: 드롭다운(자동삽입)은 숨김
+   - 라디오가 없으면: 드롭다운을 자동 삽입해서 사용
+========================= */
+
+(() => {
+  /* ---------- DOM helpers ---------- */
+  const el = (id) => document.getElementById(id);
+  const money = (n) => `CHF ${Number(n || 0).toFixed(2)}`;
+
+  const SBB_HOME = "https://www.sbb.ch/en";
+  const SBB_FP = "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml";
+  const SAVER_DAY_PASS_URL = "https://www.sbb.ch/en/offers/saver-day-pass";
+
+  function localISODate() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  /* ---------- Season ---------- */
+  function getSeason(date) {
+    const m = date.getMonth();
+    return m >= 4 && m <= 9 ? "summer" : "winter";
+  }
+  function getSeasonEffective() {
+    const mode = el("season_mode")?.value || "auto";
+    const todayISO = localISODate();
+    const d = new Date((el("travel_date")?.value || todayISO) + "T00:00:00");
+    if (mode === "auto") return getSeason(d);
+    return mode;
+  }
+  function seasonLabel(s) {
+    return s === "summer" ? "여름(5~10월)" : "겨울(11~4월)";
+  }
+
+  /* ---------- Travelers ---------- */
+  function travelers() {
+    return {
+      adult: Number(el("n_adult")?.value || 0),
+      youth: Number(el("n_youth")?.value || 0),
+      child: Number(el("n_child")?.value || 0),
+      infant: Number(el("n_infant")?.value || 0),
+    };
+  }
+
+  /* ---------- Pass pricing ---------- */
+  const PASS = {
+    stp: {
+      label: "Swiss Travel Pass(연속)",
+      options: [
+        { id: "stp_3",  label: "3일",  adult2: 254, adult1: 405, youth2: 179, youth1: 285, child1: 202.50, child2: 127.00 },
+        { id: "stp_4",  label: "4일",  adult2: 309, adult1: 492, youth2: 218, youth1: 346, child1: 246.00, child2: 154.50 },
+        { id: "stp_6",  label: "6일",  adult2: 399, adult1: 634, youth2: 282, youth1: 447, child1: 317.00, child2: 199.50 },
+        { id: "stp_8",  label: "8일",  adult2: 439, adult1: 697, youth2: 311, youth1: 492, child1: 348.50, child2: 219.50 },
+        { id: "stp_15", label: "15일", adult2: 499, adult1: 787, youth2: 356, youth1: 557, child1: 393.50, child2: 249.50 },
+      ],
+    },
+    stpf: {
+      label: "Swiss Travel Pass Flex",
+      options: [
+        { id: "stpf_3",  label: "3일/1개월",  adult2: 289, adult1: 461, youth2: 204, youth1: 325, child1: 230.50, child2: 144.50 },
+        { id: "stpf_4",  label: "4일/1개월",  adult2: 349, adult1: 555, youth2: 246, youth1: 390, child1: 277.50, child2: 174.50 },
+        { id: "stpf_6",  label: "6일/1개월",  adult2: 424, adult1: 674, youth2: 300, youth1: 475, child1: 337.00, child2: 212.00 },
+        { id: "stpf_8",  label: "8일/1개월",  adult2: 459, adult1: 729, youth2: 325, youth1: 514, child1: 364.50, child2: 229.50 },
+        { id: "stpf_15", label: "15일/1개월", adult2: 519, adult1: 819, youth2: 370, youth1: 580, child1: 409.50, child2: 259.50 },
+      ],
+    },
+    half: { label: "Swiss Half Fare Card", price16plus: 150 },
+    jvip: {
+      label: "Jungfrau VIP Pass",
+      summer: [
+        { days: 1, adult_coupon: 195, adult_overlap: 185, youth: 175, child_6_15: 30 },
+        { days: 2, adult_coupon: 220, adult_overlap: 210, youth: 195, child_6_15: 30 },
+        { days: 3, adult_coupon: 245, adult_overlap: 225, youth: 210, child_6_15: 30 },
+        { days: 4, adult_coupon: 270, adult_overlap: 245, youth: 225, child_6_15: 30 },
+        { days: 5, adult_coupon: 295, adult_overlap: 270, youth: 240, child_6_15: 30 },
+        { days: 6, adult_coupon: 320, adult_overlap: 285, youth: 255, child_6_15: 30 },
+      ],
+      winter: [
+        { days: 1, adult_coupon: 190, adult_overlap: 175, youth: 170, child_6_15: 30 },
+        { days: 2, adult_coupon: 215, adult_overlap: 200, youth: 190, child_6_15: 30 },
+        { days: 3, adult_coupon: 240, adult_overlap: 215, youth: 205, child_6_15: 30 },
+        { days: 4, adult_coupon: 265, adult_overlap: 235, youth: 220, child_6_15: 30 },
+        { days: 5, adult_coupon: 290, adult_overlap: 260, youth: 235, child_6_15: 30 },
+        { days: 6, adult_coupon: 315, adult_overlap: 275, youth: 250, child_6_15: 30 },
+      ],
+    },
+  };
+
+  const JJO_DISCOUNT = {
+    winter: { long: { adult: 160, overlap: 140, child: 20 }, short: { adult: 155, overlap: 140, child: 20 } },
+    summer: { long: { adult: 168, overlap: 155, child: 20 }, short: { adult: 163, overlap: 155, child: 20 } },
+  };
+
+  /* ---------- ROUTE DATA (label 정리 포함) ---------- */
+  const REGIONS = [
+    { id: "zurich", name: "취리히 & 북부(샤프하우젠 등)", routes: [
+      { id: "zrh_lucerne", label: "취리히 ↔ 루체른", category: "public" },
+      { id: "zrh_interlaken", label: "취리히 ↔ 인터라켄", category: "public" },
+      { id: "rhine_falls", label: "취리히 ↔ 라인폭포(Neuhausen Rheinfall)", category: "public" },
+      { id: "stein_am_rhein", label: "샤프하우젠 ↔ 슈타인암라인(Stein am Rhein)", category: "public" },
+    ]},
+    { id: "basel", name: "바젤 & 서북부", routes: [
+      { id: "zrh_basel", label: "취리히 ↔ 바젤", category: "public" },
+      { id: "basel_bern", label: "바젤 ↔ 베른", category: "public" },
+      { id: "basel_lucerne", label: "바젤 ↔ 루체른", category: "public" },
+    ]},
+    { id: "bern", name: "베른(수도) & 주변", routes: [
+      { id: "bern_interlaken", label: "베른 ↔ 인터라켄", category: "public" },
+      { id: "bern_thun", label: "베른 ↔ 툰", category: "public" },
+      { id: "bern_spiez", label: "베른 ↔ 슈피츠", category: "public" },
+      { id: "thun_lake_boat", label: "툰 호수 유람선(Thun–Spiez 등)", category: "boat" },
+    ]},
+    { id: "lucerne", name: "루체른 & 중앙스위스(리기/필라투스/티틀리스/슈토스/슈탄저호른)", routes: [
+      { id: "lake_lucerne_boat", label: "루체른 호수 보트(Lake Lucerne)", category: "boat" },
+      { id: "rigi", label: "리기(Rigi Kulm)", category: "mountain", stpFree: true },
+      { id: "pilatus", label: "필라투스(Pilatus Kulm)", category: "mountain" },
+      { id: "titlis", label: "티틀리스(Titlis)", category: "mountain" },
+      { id: "stoos", label: "슈토스(Stoos)", category: "mountain", stpFree: true },
+      { id: "klewenalp", label: "클레베날프(Klewenalp)", category: "mountain", stpFree: true },
+      { id: "brunni_engelberg", label: "브루니(엥겔베르크, Brunni)", category: "mountain", stpFree: true },
+      { id: "stanserhorn", label: "슈탄저호른(Stanserhorn)", category: "mountain", stpFree: true },
+    ]},
+    { id: "interlaken", name: "인터라켄(베르너 오버란트 핵심)", routes: [
+      { id: "int_thun", label: "인터라켄 ↔ 툰", category: "public" },
+      { id: "int_spiez", label: "인터라켄 ↔ 슈피츠", category: "public" },
+      { id: "int_brienz", label: "인터라켄 ↔ 브리엔츠", category: "public" },
+      { id: "brienz_lake_boat", label: "브리엔츠 호수 유람선(Brienz–Interlaken 등)", category: "boat" },
+      { id: "harder_kulm", label: "하더 쿨룸(Harder Kulm)", category: "mountain" },
+    ]},
+    { id: "jungfrau", name: "그린델발트/라우터브루넌/벵엔/뮈렌(융프라우)", routes: [
+      { id: "int_grindelwald", label: "인터라켄 ↔ 그린델발트", category: "public" },
+      { id: "int_lauterbrunnen", label: "인터라켄 ↔ 라우터브루넌", category: "public"},
+      { id: "lauterbrunnen_wengen", label: "라우터브루넌 ↔ 벵엔", category: "public" },
+      { id: "wengen_kleine", label: "벵엔 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25},
+      { id: "grindelwald_kleine", label: "그린델발트 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25},
+      { id: "grindelwald_terminal", label: "그린델발트 ↔ 그린델발트 터미널", category: "public" },
+      { id: "eiger_express", label: "아이거 익스프레스(그린델발트 터미널 ↔ 아이거글레쳐)", category: "mountain", stpDiscount: 0.25},
+      { id: "eiger_kleine", label: "아이거글레쳐 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25},
+      { id: "eiger_jungfraujoch", label: "아이거글레처 ↔ 융프라우요흐(Jungfraujoch)", category: "mountain", stpDiscount: 0.25 },
+      { id: "mannlichen_wengen", label: "멘리헨(벵엔 ↔ 멘리헨)", category: "mountain" },
+      { id: "mannlichen_grindelwald", label: "멘리헨(그린델발트 ↔ 멘리헨)", category: "mountain" },
+      { id: "grindelwald_first", label: "피르스트(그린델발트 ↔ First)", category: "mountain" },
+      { id: "lauterbrunnen_murren", label: "라우터브루넌 ↔ 그뤼찰프 ↔ 뮈렌(Mürren)", category: "mountain", stpFree: true},
+      { id: "allmendhubel", label: "알멘트후벨(뮈렌 ↔ Allmendhubel)", category: "mountain" },
+      { id: "schynige_platte", label: "쉬니케 플라테(빌더스빌 ↔ Schynige Platte)", category: "mountain" },
+      { id: "schilthorn", label: "쉴트호른(뮈렌 ↔ Schilthorn)", category: "mountain" },
+    ]},
+    { id: "zermatt", name: "체르마트 & 발레(고르너그라트/마터호른)", routes: [
+      { id: "visp_zermatt", label: "비스프/브리그 ↔ 체르마트", category: "public" },
+      { id: "gornergrat", label: "고르너그라트(Gornergrat)", category: "mountain" },
+      { id: "mggp", label: "마테호른 글레이셔 파라다이스(Matterhorn Glacier Paradise)", category: "mountain" },
+      { id: "sunnegga", label: "수네가(Sunnegga)", category: "mountain" },
+    ]},
+    { id: "valais_more", name: "발레 추가(사스페/베르비에 등)", routes: [
+      { id: "saas_fee", label: "사스페(Saas-Fee)", category: "mountain" },
+      { id: "verbier", label: "베르비에(Le Châble ↔ Verbier)", category: "mountain", stpFree: true},
+      { id: "martigny_verbier", label: "마르티니 ↔ 베르비에 접근(Le Châble 등)", category: "public" },
+    ]},
+    { id: "geneva_lake", name: "제네바/로잔/몽트뢰(레만호)", routes: [
+      { id: "geneva_lausanne", label: "제네바 ↔ 로잔", category: "public" },
+      { id: "lausanne_montreux", label: "로잔 ↔ 몽트뢰", category: "public" },
+      { id: "lake_geneva_boat", label: "레만호 보트(Lake Geneva)", category: "boat" },
+      { id: "rochers_de_naye", label: "로쉐드네(몽트뢰 ↔ Rochers-de-Naye)", category: "mountain" },
+      { id: "lavaux", label: "라보(포도밭) 구간 열차(구간 다양)", category: "public" }, // ✅ 의도적으로 모호(지역)
+    ]},
+    { id: "ticino", name: "티치노(루가노/로카르노/벨린초나)", routes: [
+      { id: "lugano_locarno", label: "루가노 ↔ 로카르노", category: "public" },
+      { id: "bellinzona_lugano", label: "벨린초나 ↔ 루가노", category: "public" },
+      { id: "centovalli", label: "첸토발리 철도(로카르노 ↔ 도모도솔라)", category: "scenic" },
+      { id: "monte_bre", label: "몬테 브레(Monte Brè)", category: "mountain" },
+      { id: "monte_tamaro", label: "몬테 타마로(Monte Tamaro)", category: "mountain" },
+    ]},
+    { id: "graubuenden", name: "그라우뷘덴(생모리츠/엥가딘/쿠어)", routes: [
+      { id: "albula", label: "알불라 라인(쿠어 ↔ 생모리츠)", category: "scenic" },
+      { id: "bernina_express", label: "베르니나 라인(생모리츠 ↔ 티라노 등)", category: "scenic" },
+      { id: "diavolezza", label: "디아볼레차(Diavolezza)", category: "mountain", stpNoDiscount: true},
+      { id: "muottas_muragl", label: "무오타스 무라글(Muottas Muragl)", category: "mountain", stpNoDiscount: true},
+    ]},
+    { id: "davos_arosa", name: "다보스/아로사/플림스-락스", routes: [
+      { id: "davos_access", label: "다보스 접근/이동(구간 다양)", category: "public" }, // ✅ 의도적으로 모호
+      { id: "arosa_line", label: "아로사 라인(쿠어 ↔ 아로사)", category: "scenic" },
+      { id: "flims_laax", label: "플림스/락스(산악/버스, 구간 다양)", category: "mountain"},
+      { id: "flims_falera", label: "팔레라(산악, 구간 다양)", category: "mountain", stpNoDiscount: true},
+    ]},
+    { id: "andermatt_gotthard", name: "안데르마트/고트하르트/파노라마 열차", routes: [
+      { id: "gotthard_base", label: "고트하르트 베이스 터널(취리히 ↔ 루가노 등)", category: "public" }, // ✅ 의도적으로 모호
+      { id: "lucerne_interlaken_express", label: "루체른-인터라켄 익스프레스(열차)", category: "scenic" },
+      { id: "glacier_express", label: "글레이셔 익스프레스 구간(열차)", category: "scenic" },
+      { id: "seat_reservation", label: "파노라마 열차 좌석 예약비(별도)", category: "special" },
+    ]},
+    { id: "eastern", name: "동부(장크트갈렌/아펜첼/젠티스)", routes: [
+      { id: "stgallen", label: "장크트갈렌 ↔ (주요역)", category: "public" }, // ✅ 비움 유지
+      { id: "appenzell", label: "아펜첼 ↔ (주요역)", category: "public" },   // ✅ 비움 유지
+      { id: "saentis", label: "젠티스(Säntis, 접근 다양)", category: "mountain" },
+      { id: "liechtenstein", label: "리히텐슈타인 접근(사르간스 ↔ 파두츠)", category: "public" },
+    ]},
+    { id: "jura", name: "쥐라/뇌샤텔", routes: [
+      { id: "neuchatel", label: "뇌샤텔 ↔ (주요역)", category: "public" },  // ✅ 비움 유지
+      { id: "lac_neuchatel_boat", label: "뇌샤텔 호수 보트(구간 다양)", category: "boat" },
+      { id: "la_chaux", label: "라쇼드퐁 ↔ (주요역)", category: "public" }, // ✅ 비움 유지
+    ]},
+  ];
+
+  /* ---------- State ---------- */
+  const state = {
+    selectedRoutes: new Set(),
+    priceMode: "baseline", // "baseline" | "deal"
+    routePrices: { baseline: new Map(), deal: new Map() },
+    backup: { baseline: new Map(), deal: new Map() },
+    selected: { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false },
+    stpOpt: null,
+    stpClass: 2,
+    stpfOpt: null,
+    stpfClass: 2,
+    jvipDays: null,
+    jjoType: "long",
+  };
+
+  /* ---------- Lookup ---------- */
+  function routeById(id) {
+    for (const reg of REGIONS) {
+      const f = reg.routes.find((x) => x.id === id);
+      if (f) return f;
+    }
+    return null;
+  }
+
+  function ensureRoutesInit() {
+    for (const reg of REGIONS) {
+      for (const rt of reg.routes) {
+        if (!state.routePrices.baseline.has(rt.id)) state.routePrices.baseline.set(rt.id, 0);
+        if (!state.routePrices.deal.has(rt.id)) state.routePrices.deal.set(rt.id, 0);
+        if (!state.backup.baseline.has(rt.id)) state.backup.baseline.set(rt.id, 0);
+        if (!state.backup.deal.has(rt.id)) state.backup.deal.set(rt.id, 0);
+      }
+    }
+  }
+
+  /* ---------- SwissPass free lock ---------- */
+  function isSwissPassFree(route) {
+    const on = state.selected.stp || state.selected.stpf;
+    if (!on) return false;
+    if (route.stpFree === true) return true;
+    if (route.stpNoDiscount === true) return false;
+    if (route.stpDiscount != null) return false;
+    return ["public", "boat", "scenic"].includes(route.category);
+  }
+  function swissPassLabel() {
+    if (state.selected.stp) return "(스위스패스 무료 구간)";
+    if (state.selected.stpf) return "(플렉스 무료 구간)";
+    return "";
+  }
+
+  /* ---------- VIP include lock ---------- */
+  function vipIncludedSet(season) {
+    const set = new Set([
+      "int_grindelwald",
+      "int_lauterbrunnen",
+      "lauterbrunnen_wengen",
+      "wengen_kleine",
+      "grindelwald_kleine",
+      "grindelwald_terminal",
+      "eiger_express",
+      "eiger_kleine",
+      "eiger_jungfraujoch",
+      "grindelwald_first",
+      "mannlichen_wengen",
+      "mannlichen_grindelwald",
+      "lauterbrunnen_murren",
+    ]);
+    if (season === "summer") {
+      set.add("harder_kulm");
+      set.add("schynige_platte");
+    }
+    return set;
+  }
+  function isVipIncluded(routeId, season) {
+    if (!state.selected.jvip) return false;
+    return vipIncludedSet(season).has(routeId);
+  }
+  const vipLabel = "(VIP 포함)";
+
+  /* ---------- Deal eligibility ---------- */
+  function isDealEligible(route) {
+    if (!route) return false;
+    return route.category === "public" || route.category === "scenic";
+  }
+
+  /* ---------- Apply locks ---------- */
+  function applyLocks(season) {
+    ensureRoutesInit();
+    for (const reg of REGIONS) {
+      for (const rt of reg.routes) {
+        const rid = rt.id;
+        const vipInc = isVipIncluded(rid, season);
+        const stpFree = isSwissPassFree(rt);
+        const shouldLock = vipInc || stpFree;
+
+        for (const mode of ["baseline", "deal"]) {
+          const cur = Number(state.routePrices[mode].get(rid) || 0);
+          if (shouldLock) {
+            if (cur !== 0) state.backup[mode].set(rid, cur);
+            state.routePrices[mode].set(rid, 0);
+          } else {
+            state.routePrices[mode].set(rid, Number(state.backup[mode].get(rid) || 0));
+          }
+        }
+      }
+    }
+  }
+
+  /* ---------- VIP pricing table by season ---------- */
+  function getJvipTableBySeason() {
+    const s = getSeasonEffective();
+    return PASS.jvip[s] || PASS.jvip.summer;
+  }
+
+  /* ---------- SBB one-click (routeId override) ---------- */
+  const SBB_BY_ROUTE_ID = {
+    rigi: { from: "Vitznau", to: "Rigi Kulm" },
+    pilatus: { from: "Kriens", to: "Pilatus Kulm" },
+    titlis: { from: "Engelberg", to: "Titlis" },
+    stoos: { from: "Schwyz", to: "Stoos" },
+    klewenalp: { from: "Beckenried", to: "Klewenalp" },
+    brunni_engelberg: { from: "Engelberg", to: "Brunni" },
+    stanserhorn: { from: "Stans", to: "Stanserhorn" },
+
+    harder_kulm: { from: "Interlaken Ost", to: "Harder Kulm" },
+    eiger_express: { from: "Grindelwald Terminal", to: "Eigergletscher" },
+    eiger_jungfraujoch: { from: "Eigergletscher", to: "Jungfraujoch" },
+    grindelwald_first: { from: "Grindelwald", to: "First" },
+    mannlichen_wengen: { from: "Wengen", to: "Männlichen" },
+    mannlichen_grindelwald: { from: "Grindelwald", to: "Männlichen" },
+    lauterbrunnen_murren: { from: "Lauterbrunnen", to: "Mürren" },
+    allmendhubel: { from: "Mürren", to: "Allmendhubel" },
+    schynige_platte: { from: "Wilderswil", to: "Schynige Platte" },
+    schilthorn: { from: "Mürren", to: "Schilthorn" },
+
+    gornergrat: { from: "Zermatt", to: "Gornergrat" },
+    sunnegga: { from: "Zermatt", to: "Sunnegga" },
+    mggp: { from: "Zermatt", to: "Matterhorn Glacier Paradise" },
+
+    centovalli: { from: "Locarno", to: "Domodossola" },
+    albula: { from: "Chur", to: "St. Moritz" },
+    bernina_express: { from: "St. Moritz", to: "Tirano" },
+    arosa_line: { from: "Chur", to: "Arosa" },
+
+    lucerne_interlaken_express: { from: "Luzern", to: "Interlaken Ost" },
+    glacier_express: { from: "Zermatt", to: "St. Moritz" },
+
+    zrh_lucerne: { from: "Zürich HB", to: "Luzern" },
+    zrh_interlaken: { from: "Zürich HB", to: "Interlaken Ost" },
+    zrh_basel: { from: "Zürich HB", to: "Basel SBB" },
+    basel_bern: { from: "Basel SBB", to: "Bern" },
+    basel_lucerne: { from: "Basel SBB", to: "Luzern" },
+    bern_interlaken: { from: "Bern", to: "Interlaken Ost" },
+    bern_thun: { from: "Bern", to: "Thun" },
+    bern_spiez: { from: "Bern", to: "Spiez" },
+    int_thun: { from: "Interlaken Ost", to: "Thun" },
+    int_spiez: { from: "Interlaken Ost", to: "Spiez" },
+    int_brienz: { from: "Interlaken Ost", to: "Brienz" },
+
+    int_grindelwald: { from: "Interlaken Ost", to: "Grindelwald" },
+    int_lauterbrunnen: { from: "Interlaken Ost", to: "Lauterbrunnen" },
+    lauterbrunnen_wengen: { from: "Lauterbrunnen", to: "Wengen" },
+    wengen_kleine: { from: "Wengen", to: "Kleine Scheidegg" },
+    grindelwald_kleine: { from: "Grindelwald", to: "Kleine Scheidegg" },
+    grindelwald_terminal: { from: "Grindelwald", to: "Grindelwald Terminal" },
+
+    visp_zermatt: { from: "Visp", to: "Zermatt" },
+    geneva_lausanne: { from: "Genève", to: "Lausanne" },
+    lausanne_montreux: { from: "Lausanne", to: "Montreux" },
+    lugano_locarno: { from: "Lugano", to: "Locarno" },
+    bellinzona_lugano: { from: "Bellinzona", to: "Lugano" },
+
+    liechtenstein: { from: "Sargans", to: "Vaduz" },
+    rhine_falls: { from: "Zürich HB", to: "Neuhausen Rheinfall" },
+    stein_am_rhein: { from: "Schaffhausen", to: "Stein am Rhein" },
+  };
+
+  function buildSbbLink(rt) {
+    if (!rt) return SBB_HOME;
+    if (rt.category === "special") return SBB_HOME;
+    if (String(rt.label || "").includes("(주요역)")) return SBB_HOME;
+
+    const ov = SBB_BY_ROUTE_ID[rt.id];
+    if (ov?.from && ov?.to) {
+      return `${SBB_FP}?von=${encodeURIComponent(ov.from)}&nach=${encodeURIComponent(ov.to)}`;
+    }
+    return SBB_HOME;
+  }
+
+  /* =========================================================
+     ✅ 가격모드 UI 중복 제거(핵심)
+     - 라디오 그룹( value=baseline/deal )이 존재하면: 드롭다운 래퍼(#price_mode_wrap) 숨김
+     - 라디오가 없으면: 드롭다운 자동 삽입
+  ========================================================= */
+  function findPriceModeRadios() {
+    const candidates = Array.from(document.querySelectorAll('input[type="radio"]'))
+      .filter(r => ["baseline","deal"].includes(String(r.value || "").toLowerCase()));
+
+    const byName = new Map();
+    for (const r of candidates) {
+      const name = r.name || "__noname__";
+      if (!byName.has(name)) byName.set(name, { name, baseline: null, deal: null });
+      const g = byName.get(name);
+      if (String(r.value).toLowerCase() === "baseline") g.baseline = r;
+      if (String(r.value).toLowerCase() === "deal") g.deal = r;
+    }
+    for (const g of byName.values()) {
+      if (g.baseline && g.deal) return g;
+    }
+    return null;
+  }
+
+  function normalizePriceModeUI() {
+    const radioGroup = findPriceModeRadios();
+    const wrap = el("price_mode_wrap");
+
+    // 라디오가 이미 있으면 → 자동 삽입 드롭다운은 숨김(= 화면에 하나만 남김)
+    if (radioGroup && wrap) {
+      wrap.style.display = "none";
+    } else if (wrap) {
+      wrap.style.display = "";
+    }
+  }
+
+  function updatePriceModeHint() {
+    const hint = el("price_mode_hint");
+    if (!hint) return;
+    hint.textContent =
+      state.priceMode === "deal"
+        ? "※ Deal은 주로 열차/일부 scenic에만 적용(산악/케이블은 대부분 불가)"
+        : "";
+  }
+
+  function syncPriceModeUI() {
+    // 드롭다운(있을 때만)
+    const sel = el("price_mode");
+    if (sel) sel.value = state.priceMode;
+
+    // 라디오(있을 때만)
+    const radioGroup = findPriceModeRadios();
+    if (radioGroup) {
+      radioGroup.baseline.checked = state.priceMode === "baseline";
+      radioGroup.deal.checked = state.priceMode === "deal";
+    }
+
+    updatePriceModeHint();
+
+    // 카드 입력칸 토글
+    document.querySelectorAll(".price_base").forEach((x) => {
+      x.style.display = state.priceMode === "baseline" ? "" : "none";
+    });
+    document.querySelectorAll(".price_deal").forEach((x) => {
+      x.style.display = state.priceMode === "deal" ? "" : "none";
+    });
+    document.querySelectorAll(".deal_badge").forEach((x) => {
+      x.style.display = state.priceMode === "deal" ? "" : "none";
+    });
+  }
+
+  function attachPriceModeListeners() {
+    // 1) 라디오가 있으면 라디오를 “진짜 컨트롤”로 사용
+    const rg = findPriceModeRadios();
+    if (rg) {
+      rg.baseline.addEventListener("change", () => {
+        if (rg.baseline.checked) {
+          state.priceMode = "baseline";
+          syncPriceModeUI();
+          recalc();
+        }
+      });
+      rg.deal.addEventListener("change", () => {
+        if (rg.deal.checked) {
+          state.priceMode = "deal";
+          syncPriceModeUI();
+          recalc();
+        }
+      });
+      return;
+    }
+
+    // 2) 라디오가 없으면 드롭다운 사용
+    el("price_mode")?.addEventListener("change", () => {
+      state.priceMode = el("price_mode").value === "deal" ? "deal" : "baseline";
+      syncPriceModeUI();
+      recalc();
+    });
+  }
+
+  /* ---------- Option UI rendering ---------- */
+  function renderStpOpts() {
+    const cls = state.stpClass;
+    const clsLabel = cls === 2 ? "2등석" : "1등석";
+
+    el("stp_opts").innerHTML = `
+      <div class="row">
+        <label class="row"><span>좌석등급</span>
+          <select id="stp_class">
+            <option value="2" selected>2등석</option>
+            <option value="1">1등석</option>
+          </select>
+        </label>
+        <span class="pill">3/4/6/8/15일</span>
+      </div>
+      <div class="nested" id="stp_radios"></div>
+    `;
+
+    el("stp_radios").innerHTML = PASS.stp.options
+      .map((o) => {
+        const adult = cls === 2 ? o.adult2 : o.adult1;
+        const youth = cls === 2 ? o.youth2 : o.youth1;
+        const child = cls === 2 ? o.child2 : o.child1;
+        return `
+<label class="row">
+  <span><input type="radio" name="stp_opt" value="${o.id}"> ${o.label}</span>
+  <span class="muted">${clsLabel} 성인 ${money(adult)} / 유스 ${money(youth)} / 아동 ${money(child)}</span>
+</label>`;
+      })
+      .join("");
+
+    el("stp_class").value = String(state.stpClass);
+    el("stp_class").addEventListener("change", () => {
+      state.stpClass = Number(el("stp_class").value);
+      renderStpOpts();
+      recalc();
+    });
+
+    document.querySelectorAll('input[name="stp_opt"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.stpOpt = r.value;
+        renderRoutes();
+        recalc();
+      });
+      if (state.stpOpt === r.value) r.checked = true;
+    });
+  }
+
+  function renderStpfOpts() {
+    const cls = state.stpfClass;
+    const clsLabel = cls === 2 ? "2등석" : "1등석";
+
+    el("stpf_opts").innerHTML = `
+      <div class="row">
+        <label class="row"><span>좌석등급</span>
+          <select id="stpf_class">
+            <option value="2" selected>2등석</option>
+            <option value="1">1등석</option>
+          </select>
+        </label>
+        <span class="pill">3/4/6/8/15일</span>
+      </div>
+      <div class="nested" id="stpf_radios"></div>
+    `;
+
+    el("stpf_radios").innerHTML = PASS.stpf.options
+      .map((o) => {
+        const adult = cls === 2 ? o.adult2 : o.adult1;
+        const youth = cls === 2 ? o.youth2 : o.youth1;
+        const child = cls === 2 ? o.child2 : o.child1;
+        return `
+<label class="row">
+  <span><input type="radio" name="stpf_opt" value="${o.id}"> ${o.label}</span>
+  <span class="muted">${clsLabel} 성인 ${money(adult)} / 유스 ${money(youth)} / 아동 ${money(child)}</span>
+</label>`;
+      })
+      .join("");
+
+    el("stpf_class").value = String(state.stpfClass);
+    el("stpf_class").addEventListener("change", () => {
+      state.stpfClass = Number(el("stpf_class").value);
+      renderStpfOpts();
+      recalc();
+    });
+
+    document.querySelectorAll('input[name="stpf_opt"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.stpfOpt = r.value;
+        renderRoutes();
+        recalc();
+      });
+      if (state.stpfOpt === r.value) r.checked = true;
+    });
+  }
+
+  function renderJvipOpts() {
+    el("jvip_opts").innerHTML = `<div class="nested" id="jvip_radios"></div>`;
+    renderJvipRadios();
+  }
+
+  function renderJvipRadios() {
+    const s = getSeasonEffective();
+    const list = getJvipTableBySeason();
+    const box = el("jvip_radios");
+    if (!box) return;
+
+    box.innerHTML = list
+      .map(
+        (o) => `
+        <label class="row">
+          <span><input type="radio" name="jvip_days" value="${o.days}"> ${o.days}일권</span>
+          <span class="muted">(${seasonLabel(s)}) 성인 ${money(o.adult_coupon)} / (중복할인) ${money(o.adult_overlap)} / 유스 ${money(o.youth)} / 아동 ${money(o.child_6_15)}</span>
+        </label>`
+      )
+      .join("");
+
+    document.querySelectorAll('input[name="jvip_days"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        state.jvipDays = Number(r.value);
+        recalc();
+      });
+      if (state.jvipDays != null && Number(r.value) === state.jvipDays) r.checked = true;
+    });
+  }
+
+  function renderJjoDiscountOpts() {
+    el("jjo_discount_opts").innerHTML = `
+      <div class="row">
+        <label class="row">
+          <span>코스 선택</span>
+          <select id="jjo_type" class="full">
+            <option value="long">긴 코스(인터라켄 오스트 출발)</option>
+            <option value="short">짧은 코스(그린델발트 터미널·라우터브루넌 출발)</option>
+          </select>
+        </label>
+      </div>
+      <div class="muted" id="jjo_price_hint"></div>
+    `;
+    el("jjo_type").value = state.jjoType;
+    el("jjo_type").addEventListener("change", () => {
+      state.jjoType = el("jjo_type").value;
+      recalc();
+    });
+  }
+
+  function initPassOptions() {
+    renderStpOpts();
+    renderStpfOpts();
+    renderJvipOpts();
+    renderJjoDiscountOpts();
+  }
+
+  function syncJjoDiscountToggle() {
+    const details = el("jjo_discount_details");
+    const chk = el("pick_jjo_discount");
+    const opts = el("jjo_discount_opts");
+    const msg = el("jjo_discount_disabled_msg");
+    if (!details || !chk || !opts || !msg) return;
+
+    if (state.selected.jvip) {
+      chk.checked = false;
+      chk.disabled = true;
+      state.selected.jjo_discount = false;
+      opts.style.display = "none";
+      details.classList.add("disabled");
+      msg.textContent = "VIP 패스를 선택하면, 융프라우요흐 왕복 1회가 포함되므로 이 항목은 선택할 수 없어요.";
+    } else {
+      chk.disabled = false;
+      details.classList.remove("disabled");
+      msg.textContent = "";
+    }
+  }
+
+  /* ---------- Pass/Route calc ---------- */
+  function calcPassTicketTotal() {
+    const t = travelers();
+    let total = 0;
+    const lines = [];
+
+    if (state.selected.stp) {
+      const picked = state.stpOpt || document.querySelector('input[name="stp_opt"]:checked')?.value;
+      if (picked) state.stpOpt = picked;
+      const opt = PASS.stp.options.find((o) => o.id === picked);
+      const cls = state.stpClass;
+      if (opt) {
+        const adultPrice = cls === 2 ? opt.adult2 : opt.adult1;
+        const youthPrice = cls === 2 ? opt.youth2 : opt.youth1;
+        const childPrice = cls === 2 ? opt.child2 : opt.child1;
+        const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * t.child;
+        total += sum;
+        lines.push({ label: `스위스패스(연속) ${opt.label} · ${cls}등석`, price: sum });
+      } else {
+        lines.push({ label: "스위스패스(연속) 옵션을 골라주세요", price: 0, warn: true });
+      }
+    }
+
+    if (state.selected.stpf) {
+      const picked = state.stpfOpt || document.querySelector('input[name="stpf_opt"]:checked')?.value;
+      if (picked) state.stpfOpt = picked;
+      const opt = PASS.stpf.options.find((o) => o.id === picked);
+      const cls = state.stpfClass;
+      if (opt) {
+        const adultPrice = cls === 2 ? opt.adult2 : opt.adult1;
+        const youthPrice = cls === 2 ? opt.youth2 : opt.youth1;
+        const childPrice = cls === 2 ? opt.child2 : opt.child1;
+        const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * t.child;
+        total += sum;
+        lines.push({ label: `플렉스 ${opt.label} · ${cls}등석`, price: sum });
+      } else {
+        lines.push({ label: "플렉스 옵션을 골라주세요", price: 0, warn: true });
+      }
+    }
+
+    if (state.selected.half) {
+      const c = PASS.half.price16plus;
+      const sum = c * (t.adult + t.youth);
+      total += sum;
+      lines.push({ label: "하프페어 카드(1개월)", price: sum });
+    }
+
+    if (state.selected.jvip) {
+      const season = getSeasonEffective();
+      const table = getJvipTableBySeason();
+      const opt = table.find((o) => o.days === state.jvipDays);
+      if (opt) {
+        const hasOverlap = state.selected.half || state.selected.stp || state.selected.stpf;
+        const adultUnit = hasOverlap ? opt.adult_overlap : opt.adult_coupon;
+        const sum = adultUnit * t.adult + opt.youth * t.youth + opt.child_6_15 * t.child;
+        total += sum;
+        lines.push({
+          label: `융프라우 VIP ${opt.days}일권 · ${seasonLabel(season)}${hasOverlap ? " (중복할인)" : " (쿠폰가 기준)"}`,
+          price: sum,
+        });
+      } else {
+        lines.push({ label: "융프라우 VIP 기간(1~6일)을 선택해 주세요", price: 0, warn: true });
+      }
+    }
+
+    if (state.selected.jjo_discount) {
+      const season = getSeasonEffective();
+      const type = state.jjoType;
+      const p = JJO_DISCOUNT[season][type];
+      const hasOverlap = state.selected.stp || state.selected.stpf || state.selected.half;
+      const adultUnit = hasOverlap ? p.overlap : p.adult;
+      const sum = adultUnit * (t.adult + t.youth) + p.child * t.child;
+      total += sum;
+      lines.push({
+        label: `융프라우요흐 왕복권(할인쿠폰) · ${type === "long" ? "긴 코스" : "짧은 코스"} · ${seasonLabel(season)}${hasOverlap ? " (중복할인)" : ""}`,
+        price: sum,
+      });
+    }
+
+    return { total, lines };
+  }
+
+  function bestPriceForRoute(baseAdult, route, season) {
+    const base = Number(baseAdult || 0);
+
+    if (isVipIncluded(route.id, season)) return { adult: 0, reason: "VIP 포함(0원)" };
+    if (isSwissPassFree(route)) return { adult: 0, reason: `${swissPassLabel().replace(/[()]/g, "")}(0원)` };
+
+    let best = { adult: base, reason: base === 0 ? "정가(입력 전)" : "정가" };
+
+    if (state.selected.stp || state.selected.stpf) {
+      let rate = null;
+      if (route.stpNoDiscount === true) rate = 0;
+      else if (route.stpDiscount != null) rate = route.stpDiscount;
+      else if (route.category === "mountain") rate = 0.5;
+
+      if (rate != null) {
+        const v = base * (1 - rate);
+        const pct = Math.round(rate * 100);
+        if (rate === 0) best = { adult: base, reason: "스위스패스/플렉스 할인 없음" };
+        else if (v < best.adult) best = { adult: v, reason: `스위스패스/플렉스 ${pct}% 할인` };
+      }
+    }
+
+    if (state.selected.half) {
+      const v = base * 0.5;
+      if (v < best.adult) best = { adult: v, reason: "하프페어 50%" };
+    }
+
+    if (route.category === "special") return { adult: base, reason: base === 0 ? "추가비용(입력 전)" : "추가비용" };
+    return best;
+  }
+
+  function inputBaseForCalc(routeId) {
+    const rt = routeById(routeId);
+    if (!rt) return 0;
+
+    const b = Number(state.routePrices.baseline.get(routeId) || 0);
+    const d = Number(state.routePrices.deal.get(routeId) || 0);
+
+    if (state.priceMode === "deal") {
+      if (isDealEligible(rt) && d > 0) return d;
+      return b;
+    }
+    return b;
+  }
+
+  function calcRouteTotal() {
+    const t = travelers();
+    const season = getSeasonEffective();
+    let total = 0;
+    const lines = [];
+
+    for (const rid of state.selectedRoutes) {
+      const rt = routeById(rid);
+      if (!rt) continue;
+
+      const baseAdult = inputBaseForCalc(rid);
+      const best = bestPriceForRoute(baseAdult, rt, season);
+      const cost = best.adult * (t.adult + t.youth);
+      total += cost;
+
+      const usedMode =
+        state.priceMode === "deal"
+          ? (isDealEligible(rt) && Number(state.routePrices.deal.get(rid) || 0) > 0 ? "Deal" : "Baseline")
+          : "Baseline";
+
+      lines.push({
+        label: rt.label,
+        price: cost,
+        reason: `${best.reason} · 입력기준: ${usedMode}${baseAdult === 0 ? " · (입력 전)" : ""}`,
+      });
+    }
+
+    return { total, lines };
+  }
+
+  /* ---------- UI inject (dropdown only when no radios) ---------- */
+  function ensureExtrasUI() {
+    const callout = document.querySelector(".callout");
+    if (!callout) return;
+
+    // ✅ 라디오가 이미 있으면 드롭다운을 만들지 않음
+    const hasRadios = !!findPriceModeRadios();
+
+    if (!el("price_mode") && !hasRadios) {
+      const wrap = document.createElement("div");
+      wrap.className = "inlineInput";
+      wrap.id = "price_mode_wrap";
+      wrap.style.marginBottom = "8px";
+      wrap.innerHTML = `
+        <span class="k">가격 모드</span>
+        <select id="price_mode">
+          <option value="baseline" selected>Baseline(정가/일반요금)</option>
+          <option value="deal">Deal(특가/슈퍼세이버)</option>
+        </select>
+        <span class="mini" id="price_mode_hint"></span>
+      `;
+      callout.insertBefore(wrap, callout.firstChild);
+    } else if (el("price_mode") && !el("price_mode_wrap")) {
+      // 기존에 price_mode만 있고 wrap이 없다면 wrap을 만들어 감싸진 못하니, 그냥 표시/동작만 하게 둠
+    }
+
+    const btnRow = callout.querySelector(".btnRow");
+    if (btnRow && !el("btn_saver_day_pass")) {
+      const a = document.createElement("a");
+      a.className = "btn";
+      a.id = "btn_saver_day_pass";
+      a.href = SAVER_DAY_PASS_URL;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "세이버 데이 패스 구매(SBB)";
+      btnRow.appendChild(a);
+    }
+
+    const ul = callout.querySelector("ul");
+    if (ul && !el("sdp_note")) {
+      const li = document.createElement("li");
+      li.id = "sdp_note";
+      li.innerHTML =
+        `Deal(특가) 모드에서는 <b>슈퍼세이버/특가</b>를 입력할 수 있어요. 하루 이동이 많다면 <b>세이버 데이 패스</b>도 함께 비교해보세요. ` +
+        `<a href="${SAVER_DAY_PASS_URL}" target="_blank" rel="noopener"><b>(구매 링크)</b></a>`;
+      ul.appendChild(li);
+    }
+  }
+
+  /* ---------- Render routes ---------- */
+  function renderRoutes() {
+    ensureRoutesInit();
+    const season = getSeasonEffective();
+    applyLocks(season);
+
+    const q = (el("route_search")?.value || "").trim().toLowerCase();
+    const container = el("routes");
+    if (!container) return;
+    container.innerHTML = "";
+
+    for (const region of REGIONS) {
+      const regionRoutes = region.routes.filter((rt) => {
+        const hay = (rt.label + " " + region.name).toLowerCase();
+        return q ? hay.includes(q) : true;
+      });
+      if (q && regionRoutes.length === 0) continue;
+
+      const det = document.createElement("details");
+      det.open = q ? true : false;
+      det.className = "routeItem";
+
+      const summary = document.createElement("summary");
+      summary.textContent = region.name;
+      det.appendChild(summary);
+
+      const inner = document.createElement("div");
+      inner.className = "nested";
+
+      for (const rt of regionRoutes) {
+        const checked = state.selectedRoutes.has(rt.id);
+
+        const vipInc = isVipIncluded(rt.id, season);
+        const stpFree = isSwissPassFree(rt);
+        const locked = vipInc || stpFree;
+
+        const baseVal = Number(state.routePrices.baseline.get(rt.id) || 0);
+        const dealVal = Number(state.routePrices.deal.get(rt.id) || 0);
+
+        const labels = [];
+        if (vipInc) labels.push(vipLabel);
+        if (stpFree) labels.push(swissPassLabel());
+        const extraLabel = labels.length ? ` <span class="muted">${labels.join(" ")}</span>` : "";
+
+        const stpOn = state.selected.stp || state.selected.stpf;
+        let discPill = "";
+        if (stpOn && !locked) {
+          if (rt.stpNoDiscount === true) discPill = `<span class="pill">할인 없음</span>`;
+          else if (rt.stpDiscount != null) discPill = `<span class="pill">${Math.round(rt.stpDiscount * 100)}% 할인</span>`;
+          else if (rt.category === "mountain") discPill = `<span class="pill">50% 할인</span>`;
+        }
+
+        const dealEligible = isDealEligible(rt);
+        const dealBadge = !dealEligible
+          ? `<span class="pill warn deal_badge" style="display:${state.priceMode === "deal" ? "inline-flex" : "none"}">Deal 불가</span>`
+          : `<span class="pill good deal_badge" style="display:${state.priceMode === "deal" ? "inline-flex" : "none"}">Deal 입력 가능</span>`;
+
+        const pills = `
+          <span class="pill">${rt.category}</span>
+          ${discPill}
+          ${dealBadge}
+          ${vipInc ? `<span class="pill good">VIP 포함</span>` : ``}
+        `;
+
+        const sbbUrl = buildSbbLink(rt);
+        const sbbBtnLabel = sbbUrl === SBB_HOME ? "SBB(직접 검색)" : "SBB 원클릭";
+
+        const line = document.createElement("div");
+        line.className = "routeItem";
+        line.style.border = "1px solid #f0f0f0";
+        line.innerHTML = `
+          <div class="routeTop">
+            <div class="routeTitle">
+              <label>
+                <input type="checkbox" class="route_chk" data-id="${rt.id}" ${checked ? "checked" : ""}>
+                <b>${rt.label}</b>${extraLabel}
+              </label>
+            </div>
+            <div class="routeMeta">${pills}</div>
+          </div>
+
+          <div class="priceInputs">
+            <div class="box">
+              <span class="muted">가격 CHF</span>
+              <input type="number" min="0" step="0.05"
+                class="price_in price_base"
+                data-id="${rt.id}"
+                value="${baseVal}"
+                ${locked ? "disabled" : ""}
+                style="${state.priceMode === "baseline" ? "" : "display:none"}">
+            </div>
+
+            <div class="box">
+              <span class="muted">특가 CHF</span>
+              <input type="number" min="0" step="0.05"
+                class="price_in price_deal"
+                data-id="${rt.id}"
+                value="${dealVal}"
+                ${locked || !dealEligible ? "disabled" : ""}
+                style="${state.priceMode === "deal" ? "" : "display:none"}">
+            </div>
+
+            <a class="btn" href="${sbbUrl}" target="_blank" rel="noopener" style="padding:6px 8px;border-radius:10px;font-weight:900">
+              ${sbbBtnLabel}
+            </a>
+          </div>
+
+          <div class="mini" data-reason="${rt.id}" style="margin-top:6px;"></div>
+        `;
+        inner.appendChild(line);
+
+        const inpBase = line.querySelector(".price_base");
+        inpBase?.addEventListener("input", () => {
+          const id = inpBase.dataset.id;
+          const v = inpBase.value === "" ? 0 : Number(inpBase.value);
+          state.routePrices.baseline.set(id, v);
+          state.backup.baseline.set(id, v);
+          recalc();
+        });
+
+        const inpDeal = line.querySelector(".price_deal");
+        inpDeal?.addEventListener("input", () => {
+          const id = inpDeal.dataset.id;
+          const v = inpDeal.value === "" ? 0 : Number(inpDeal.value);
+          state.routePrices.deal.set(id, v);
+          state.backup.deal.set(id, v);
+          recalc();
+        });
+      }
+
+      det.appendChild(inner);
+      container.appendChild(det);
+    }
+
+    document.querySelectorAll(".route_chk").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        const id = cb.dataset.id;
+        if (cb.checked) state.selectedRoutes.add(id);
+        else state.selectedRoutes.delete(id);
+        recalc();
+      });
+    });
+
+    syncPriceModeUI();
+  }
+
+  function updateRouteReasonTexts() {
+    for (const rid of state.selectedRoutes) {
+      const rt = routeById(rid);
+      if (!rt) continue;
+
+      const season = getSeasonEffective();
+      const baseAdult = inputBaseForCalc(rid);
+      const best = bestPriceForRoute(baseAdult, rt, season);
+
+      const usedMode =
+        state.priceMode === "deal"
+          ? (isDealEligible(rt) && Number(state.routePrices.deal.get(rid) || 0) > 0 ? "Deal" : "Baseline")
+          : "Baseline";
+
+      const reasonEl = document.querySelector(`[data-reason="${rid}"]`);
+      if (reasonEl) {
+        const extra =
+          best.adult === 0 ? " (입력 불필요)" : (baseAdult === 0 ? " (가격 입력 필요)" : "");
+        reasonEl.textContent = `적용: ${best.reason} · 입력기준: ${usedMode}${extra}`;
+      }
+    }
+
+    document.querySelectorAll("[data-reason]").forEach((x) => {
+      const rid = x.getAttribute("data-reason");
+      if (!state.selectedRoutes.has(rid)) x.textContent = "";
+    });
+  }
+
+  function recalc() {
+    const season = getSeasonEffective();
+    el("season_hint") && (el("season_hint").textContent = `현재 시즌: ${seasonLabel(season)} (날짜: ${el("travel_date")?.value || ""})`);
+
+    const hintEl = el("jjo_price_hint");
+    if (hintEl) {
+      const hasOverlap = state.selected.stp || state.selected.stpf || state.selected.half;
+      const p = JJO_DISCOUNT[season][state.jjoType];
+      const adultUnit = hasOverlap ? p.overlap : p.adult;
+      hintEl.textContent = `가격 자동 적용: 성인 ${money(adultUnit)} / 아동(6–15) ${money(p.child)} · ${hasOverlap ? "중복할인" : "할인요금"}`;
+    }
+
+    const pass = calcPassTicketTotal();
+    const route = calcRouteTotal();
+    const grand = pass.total + route.total;
+
+    el("pass_total").textContent = money(pass.total);
+    el("route_total").textContent = money(route.total);
+    el("grand_total").textContent = money(grand);
+
+    updateRouteReasonTexts();
+
+    const bd = el("breakdown");
+    if (!bd) return;
+
+    const passLines =
+      pass.lines.map((x) => `
+        <div class="line">
+          <div>
+            <div class="k">${x.label}</div>
+            ${x.warn ? `<div class="warnText">옵션을 선택해 주세요.</div>` : ``}
+          </div>
+          <div><b>${money(x.price)}</b></div>
+        </div>`).join("") || `<div class="muted">선택된 패스/티켓이 없습니다.</div>`;
+
+    const routeLines =
+      route.lines.map((x) => `
+        <div class="line">
+          <div>
+            <div class="k">${x.label}</div>
+            <div class="muted">${x.reason}</div>
+          </div>
+          <div><b>${money(x.price)}</b></div>
+        </div>`).join("") || `<div class="muted">선택된 노선이 없습니다.</div>`;
+
+    const passPills = (state.selected.stp || state.selected.stpf || state.selected.half || state.selected.jvip)
+      ? ["stp","stpf","half","jvip"].filter(k => state.selected[k]).map(k => `<span class="pill">${PASS[k]?.label || k}</span>`).join(" ")
+      : "-";
+
+    const modePill = state.priceMode === "deal"
+      ? `<span class="pill warn">가격모드: Deal(특가)</span>`
+      : `<span class="pill">가격모드: Baseline(정가)</span>`;
+
+    bd.innerHTML = `
+      <div class="pill">선택 패스: ${passPills}</div>
+      ${modePill}
+      <div class="hr"></div>
+      <div class="k">패스/티켓</div>
+      <div>${passLines}</div>
+      <div class="hr"></div>
+      <div class="k">노선</div>
+      <div>${routeLines}</div>
+    `;
+  }
+
+  function bind() {
+    el("travel_date")?.addEventListener("change", () => {
+      renderJvipRadios();
+      renderRoutes();
+      recalc();
+    });
+    el("season_mode")?.addEventListener("change", () => {
+      renderJvipRadios();
+      renderRoutes();
+      recalc();
+    });
+
+    ["n_adult", "n_youth", "n_child", "n_infant"].forEach((id) => {
+      el(id)?.addEventListener("input", recalc);
+      el(id)?.addEventListener("change", recalc);
+    });
+
+    el("route_search")?.addEventListener("input", renderRoutes);
+
+    el("btn_open_all")?.addEventListener("click", () => {
+      document.querySelectorAll("#routes details").forEach((d) => (d.open = true));
+    });
+    el("btn_close_all")?.addEventListener("click", () => {
+      document.querySelectorAll("#routes details").forEach((d) => (d.open = false));
+    });
+
+    el("pick_stp")?.addEventListener("change", () => {
+      state.selected.stp = el("pick_stp").checked;
+      el("stp_opts").style.display = state.selected.stp ? "block" : "none";
+      renderRoutes();
+      recalc();
+    });
+    el("pick_stpf")?.addEventListener("change", () => {
+      state.selected.stpf = el("pick_stpf").checked;
+      el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
+      renderRoutes();
+      recalc();
+    });
+    el("pick_half")?.addEventListener("change", () => {
+      state.selected.half = el("pick_half").checked;
+      recalc();
+    });
+
+    el("pick_jvip")?.addEventListener("change", () => {
+      state.selected.jvip = el("pick_jvip").checked;
+      el("jvip_opts").style.display = state.selected.jvip ? "block" : "none";
+      syncJjoDiscountToggle();
+      renderRoutes();
+      recalc();
+    });
+
+    el("pick_jjo_discount")?.addEventListener("change", () => {
+      state.selected.jjo_discount = el("pick_jjo_discount").checked;
+      el("jjo_discount_opts").style.display = state.selected.jjo_discount ? "block" : "none";
+      recalc();
+    });
+
+    el("btn_reset")?.addEventListener("click", () => {
+      state.selectedRoutes.clear();
+      state.routePrices.baseline.clear();
+      state.routePrices.deal.clear();
+      state.backup.baseline.clear();
+      state.backup.deal.clear();
+
+      state.selected = { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false };
+      state.stpOpt = null;
+      state.stpfOpt = null;
+      state.stpClass = 2;
+      state.stpfClass = 2;
+      state.jvipDays = null;
+      state.jjoType = "long";
+      state.priceMode = "baseline";
+
+      el("pick_stp").checked = false;
+      el("pick_stpf").checked = false;
+      el("pick_half").checked = false;
+      el("pick_jvip").checked = false;
+      el("pick_jjo_discount").checked = false;
+
+      el("stp_opts").style.display = "none";
+      el("stpf_opts").style.display = "none";
+      el("jvip_opts").style.display = "none";
+      el("jjo_discount_opts").style.display = "none";
+
+      document.querySelectorAll('input[name="stp_opt"]').forEach((r) => (r.checked = false));
+      document.querySelectorAll('input[name="stpf_opt"]').forEach((r) => (r.checked = false));
+      document.querySelectorAll('input[name="jvip_days"]').forEach((r) => (r.checked = false));
+      if (el("jjo_type")) el("jjo_type").value = "long";
+
+      syncJjoDiscountToggle();
+      ensureRoutesInit();
+      normalizePriceModeUI();
+      syncPriceModeUI();
+      renderRoutes();
+      recalc();
+    });
+  }
+
+  function boot() {
+    const todayISO = localISODate();
+    const dateEl = el("travel_date");
+    if (dateEl && (!dateEl.value || dateEl.value === "2026-04-03")) dateEl.value = todayISO;
+
+    ensureRoutesInit();
+    ensureExtrasUI();
+
+    // ✅ 여기서 중복 UI 정리
+    normalizePriceModeUI();
+    attachPriceModeListeners();
+
+    initPassOptions();
+    bind();
+    syncJjoDiscountToggle();
+    syncPriceModeUI();
+    renderRoutes();
+    recalc();
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
