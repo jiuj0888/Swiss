@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://swissfarecheck.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/" />
   </url>
+
   <url>
-    <loc>https://swissfarecheck.com/en</loc>
+    <loc>https://swissfarecheck.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/privacy" />
   </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/faq</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/faq" />
+  </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/terms</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/terms" />
+  </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/" />
+  </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/privacy" />
+  </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/faq" />
+  </url>
+
+  <url>
+    <loc>https://swissfarecheck.com/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/terms" />
+  </url>
+
 </urlset>
