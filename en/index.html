@@ -1,389 +1,679 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Swiss Travel Pass Calculator | Compare Swiss Travel Pass, Half Fare Card & Jungfrau VIP</title>
-  <meta name="description" content="Swiss travel pass calculator for comparing Swiss Travel Pass, Swiss Travel Pass Flex, Half Fare Card, Jungfrau VIP Pass, and route fares for your Switzerland itinerary." />
-  <meta name="keywords" content="swiss travel pass calculator, swiss pass comparison, swiss half fare card calculator, jungfrau vip pass, switzerland train pass calculator, swiss travel pass flex" />
+  <meta name="naver-site-verification" content="671fede5571a5401600d131f2b0baa89ad70318e" />
+  <title>스위스 트래블 패스 체크 | 스위스 패스·하프페어·융프라우 VIP 가격 비교</title>
+  <meta name="description" content="스위스 트래블 패스, 하프페어 카드, 융프라우 VIP 패스 가격을 한 번에 비교하세요. 여행 날짜와 인원수를 입력하면 최적의 패스 조합과 예상 비용을 자동 계산해드립니다." />
+  <meta name="keywords" content="스위스 트래블 패스, 스위스 트래블 패스 가격 비교, 스위스 패스 비교, 하프페어 카드, 융프라우 VIP 패스, 스위스 여행 패스" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-
-  <link rel="canonical" href="https://swissfarecheck.com/en/" />
+  <link rel="canonical" href="https://swissfarecheck.com/" />
   <link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/" />
   <link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/" />
   <link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/" />
-
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-  <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Swiss Fare Check" />
-  <meta property="og:title" content="Swiss Travel Pass Calculator | Compare Swiss Travel Pass, Half Fare Card & Jungfrau VIP" />
-  <meta property="og:description" content="Compare Swiss Travel Pass, Swiss Travel Pass Flex, Half Fare Card, Jungfrau VIP Pass, and route fares in one place." />
-  <meta property="og:url" content="https://swissfarecheck.com/en/" />
+  <meta property="og:title" content="스위스 트래블 패스 체크 | 스위스 패스·하프페어·융프라우 VIP 가격 비교" />
+  <meta property="og:description" content="스위스 트래블 패스, 하프페어 카드, 융프라우 VIP 패스 비용을 한 번에 비교하는 가격 비교 사이트입니다." />
+  <meta property="og:url" content="https://swissfarecheck.com/" />
   <meta property="og:image" content="https://swissfarecheck.com/logo-512.png" />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
   <meta property="og:image:alt" content="Swiss Fare Check logo" />
-
+  <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Swiss Travel Pass Calculator | Compare Swiss Travel Pass, Half Fare Card & Jungfrau VIP" />
-  <meta name="twitter:description" content="Compare Swiss Travel Pass, Swiss Travel Pass Flex, Half Fare Card, Jungfrau VIP Pass, and route fares in one place." />
+  <meta name="twitter:title" content="스위스 트래블 패스 가격 비교 | 하프페어·융프라우 VIP 계산기" />
+  <meta name="twitter:description" content="스위스 트래블 패스, 하프페어 카드, 융프라우 VIP 패스 비용을 한 번에 비교하는 가격 비교 사이트입니다." />
   <meta name="twitter:image" content="https://swissfarecheck.com/logo-512.png" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Swiss Travel Pass Calculator",
-    "url": "https://swissfarecheck.com/en/",
-    "inLanguage": "en",
-    "description": "A calculator for comparing Swiss Travel Pass, Swiss Travel Pass Flex, Half Fare Card, Jungfrau VIP Pass, and route fares."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebSite",
     "name": "Swiss Fare Check",
-    "applicationCategory": "TravelApplication",
-    "operatingSystem": "Web",
-    "url": "https://swissfarecheck.com/en/",
-    "inLanguage": "en",
-    "description": "Swiss travel pass calculator for comparing Swiss Travel Pass, Flex, Half Fare Card, Jungfrau VIP Pass, and route fares.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "CHF"
-    }
+    "alternateName": "스위스 트래블 패스 체크",
+    "url": "https://swissfarecheck.com/"
   }
   </script>
 
   <style>
     :root{
-      --bd:#e5e7eb;
-      --txt:#111827;
-      --mut:#6b7280;
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --sub:#f9fafb;
-      --warn:#b45309;
-      --warnBg:#fff7ed;
-      --good:#166534;
-      --goodBg:#f0fdf4;
-      --danger:#991b1b;
-      --shadow:0 8px 24px rgba(17,24,39,0.06);
-      --radius:16px;
+      --red:#d52b1e;
+      --red-dark:#a82017;
+      --red-soft:#fff1ef;
+      --ink:#17212b;
+      --muted:#687683;
+      --line:#e2e7e4;
+      --bg:#f5f7f4;
+      --surface:#ffffff;
+      --surface-soft:#f9faf8;
+      --navy:#17324d;
+      --green:#18715c;
+      --green-soft:#e9f5f0;
+      --amber:#9a650f;
+      --amber-soft:#fff6df;
+      --danger:#a12626;
+      --shadow:0 20px 60px rgba(23,50,77,.09);
+      --shadow-sm:0 10px 30px rgba(23,50,77,.07);
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:14px;
+      --max:1240px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       margin:0;
-      color:var(--txt);
-      background:var(--bg);
-      line-height:1.5;
-      font-size:14px;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(213,43,30,.08), transparent 28%),
+        radial-gradient(circle at 95% 12%, rgba(23,50,77,.08), transparent 26%),
+        var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;
+      font-size:15px;
+      line-height:1.65;
     }
-    .container{max-width:1240px;margin:0 auto;padding:20px 16px 28px}
-    h1{margin:0 0 8px;font-size:24px;line-height:1.35}
-    h2{margin:0 0 8px;font-size:17px}
+    body[data-mode="plan"] .simple-only,
+    body[data-mode="plan"] .manual-only,
+    body[data-mode="plan"] .compare-shell{display:none!important}
+    body[data-mode="simple"] .plan-only,
+    body[data-mode="simple"] .manual-only,
+    body[data-mode="simple"] .manual-route-fields{display:none!important}
+    body[data-mode="manual"] .plan-only,
+    body[data-mode="manual"] .simple-only{display:none!important}
+    button,input,select{font:inherit}
+    button,a,input,select,summary{outline-offset:3px}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid rgba(213,43,30,.24)}
     a{color:inherit;text-decoration:none}
-    ul{margin:8px 0 0 18px;padding:0}
-    li{margin:4px 0}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(34px,5vw,62px);line-height:1.12;letter-spacing:-.045em;margin-bottom:20px}
+    h2{font-size:clamp(25px,3vw,38px);line-height:1.22;letter-spacing:-.035em;margin-bottom:12px}
+    h3{font-size:18px;line-height:1.4;letter-spacing:-.015em;margin-bottom:8px}
+    ul{padding-left:20px}
     label{cursor:pointer}
+    [hidden]{display:none!important}
 
-    .muted{color:var(--mut);font-size:12.5px}
-    .small{font-size:13px}
-    .mini{font-size:12px;color:var(--mut)}
-    .k{font-weight:900}
-    .big{font-size:28px;font-weight:900;line-height:1.2}
-    .wrap{display:grid;grid-template-columns:400px 1fr;gap:16px;align-items:start}
-    .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
-    .subCard{background:var(--sub);border:1px solid var(--bd);border-radius:14px;padding:12px}
-    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-    .col{display:flex;flex-direction:column;gap:10px}
+    .skip-link{position:fixed;left:16px;top:-60px;z-index:9999;padding:11px 16px;border-radius:12px;background:var(--ink);color:#fff;font-weight:900}
+    .skip-link:focus{top:16px}
+    .site-header{position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(226,231,228,.9);background:rgba(255,255,255,.86);backdrop-filter:blur(18px)}
+    .header-inner{max-width:var(--max);margin:0 auto;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:-.025em}
+    .brand-mark{width:37px;height:37px;border-radius:12px;background:var(--red);color:#fff;display:grid;place-items:center;font-size:23px;box-shadow:0 8px 20px rgba(213,43,30,.22)}
+    .brand-logo-wrap{width:42px;height:42px;border-radius:13px;overflow:hidden;display:grid;place-items:center;background:#fff;box-shadow:0 8px 22px rgba(23,50,77,.15);border:1px solid rgba(226,231,228,.95);flex:none}
+    .brand-logo{width:100%;height:100%;object-fit:cover;display:block}
+    .simple-route-note{margin-top:10px;padding:9px 11px;border-radius:12px;background:var(--green-soft);color:var(--green);font-size:12px;font-weight:850}
+    .auto-condition{margin-top:12px;padding:12px;border:1px solid #dce7e2;border-radius:15px;background:#f7fbf9}
+    .auto-condition label{display:flex;flex-direction:column;gap:6px}
+    .score-help{font-size:12px;color:var(--muted);margin-top:5px}
+    .comparison-score{font-size:14px;color:var(--green);font-weight:950}
+    .brand-copy{display:flex;flex-direction:column;line-height:1.1}
+    .brand-copy small{margin-top:5px;color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:800}
+    .header-nav{display:flex;align-items:center;gap:7px}
+    .header-nav a{padding:9px 11px;border-radius:11px;color:#475563;font-weight:800;font-size:13px}
+    .header-nav a:hover{background:#f1f3f1;color:var(--ink)}
+    .header-nav .nav-cta{background:var(--ink);color:#fff;padding-inline:15px}
+    .header-nav .nav-cta:hover{background:var(--navy);color:#fff}
+
+    .hero{max-width:var(--max);margin:0 auto;padding:78px 18px 50px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr);gap:48px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;color:var(--red);font-size:12px;font-weight:950;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:28px;height:2px;background:currentColor;border-radius:9px}
+    .hero-copy>p{max-width:650px;color:#556471;font-size:18px;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:13px;margin-top:22px;color:var(--muted);font-size:12px;font-weight:800}
+    .hero-meta span{display:inline-flex;align-items:center;gap:6px}
+    .hero-meta span:before{content:"✓";color:var(--green);font-weight:950}
+    .hero-visual{min-height:420px;position:relative;border-radius:32px;overflow:hidden;background:linear-gradient(145deg,#17324d 0%,#224a67 48%,#d52b1e 140%);box-shadow:0 32px 80px rgba(23,50,77,.23)}
+    .hero-visual:before{content:"";position:absolute;inset:auto -15% -22% -15%;height:75%;background:#f7faf8;clip-path:polygon(0 100%,0 72%,13% 53%,27% 72%,47% 28%,61% 56%,74% 38%,100% 72%,100% 100%)}
+    .hero-visual:after{content:"";position:absolute;inset:auto -10% -12% -10%;height:52%;background:#dfe8e5;opacity:.86;clip-path:polygon(0 100%,0 80%,18% 45%,30% 74%,49% 38%,65% 78%,82% 52%,100% 76%,100% 100%)}
+    .visual-sun{position:absolute;width:84px;height:84px;right:54px;top:50px;border-radius:50%;background:#fff5dc;box-shadow:0 0 55px rgba(255,245,220,.55)}
+    .visual-train{position:absolute;z-index:3;left:42px;right:42px;bottom:40px;padding:19px 20px;border:1px solid rgba(255,255,255,.52);border-radius:20px;background:rgba(255,255,255,.9);box-shadow:var(--shadow-sm)}
+    .visual-train-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .visual-train b{font-size:18px;letter-spacing:-.02em}
+    .visual-route{display:flex;align-items:center;gap:9px;margin-top:13px;color:var(--muted);font-size:12px;font-weight:800}
+    .visual-route i{height:2px;flex:1;background:linear-gradient(90deg,var(--red),var(--navy));border-radius:10px}
+    .visual-price{margin-top:14px;display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .visual-price strong{font-size:29px;line-height:1;color:var(--navy)}
+    .visual-price span{font-size:12px;color:var(--green);font-weight:900;background:var(--green-soft);padding:5px 9px;border-radius:999px}
+
+    .trust-wrap{max-width:var(--max);margin:0 auto;padding:0 18px 34px}
+    .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.78);box-shadow:var(--shadow-sm);overflow:hidden}
+    .trust-item{padding:20px 22px;display:flex;align-items:center;gap:13px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:none}
+    .trust-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--red-soft);font-size:20px}
+    .trust-item b{display:block;font-size:14px}
+    .trust-item small{display:block;margin-top:2px;color:var(--muted);font-size:11px}
+
+    .section-shell{max-width:var(--max);margin:0 auto;padding:54px 18px}
+    .section-heading{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}
+    .section-heading p{margin:0;color:var(--muted);max-width:660px}
+    .mode-tabs{display:inline-flex;gap:5px;padding:5px;border:1px solid var(--line);border-radius:14px;background:#eef1ef}
+    .mode-tab{border:0;border-radius:10px;padding:10px 14px;background:transparent;color:#667581;cursor:pointer;font-weight:900;font-size:13px}
+    .mode-tab.active{background:#fff;color:var(--ink);box-shadow:0 3px 12px rgba(23,50,77,.09)}
+
+    .calculator-grid{display:grid;grid-template-columns:390px minmax(0,1fr);gap:18px;align-items:start}
+    .panel,.card{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);box-shadow:var(--shadow-sm)}
+    .panel{padding:18px}
+    .sticky{position:sticky;top:82px}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .panel-title h3{margin:0}
+    .step-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:10px;background:var(--red-soft);color:var(--red);font-size:12px;font-weight:950}
+    .col{display:flex;flex-direction:column;gap:12px}
+    .subCard{padding:15px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft)}
+    .subCard+.subCard{margin-top:0}
+    .subCard .section-mini-title{display:flex;align-items:center;gap:9px;font-weight:950;margin-bottom:4px}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .grid2 > label{display:flex;flex-direction:column;gap:6px}
-    .btnRow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .topControls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .actionBtns{display:flex;flex-wrap:wrap;gap:8px}
-    .routeCount{font-size:12px;color:var(--mut);font-weight:800}
-    .copyBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-    .copyBtn{padding:6px 8px;font-size:12px;border:1px solid var(--bd);border-radius:10px;background:#fff;cursor:pointer;font-weight:800}
-    .toggleRow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .hr{border-top:1px solid var(--bd);margin:12px 0}
-    .sticky{position:sticky;top:12px}
-
-    input[type="number"], input[type="date"], input[type="text"], select{
-      width:100%;
-      padding:9px 10px;
-      border:1px solid var(--bd);
-      border-radius:12px;
-      background:#fff;
-      color:var(--txt);
-      font:inherit;
+    .grid2>label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:12px;color:#465461}
+    .grid2>label span{display:flex;justify-content:space-between;gap:8px}
+    input[type="number"],input[type="date"],input[type="text"],select{
+      width:100%;min-height:43px;padding:10px 11px;border:1px solid #d8dfdc;border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s
     }
-    input[disabled]{background:#f3f4f6;color:#9ca3af}
+    input:hover,select:hover{border-color:#bfc9c5}
+    input:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(213,43,30,.08)}
+    input[disabled]{background:#eef1ef;color:#95a09b}
+    input[type="checkbox"],input[type="radio"]{accent-color:var(--red)}
 
-    details{border:1px solid var(--bd);border-radius:14px;padding:11px;background:#fff}
-    summary{cursor:pointer;font-weight:900}
-    .nested{margin:8px 0 0 14px;padding-left:12px;border-left:2px solid #eef0f3;display:flex;flex-direction:column;gap:8px}
+    .muted{color:var(--muted);font-size:12px}
+    .small{font-size:13px}
+    .mini{font-size:11.5px;color:var(--muted)}
+    .k{font-weight:950}
+    .big{font-size:31px;font-weight:950;line-height:1.15;letter-spacing:-.035em}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btnRow,.actionBtns,.topControls,.copyBtns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .hr{border-top:1px solid var(--line);margin:14px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:41px;padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);cursor:pointer;font-weight:900;font-size:13px;transition:transform .15s,box-shadow .15s,border-color .15s,background .15s}
+    .btn:hover{transform:translateY(-1px);border-color:#c9d0cd;box-shadow:0 7px 18px rgba(23,50,77,.08)}
+    .btn-primary{border-color:var(--red);background:var(--red);color:#fff;padding-inline:18px}
+    .btn-primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+    .btn-dark{background:var(--ink);border-color:var(--ink);color:#fff;padding-inline:18px}
+    .btn-ghost{background:rgba(255,255,255,.72)}
+    .danger{border-color:#f3c8c8;background:#fff5f5;color:var(--danger)}
+    .icon-button{width:41px;padding:0}
 
-    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid var(--bd);border-radius:999px;background:#f3f4f6;font-size:12px;color:#374151}
-    .pill.warn{background:var(--warnBg);border-color:#fed7aa;color:var(--warn)}
-    .pill.good{background:var(--goodBg);border-color:#bbf7d0;color:var(--good)}
+    details{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+    details[open]{border-color:#d3dad7}
+    summary{cursor:pointer;font-weight:900;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details>summary:after{content:"＋";float:right;color:var(--muted);font-weight:500}
+    details[open]>summary:after{content:"−"}
+    .nested{margin:10px 0 0 8px;padding:2px 0 0 13px;border-left:2px solid #edf0ee;display:flex;flex-direction:column;gap:9px}
+    .pass-stack{display:flex;flex-direction:column;gap:8px;margin-top:11px}
+    .pass-stack details{background:#fff}
 
-    .btn{padding:9px 11px;border:1px solid var(--bd);border-radius:12px;background:#fff;cursor:pointer;font-weight:900;color:inherit}
-    .btn:active{transform:translateY(1px)}
-    .danger{border-color:#fecaca;background:#fff1f2;color:var(--danger)}
+    .statusBox{display:none;margin-top:9px;padding:10px 12px;border:1px solid #f1d28e;border-radius:12px;background:var(--amber-soft);color:var(--amber);font-weight:800;font-size:12px}
+    .disabled{opacity:.55;pointer-events:none;filter:grayscale(.2)}
+    .warnText{color:var(--amber);font-weight:900}
+    .familyHint{margin-top:6px;font-size:12px;color:var(--green);font-weight:900}
+    .toggleRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    .routeCount{font-size:12px;color:var(--muted);font-weight:900;padding:6px 9px;border-radius:999px;background:#f0f3f1}
+    .copyBtns{margin-top:10px}
+    .copyBtn{padding:6px 8px;font-size:11px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer;font-weight:850;color:#53616d}
 
-    .callout{border:1px solid #e5e7eb;background:#f9fafb;border-radius:14px;padding:12px}
-    .statusBox{margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--warnBg);border:1px solid #fed7aa;color:var(--warn);font-weight:700;display:none}
-    .disabled{opacity:.58;pointer-events:none;filter:grayscale(.2)}
-    .warnText{color:var(--warn);font-weight:900}
-    .familyHint{margin-top:6px;font-size:12px;color:var(--good);font-weight:800}
-    .routeCard.missingPrice{border:1px solid #fbbf24;background:#fffbeb}
-    .missingHint{margin-top:6px;font-size:12px;color:var(--warn);font-weight:800;display:none}
-    .detailsSummary{display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer}
-    .detailsSummary::-webkit-details-marker{display:none}
-    .chev{font-size:12px;color:var(--mut);font-weight:900}
+    .totalBar{position:relative;overflow:hidden;background:linear-gradient(145deg,var(--navy),#224c68);color:#fff;border:0}
+    .totalBar:before{content:"";position:absolute;width:170px;height:170px;right:-70px;top:-95px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .totalBar .muted{color:rgba(255,255,255,.7)}
+    .totalBar .hr{border-color:rgba(255,255,255,.16)}
+    .totalBar .btn{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:#fff}
+    .totalBar .danger{background:rgba(255,255,255,.93);color:var(--danger)}
 
-    .routes{display:flex;flex-direction:column;gap:12px}
-    .routeGroup{border:1px solid var(--bd);border-radius:14px;padding:10px;background:#fff}
-    .routeCard{border:1px solid #eef0f3;border-radius:14px;padding:12px;background:#fff}
+    .main-stack{display:flex;flex-direction:column;gap:18px;min-width:0}
+    .recommendation-card{position:relative;overflow:hidden;padding:24px;border:1px solid #cbe1d8;border-radius:24px;background:linear-gradient(145deg,#f7fcfa,#e9f5f0);box-shadow:var(--shadow-sm)}
+    .recommendation-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-150px;background:rgba(24,113,92,.08)}
+    .recommendation-head{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .recommendation-head p{margin:3px 0 0;color:#527064;font-size:13px}
+    .recommendation-state{position:relative;z-index:1;margin-top:18px}
+    .empty-state{padding:23px;border:1px dashed #b9d3c9;border-radius:17px;background:rgba(255,255,255,.56);color:#527064;text-align:center;font-weight:800}
+    .recommendation-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end;padding:18px;border:1px solid rgba(24,113,92,.18);border-radius:18px;background:rgba(255,255,255,.72)}
+    .rank-label{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:var(--green);color:#fff;font-size:11px;font-weight:950}
+    .recommendation-title{margin:11px 0 0;font-size:24px;line-height:1.3;letter-spacing:-.03em}
+    .recommendation-price{text-align:right}
+    .recommendation-price small{display:block;color:#5f776d;font-weight:800}
+    .recommendation-price strong{display:block;margin-top:4px;color:var(--green);font-size:35px;line-height:1;letter-spacing:-.04em}
+    .saving-copy{margin:13px 0 0;color:#315c4d;font-weight:900}
+    .reason-box{margin-top:13px;padding:14px 15px;border-radius:15px;background:rgba(255,255,255,.65);color:#415e54;font-size:13px}
+    .comparison-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:13px}
+    .comparison-item{padding:12px;border:1px solid rgba(24,113,92,.14);border-radius:14px;background:rgba(255,255,255,.72)}
+    .comparison-item span{display:block;color:#667d74;font-size:10px;font-weight:950;letter-spacing:.08em}
+    .comparison-item b{display:block;margin-top:5px;font-size:13px;line-height:1.4}
+    .comparison-item strong{display:block;margin-top:6px;color:var(--green);font-size:17px}
+    .recommendation-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:14px}
+    .result-note{color:#5f776d;font-size:11px}
+
+    .route-panel{padding:20px}
+    .route-panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+    .route-panel-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .route-toolbar{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:10px;margin-top:17px;padding:12px;border-radius:16px;background:#f4f6f4}
+    .toolbar-side{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+    #route_search{min-width:0}
+    .callout{margin-top:14px;padding:14px 15px;border:1px solid #eadfbe;border-radius:15px;background:#fffaf0}
+    .callout strong{display:block;color:#695223}
+    .callout p{margin:4px 0 0;color:#7d6a3f;font-size:12px}
+
+    .routes{display:flex;flex-direction:column;gap:11px;margin-top:15px}
+    .routeGroup{padding:13px;background:#fbfcfb}
+    .routeGroup>summary{font-size:14px}
+    .routeGroup>.nested{margin-left:0;padding-left:0;border-left:0}
+    .routeCard{padding:14px;border:1px solid #e7ebe9;border-radius:15px;background:#fff;transition:border-color .15s,box-shadow .15s}
+    .routeCard:hover{border-color:#cfd7d3;box-shadow:0 8px 22px rgba(23,50,77,.06)}
+    .routeCard.missingPrice{border-color:#e8bd55;background:#fffdf6}
     .routeHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
-    .routeTitleWrap{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+    .routeTitleWrap{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
     .routeTitleLabel{display:flex;align-items:flex-start;gap:8px}
     .routeTitleLabel b{line-height:1.45}
-    .routeMeta{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
-    .routePriceGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
-    .priceField{background:#fafafa;border:1px solid #edf0f4;border-radius:12px;padding:8px}
+    .routeMeta{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+    .pill{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:#f1f3f2;font-size:10.5px;color:#4f5d68;font-weight:850}
+    .pill.warn{background:var(--amber-soft);border-color:#efd59b;color:var(--amber)}
+    .pill.good{background:var(--green-soft);border-color:#bedfd3;color:var(--green)}
+    .routePriceGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:11px}
+    .priceField{padding:9px;border:1px solid #e9edeb;border-radius:12px;background:#f9faf9}
     .priceField .fieldTop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
-    .priceField .label{font-size:12px;font-weight:800;color:#374151}
+    .priceField .label{font-size:11px;font-weight:900;color:#46535e}
+    .missingHint{display:none;margin-top:5px;font-size:11px;color:var(--amber);font-weight:900}
 
-    .table{display:flex;flex-direction:column;gap:8px}
-    .line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed #e5e7eb}
+    .detailsSummary{display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer}
+    .detailsSummary:after{display:none}
+    .chev{font-size:11px;color:var(--muted);font-weight:900}
+    .table{display:flex;flex-direction:column;gap:5px}
+    .line{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
     .line:last-child{border-bottom:none}
 
-    @media (max-width:1100px){
-      .wrap{grid-template-columns:1fr}
+    .guide-section{max-width:var(--max);margin:0 auto;padding:32px 18px 70px}
+    .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .guide-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.8);box-shadow:var(--shadow-sm)}
+    .guide-card summary{font-size:15px}
+    .guide-card p,.guide-card li{color:#5b6873;font-size:13px}
+    .category-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+
+    .site-footer{border-top:1px solid var(--line);background:#fff}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:28px 18px 36px;display:grid;grid-template-columns:1fr auto;gap:30px}
+    .footer-inner p{max-width:760px;margin:8px 0 0;color:var(--muted);font-size:12px}
+    .footer-links{display:flex;flex-wrap:wrap;gap:12px;align-content:start;justify-content:flex-end;color:#53616c;font-size:12px;font-weight:800}
+    .contact-line{margin-top:14px;color:#52606b;font-size:12px}
+
+    @media(max-width:1050px){
+      .hero{grid-template-columns:1fr;gap:32px;padding-top:56px}
+      .hero-visual{min-height:340px}
+      .calculator-grid{grid-template-columns:1fr}
       .sticky{position:static}
-    }
-    @media (max-width:900px){
       .routePriceGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media (max-width:780px){
-      body{padding-bottom:178px}
-      .container{padding:14px 12px 24px}
-      .card{padding:12px}
-      .subCard{padding:10px}
+    @media(max-width:760px){
+      .header-nav a:not(.nav-cta){display:none}
+      .header-inner{padding:11px 13px}
+      .hero{padding:42px 14px 32px}
+      .hero-copy>p{font-size:16px}
+      .hero-actions .btn{flex:1 1 150px}
+      .hero-visual{min-height:300px;border-radius:24px}
+      .visual-train{left:18px;right:18px;bottom:20px}
+      .trust-wrap,.section-shell,.guide-section{padding-left:13px;padding-right:13px}
+      .trust-strip{grid-template-columns:1fr}
+      .trust-item{border-right:0;border-bottom:1px solid var(--line)}
+      .trust-item:last-child{border-bottom:0}
+      .section-heading{align-items:flex-start;flex-direction:column}
+      .mode-tabs{width:100%}
+      .mode-tab{flex:1}
+      .panel,.route-panel,.recommendation-card{padding:14px}
+      .grid2{grid-template-columns:1fr 1fr}
+      .recommendation-top{grid-template-columns:1fr;align-items:start}
+      .recommendation-price{text-align:left}
+      .comparison-list{grid-template-columns:1fr}
+      .route-panel-head{flex-direction:column}
+      .route-toolbar{grid-template-columns:1fr}
+      .toolbar-side{justify-content:flex-start}
+      .toolbar-side .btn{flex:1}
       .routePriceGrid{grid-template-columns:1fr}
-      .routeHead{flex-direction:column;align-items:stretch;gap:8px}
+      .routeHead{flex-direction:column}
       .routeMeta{justify-content:flex-start}
-      .btnRow,.topControls,.actionBtns{width:100%}
-      .btnRow .btn,.actionBtns .btn,.copyBtns .copyBtn{flex:1 1 auto;text-align:center}
-      #route_search{width:100% !important}
-      .totalBar{position:fixed;left:12px;right:12px;bottom:12px;z-index:999;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px;box-shadow:0 12px 30px rgba(0,0,0,0.12)}
-      .big{font-size:24px}
-      h1{font-size:21px}
+      .guide-grid{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
       .line{flex-direction:column;align-items:flex-start;gap:4px}
+      body[data-mode="manual"]{padding-bottom:174px}
+      body[data-mode="manual"] .totalBar{position:fixed;left:12px;right:12px;bottom:12px;z-index:900;padding:12px;border-radius:17px;box-shadow:0 16px 38px rgba(0,0,0,.2)}
+      body[data-mode="manual"] .totalBar .actionBtns{display:none}
+      body[data-mode="manual"] .totalBar .hr{display:none}
+      body[data-mode="manual"] .totalBar .big{font-size:24px}
     }
-  </style>
+    @media(max-width:430px){
+      .grid2{grid-template-columns:1fr}
+      .brand-copy small{display:none}
+      .hero-visual{min-height:280px}
+      .visual-price{align-items:flex-start;flex-direction:column}
+      .recommendation-actions{align-items:flex-start;flex-direction:column}
+      .recommendation-actions .btn{width:100%}
+    }
+
+    .planner-grid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;align-items:start}
+    .planner-survey{position:sticky;top:82px;padding:20px}
+    .planner-survey .survey-block{padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft);margin-top:11px}
+    .planner-survey .survey-block:first-of-type{margin-top:0}
+    .planner-survey .survey-label{display:block;margin-bottom:7px;font-size:12px;font-weight:950;color:#465461}
+    .survey-counter-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .survey-counter-grid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:850;color:#4d5a65}
+    .planner-summary{padding:14px;border-radius:16px;background:linear-gradient(145deg,var(--navy),#244e6b);color:#fff;margin-top:12px}
+    .planner-summary .muted{color:rgba(255,255,255,.72)}
+    .planner-summary strong{display:block;font-size:20px;line-height:1.3;margin-top:5px}
+    .planner-results{display:flex;flex-direction:column;gap:14px;min-width:0}
+    .planner-result-card{position:relative;overflow:hidden;padding:20px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow-sm)}
+    .planner-result-card:first-child{border-color:#b9dacd;background:linear-gradient(145deg,#fff,#f0f9f5)}
+    .planner-result-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-100px;top:-115px;background:rgba(24,113,92,.07)}
+    .planner-result-head{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .planner-rank{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:var(--red-soft);color:var(--red);font-size:11px;font-weight:950}
+    .planner-result-card:first-child .planner-rank{background:var(--green-soft);color:var(--green)}
+    .planner-result-title{margin:10px 0 5px;font-size:22px;letter-spacing:-.03em}
+    .planner-route-line{color:#5f6f7b;font-size:13px;font-weight:850}
+    .planner-score{text-align:right;min-width:90px}
+    .planner-score small{display:block;color:var(--muted);font-weight:850}
+    .planner-score strong{display:block;margin-top:3px;color:var(--green);font-size:31px;line-height:1}
+    .planner-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:15px}
+    .planner-metric{padding:11px;border:1px solid var(--line);border-radius:14px;background:rgba(249,250,248,.86)}
+    .planner-metric span{display:block;color:var(--muted);font-size:10px;font-weight:950;letter-spacing:.04em}
+    .planner-metric b{display:block;margin-top:5px;font-size:14px;line-height:1.4}
+    .planner-metric strong{display:block;margin-top:3px;color:var(--navy);font-size:17px}
+    .planner-reason{margin-top:13px;padding:12px 14px;border-radius:14px;background:#f5f8f6;color:#40524b;font-size:13px}
+    .planner-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+    .planner-detail{margin-top:13px;background:#fff}
+    .planner-detail summary{font-size:13px}
+    .day-plan-list{display:flex;flex-direction:column;gap:9px;margin-top:12px}
+    .day-plan{display:grid;grid-template-columns:62px minmax(0,1fr);gap:11px;padding:11px;border:1px solid #e8ecea;border-radius:13px;background:#fafbf9}
+    .day-label{height:31px;border-radius:10px;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:950}
+    .day-plan b{display:block;font-size:13px}
+    .day-plan p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.65}
+    .day-summary{padding-bottom:9px;border-bottom:1px dashed #dfe6e2}
+    .place-detail-list{display:flex;flex-direction:column;gap:9px;margin-top:10px}
+    .place-detail-card{padding:12px 13px;border:1px solid #dfe7e3;border-radius:13px;background:#fff}
+    .place-detail-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+    .place-detail-head strong{font-size:14px;color:var(--navy)}
+    .place-detail-badge{padding:3px 7px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:10px;font-weight:950;white-space:nowrap}
+    .place-detail-card>p{margin:0;color:#52616c;font-size:12px;line-height:1.7}
+    .place-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:9px}
+    .place-fact{padding:8px 9px;border-radius:10px;background:#f5f8f6}
+    .place-fact span{display:block;color:var(--muted);font-size:9px;font-weight:950;letter-spacing:.03em}
+    .place-fact b{display:block;margin-top:3px;font-size:11px;line-height:1.45;color:#344a55}
+    .place-highlights{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+    .place-highlight{padding:4px 7px;border-radius:999px;background:var(--red-soft);color:var(--red);font-size:10px;font-weight:850}
+    .place-tip{margin-top:9px!important;padding:9px 10px;border-left:3px solid var(--amber);border-radius:8px;background:var(--amber-soft);color:#795615!important;font-size:11px!important}
+    @media(max-width:620px){.place-facts{grid-template-columns:1fr}.place-detail-head{align-items:flex-start}}
+    .planner-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}
+    .planner-disclaimer{color:var(--muted);font-size:11px;line-height:1.5}
+    .plan-empty{padding:38px 20px;border:1px dashed #ccd5d1;border-radius:20px;background:rgba(255,255,255,.7);text-align:center;color:var(--muted)}
+    .price-difference{display:block;margin-top:5px;color:var(--muted);font-size:11px;font-weight:800}
+    .fare-basis{margin-top:9px;padding:9px 11px;border-radius:12px;background:var(--amber-soft);color:var(--amber);font-size:11px;font-weight:800}
+    @media(max-width:980px){.planner-grid{grid-template-columns:1fr}.planner-survey{position:static}.planner-metrics{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.planner-result-head{flex-direction:column}.planner-score{text-align:left}.planner-metrics{grid-template-columns:1fr}.survey-counter-grid{grid-template-columns:1fr 1fr}.planner-actions{align-items:stretch;flex-direction:column}.planner-actions .btn{width:100%}}
+
+    .sbb-price-link{color:var(--primary);font-weight:900;text-decoration:underline;text-underline-offset:3px;}
+  .sbb-price-link:hover{color:var(--primaryDark);}
+</style>
 </head>
-<body>
-<div class="container">
-  <h1>Swiss Travel Pass Calculator | Compare Swiss Travel Pass, Half Fare Card & Jungfrau VIP</h1>
+<body data-mode="plan">
+<a class="skip-link" href="#calculator">계산기로 바로가기</a>
 
-  <details class="card" style="margin:12px 0;">
-    <summary class="k" style="font-size:16px;">How to use Swiss Travel Pass Check <span class="muted" style="font-weight:400; margin-left:8px;">(click to expand)</span></summary>
-    <div class="hr"></div>
-    <div class="small" style="display:flex; flex-direction:column; gap:10px;">
-      <div><div class="k">1) Enter travelers</div><div class="muted">- Start by entering the number of Adults (25+), Youth (16–25), Children (6–15), and Infants (0–5).</div></div>
-      <div><div class="k">2) Select season</div><div class="muted">- Pick a travel date and the season is set automatically. If your trip is near the boundary, you can override it manually.</div></div>
-      <div><div class="k">3) Choose passes / tickets</div><div class="muted">- Select only the passes or tickets you actually plan to use.</div></div>
-      <div><div class="k">4) Choose regions & routes</div><div class="muted">- Expand a region and check only the routes you will actually take.</div></div>
-      <div><div class="k">5) Enter route fares</div><div class="muted">- Search fares on SBB or the operator website, then enter Adult / Youth / Child / Infant fares separately.</div><div class="muted">- Routes fully covered by your selected pass are locked automatically as CHF 0.</div></div>
-      <div><div class="k">6) Review the result</div><div class="muted">- Check the total on the left and the breakdown below to see which routes are free, discounted, or still need fare input.</div></div>
-      <div><div class="k">Category guide</div><div class="muted">public = public transport / boat = lake boat / scenic = panoramic train / mountain = mountain railway or cable car / special = extra fee</div></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Swiss Fare Check 홈">
+      <span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check 로고" width="42" height="42"></span>
+      <span class="brand-copy">Swiss Fare Check<small>SWISS TRANSPORT COMPARISON</small></span>
+    </a>
+    <nav class="header-nav" aria-label="주요 메뉴">
+      <a href="#calculator">루트·패스 추천</a>
+      <a href="#guide">이용 안내</a>
+      <a href="/faq">FAQ</a>
+      <a href="/en/">EN</a>
+      <a class="nav-cta" href="#calculator">내 패스 찾기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Swiss transport pass comparison</p>
+      <h1 id="hero-title">스위스 일정부터<br>교통패스까지 한 번에</h1>
+      <p>여행 기간·인원·계절과 여행 스타일을 입력하면 대표 명소를 담은 루트 3개와 가장 저렴한 패스 조합을 함께 추천해드려요.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="btn_start_plan" type="button">루트 추천받기</button>
+        <button class="btn btn-ghost" id="btn_start_simple" type="button">내 루트 패스 비교</button>
+        <button class="btn btn-ghost" id="btn_start_manual" type="button">직접 계산하기</button>
+      </div>
+      <div class="hero-meta">
+        <span>CHF 기준 계산</span>
+        <span>연령별 요금 반영</span>
+        <span>공식 결제 전 최종 확인</span>
+      </div>
     </div>
-  </details>
 
-  <details class="card" style="margin:12px 0;">
-    <summary class="k" style="font-size:16px;">Notice <span class="muted" style="font-weight:400; margin-left:8px;">(click to expand)</span></summary>
-    <div class="hr"></div>
-    <div class="small" style="display:flex; flex-direction:column; gap:10px;">
+    <div class="hero-visual" aria-hidden="true">
+      <span class="visual-sun"></span>
+      <div class="visual-train">
+        <div class="visual-train-top"><b>취리히 → 루체른 → 융프라우 → 체르마트</b><span class="pill good">맞춤 루트</span></div>
+        <div class="visual-route"><span>ZRH</span><i></i><span>INT</span><i></i><span>ZMT</span></div>
+        <div class="visual-price"><div><small class="muted">사전 설문만 입력하면</small><strong>루트＋패스 추천</strong></div><span>1~3순위 한눈에 비교</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-wrap">
+    <section class="trust-strip" aria-label="서비스 특징">
+      <div class="trust-item"><span class="trust-icon">🚆</span><div><b>주요 교통패스 비교</b><small>연속·플렉스·하프페어 조합</small></div></div>
+      <div class="trust-item"><span class="trust-icon">🏔️</span><div><b>산악교통 할인 반영</b><small>융프라우·체르마트 등 주요 노선</small></div></div>
+      <div class="trust-item"><span class="trust-icon">👨‍👩‍👧</span><div><b>여행자 유형별 계산</b><small>성인·유스·아동·유아 구분</small></div></div>
+    </section>
+  </div>
+
+  <section class="section-shell" id="calculator" aria-labelledby="calculator-title">
+    <div class="section-heading">
       <div>
-        <div class="muted">- Routes included in Jungfrau VIP can vary by season and operation period.</div>
-        <div class="muted">- Some panoramic trains may require an additional seat reservation fee.</div>
-        <div class="muted">- Prices, discount rules, and route coverage may change depending on timing and operator policies.</div>
-        <div class="muted">- Always double-check official fares before booking.</div>
+        <p class="eyebrow">Swiss trip planner</p>
+        <h2 id="calculator-title">여행 루트와 패스를 함께 찾아보세요</h2>
+        <p>일정을 아직 정하지 않았다면 루트 추천부터, 일정이 있다면 노선별 패스 비교부터 시작하세요. 자동 비교는 내장 기준요금으로 예상 총비용을 계산합니다.</p>
       </div>
-    </div>
-  </details>
-
-  <div class="wrap">
-    <div class="card sticky">
-      <div class="col">
-        <div class="subCard">
-          <div class="k">1) Travelers</div>
-          <div class="grid2" style="margin-top:10px;">
-            <label><span>Adults (25+)</span><input id="n_adult" type="number" min="0" value="0"></label>
-            <label><span>Youth (16–25)</span><input id="n_youth" type="number" min="0" value="0"></label>
-            <label><span>Children (6–15)</span><input id="n_child" type="number" min="0" value="0"></label>
-            <label><span>Infants (0–5)</span><input id="n_infant" type="number" min="0" value="0"></label>
-          </div>
-          <div id="traveler_warning" class="statusBox"></div>
-        </div>
-
-        <div class="subCard">
-          <div class="k">2) Date / Season</div>
-          <div class="grid2" style="margin-top:10px;">
-            <label><span>Travel date</span><input id="travel_date" type="date"></label>
-            <label><span>Season</span><select id="season_mode"><option value="auto" selected>Auto (by date)</option><option value="summer">Lock to Summer</option><option value="winter">Lock to Winter</option></select></label>
-          </div>
-          <div class="muted" id="season_hint" style="margin-top:8px;"></div>
-        </div>
-
-        <div class="subCard">
-          <div class="k">3) Select passes / tickets</div>
-          <div class="muted" style="margin-top:6px;">Everything starts collapsed. Open only what you need.</div>
-          <div class="col" style="margin-top:10px;">
-            <details>
-              <summary>Swiss Travel Pass (Continuous)</summary>
-              <div class="nested">
-                <div class="muted">Routes fully covered by the pass are locked automatically as CHF 0.</div>
-                <div class="muted">Swiss Family Card is available for free on request. Children aged 6 to under 16 travel free when accompanied by at least one parent with a valid Swiss Travel Pass.</div>
-                <label><input type="checkbox" id="pick_stp"> Use</label>
-                <label><input type="checkbox" id="pick_stp_family"> Swiss Family Card</label>
-                <div class="mini">When checked, children are treated as CHF 0 in Swiss Travel Pass pricing. On free pass-covered routes, child/infant fare inputs are locked automatically.</div>
-                <div id="stp_opts" class="nested" style="display:none;"></div>
-              </div>
-            </details>
-
-            <details>
-              <summary>Swiss Travel Pass Flex</summary>
-              <div class="nested">
-                <div class="muted">Routes fully covered by the pass are locked automatically as CHF 0.</div>
-                <div class="muted">Swiss Family Card is available for free on request. Children aged 6 to under 16 travel free when accompanied by at least one parent with a valid Swiss Travel Pass Flex.</div>
-                <label><input type="checkbox" id="pick_stpf"> Use</label>
-                <label><input type="checkbox" id="pick_stpf_family"> Swiss Family Card</label>
-                <div class="mini">When checked, children are treated as CHF 0 in Flex pricing. On free pass-covered routes, child/infant fare inputs are locked automatically.</div>
-                <div id="stpf_opts" class="nested" style="display:none;"></div>
-              </div>
-            </details>
-
-            <details>
-              <summary>Swiss Half Fare Card</summary>
-              <div class="nested">
-                <div class="muted">A card that lets you buy most public transport tickets at 50% price.</div>
-                <label><input type="checkbox" id="pick_half"> Use</label>
-              </div>
-            </details>
-
-            <details>
-              <summary>Jungfrau VIP Pass</summary>
-              <div class="nested">
-                <div class="muted">If used together with Swiss Half Fare or Swiss Travel Pass/Flex, overlap discount is applied automatically to the adult fare.</div>
-                <div class="muted">Included routes are shown as CHF 0 and locked automatically.</div>
-                <div class="muted"><b>One Jungfraujoch round trip (Eigergletscher ↔ Jungfraujoch) is treated as included in VIP.</b></div>
-                <label><input type="checkbox" id="pick_jvip"> Use</label>
-                <div id="jvip_opts" class="nested" style="display:none;"></div>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="totalBar subCard">
-          <div class="k">Total</div>
-          <div style="margin-top:8px;">
-            <div class="big" id="grand_total">CHF 0.00</div>
-            <div class="muted">Passes/Tickets <b id="pass_total">CHF 0.00</b> · Routes <b id="route_total">CHF 0.00</b></div>
-          </div>
-          <div class="hr"></div>
-          <div class="actionBtns">
-            <button class="btn" id="btn_reset_passes">Reset passes only</button>
-            <button class="btn" id="btn_reset_routes">Reset routes only</button>
-            <button class="btn danger" id="btn_reset">Reset all</button>
-          </div>
-        </div>
+      <div class="mode-tabs" role="tablist" aria-label="서비스 선택">
+        <button class="mode-tab active" id="mode_plan" type="button" role="tab" aria-selected="true">✨ 루트 추천</button>
+        <button class="mode-tab" id="mode_simple" type="button" role="tab" aria-selected="false">🚆 내 루트 비교</button>
+        <button class="mode-tab" id="mode_manual" type="button" role="tab" aria-selected="false">🧮 직접 계산</button>
       </div>
     </div>
 
-    <div class="card">
-      <div class="row">
-        <div>
-          <div class="k">4) Choose regions & routes</div>
-          <div class="muted">Sections are collapsed by default. Searching will auto-expand matching sections.</div>
+    <div class="planner-grid plan-only">
+      <aside class="panel planner-survey" aria-label="루트 추천 설문">
+        <div class="panel-title"><h3>여행 조건</h3><span class="step-badge">SURVEY</span></div>
+        <div class="survey-block">
+          <label class="survey-label" for="plan_duration">스위스 여행 기간</label>
+          <select id="plan_duration">
+            <option value="5">4박 5일</option><option value="6" selected>5박 6일</option><option value="7">6박 7일</option><option value="8">7박 8일</option>
+          </select>
         </div>
-        <div class="topControls">
-          <label class="toggleRow mini"><input type="checkbox" id="show_selected_only"> Show selected routes only</label>
-          <span class="routeCount" id="selected_route_count">Selected routes 0</span>
-          <input id="route_search" type="text" placeholder="Search routes (e.g. First, Harder Kulm, Titlis...)" style="width:320px;max-width:100%;">
-          <div class="actionBtns">
-            <button class="btn" id="btn_open_all">Expand all</button>
-            <button class="btn" id="btn_close_all">Collapse all</button>
+        <div class="survey-block">
+          <span class="survey-label">여행자</span>
+          <div class="survey-counter-grid">
+            <label>성인 25세+<input id="plan_adult" type="number" min="0" value="2"></label>
+            <label>유스 16–25세<input id="plan_youth" type="number" min="0" value="0"></label>
+            <label>아동 6–15세<input id="plan_child" type="number" min="0" value="0"></label>
+            <label>유아 0–5세<input id="plan_infant" type="number" min="0" value="0"></label>
           </div>
         </div>
-      </div>
-
-      <div class="callout" style="margin-top:12px;">
-        <div class="k">How to enter fares</div>
-        <ul class="small">
-          <li>Search your route fare on SBB or the operator website.</li>
-          <li>Enter fares separately for Adult / Youth / Child / Infant.</li>
-          <li>Make sure your entered fare already reflects one-way or round-trip, depending on how you plan to travel.</li>
-          <li>Routes fully covered by Swiss Travel Pass, Flex, or VIP are auto-locked.</li>
-        </ul>
-        <div class="btnRow" style="margin-top:8px;">
-          <a class="btn" href="https://www.sbb.ch/en" target="_blank" rel="noopener">Check prices on SBB</a>
-          <a class="btn" href="https://maps.trafimage.ch/ch.sbb.sts?baselayers=ch.sbb.sts.validity.data,ch.sbb.direktverbindungen.data&layers=ch.sbb.sts.validity.other,ch.sbb.sts.validity.routes_highlight,ch.sbb.sts.validity.gttos&lang=en&x=953392.38&y=5903613.91&z=8" target="_blank" rel="noopener">Swiss Travel Pass validity map</a>
+        <div class="survey-block">
+          <div class="grid2">
+            <label><span>여행 계절</span><select id="plan_season"><option value="summer" selected>여름 · 5~10월</option><option value="winter">겨울 · 11~4월</option></select></label>
+            <label><span>여행 스타일</span><select id="plan_style"><option value="balanced" selected>대표 명소＋비용 균형</option><option value="budget">교통비 최저가 우선</option><option value="iconic">대표 관광지 최대한</option><option value="pass">패스 활용도 최대한</option><option value="relaxed">이동 적고 여유롭게</option></select></label>
+          </div>
         </div>
-      </div>
+        <div class="survey-block">
+          <div class="grid2">
+            <label><span>여행 시작</span><select id="plan_start"><option value="zurich" selected>취리히</option><option value="geneva">제네바</option><option value="basel">바젤</option></select></label>
+            <label><span>여행 종료</span><select id="plan_end"><option value="zurich" selected>취리히</option><option value="geneva">제네바</option><option value="basel">바젤</option></select></label>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="btn_plan_routes" type="button" style="width:100%;margin-top:12px">추천 루트 3개 보기</button>
+        <div class="planner-summary"><span class="muted">추천 기준</span><strong>총교통비 · 대표성 · 패스 활용도 · 동선 효율</strong><div class="muted" style="margin-top:6px">가격은 내장 기준요금을 사용한 여행 계획용 예상치예요.</div></div>
+      </aside>
+      <section class="planner-results" id="plan_results" aria-live="polite">
+        <div class="plan-empty" id="plan_empty"><b>여행 조건을 입력하고 추천 버튼을 눌러주세요.</b><br>가장 균형 좋은 루트, 저렴한 루트, 패스를 알차게 쓰는 루트를 1~3순위로 보여드려요.</div>
+      </section>
+    </div>
 
-      <div class="hr"></div>
-      <div class="routes" id="routes"></div>
-      <div class="hr"></div>
-      <details class="subCard" id="breakdown_details" open>
-        <summary class="detailsSummary">
-          <span class="k">Breakdown</span>
-          <span class="chev">Expand / Collapse</span>
-        </summary>
-        <div id="breakdown" class="table small" style="margin-top:10px;"></div>
+    <div class="calculator-grid compare-shell">
+      <aside class="panel sticky" aria-label="여행 조건">
+        <div class="col">
+          <section class="subCard">
+            <div class="panel-title"><h3>여행자 정보</h3><span class="step-badge">01</span></div>
+            <div class="grid2">
+              <label><span>성인 <small>25세+</small></span><input id="n_adult" type="number" min="0" value="1" inputmode="numeric"></label>
+              <label><span>유스 <small>16–25세</small></span><input id="n_youth" type="number" min="0" value="0" inputmode="numeric"></label>
+              <label><span>아동 <small>6–15세</small></span><input id="n_child" type="number" min="0" value="0" inputmode="numeric"></label>
+              <label><span>유아 <small>0–5세</small></span><input id="n_infant" type="number" min="0" value="0" inputmode="numeric"></label>
+            </div>
+            <div id="traveler_warning" class="statusBox"></div>
+          </section>
+
+          <section class="subCard">
+            <div class="panel-title"><h3>여행 날짜와 시즌</h3><span class="step-badge">02</span></div>
+            <div class="grid2">
+              <label><span>여행 날짜</span><input id="travel_date" type="date"></label>
+              <label><span>시즌 적용</span><select id="season_mode"><option value="auto" selected>날짜 기준 자동</option><option value="summer">여름 고정</option><option value="winter">겨울 고정</option></select></label>
+            </div>
+            <div class="muted" id="season_hint" style="margin-top:8px"></div>
+            <div class="auto-condition simple-only">
+              <label><span>교통을 이용하는 날짜 수</span>
+                <select id="travel_days">
+                  <option value="1">1일</option><option value="2">2일</option><option value="3">3일</option><option value="4" selected>4일</option><option value="5">5일</option><option value="6">6일</option><option value="7">7일</option><option value="8">8일</option><option value="10">9~10일</option><option value="15">11~15일</option>
+                </select>
+              </label>
+              <div class="score-help">연속패스와 플렉스패스 기간을 추천할 때 사용해요. 정확한 여행 기간이 아니라 실제로 교통을 많이 이용하는 날 수를 선택하면 됩니다.</div>
+            </div>
+          </section>
+
+          <section class="subCard manual-only">
+            <div class="panel-title"><h3>패스 직접 선택</h3><span class="step-badge">03</span></div>
+            <p class="muted">선택한 조합의 총액과 할인 적용 내역을 바로 계산합니다.</p>
+            <div class="pass-stack">
+              <details>
+                <summary>Swiss Travel Pass · 연속</summary>
+                <div class="nested">
+                  <div class="muted">무료 구간은 가격 입력칸이 자동으로 잠깁니다.</div>
+                  <label><input type="checkbox" id="pick_stp"> 이 패스 사용</label>
+                  <label><input type="checkbox" id="pick_stp_family"> 스위스 패밀리 카드 발급</label>
+                  <div class="mini">패밀리 카드 체크 시 패스 비용의 아동 인원을 0명으로 처리합니다. 유료 구간 계산은 계속 반영됩니다.</div>
+                  <div id="stp_opts" class="nested" style="display:none"></div>
+                </div>
+              </details>
+              <details>
+                <summary>Swiss Travel Pass Flex</summary>
+                <div class="nested">
+                  <div class="muted">선택한 사용일에 적용하는 플렉스 패스입니다.</div>
+                  <label><input type="checkbox" id="pick_stpf"> 이 패스 사용</label>
+                  <label><input type="checkbox" id="pick_stpf_family"> 스위스 패밀리 카드 발급</label>
+                  <div class="mini">패밀리 카드 체크 시 플렉스 패스 비용의 아동 인원을 0명으로 처리합니다.</div>
+                  <div id="stpf_opts" class="nested" style="display:none"></div>
+                </div>
+              </details>
+              <details>
+                <summary>Swiss Half Fare Card</summary>
+                <div class="nested"><div class="muted">대부분의 교통 티켓을 약 50% 가격으로 구매하는 카드입니다.</div><label><input type="checkbox" id="pick_half"> 이 카드 사용</label></div>
+              </details>
+              <details>
+                <summary>융프라우 VIP 패스</summary>
+                <div class="nested"><div class="muted">VIP 포함 노선은 자동으로 0원 처리됩니다.</div><label><input type="checkbox" id="pick_jvip"> 이 패스 사용</label><div id="jvip_opts" class="nested" style="display:none"></div></div>
+              </details>
+              <details id="jjo_discount_details">
+                <summary>동신항운 융프라우요흐 왕복권</summary>
+                <div class="nested"><div class="muted">VIP 패스를 선택하면 자동으로 비활성화됩니다.</div><label><input type="checkbox" id="pick_jjo_discount"> 이 왕복권 사용</label><div id="jjo_discount_opts" class="nested" style="display:none"></div><div class="muted" id="jjo_discount_disabled_msg"></div></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="totalBar subCard manual-only" aria-label="현재 직접 선택 조합 총액">
+            <div class="k">현재 선택 조합</div>
+            <div style="margin-top:8px"><div class="big" id="grand_total">CHF 0.00</div><div class="muted">패스·티켓 <b id="pass_total">CHF 0.00</b> · 노선 <b id="route_total">CHF 0.00</b></div></div>
+            <div class="hr"></div>
+            <div class="actionBtns"><button class="btn" id="btn_reset_passes" type="button">패스 초기화</button><button class="btn" id="btn_reset_routes" type="button">노선 초기화</button><button class="btn danger" id="btn_reset" type="button">전체 초기화</button></div>
+          </section>
+        </div>
+      </aside>
+
+      <div class="main-stack">
+        <section class="recommendation-card simple-only" id="recommendation_panel" aria-live="polite">
+          <div class="recommendation-head">
+            <div><span class="rank-label">자동 비교 결과</span><h3 style="margin-top:9px">입력한 일정의 추천 조합</h3><p id="quick_summary">여행자와 노선을 입력하면 결과가 표시돼요.</p></div>
+            <span class="pill good">예상 총비용 기준</span>
+          </div>
+          <div class="recommendation-state">
+            <div class="empty-state" id="recommendation_empty">먼저 여행자 인원을 입력하고 이용할 노선을 선택해주세요.</div>
+            <div id="recommendation_ready" hidden>
+              <div class="recommendation-top">
+                <div><span class="rank-label">🏆 추천 1위</span><h3 class="recommendation-title" id="recommendation_title">—</h3><p class="saving-copy" id="recommendation_saving"></p></div>
+                <div class="recommendation-price"><small>가격 점수</small><strong id="recommendation_total">0점</strong></div>
+              </div>
+              <div class="reason-box" id="recommendation_reason"></div>
+              <div class="comparison-list" id="recommendation_alternatives"></div>
+              <div class="recommendation-actions"><span class="result-note" id="recommendation_notice">내장 기준요금으로 계산한 예상치입니다. 실제 구매 전 공식 가격을 확인해주세요.</span><button class="btn" id="btn_copy_result" type="button">결과 복사</button></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel route-panel" aria-labelledby="route-title">
+          <div class="route-panel-head">
+            <div><div class="panel-title" style="margin:0"><h3 id="route-title">이용할 지역과 노선</h3><span class="step-badge">03</span></div><p class="simple-only">실제로 이용할 노선을 체크하면 내장 기준요금으로 패스별 예상 총비용과 가격 점수가 즉시 계산됩니다.</p><p class="manual-only">SBB에서 확인한 일반 구간권 가격을 입력하면 선택한 패스의 할인과 포함 구간을 반영해 계산합니다.</p></div>
+            <span class="routeCount" id="selected_route_count">선택 노선 0개</span>
+          </div>
+
+          <div class="route-toolbar">
+            <input id="route_search" type="text" placeholder="노선 검색 · 예: 피르스트, 티틀리스, 고르너그라트" aria-label="노선 검색">
+            <div class="toolbar-side"><label class="toggleRow mini"><input type="checkbox" id="show_selected_only"> 선택 노선만</label><button class="btn" id="btn_open_all" type="button">모두 펼치기</button><button class="btn" id="btn_close_all" type="button">모두 접기</button></div>
+          </div>
+
+          <div class="callout simple-only">
+            <strong>루트만 선택하면 예상 가격 자동 비교</strong>
+            <p>내장된 1회 이용 기준요금과 패스 할인 규칙으로 개별권·하프페어·연속권·플렉스·융프라우 조합의 예상 총비용을 계산합니다. 가장 저렴한 조합을 99점으로 표시합니다.</p>
+            <div class="fare-basis">기준요금은 여행 계획용 예상치이며 세이버 티켓, 시간대, 운영사 변경에 따라 실제 금액과 다를 수 있어요.</div>
+            <div class="btnRow" style="margin-top:9px"><a class="btn" href="https://maps.trafimage.ch/ch.sbb.sts?baselayers=ch.sbb.sts.validity.data,ch.sbb.direktverbindungen.data&layers=ch.sbb.sts.validity.other,ch.sbb.sts.validity.routes_highlight,ch.sbb.sts.validity.gttos&lang=de&x=953392.38&y=5903613.91&z=8" target="_blank" rel="noopener">패스 유효범위 지도</a></div>
+          </div>
+          <div class="callout manual-only">
+            <strong>정확한 총액 계산 방법</strong>
+            <p>노선을 체크한 뒤 SBB 또는 운영사에서 확인한 성인·유스·아동·유아 일반요금을 입력하세요. 패스 포함 구간은 자동으로 잠깁니다.</p>
+            <div class="btnRow" style="margin-top:9px"><a class="btn" href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB 가격 확인</a><a class="btn" href="https://maps.trafimage.ch/ch.sbb.sts?baselayers=ch.sbb.sts.validity.data,ch.sbb.direktverbindungen.data&layers=ch.sbb.sts.validity.other,ch.sbb.sts.validity.routes_highlight,ch.sbb.sts.validity.gttos&lang=de&x=953392.38&y=5903613.91&z=8" target="_blank" rel="noopener">패스 유효범위 지도</a></div>
+          </div>
+
+          <div class="routes" id="routes"></div>
+
+          <details class="subCard manual-only" id="breakdown_details" open style="margin-top:15px">
+            <summary class="detailsSummary"><span class="k">직접 선택 조합 상세 내역</span><span class="chev">펼침·접기</span></summary>
+            <div id="breakdown" class="table small" style="margin-top:10px"></div>
+          </details>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-section" id="guide" aria-labelledby="guide-title">
+    <div class="section-heading"><div><p class="eyebrow">Before you book</p><h2 id="guide-title">계산 전 확인해주세요</h2><p>요금과 유효범위는 변경될 수 있으므로 이 결과는 여행 계획용으로 활용하고, 실제 구매 전 공식 운영사에서 최종 확인해주세요.</p></div></div>
+    <div class="guide-grid">
+      <details class="guide-card">
+        <summary>처음 사용하는 분을 위한 계산 순서</summary>
+        <ol class="small"><li>여행자 인원과 여행 날짜를 입력합니다.</li><li>일정을 못 정했다면 루트 추천에서 기간·인원·계절·스타일을 입력합니다.</li><li>추천 루트 1~3위와 추천 패스 가격을 비교합니다.</li><li>일정이 있다면 내 루트 비교에서 이용할 노선을 체크합니다.</li><li>정확한 실시간 가격은 직접 계산 모드에서 공식 구간요금을 입력합니다.</li></ol>
+        <div class="category-legend"><span class="pill">🚆 기차·버스</span><span class="pill">⛴️ 유람선</span><span class="pill">🚞 파노라마 열차</span><span class="pill">🏔️ 산악교통</span><span class="pill">🎟️ 추가 티켓</span></div>
+      </details>
+      <details class="guide-card">
+        <summary>융프라우 상품과 할인쿠폰 안내</summary>
+        <ul><li>VIP 패스 가격은 동신항운 할인쿠폰 소지자 기준으로 계산됩니다.</li><li>VIP 포함 노선은 계절과 실제 운행 기간에 따라 달라질 수 있습니다.</li><li>인터라켄 출발은 긴 코스, 그린델발트 터미널·라우터브루넨 출발은 짧은 코스로 구분합니다.</li></ul>
+        <div class="btnRow"><a class="btn" href="https://www.jungfrau.co.kr/coupon/couponlist.asp" target="_blank" rel="noopener">할인쿠폰 안내</a><a class="btn" href="https://www.jungfrau.co.kr/coupon/apply_2023_01.asp" target="_blank" rel="noopener">쿠폰 신청</a></div>
       </details>
     </div>
-  </div>
+  </section>
+</main>
 
-  <div class="card" style="margin-top:12px;">
-    <h2>Other</h2>
-    <div class="hr"></div>
-    <ul>
-      <li>This site was made because the developer got tired of re-checking Swiss fares for every trip. Feel free to use it for quick comparison.</li>
-      <li>Route coverage and discount rules may change depending on timing and operator conditions.</li>
-      <li>Because this is a solo project, there may still be bugs or missing cases. Please report anything suspicious by email.</li>
-      <li>If you find it useful, please share it with other Switzerland travelers.</li>
-    </ul>
-    <div style="margin-top:10px; font-size:12px; color:#777; line-height:1.6;">
-      <div><a href="https://wise.com/pay/me/jiwooj40" target="_blank" rel="noopener noreferrer"><b>Buy the developer a coffee ☕🖤</b></a></div>
-      <div><b>Reports & inquiries 👀</b> : jiuj0888@gmail.com</div>
-    </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><a class="brand" href="/"><span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check 로고" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check<small>독립적인 스위스 교통비 비교 도구</small></span></a><p>노선 유효범위, 요금, 할인 규칙과 티켓 조건은 변경될 수 있습니다. 실제 예약 전 반드시 SBB 및 각 공식 운영사 사이트에서 최종 내용을 확인해주세요.</p><div class="contact-line"><b>제보 및 문의</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>개발자에게 커피 사주기</b> · 토스 1000-3296-6395</div></div>
+    <nav class="footer-links" aria-label="하단 메뉴"><a href="/privacy">개인정보처리방침</a><a href="/faq">FAQ</a><a href="/terms">이용약관·면책고지</a><a href="/en/">English</a></nav>
   </div>
-  <footer class="card" style="margin-top:12px; font-size:12px; color:#6b7280; line-height:1.7;">
-    <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;">
-      <div style="display:flex; flex-wrap:wrap; gap:12px;">
-        <a href="/en/privacy">Privacy Policy</a>
-        <a href="/en/faq">FAQ</a>
-        <a href="/en/terms">Terms / Disclaimer</a>
-      </div>
-    </div>
-    <div style="margin-top:10px;">
-      Disclaimer: Swiss Fare Check is an independent comparison tool for travel planning purposes only. Route coverage, fares, discounts, and ticket rules may change. Always confirm final conditions and prices with official transport operators before booking.
-    </div>
-  </footer>
-</div>
+</footer>
 
 <script>
 (() => {
@@ -391,7 +681,14 @@
   const money = (n) => `CHF ${Number(n || 0).toFixed(2)}`;
   const SBB_HOME = "https://www.sbb.ch/en";
   const SBB_FP = "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml";
-  const STORAGE_KEY = "swiss_fare_check_en_final_v1";
+  const CATEGORY_META = {
+    public: { label: "기차·버스", icon: "🚆" },
+    boat: { label: "유람선", icon: "⛴️" },
+    scenic: { label: "파노라마 열차", icon: "🚞" },
+    mountain: { label: "산악교통", icon: "🏔️" },
+    special: { label: "추가 티켓", icon: "🎟️" },
+  };
+  let latestRecommendation = null;
 
   function localISODate() {
     const d = new Date();
@@ -411,7 +708,7 @@
     return mode === "auto" ? getSeason(d) : mode;
   }
   function seasonLabel(s) {
-    return s === "summer" ? "Summer (May–Oct)" : "Winter (Nov–Apr)";
+    return s === "summer" ? "여름(5~10월)" : "겨울(11~4월)";
   }
   function travelers() {
     return {
@@ -428,155 +725,608 @@
 
   const PASS = {
     stp: {
-      label: "Swiss Travel Pass (Continuous)",
+      label: "Swiss Travel Pass(연속)",
       options: [
-        { id: "stp_3", label: "3 days", adult2: 254, adult1: 405, youth2: 179, youth1: 285, child2: 127.00, child1: 202.50 },
-        { id: "stp_4", label: "4 days", adult2: 309, adult1: 492, youth2: 218, youth1: 346, child2: 154.50, child1: 246.00 },
-        { id: "stp_6", label: "6 days", adult2: 399, adult1: 634, youth2: 282, youth1: 447, child2: 199.50, child1: 317.00 },
-        { id: "stp_8", label: "8 days", adult2: 439, adult1: 697, youth2: 311, youth1: 492, child2: 219.50, child1: 348.50 },
-        { id: "stp_15", label: "15 days", adult2: 499, adult1: 787, youth2: 356, youth1: 557, child2: 249.50, child1: 393.50 },
+        { id: "stp_3", label: "3일", adult2: 254, adult1: 405, youth2: 179, youth1: 285, child2: 127.00, child1: 202.50 },
+        { id: "stp_4", label: "4일", adult2: 309, adult1: 492, youth2: 218, youth1: 346, child2: 154.50, child1: 246.00 },
+        { id: "stp_6", label: "6일", adult2: 399, adult1: 634, youth2: 282, youth1: 447, child2: 199.50, child1: 317.00 },
+        { id: "stp_8", label: "8일", adult2: 439, adult1: 697, youth2: 311, youth1: 492, child2: 219.50, child1: 348.50 },
+        { id: "stp_15", label: "15일", adult2: 499, adult1: 787, youth2: 356, youth1: 557, child2: 249.50, child1: 393.50 },
       ]
     },
     stpf: {
       label: "Swiss Travel Pass Flex",
       options: [
-        { id: "stpf_3", label: "3 days / 1 month", adult2: 289, adult1: 461, youth2: 204, youth1: 325, child2: 144.50, child1: 230.50 },
-        { id: "stpf_4", label: "4 days / 1 month", adult2: 349, adult1: 555, youth2: 246, youth1: 390, child2: 174.50, child1: 277.50 },
-        { id: "stpf_6", label: "6 days / 1 month", adult2: 424, adult1: 674, youth2: 300, youth1: 475, child2: 212.00, child1: 337.00 },
-        { id: "stpf_8", label: "8 days / 1 month", adult2: 459, adult1: 729, youth2: 325, youth1: 514, child2: 229.50, child1: 364.50 },
-        { id: "stpf_15", label: "15 days / 1 month", adult2: 519, adult1: 819, youth2: 370, youth1: 580, child2: 259.50, child1: 409.50 },
+        { id: "stpf_3", label: "3일/1개월", adult2: 289, adult1: 461, youth2: 204, youth1: 325, child2: 144.50, child1: 230.50 },
+        { id: "stpf_4", label: "4일/1개월", adult2: 349, adult1: 555, youth2: 246, youth1: 390, child2: 174.50, child1: 277.50 },
+        { id: "stpf_6", label: "6일/1개월", adult2: 424, adult1: 674, youth2: 300, youth1: 475, child2: 212.00, child1: 337.00 },
+        { id: "stpf_8", label: "8일/1개월", adult2: 459, adult1: 729, youth2: 325, youth1: 514, child2: 229.50, child1: 364.50 },
+        { id: "stpf_15", label: "15일/1개월", adult2: 519, adult1: 819, youth2: 370, youth1: 580, child2: 259.50, child1: 409.50 },
       ]
     },
     half: { label: "Swiss Half Fare Card", price16plus: 150 },
     jvip: {
       label: "Jungfrau VIP Pass",
       summer: [
-        { days: 3, adult_coupon: 210, adult_overlap: 165, child_6_15: 30 },
-        { days: 4, adult_coupon: 235, adult_overlap: 180, child_6_15: 30 },
-        { days: 5, adult_coupon: 270, adult_overlap: 210, child_6_15: 30 },
-        { days: 6, adult_coupon: 290, adult_overlap: 225, child_6_15: 30 },
-        { days: 7, adult_coupon: 310, adult_overlap: 240, child_6_15: 30 },
-        { days: 8, adult_coupon: 330, adult_overlap: 255, child_6_15: 30 },
+        { days: 1, adult_coupon: 195, adult_overlap: 185, youth: 175, child_6_15: 30 },
+        { days: 2, adult_coupon: 220, adult_overlap: 210, youth: 195, child_6_15: 30 },
+        { days: 3, adult_coupon: 245, adult_overlap: 225, youth: 210, child_6_15: 30 },
+        { days: 4, adult_coupon: 270, adult_overlap: 245, youth: 225, child_6_15: 30 },
+        { days: 5, adult_coupon: 295, adult_overlap: 270, youth: 240, child_6_15: 30 },
+        { days: 6, adult_coupon: 320, adult_overlap: 285, youth: 255, child_6_15: 30 },
       ],
       winter: [
-        { days: 3, adult_coupon: 210, adult_overlap: 165, child_6_15: 30 },
-        { days: 4, adult_coupon: 235, adult_overlap: 180, child_6_15: 30 },
-        { days: 5, adult_coupon: 270, adult_overlap: 210, child_6_15: 30 },
-        { days: 6, adult_coupon: 290, adult_overlap: 225, child_6_15: 30 },
-        { days: 7, adult_coupon: 310, adult_overlap: 240, child_6_15: 30 },
-        { days: 8, adult_coupon: 330, adult_overlap: 255, child_6_15: 30 },
+        { days: 1, adult_coupon: 190, adult_overlap: 175, youth: 170, child_6_15: 30 },
+        { days: 2, adult_coupon: 215, adult_overlap: 200, youth: 190, child_6_15: 30 },
+        { days: 3, adult_coupon: 240, adult_overlap: 215, youth: 205, child_6_15: 30 },
+        { days: 4, adult_coupon: 265, adult_overlap: 235, youth: 220, child_6_15: 30 },
+        { days: 5, adult_coupon: 290, adult_overlap: 260, youth: 235, child_6_15: 30 },
+        { days: 6, adult_coupon: 315, adult_overlap: 275, youth: 250, child_6_15: 30 },
       ]
     }
   };
 
+  const JJO_DISCOUNT = {
+    winter: { long: { adult: 160, overlap: 140, child: 20 }, short: { adult: 155, overlap: 140, child: 20 } },
+    summer: { long: { adult: 168, overlap: 155, child: 20 }, short: { adult: 163, overlap: 155, child: 20 } },
+  };
+
   const REGIONS = [
-    { id: "zurich", name: "Zurich & Northern Switzerland", routes: [
-      { id: "zrh_lucerne", label: "Zurich ↔ Lucerne", category: "public" },
-      { id: "zrh_interlaken", label: "Zurich ↔ Interlaken", category: "public" },
-      { id: "rhine_falls", label: "Zurich ↔ Rhine Falls (Neuhausen Rheinfall)", category: "public" },
-      { id: "stein_am_rhein", label: "Schaffhausen ↔ Stein am Rhein", category: "public" },
+    { id: "zurich", name: "취리히 & 북부(샤프하우젠 등)", routes: [
+      { id: "zrh_lucerne", label: "취리히 ↔ 루체른", category: "public" },
+      { id: "zrh_interlaken", label: "취리히 ↔ 인터라켄", category: "public" },
+      { id: "rhine_falls", label: "취리히 ↔ 라인폭포(Neuhausen Rheinfall)", category: "public" },
+      { id: "stein_am_rhein", label: "샤프하우젠 ↔ 슈타인암라인", category: "public" },
     ]},
-    { id: "basel", name: "Basel & Northwest", routes: [
-      { id: "zrh_basel", label: "Zurich ↔ Basel", category: "public" },
-      { id: "basel_bern", label: "Basel ↔ Bern", category: "public" },
-      { id: "basel_lucerne", label: "Basel ↔ Lucerne", category: "public" },
+    { id: "basel", name: "바젤 & 서북부", routes: [
+      { id: "zrh_basel", label: "취리히 ↔ 바젤", category: "public" },
+      { id: "basel_bern", label: "바젤 ↔ 베른", category: "public" },
+      { id: "basel_lucerne", label: "바젤 ↔ 루체른", category: "public" },
     ]},
-    { id: "bern", name: "Bern & Nearby", routes: [
-      { id: "bern_interlaken", label: "Bern ↔ Interlaken", category: "public" },
-      { id: "bern_thun", label: "Bern ↔ Thun", category: "public" },
-      { id: "bern_spiez", label: "Bern ↔ Spiez", category: "public" },
-      { id: "thun_lake_boat", label: "Lake Thun boat", category: "boat" },
+    { id: "bern", name: "베른 & 주변", routes: [
+      { id: "bern_interlaken", label: "베른 ↔ 인터라켄", category: "public" },
+      { id: "bern_thun", label: "베른 ↔ 툰", category: "public" },
+      { id: "bern_spiez", label: "베른 ↔ 슈피츠", category: "public" },
+      { id: "thun_lake_boat", label: "툰 호수 유람선", category: "boat" },
     ]},
-    { id: "lucerne", name: "Lucerne & Central Switzerland", routes: [
-      { id: "lake_lucerne_boat", label: "Lake Lucerne boat", category: "boat" },
-      { id: "rigi", label: "Rigi (Rigi Kulm)", category: "mountain", stpFree: true },
-      { id: "pilatus", label: "Pilatus (Pilatus Kulm)", category: "mountain" },
-      { id: "titlis", label: "Titlis", category: "mountain" },
-      { id: "stoos", label: "Stoos", category: "mountain", stpFree: true },
-      { id: "klewenalp", label: "Klewenalp", category: "mountain", stpFree: true },
-      { id: "brunni_engelberg", label: "Brunni (Engelberg)", category: "mountain", stpFree: true },
-      { id: "stanserhorn", label: "Stanserhorn", category: "mountain", stpFree: true },
+    { id: "lucerne", name: "루체른 & 중앙스위스", routes: [
+      { id: "lake_lucerne_boat", label: "루체른 호수 보트", category: "boat" },
+      { id: "rigi", label: "리기(Rigi Kulm)", category: "mountain", stpFree: true },
+      { id: "pilatus", label: "필라투스(Pilatus Kulm)", category: "mountain" },
+      { id: "titlis", label: "티틀리스(Titlis)", category: "mountain" },
+      { id: "stoos", label: "슈토스(Stoos)", category: "mountain", stpFree: true },
+      { id: "klewenalp", label: "클레베날프(Klewenalp)", category: "mountain", stpFree: true },
+      { id: "brunni_engelberg", label: "브루니(엥겔베르크)", category: "mountain", stpFree: true },
+      { id: "stanserhorn", label: "슈탄저호른(Stanserhorn)", category: "mountain", stpFree: true },
     ]},
-    { id: "interlaken", name: "Interlaken", routes: [
-      { id: "int_thun", label: "Interlaken ↔ Thun", category: "public" },
-      { id: "int_spiez", label: "Interlaken ↔ Spiez", category: "public" },
-      { id: "int_brienz", label: "Interlaken ↔ Brienz", category: "public" },
-      { id: "brienz_lake_boat", label: "Lake Brienz boat", category: "boat" },
-      { id: "harder_kulm", label: "Harder Kulm", category: "mountain" },
+    { id: "interlaken", name: "인터라켄", routes: [
+      { id: "int_thun", label: "인터라켄 ↔ 툰", category: "public" },
+      { id: "int_spiez", label: "인터라켄 ↔ 슈피츠", category: "public" },
+      { id: "int_brienz", label: "인터라켄 ↔ 브리엔츠", category: "public" },
+      { id: "brienz_lake_boat", label: "브리엔츠 호수 유람선", category: "boat" },
+      { id: "harder_kulm", label: "하더 쿨룸(Harder Kulm)", category: "mountain" },
     ]},
-    { id: "jungfrau", name: "Grindelwald / Lauterbrunnen / Jungfrau", routes: [
-      { id: "int_grindelwald", label: "Interlaken ↔ Grindelwald", category: "public" },
-      { id: "int_lauterbrunnen", label: "Interlaken ↔ Lauterbrunnen", category: "public" },
-      { id: "lauterbrunnen_wengen", label: "Lauterbrunnen ↔ Wengen", category: "public" },
-      { id: "wengen_kleine", label: "Wengen ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25 },
-      { id: "grindelwald_kleine", label: "Grindelwald ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25 },
-      { id: "grindelwald_terminal", label: "Grindelwald ↔ Grindelwald Terminal", category: "public" },
-      { id: "eiger_express", label: "Eiger Express", category: "mountain", stpDiscount: 0.25 },
-      { id: "eiger_kleine", label: "Eigergletscher ↔ Kleine Scheidegg", category: "public", stpDiscount: 0.25 },
-      { id: "eiger_jungfraujoch", label: "Eigergletscher ↔ Jungfraujoch", category: "mountain", stpDiscount: 0.25 },
-      { id: "mannlichen_wengen", label: "Wengen ↔ Männlichen", category: "mountain" },
-      { id: "mannlichen_grindelwald", label: "Grindelwald ↔ Männlichen", category: "mountain" },
-      { id: "grindelwald_first", label: "First (Grindelwald ↔ First)", category: "mountain" },
-      { id: "lauterbrunnen_murren", label: "Lauterbrunnen ↔ Mürren", category: "mountain", stpFree: true },
-      { id: "allmendhubel", label: "Allmendhubel", category: "mountain" },
-      { id: "schynige_platte", label: "Schynige Platte", category: "mountain" },
-      { id: "schilthorn", label: "Schilthorn", category: "mountain" },
+    { id: "jungfrau", name: "그린델발트 / 라우터브루넨 / 융프라우", routes: [
+      { id: "int_grindelwald", label: "인터라켄 ↔ 그린델발트", category: "public" },
+      { id: "int_lauterbrunnen", label: "인터라켄 ↔ 라우터브루넨", category: "public" },
+      { id: "lauterbrunnen_wengen", label: "라우터브루넨 ↔ 벵엔", category: "public" },
+      { id: "wengen_kleine", label: "벵엔 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25 },
+      { id: "grindelwald_kleine", label: "그린델발트 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25 },
+      { id: "grindelwald_terminal", label: "그린델발트 ↔ 그린델발트 터미널", category: "public" },
+      { id: "eiger_express", label: "아이거 익스프레스", category: "mountain", stpDiscount: 0.25 },
+      { id: "eiger_kleine", label: "아이거글레처 ↔ 클라이네 샤이덱", category: "public", stpDiscount: 0.25 },
+      { id: "eiger_jungfraujoch", label: "아이거글레처 ↔ 융프라우요흐", category: "mountain", stpDiscount: 0.25 },
+      { id: "mannlichen_wengen", label: "벵엔 ↔ 멘리헨", category: "mountain" },
+      { id: "mannlichen_grindelwald", label: "그린델발트 ↔ 멘리헨", category: "mountain" },
+      { id: "grindelwald_first", label: "피르스트(그린델발트 ↔ First)", category: "mountain" },
+      { id: "lauterbrunnen_murren", label: "라우터브루넨 ↔ 뮈렌", category: "mountain", stpFree: true },
+      { id: "allmendhubel", label: "알멘트후벨", category: "mountain" },
+      { id: "schynige_platte", label: "쉬니게 플라테", category: "mountain" },
+      { id: "schilthorn", label: "쉴트호른", category: "mountain" },
     ]},
-    { id: "zermatt", name: "Zermatt & Valais", routes: [
-      { id: "visp_zermatt", label: "Visp / Brig ↔ Zermatt", category: "public" },
-      { id: "gornergrat", label: "Gornergrat", category: "mountain" },
-      { id: "mggp", label: "Matterhorn Glacier Paradise", category: "mountain" },
-      { id: "sunnegga", label: "Sunnegga", category: "mountain" },
+    { id: "zermatt", name: "체르마트 & 발레", routes: [
+      { id: "visp_zermatt", label: "비스프 / 브리그 ↔ 체르마트", category: "public" },
+      { id: "gornergrat", label: "고르너그라트", category: "mountain" },
+      { id: "mggp", label: "마테호른 글레이셔 파라다이스", category: "mountain" },
+      { id: "sunnegga", label: "수네가", category: "mountain" },
     ]},
-    { id: "valais_more", name: "More Valais (Saas-Fee / Verbier)", routes: [
-      { id: "saas_fee", label: "Saas-Fee", category: "mountain" },
-      { id: "verbier", label: "Verbier (Le Châble ↔ Verbier)", category: "mountain", stpFree: true },
-      { id: "martigny_verbier", label: "Martigny ↔ Verbier access", category: "public" },
+    { id: "valais_more", name: "발레 추가(사스페 / 베르비에 등)", routes: [
+      { id: "saas_fee", label: "사스페(Saas-Fee)", category: "mountain" },
+      { id: "verbier", label: "베르비에(Le Châble ↔ Verbier)", category: "mountain", stpFree: true },
+      { id: "martigny_verbier", label: "마르티니 ↔ 베르비에 접근", category: "public" },
     ]},
-    { id: "geneva_lake", name: "Geneva / Lausanne / Montreux", routes: [
-      { id: "geneva_lausanne", label: "Geneva ↔ Lausanne", category: "public" },
-      { id: "lausanne_montreux", label: "Lausanne ↔ Montreux", category: "public" },
-      { id: "lake_geneva_boat", label: "Lake Geneva boat", category: "boat" },
-      { id: "rochers_de_naye", label: "Rochers-de-Naye", category: "mountain" },
-      { id: "lavaux", label: "Lavaux train section", category: "public" },
+    { id: "geneva_lake", name: "제네바 / 로잔 / 몽트뢰", routes: [
+      { id: "geneva_lausanne", label: "제네바 ↔ 로잔", category: "public" },
+      { id: "lausanne_montreux", label: "로잔 ↔ 몽트뢰", category: "public" },
+      { id: "lake_geneva_boat", label: "레만호 보트", category: "boat" },
+      { id: "rochers_de_naye", label: "로쉐드네", category: "mountain" },
+      { id: "lavaux", label: "라보 구간 열차", category: "public" },
     ]},
-    { id: "ticino", name: "Ticino", routes: [
-      { id: "lugano_locarno", label: "Lugano ↔ Locarno", category: "public" },
-      { id: "bellinzona_lugano", label: "Bellinzona ↔ Lugano", category: "public" },
-      { id: "centovalli", label: "Centovalli Railway", category: "scenic" },
-      { id: "monte_bre", label: "Monte Brè", category: "mountain" },
-      { id: "monte_tamaro", label: "Monte Tamaro", category: "mountain" },
+    { id: "ticino", name: "티치노", routes: [
+      { id: "lugano_locarno", label: "루가노 ↔ 로카르노", category: "public" },
+      { id: "bellinzona_lugano", label: "벨린초나 ↔ 루가노", category: "public" },
+      { id: "centovalli", label: "첸토발리 철도", category: "scenic" },
+      { id: "monte_bre", label: "몬테 브레", category: "mountain" },
+      { id: "monte_tamaro", label: "몬테 타마로", category: "mountain" },
     ]},
-    { id: "graubuenden", name: "Graubünden", routes: [
-      { id: "albula", label: "Albula Line", category: "scenic" },
-      { id: "bernina_express", label: "Bernina Line", category: "scenic" },
-      { id: "diavolezza", label: "Diavolezza", category: "mountain", stpNoDiscount: true },
-      { id: "muottas_muragl", label: "Muottas Muragl", category: "mountain", stpNoDiscount: true },
+    { id: "graubuenden", name: "그라우뷘덴", routes: [
+      { id: "albula", label: "알불라 라인", category: "scenic" },
+      { id: "bernina_express", label: "베르니나 라인", category: "scenic" },
+      { id: "diavolezza", label: "디아볼레차", category: "mountain", stpNoDiscount: true },
+      { id: "muottas_muragl", label: "무오타스 무라글", category: "mountain", stpNoDiscount: true },
     ]},
-    { id: "davos_arosa", name: "Davos / Arosa / Flims-Laax", routes: [
-      { id: "davos_access", label: "Davos access / local transport", category: "public" },
-      { id: "arosa_line", label: "Arosa Line (Chur ↔ Arosa)", category: "scenic" },
-      { id: "flims_laax", label: "Flims / Laax", category: "mountain" },
-      { id: "flims_falera", label: "Falera", category: "mountain", stpNoDiscount: true },
+    { id: "davos_arosa", name: "다보스 / 아로사 / 플림스-락스", routes: [
+      { id: "davos_access", label: "다보스 접근 / 이동", category: "public" },
+      { id: "arosa_line", label: "아로사 라인(쿠어 ↔ 아로사)", category: "scenic" },
+      { id: "flims_laax", label: "플림스 / 락스", category: "mountain" },
+      { id: "flims_falera", label: "팔레라", category: "mountain", stpNoDiscount: true },
     ]},
-    { id: "andermatt_gotthard", name: "Andermatt / Gotthard / Panoramic Trains", routes: [
-      { id: "gotthard_base", label: "Gotthard Base Tunnel", category: "public" },
-      { id: "lucerne_interlaken_express", label: "Lucerne–Interlaken Express", category: "scenic" },
-      { id: "glacier_express", label: "Glacier Express sector", category: "scenic" },
-      { id: "seat_reservation", label: "Panoramic train seat reservation", category: "special" },
+    { id: "andermatt_gotthard", name: "안데르마트 / 고트하르트 / 파노라마 열차", routes: [
+      { id: "gotthard_base", label: "고트하르트 베이스 터널", category: "public" },
+      { id: "lucerne_interlaken_express", label: "루체른-인터라켄 익스프레스", category: "scenic" },
+      { id: "glacier_express", label: "글레이셔 익스프레스 구간", category: "scenic" },
+      { id: "seat_reservation", label: "파노라마 열차 좌석 예약비", category: "special" },
     ]},
-    { id: "eastern", name: "Eastern Switzerland (St. Gallen / Appenzell / Säntis)", routes: [
-      { id: "stgallen", label: "St. Gallen ↔ major stations", category: "public" },
-      { id: "appenzell", label: "Appenzell ↔ major stations", category: "public" },
-      { id: "saentis", label: "Säntis", category: "mountain" },
-      { id: "liechtenstein", label: "Liechtenstein access (Sargans ↔ Vaduz)", category: "public" },
+    { id: "eastern", name: "동부(장크트갈렌 / 아펜첼 / 젠티스)", routes: [
+      { id: "stgallen", label: "장크트갈렌 ↔ 주요역", category: "public" },
+      { id: "appenzell", label: "아펜첼 ↔ 주요역", category: "public" },
+      { id: "saentis", label: "젠티스(Säntis)", category: "mountain" },
+      { id: "liechtenstein", label: "리히텐슈타인 접근(사르간스 ↔ 파두츠)", category: "public" },
     ]},
-    { id: "jura", name: "Jura / Neuchâtel", routes: [
-      { id: "neuchatel", label: "Neuchâtel ↔ major stations", category: "public" },
-      { id: "lac_neuchatel_boat", label: "Lake Neuchâtel boat", category: "boat" },
-      { id: "la_chaux", label: "La Chaux-de-Fonds ↔ major stations", category: "public" },
+    { id: "jura", name: "쥐라 / 뇌샤텔", routes: [
+      { id: "neuchatel", label: "뇌샤텔 ↔ 주요역", category: "public" },
+      { id: "lac_neuchatel_boat", label: "뇌샤텔 호수 보트", category: "boat" },
+      { id: "la_chaux", label: "라쇼드퐁 ↔ 주요역", category: "public" },
     ]},
   ];
+
+
+  // 자동 비교용 1회 이용 기준요금(CHF). 정확한 결제가는 날짜·시간·세이버 티켓·운영사에 따라 달라질 수 있습니다.
+  const REFERENCE_FARE_DEFAULTS = { public: 32, boat: 44, scenic: 72, mountain: 82, special: 48 };
+  const REFERENCE_FARES = {
+    zrh_lucerne: 28, zrh_interlaken: 76, rhine_falls: 52, stein_am_rhein: 24,
+    zrh_basel: 38, basel_bern: 42, basel_lucerne: 36, lucerne_bern: 29, bern_interlaken: 32,
+    bern_thun: 18, bern_spiez: 27, thun_lake_boat: 45, lake_lucerne_boat: 50,
+    rigi: 78, pilatus: 82, titlis: 104, stoos: 46, klewenalp: 54, brunni_engelberg: 48, stanserhorn: 78,
+    int_thun: 16, int_spiez: 13, int_brienz: 12, brienz_lake_boat: 42, harder_kulm: 38,
+    int_grindelwald: 12, int_lauterbrunnen: 9, lauterbrunnen_wengen: 7, wengen_kleine: 68,
+    grindelwald_kleine: 68, grindelwald_terminal: 5, eiger_express: 64, eiger_kleine: 22,
+    eiger_jungfraujoch: { summer: 150, winter: 142 }, mannlichen_wengen: 58, mannlichen_grindelwald: 64,
+    grindelwald_first: 72, lauterbrunnen_murren: 45, allmendhubel: 30, schynige_platte: 78, schilthorn: 108,
+    visp_zermatt: 39, gornergrat: 126, mggp: 99, sunnegga: 28,
+    geneva_lausanne: 24, lausanne_montreux: 17, lake_geneva_boat: 45, rochers_de_naye: 78, lavaux: 16,
+    lugano_locarno: 18, bellinzona_lugano: 13, centovalli: 56, monte_bre: 34, monte_tamaro: 52,
+    albula: 72, bernina_express: 96, diavolezza: 52, muottas_muragl: 44,
+    davos_access: 48, arosa_line: 34, flims_laax: 55, flims_falera: 35,
+    gotthard_base: 52, lucerne_interlaken_express: 36, glacier_express: 168, seat_reservation: 49,
+    stgallen: 38, appenzell: 28, saentis: 58, liechtenstein: 22, neuchatel: 36, lac_neuchatel_boat: 38, la_chaux: 21,
+    interlaken_zermatt: 78, zermatt_zurich: 126, interlaken_montreux: 58, montreux_zermatt: 72, montreux_geneva: 32,
+    zurich_stmoritz: 92, stmoritz_zurich: 92,
+    geneva_lucerne: 92, basel_interlaken: 62, interlaken_geneva: 74,
+    bern_zurich: 52, bern_basel: 41, bern_geneva: 58,
+    zermatt_geneva: 102, zermatt_basel: 118,
+    montreux_zurich: 81, montreux_basel: 71,
+    stmoritz_geneva: 148, stmoritz_basel: 132
+  };
+
+  const EXTRA_ROUTES = [
+    { regionId: "bern", route: { id: "lucerne_bern", label: "루체른 ↔ 베른", category: "public" } },
+    { regionId: "zermatt", route: { id: "interlaken_zermatt", label: "인터라켄 ↔ 체르마트", category: "public" } },
+    { regionId: "zermatt", route: { id: "zermatt_zurich", label: "체르마트 ↔ 취리히", category: "public" } },
+    { regionId: "zermatt", route: { id: "montreux_zermatt", label: "몽트뢰 ↔ 체르마트", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "interlaken_montreux", label: "인터라켄 ↔ 몽트뢰", category: "scenic" } },
+    { regionId: "geneva_lake", route: { id: "montreux_geneva", label: "몽트뢰 ↔ 제네바", category: "public" } },
+    { regionId: "graubuenden", route: { id: "zurich_stmoritz", label: "취리히 ↔ 생모리츠", category: "public" } },
+    { regionId: "graubuenden", route: { id: "stmoritz_zurich", label: "생모리츠 ↔ 취리히", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "geneva_lucerne", label: "제네바 ↔ 루체른", category: "public" } },
+    { regionId: "basel", route: { id: "basel_interlaken", label: "바젤 ↔ 인터라켄", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "interlaken_geneva", label: "인터라켄 ↔ 제네바", category: "public" } },
+    { regionId: "bern", route: { id: "bern_zurich", label: "베른 ↔ 취리히", category: "public" } },
+    { regionId: "bern", route: { id: "bern_basel", label: "베른 ↔ 바젤", category: "public" } },
+    { regionId: "bern", route: { id: "bern_geneva", label: "베른 ↔ 제네바", category: "public" } },
+    { regionId: "zermatt", route: { id: "zermatt_geneva", label: "체르마트 ↔ 제네바", category: "public" } },
+    { regionId: "zermatt", route: { id: "zermatt_basel", label: "체르마트 ↔ 바젤", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "montreux_zurich", label: "몽트뢰 ↔ 취리히", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "montreux_basel", label: "몽트뢰 ↔ 바젤", category: "public" } },
+    { regionId: "graubuenden", route: { id: "stmoritz_geneva", label: "생모리츠 ↔ 제네바", category: "public" } },
+    { regionId: "graubuenden", route: { id: "stmoritz_basel", label: "생모리츠 ↔ 바젤", category: "public" } }
+  ];
+  for (const item of EXTRA_ROUTES) {
+    const region = REGIONS.find((r) => r.id === item.regionId);
+    if (region && !region.routes.some((r) => r.id === item.route.id)) region.routes.push(item.route);
+  }
+
+  const PLACE_INFO = {
+    zurich: {
+      name: "취리히",
+      keywords: ["취리히"],
+      intro: "스위스 최대 도시이자 가장 대표적인 입출국 관문이에요. 공항과 중앙역의 연결이 좋아 여행 첫날이나 마지막 날에 넣기 편하고, 짧은 시간에도 리마트강을 따라 이어지는 구시가지와 취리히호 풍경을 함께 볼 수 있어요.",
+      highlights: ["리마트강 구시가지", "린덴호프 전망", "취리히호 산책"],
+      stay: "반나절~1일",
+      goodFor: "입출국 전후 일정, 도시 산책, 쇼핑",
+      tip: "대표 알프스 지역을 우선하고 싶다면 숙박을 길게 잡기보다 도착·출국일에 짧게 둘러보는 편이 효율적이에요."
+    },
+    lucerne: {
+      name: "루체른",
+      keywords: ["루체른"],
+      intro: "중세 분위기의 구시가지와 잔잔한 호수, 주변 산악 풍경이 한곳에 모인 중앙스위스의 대표 도시예요. 카펠교와 호숫가만 둘러봐도 스위스다운 분위기를 느낄 수 있고, 리기·필라투스·슈탄저호른으로 이동하기 좋은 거점이기도 해요.",
+      highlights: ["카펠교", "구시가지 벽화", "루체른호", "빈사의 사자상"],
+      stay: "1~2일",
+      goodFor: "첫 스위스 여행, 부모님 동반, 도시＋자연",
+      tip: "산악 일정은 날씨 영향을 많이 받으므로 맑은 날을 리기나 필라투스에 배정하고, 흐린 날은 구시가지와 박물관 중심으로 조정하면 좋아요."
+    },
+    lucerneLake: {
+      name: "루체른호",
+      keywords: ["루체른 호수", "루체른호", "호수 여행"],
+      intro: "산과 도시 사이를 깊게 파고든 호수로, 배 위에서 루체른 시내와 중앙스위스의 산악 풍경을 한눈에 볼 수 있어요. 열차만 이용할 때보다 이동 자체가 여행이 되고, 리기산 코스와 유람선을 조합하면 패스 활용도도 높아져요.",
+      highlights: ["호수 유람선", "비츠나우", "베기스", "리기 연계"],
+      stay: "2~5시간",
+      goodFor: "여유로운 이동, 부모님 동반, 패스 활용",
+      tip: "하루 종일 배만 타기보다는 루체른–비츠나우–리기처럼 산악 코스와 연결하면 일정이 더 풍성해져요."
+    },
+    interlaken: {
+      name: "인터라켄",
+      keywords: ["인터라켄"],
+      intro: "툰호와 브리엔츠호 사이에 자리한 융프라우 지역의 교통 중심지예요. 도시 자체의 볼거리보다 그린델발트·라우터브루넨·융프라우요흐·브리엔츠 등 여러 방향으로 이동하기 편하다는 점이 가장 큰 장점이에요.",
+      highlights: ["회헤마테 공원", "하더쿨룸", "툰호·브리엔츠호", "융프라우 지역 환승"],
+      stay: "2~4일 거점 숙박",
+      goodFor: "여러 산악마을 당일치기, 교통 편의, 짐 이동 최소화",
+      tip: "알프스 마을 감성을 중시한다면 그린델발트나 라우터브루넨에 숙박하고, 이동 편의와 다양한 당일치기를 중시한다면 인터라켄 숙박이 좋아요."
+    },
+    grindelwald: {
+      name: "그린델발트",
+      keywords: ["그린델발트"],
+      intro: "아이거 북벽 아래에 펼쳐진 초원과 목조 샬레가 인상적인 대표 알프스 마을이에요. 마을 풍경만으로도 만족도가 높고, 피르스트·클라이네 샤이덱·융프라우요흐로 이어지는 산악교통의 출발점이라 처음 가는 여행자에게 특히 인기가 많아요.",
+      highlights: ["아이거 북벽", "피르스트", "바흐알프제", "아이거 익스프레스"],
+      stay: "1~3일",
+      goodFor: "알프스 풍경, 하이킹, 사진, 첫 방문",
+      tip: "피르스트와 융프라우요흐를 같은 날 모두 넣으면 이동이 빠듯해요. 날씨와 체력을 보고 하루에 한 개의 큰 산악 일정을 고르는 편이 좋아요."
+    },
+    first: {
+      name: "피르스트",
+      keywords: ["피르스트", "First"],
+      intro: "그린델발트에서 곤돌라로 오르는 전망 지역으로, 아이거와 베터호른을 바라보는 탁 트인 풍경이 매력이에요. 절벽 전망대와 바흐알프제 하이킹이 대표적이며, 활동적인 여행을 원하는 사람에게 잘 맞아요.",
+      highlights: ["퍼스트 클리프 워크", "바흐알프제", "곤돌라 전망", "액티비티"],
+      stay: "반나절~하루",
+      goodFor: "하이킹, 액티비티, 사진",
+      tip: "바흐알프제까지 걷는 일정은 왕복 시간을 넉넉하게 잡고, 강풍이나 비 예보가 있으면 고산 일정을 무리하지 않는 편이 좋아요."
+    },
+    lauterbrunnen: {
+      name: "라우터브루넨",
+      keywords: ["라우터브루넨"],
+      intro: "높은 절벽 사이로 폭포가 떨어지는 U자형 계곡 마을이에요. 마을 자체는 아담하지만 슈타우바흐 폭포와 초원 풍경이 매우 인상적이고, 벵엔·뮈렌·쉴트호른으로 이동하는 관문 역할도 해요.",
+      highlights: ["슈타우바흐 폭포", "계곡 산책", "뮈렌·벵엔 연계", "목가적인 마을"],
+      stay: "반나절~1일",
+      goodFor: "폭포와 계곡 풍경, 조용한 마을, 가족 여행",
+      tip: "그린델발트와 분위기가 달라 같은 날 빠르게 훑기보다 각각 반나절 이상 배정하면 두 마을의 차이가 더 잘 느껴져요."
+    },
+    jungfrauRegion: {
+      name: "융프라우 지역",
+      keywords: ["융프라우 지역"],
+      intro: "인터라켄을 중심으로 그린델발트·라우터브루넨·벵엔·뮈렌과 여러 산악 전망지가 연결된 스위스 대표 알프스 권역이에요. 한 지역 안에서도 계곡, 빙하, 초원, 고산 전망을 모두 경험할 수 있어 일정의 중심으로 잡기 좋아요.",
+      highlights: ["그린델발트", "라우터브루넨", "벵엔", "뮈렌", "융프라우요흐"],
+      stay: "최소 2일, 권장 3~4일",
+      goodFor: "첫 스위스 여행, 자연 중심 일정, 장기 체류",
+      tip: "날씨가 바뀌기 쉬우므로 고산 일정과 마을 산책 일정을 섞어 두고, 당일 아침 웹캠과 운행 상황을 확인해 순서를 바꾸는 방식이 좋아요."
+    },
+    jungfraujoch: {
+      name: "융프라우요흐",
+      keywords: ["융프라우요흐"],
+      intro: "알레치 빙하와 고산 설원을 가까이에서 볼 수 있는 스위스의 대표 산악 관광지예요. 이동 자체가 긴 편이고 고도가 높아 비용과 체력 부담이 있지만, 맑은 날에는 다른 지역에서 보기 어려운 압도적인 빙하 풍경을 만날 수 있어요.",
+      highlights: ["알레치 빙하", "스핑크스 전망대", "얼음궁전", "고산 열차"],
+      stay: "이동 포함 반나절~하루",
+      goodFor: "첫 방문, 빙하 풍경, 특별한 산악 경험",
+      tip: "가격이 높은 일정인 만큼 구름이 적은 날을 고르는 것이 중요하고, 고산 증상에 민감하다면 천천히 움직이며 무리한 활동을 피해야 해요."
+    },
+    brienzLake: {
+      name: "브리엔츠호",
+      keywords: ["브리엔츠호", "브리엔츠 호수"],
+      intro: "밝은 청록빛으로 유명한 인터라켄 동쪽의 호수예요. 유람선에서 절벽과 작은 마을을 감상할 수 있고, 브리엔츠 마을이나 기스바흐 폭포와 연결하면 조용하고 여유로운 하루가 완성돼요.",
+      highlights: ["청록빛 호수", "브리엔츠 마을", "기스바흐 폭포", "유람선"],
+      stay: "반나절~하루",
+      goodFor: "느긋한 일정, 유람선, 부모님 동반",
+      tip: "고산 전망이 흐린 날의 대체 일정으로도 좋지만, 계절에 따라 유람선 운항 편수가 달라질 수 있어 시간표 확인이 필요해요."
+    },
+    bern: {
+      name: "베른",
+      keywords: ["베른"],
+      intro: "아레강이 감싸는 언덕 위에 중세 구시가지가 잘 보존된 스위스의 수도예요. 긴 아케이드와 분수, 시계탑을 따라 걷는 재미가 있고, 산악 일정 사이에 분위기를 바꾸고 싶을 때 넣기 좋은 도시예요.",
+      highlights: ["치트글로게 시계탑", "아케이드 구시가지", "장미공원", "아레강 전망"],
+      stay: "반나절~1일",
+      goodFor: "도시 산책, 역사, 비 오는 날 일정",
+      tip: "주요 명소가 구시가지에 모여 있어 짐을 맡기고 반나절 경유 일정으로 넣어도 충분히 즐길 수 있어요."
+    },
+    zermatt: {
+      name: "체르마트",
+      keywords: ["체르마트"],
+      intro: "마터호른 기슭에 자리한 자동차 없는 산악마을이에요. 마을 골목에서도 마터호른을 볼 수 있고, 고르너그라트·수네가·마테호른 글레이셔 파라다이스처럼 서로 다른 전망 포인트를 선택할 수 있어요.",
+      highlights: ["마터호른", "전기차 마을", "고르너그라트", "수네가"],
+      stay: "1~3일",
+      goodFor: "마터호른, 산악열차, 로맨틱한 마을",
+      tip: "마터호른은 구름에 가려질 수 있으므로 가능하면 2박 이상 머물며 아침과 저녁에 여러 번 전망을 확인하는 편이 만족도가 높아요."
+    },
+    gornergrat: {
+      name: "고르너그라트",
+      keywords: ["고르너그라트"],
+      intro: "체르마트에서 톱니바퀴 열차를 타고 오르는 대표 전망대예요. 마터호른뿐 아니라 몬테로사 산군과 빙하가 넓게 펼쳐져, 비교적 편하게 고산 파노라마를 감상할 수 있어요.",
+      highlights: ["마터호른 정면 전망", "고르너 빙하", "산악열차", "리펠제 연계"],
+      stay: "3~6시간",
+      goodFor: "부모님 동반, 편한 산악 전망, 사진",
+      tip: "정상만 보고 내려오기보다 계절과 체력이 허락하면 중간역에서 내려 짧게 걷는 코스를 넣으면 풍경을 더 다양하게 즐길 수 있어요."
+    },
+    montreux: {
+      name: "몽트뢰",
+      keywords: ["몽트뢰"],
+      intro: "레만호 동쪽에 자리한 온화한 분위기의 호반 휴양도시예요. 야자수가 늘어선 산책로와 포도밭, 시옹성이 어우러져 알프스 지역과는 전혀 다른 스위스의 모습을 보여줘요.",
+      highlights: ["레만호 산책로", "시옹성", "라보 포도밭", "호반 풍경"],
+      stay: "1~2일",
+      goodFor: "호수 풍경, 여유로운 일정, 서부 스위스",
+      tip: "인터라켄에서 몽트뢰로 이동하는 날은 단순 이동으로 보지 말고 파노라마 구간 자체를 일정의 핵심으로 잡으면 좋아요."
+    },
+    lakeGeneva: {
+      name: "레만호",
+      keywords: ["레만호"],
+      intro: "몽트뢰·로잔·제네바를 연결하는 거대한 호수예요. 지역마다 분위기가 달라 몽트뢰에서는 산과 성, 로잔에서는 언덕 도시, 제네바에서는 국제도시 풍경을 함께 경험할 수 있어요.",
+      highlights: ["몽트뢰 호반", "라보 포도밭", "로잔", "제네바"],
+      stay: "1~3일 권역 여행",
+      goodFor: "호수 도시, 와인 풍경, 느긋한 이동",
+      tip: "한 도시만 빠르게 보는 것보다 열차와 유람선을 섞어 호숫가 도시를 연결하면 패스 활용과 여행 만족도가 함께 올라가요."
+    },
+    chillon: {
+      name: "시옹성",
+      keywords: ["시옹성"],
+      intro: "레만호 물가에 바로 붙어 있는 중세 성으로, 몽트뢰를 대표하는 명소예요. 성 내부 관람뿐 아니라 호수와 산을 배경으로 한 외관 풍경이 아름다워 몽트뢰 일정에 자연스럽게 넣기 좋아요.",
+      highlights: ["호숫가 중세 성", "성 내부 관람", "몽트뢰 산책로 연계"],
+      stay: "1.5~3시간",
+      goodFor: "역사, 사진, 가족 여행",
+      tip: "몽트뢰 중심에서 호숫가를 따라 이동하거나 대중교통과 연결할 수 있어 반나절 일정으로 묶기 편해요."
+    },
+    geneva: {
+      name: "제네바",
+      keywords: ["제네바"],
+      intro: "레만호 서쪽의 국제도시이자 프랑스 방면과 연결되는 주요 출입국 거점이에요. 알프스 마을과는 다른 세련된 분위기를 지니며, 제트분수·구시가지·국제기구 지역을 중심으로 둘러볼 수 있어요.",
+      highlights: ["제트분수", "구시가지", "영국공원", "국제기구 지구"],
+      stay: "반나절~1일",
+      goodFor: "제네바공항 출국, 국제도시, 서부 일정",
+      tip: "대표 자연지역을 우선한다면 출국 전날이나 당일에 짧게 넣고, 박물관과 국제기구에 관심이 있다면 하루를 배정하는 편이 좋아요."
+    },
+    stmoritz: {
+      name: "생모리츠",
+      keywords: ["생모리츠"],
+      intro: "엥가딘 계곡의 호수와 고산 풍경을 품은 산악 휴양지예요. 빙하특급과 베르니나 노선의 동쪽 거점으로, 장거리 파노라마 열차 여행을 완성하고 싶은 사람에게 잘 맞아요.",
+      highlights: ["생모리츠호", "엥가딘 계곡", "베르니나 노선", "빙하특급 연계"],
+      stay: "1~3일",
+      goodFor: "파노라마 열차, 겨울 풍경, 장거리 여행",
+      tip: "서부 지역과 함께 넣으면 이동 시간이 길어지므로 7~8일 이상의 일정에서 선택하는 편이 현실적이에요."
+    },
+    glacierExpress: {
+      name: "빙하특급",
+      keywords: ["빙하특급"],
+      intro: "체르마트와 생모리츠를 연결하며 계곡·협곡·고개를 천천히 통과하는 대표 파노라마 열차예요. 빠른 이동수단이라기보다 하루 동안 창밖 풍경을 감상하는 여행 콘텐츠에 가까워요.",
+      highlights: ["란트바서 고가교", "라인 협곡", "오버알프 고개", "파노라마 객차"],
+      stay: "거의 하루",
+      goodFor: "열차 여행, 풍경 감상, 패스 장거리 활용",
+      tip: "패스가 있어도 좌석 예약비가 별도로 발생할 수 있고 하루 이동시간이 길어, 일정 강도와 다음 날 체력을 함께 고려해야 해요."
+    },
+    basel: {
+      name: "바젤",
+      keywords: ["바젤"],
+      intro: "프랑스·독일 국경과 맞닿은 라인강변의 문화도시예요. 미술관과 현대 건축이 풍부하고, 바젤 공항이나 유럽 다른 도시에서 육로로 들어오는 여행자에게 편리한 출발점이에요.",
+      highlights: ["라인강", "바젤 대성당", "미술관", "구시가지"],
+      stay: "반나절~1일",
+      goodFor: "미술관, 유럽 육로 이동, 도시 여행",
+      tip: "자연 중심 첫 여행에서는 경유지로 활용하고, 예술과 건축을 좋아한다면 별도 하루를 배정할 가치가 있어요."
+    },
+    rigi: {
+      name: "리기",
+      keywords: ["리기"],
+      intro: "루체른호 주변의 산과 호수를 함께 바라볼 수 있어 ‘산들의 여왕’이라 불리는 중앙스위스의 대표 전망지예요. 유람선과 산악열차를 연결하기 쉬워 이동 과정이 다채롭고, 비교적 편안한 산악 일정으로 구성할 수 있어요.",
+      highlights: ["리기쿨름 전망", "유람선 연계", "산악열차", "가벼운 산책"],
+      stay: "반나절~하루",
+      goodFor: "부모님 동반, 패스 활용, 편안한 산악 일정",
+      tip: "루체른에서 배를 타고 비츠나우로 이동한 뒤 산악열차를 이용하면 같은 길을 단순 왕복하는 것보다 여행 자체가 더 재미있어요."
+    },
+    pilatus: {
+      name: "필라투스",
+      keywords: ["필라투스"],
+      intro: "루체른 가까이에서 가파른 암봉과 호수 풍경을 감상할 수 있는 대표 산악 명소예요. 곤돌라와 산악열차를 연결한 순환 코스가 유명해, 짧은 일정에도 강렬한 고산 분위기를 느끼기 좋아요.",
+      highlights: ["필라투스 정상", "가파른 산악열차", "곤돌라", "루체른호 전망"],
+      stay: "반나절~하루",
+      goodFor: "강렬한 산악 풍경, 짧은 일정, 액티브 여행",
+      tip: "리기보다 이동과 풍경의 인상이 강한 대신 날씨 영향을 더 크게 받을 수 있어 맑은 날 우선 배정이 좋아요."
+    }
+  };
+
+  const ROUTE_PRESETS = [
+    {
+      id:"classic-5", days:5, title:"첫 스위스 핵심 4박 5일", theme:"대표 명소 균형", start:["zurich","basel"], end:["zurich","basel"],
+      iconic:91, efficiency:91, passUse:86, intensity:"보통", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 그린델발트·라우터브루넨 → 취리히",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","int_grindelwald","int_lauterbrunnen","zrh_interlaken"],
+      tags:["첫 방문","루체른","융프라우 지역"], summary:"짧은 일정에 루체른과 융프라우 지역을 모두 담은 가장 무난한 첫 여행 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "도착 후 카펠교와 호숫가를 가볍게 둘러봐요."],
+        ["Day 2","루체른", "여름에는 리기·필라투스, 겨울에는 리기 또는 시내 중심으로 선택해요."],
+        ["Day 3","루체른 → 인터라켄", "루체른–인터라켄 익스프레스와 호수 풍경을 즐겨요."],
+        ["Day 4","그린델발트·라우터브루넨", "계절과 날씨에 따라 피르스트 또는 융프라우요흐를 선택해요."],
+        ["Day 5","인터라켄 → 취리히", "귀국 시간에 맞춰 취리히로 이동해요."]
+      ]
+    },
+    {
+      id:"budget-5", days:5, title:"이동비 절약형 4박 5일", theme:"최저가 우선", start:["zurich","basel"], end:["zurich","basel"],
+      iconic:79, efficiency:96, passUse:72, intensity:"여유", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 베른 → 인터라켄 → 취리히",
+      routeIds:["zrh_lucerne","lucerne_bern","bern_interlaken","int_grindelwald","zrh_interlaken"],
+      tags:["비용 절감","숙소 이동 적음","도시＋자연"], summary:"장거리 산악노선을 줄이고 루체른·베른·인터라켄에 집중해 교통비와 이동 피로를 낮춘 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 구시가지와 호수를 둘러봐요."],
+        ["Day 2","루체른", "시내 또는 리기 중 하나를 선택해요."],
+        ["Day 3","루체른 → 베른", "베른 구시가지와 장미공원을 둘러봐요."],
+        ["Day 4","베른 → 인터라켄", "인터라켄과 가까운 그린델발트를 당일로 다녀와요."],
+        ["Day 5","인터라켄 → 취리히", "취리히로 이동해 귀국해요."]
+      ]
+    },
+    {
+      id:"pass-5", days:5, title:"호수와 열차를 알차게 4박 5일", theme:"패스 활용도", start:["zurich"], end:["zurich"],
+      iconic:84, efficiency:84, passUse:98, intensity:"조금 바쁨", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 호수 → 인터라켄 → 브리엔츠호 → 라우터브루넨 → 취리히",
+      routeIds:["zrh_lucerne","lake_lucerne_boat","lucerne_interlaken_express","brienz_lake_boat","int_lauterbrunnen","zrh_interlaken"],
+      tags:["유람선","파노라마 열차","연속권 활용"], summary:"패스 포함 가능성이 높은 일반열차·파노라마 구간·유람선을 집중적으로 묶은 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "카펠교와 구시가지를 둘러봐요."],
+        ["Day 2","루체른 호수", "유람선과 리기 지역을 조합해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차로 이동해요."],
+        ["Day 4","브리엔츠호·라우터브루넨", "호수와 계곡 마을을 함께 즐겨요."],
+        ["Day 5","인터라켄 → 취리히", "장거리 열차 구간까지 패스를 활용해요."]
+      ]
+    },
+    {
+      id:"classic-6", days:6, title:"알프스 대표 코스 5박 6일", theme:"대표 명소 균형", start:["zurich","basel"], end:["zurich"],
+      iconic:99, efficiency:84, passUse:91, intensity:"조금 바쁨", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 융프라우 지역 → 체르마트 → 취리히",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","int_grindelwald","int_lauterbrunnen","interlaken_zermatt","gornergrat","zermatt_zurich"],
+      tags:["첫 방문","융프라우","마터호른"], summary:"루체른·융프라우 지역·마터호른을 한 번에 담아 대표성이 가장 높은 5박 6일 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "도착 후 루체른 구시가지를 둘러봐요."],
+        ["Day 2","루체른", "리기·필라투스 또는 호수 여행을 선택해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차로 융프라우 지역에 들어가요."],
+        ["Day 4","그린델발트·라우터브루넨", "여름 피르스트, 겨울 융프라우요흐 등 계절에 맞게 선택해요."],
+        ["Day 5","인터라켄 → 체르마트", "체르마트 도착 후 마을을 둘러봐요."],
+        ["Day 6","고르너그라트 → 취리히", "날씨가 좋다면 고르너그라트 후 취리히로 이동해요."]
+      ]
+    },
+    {
+      id:"budget-6", days:6, title:"가성비 중심 5박 6일", theme:"최저가 우선", start:["zurich","basel"], end:["zurich","basel"],
+      iconic:83, efficiency:97, passUse:76, intensity:"여유", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 3박 → 베른 → 취리히",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","int_grindelwald","int_lauterbrunnen","bern_interlaken","zrh_interlaken"],
+      tags:["가성비","숙소 2~3곳","융프라우 집중"], summary:"체르마트 장거리 이동을 빼고 인터라켄에 오래 머물러 비용과 숙소 이동을 줄인 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 시내와 호수를 둘러봐요."],
+        ["Day 2","루체른", "리기 또는 필라투스를 선택해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차로 이동해요."],
+        ["Day 4","그린델발트", "대표 산악마을과 전망지를 둘러봐요."],
+        ["Day 5","라우터브루넨 → 베른", "계곡마을 후 베른 구시가지를 즐겨요."],
+        ["Day 6","베른 → 취리히", "취리히로 이동해 귀국해요."]
+      ]
+    },
+    {
+      id:"pass-6", days:6, title:"연속패스 최대 활용 5박 6일", theme:"패스 활용도", start:["zurich"], end:["geneva","zurich"],
+      iconic:92, efficiency:78, passUse:99, intensity:"바쁨", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 몽트뢰 → 체르마트 → 제네바",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","interlaken_montreux","lake_geneva_boat","montreux_zermatt","montreux_geneva"],
+      tags:["장거리 이동","호수","연속권 활용"], summary:"매일 다른 지역으로 이동하며 열차와 유람선을 적극 활용하는 패스 효율 중심 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 시내를 둘러봐요."],
+        ["Day 2","루체른 → 인터라켄", "파노라마 열차를 이용해요."],
+        ["Day 3","인터라켄·융프라우 지역", "산악마을 한 곳을 선택해요."],
+        ["Day 4","인터라켄 → 몽트뢰", "골든패스 방향의 호수 풍경을 즐겨요."],
+        ["Day 5","몽트뢰 → 체르마트", "시옹성 또는 호숫가 후 체르마트로 이동해요."],
+        ["Day 6","체르마트 → 제네바", "장거리 이동 후 제네바에서 일정을 마쳐요."]
+      ]
+    },
+    {
+      id:"classic-7", days:7, title:"동서 횡단 클래식 6박 7일", theme:"대표 명소 균형", start:["zurich","basel"], end:["geneva"],
+      iconic:98, efficiency:90, passUse:94, intensity:"보통", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 체르마트 → 몽트뢰 → 제네바",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","int_grindelwald","interlaken_zermatt","gornergrat","montreux_zermatt","montreux_geneva"],
+      tags:["동선 효율","융프라우","마터호른","레만호"], summary:"취리히 입국·제네바 출국에 특히 잘 맞는 대표 명소 중심의 일방향 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 구시가지를 둘러봐요."],
+        ["Day 2","루체른", "중앙스위스 산악 또는 호수 여행을 해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차로 이동해요."],
+        ["Day 4","융프라우 지역", "그린델발트·라우터브루넨을 둘러봐요."],
+        ["Day 5","인터라켄 → 체르마트", "체르마트 마을과 마터호른 전망을 즐겨요."],
+        ["Day 6","체르마트 → 몽트뢰", "레만호와 시옹성을 둘러봐요."],
+        ["Day 7","몽트뢰 → 제네바", "제네바로 이동해 출국해요."]
+      ]
+    },
+    {
+      id:"budget-7", days:7, title:"서부 집중 가성비 6박 7일", theme:"최저가 우선", start:["zurich","basel"], end:["geneva"],
+      iconic:85, efficiency:97, passUse:80, intensity:"여유", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 베른 → 인터라켄 → 몽트뢰 → 제네바",
+      routeIds:["zrh_lucerne","lucerne_bern","bern_interlaken","int_grindelwald","interlaken_montreux","montreux_geneva"],
+      tags:["체르마트 제외","비용 절감","도시＋자연"], summary:"체르마트를 제외하고 스위스 중서부에 집중해 장거리 비용과 이동 시간을 줄인 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 시내를 둘러봐요."],
+        ["Day 2","루체른", "호수 또는 리기 여행을 해요."],
+        ["Day 3","루체른 → 베른", "베른 구시가지를 둘러봐요."],
+        ["Day 4","베른 → 인터라켄", "인터라켄에 이동해 쉬어요."],
+        ["Day 5","그린델발트·라우터브루넨", "융프라우 지역을 하루 집중해요."],
+        ["Day 6","인터라켄 → 몽트뢰", "호숫가와 시옹성을 둘러봐요."],
+        ["Day 7","몽트뢰 → 제네바", "제네바로 이동해 출국해요."]
+      ]
+    },
+    {
+      id:"pass-7", days:7, title:"열차·호수 풀활용 6박 7일", theme:"패스 활용도", start:["zurich"], end:["zurich","geneva"],
+      iconic:91, efficiency:79, passUse:99, intensity:"바쁨", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른호 → 인터라켄 → 브리엔츠호 → 몽트뢰 → 체르마트 → 취리히",
+      routeIds:["zrh_lucerne","lake_lucerne_boat","lucerne_interlaken_express","brienz_lake_boat","interlaken_montreux","montreux_zermatt","zermatt_zurich"],
+      tags:["유람선 2회","파노라마","장거리"], summary:"패스로 커버되는 일반교통·유람선·파노라마 구간을 매일 활용하는 이동 중심 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 구시가지를 둘러봐요."],
+        ["Day 2","루체른 호수", "유람선과 산악교통을 조합해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차를 이용해요."],
+        ["Day 4","브리엔츠호·융프라우 지역", "호수와 산악마을을 함께 즐겨요."],
+        ["Day 5","인터라켄 → 몽트뢰", "서부로 이동해요."],
+        ["Day 6","몽트뢰 → 체르마트", "레만호 후 체르마트로 이동해요."],
+        ["Day 7","체르마트 → 취리히", "장거리 열차로 돌아와요."]
+      ]
+    },
+    {
+      id:"classic-8", days:8, title:"스위스 대표 완성형 7박 8일", theme:"대표 명소 균형", start:["zurich","basel"], end:["geneva","zurich"],
+      iconic:99, efficiency:92, passUse:96, intensity:"보통", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 융프라우 → 체르마트 → 몽트뢰 → 제네바",
+      routeIds:["zrh_lucerne","lake_lucerne_boat","lucerne_interlaken_express","int_grindelwald","int_lauterbrunnen","interlaken_zermatt","gornergrat","montreux_zermatt","montreux_geneva"],
+      tags:["첫 방문 완성형","알프스","호수","도시"], summary:"대표 산악지역과 호반도시를 빠짐없이 담으면서 숙박 이동도 무리하지 않게 배치한 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른 구시가지를 둘러봐요."],
+        ["Day 2","루체른 호수·산악", "리기 또는 필라투스를 선택해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차를 이용해요."],
+        ["Day 4","그린델발트", "대표 알프스 마을과 전망지를 즐겨요."],
+        ["Day 5","라우터브루넨·융프라우", "계절과 날씨에 맞춰 고산 일정을 선택해요."],
+        ["Day 6","인터라켄 → 체르마트", "체르마트 마을을 둘러봐요."],
+        ["Day 7","고르너그라트 → 몽트뢰", "마터호른 전망 후 레만호로 이동해요."],
+        ["Day 8","몽트뢰 → 제네바", "시옹성 또는 제네바 시내 후 출국해요."]
+      ]
+    },
+    {
+      id:"relaxed-8", days:8, title:"여유로운 알프스 7박 8일", theme:"이동 최소화", start:["zurich","basel"], end:["zurich","geneva"],
+      iconic:91, efficiency:99, passUse:80, intensity:"여유", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 2박 → 인터라켄 3박 → 몽트뢰 2박 → 제네바",
+      routeIds:["zrh_lucerne","lake_lucerne_boat","lucerne_interlaken_express","int_grindelwald","int_lauterbrunnen","interlaken_montreux","lake_geneva_boat","montreux_geneva"],
+      tags:["숙소 3곳","가족여행","여유로운 일정"], summary:"루체른·인터라켄·몽트뢰에 여러 날 머물며 숙소 이동과 짐 이동을 줄인 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른에 여유롭게 체크인해요."],
+        ["Day 2","루체른", "호수와 산악 중 원하는 일정을 선택해요."],
+        ["Day 3","루체른 → 인터라켄", "파노라마 열차로 이동해요."],
+        ["Day 4","그린델발트", "피르스트 또는 마을 중심으로 즐겨요."],
+        ["Day 5","라우터브루넨", "계곡마을과 폭포를 천천히 둘러봐요."],
+        ["Day 6","인터라켄 → 몽트뢰", "호반도시로 이동해 쉬어요."],
+        ["Day 7","몽트뢰·레만호", "시옹성·라보·유람선 중 선택해요."],
+        ["Day 8","몽트뢰 → 제네바", "제네바로 이동해 출국해요."]
+      ]
+    },
+    {
+      id:"pass-8", days:8, title:"그랜드 트레인 감성 7박 8일", theme:"패스 활용도", start:["zurich"], end:["zurich"],
+      iconic:94, efficiency:69, passUse:99, intensity:"매우 바쁨", seasons:["summer","winter"],
+      routeLine:"취리히 → 루체른 → 인터라켄 → 몽트뢰 → 체르마트 → 생모리츠 → 취리히",
+      routeIds:["zrh_lucerne","lucerne_interlaken_express","interlaken_montreux","montreux_zermatt","glacier_express","seat_reservation","stmoritz_zurich"],
+      tags:["빙하특급","파노라마 열차","장거리"], summary:"이동량은 많지만 스위스의 대표 파노라마 열차와 장거리 노선을 최대한 경험하는 코스예요.",
+      plans:[
+        ["Day 1","취리히 → 루체른", "루체른을 둘러봐요."],
+        ["Day 2","루체른 → 인터라켄", "파노라마 열차를 이용해요."],
+        ["Day 3","융프라우 지역", "그린델발트·라우터브루넨을 둘러봐요."],
+        ["Day 4","인터라켄 → 몽트뢰", "서부 파노라마 구간으로 이동해요."],
+        ["Day 5","몽트뢰 → 체르마트", "체르마트에 도착해 마을을 즐겨요."],
+        ["Day 6","체르마트", "고르너그라트 등 산악일정을 선택해요."],
+        ["Day 7","체르마트 → 생모리츠", "빙하특급 장거리 구간을 이용해요."],
+        ["Day 8","생모리츠 → 취리히", "취리히로 이동해 귀국해요."]
+      ]
+    }
+  ];
+
+  const STORAGE_KEY = "swiss_fare_check_state_v1";
 
   const state = {
     selectedRoutes: new Set(),
@@ -584,7 +1334,7 @@
     openRegions: new Set(),
     routePrices: { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() },
     backup: { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() },
-    selected: { stp: false, stpf: false, half: false, jvip: false },
+    selected: { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false },
     stpFamilyCard: false,
     stpfFamilyCard: false,
     stpOpt: null,
@@ -592,6 +1342,7 @@
     stpfOpt: null,
     stpfClass: 2,
     jvipDays: null,
+    jjoType: "long",
   };
 
   function ensureRoutesInit() {
@@ -604,6 +1355,7 @@
       }
     }
   }
+
   function routeById(id) {
     for (const reg of REGIONS) {
       const found = reg.routes.find((x) => x.id === id);
@@ -620,16 +1372,13 @@
     return ["public", "boat", "scenic"].includes(route.category);
   }
   function swissPassLabel() {
-    if (state.selected.stp) return "Swiss Travel Pass free route";
-    if (state.selected.stpf) return "Swiss Travel Pass Flex free route";
+    if (state.selected.stp) return "스위스패스 무료 구간";
+    if (state.selected.stpf) return "플렉스 무료 구간";
     return "";
   }
   function vipIncludedSet(season) {
     const set = new Set(["int_grindelwald","int_lauterbrunnen","lauterbrunnen_wengen","wengen_kleine","grindelwald_kleine","grindelwald_terminal","eiger_express","eiger_kleine","eiger_jungfraujoch","grindelwald_first","mannlichen_wengen","mannlichen_grindelwald","lauterbrunnen_murren"]);
-    if (season === "summer") {
-      set.add("harder_kulm");
-      set.add("schynige_platte");
-    }
+    if (season === "summer") { set.add("harder_kulm"); set.add("schynige_platte"); }
     return set;
   }
   function isVipIncluded(routeId, season) {
@@ -652,7 +1401,7 @@
             if (cur !== 0) state.backup[kind].set(rt.id, cur);
             state.routePrices[kind].set(rt.id, 0);
           } else {
-            state.routePrices[kind].set(Number(state.backup[kind].get(rt.id) || 0));
+            state.routePrices[kind].set(rt.id, Number(state.backup[kind].get(rt.id) || 0));
           }
         }
       }
@@ -664,23 +1413,57 @@
   }
 
   const SBB_BY_ROUTE_ID = {
-    rigi: { from: "Vitznau", to: "Rigi Kulm" }, pilatus: { from: "Kriens", to: "Pilatus Kulm" }, titlis: { from: "Engelberg", to: "Titlis" },
-    stoos: { from: "Schwyz", to: "Stoos" }, klewenalp: { from: "Beckenried", to: "Klewenalp" }, brunni_engelberg: { from: "Engelberg", to: "Brunni" },
-    stanserhorn: { from: "Stans", to: "Stanserhorn" }, harder_kulm: { from: "Interlaken Ost", to: "Harder Kulm" }, eiger_express: { from: "Grindelwald Terminal", to: "Eigergletscher" },
-    eiger_jungfraujoch: { from: "Eigergletscher", to: "Jungfraujoch" }, grindelwald_first: { from: "Grindelwald", to: "First" }, mannlichen_wengen: { from: "Wengen", to: "Männlichen" },
-    mannlichen_grindelwald: { from: "Grindelwald", to: "Männlichen" }, lauterbrunnen_murren: { from: "Lauterbrunnen", to: "Mürren" }, allmendhubel: { from: "Mürren", to: "Allmendhubel" },
-    schynige_platte: { from: "Wilderswil", to: "Schynige Platte" }, schilthorn: { from: "Mürren", to: "Schilthorn" }, gornergrat: { from: "Zermatt", to: "Gornergrat" },
-    sunnegga: { from: "Zermatt", to: "Sunnegga" }, mggp: { from: "Zermatt", to: "Matterhorn Glacier Paradise" }, centovalli: { from: "Locarno", to: "Domodossola" },
-    albula: { from: "Chur", to: "St. Moritz" }, bernina_express: { from: "St. Moritz", to: "Tirano" }, arosa_line: { from: "Chur", to: "Arosa" },
-    lucerne_interlaken_express: { from: "Luzern", to: "Interlaken Ost" }, glacier_express: { from: "Zermatt", to: "St. Moritz" }, zrh_lucerne: { from: "Zürich HB", to: "Luzern" },
-    zrh_interlaken: { from: "Zürich HB", to: "Interlaken Ost" }, zrh_basel: { from: "Zürich HB", to: "Basel SBB" }, basel_bern: { from: "Basel SBB", to: "Bern" },
-    basel_lucerne: { from: "Basel SBB", to: "Luzern" }, bern_interlaken: { from: "Bern", to: "Interlaken Ost" }, bern_thun: { from: "Bern", to: "Thun" },
-    bern_spiez: { from: "Bern", to: "Spiez" }, int_thun: { from: "Interlaken Ost", to: "Thun" }, int_spiez: { from: "Interlaken Ost", to: "Spiez" },
-    int_brienz: { from: "Interlaken Ost", to: "Brienz" }, int_grindelwald: { from: "Interlaken Ost", to: "Grindelwald" }, int_lauterbrunnen: { from: "Interlaken Ost", to: "Lauterbrunnen" },
-    lauterbrunnen_wengen: { from: "Lauterbrunnen", to: "Wengen" }, wengen_kleine: { from: "Wengen", to: "Kleine Scheidegg" }, grindelwald_kleine: { from: "Grindelwald", to: "Kleine Scheidegg" },
-    grindelwald_terminal: { from: "Grindelwald", to: "Grindelwald Terminal" }, visp_zermatt: { from: "Visp", to: "Zermatt" }, geneva_lausanne: { from: "Genève", to: "Lausanne" },
-    lausanne_montreux: { from: "Lausanne", to: "Montreux" }, lugano_locarno: { from: "Lugano", to: "Locarno" }, bellinzona_lugano: { from: "Bellinzona", to: "Lugano" },
-    liechtenstein: { from: "Sargans", to: "Vaduz" }, rhine_falls: { from: "Zürich HB", to: "Neuhausen Rheinfall" }, stein_am_rhein: { from: "Schaffhausen", to: "Stein am Rhein" },
+    rigi: { from: "Vitznau", to: "Rigi Kulm" },
+    pilatus: { from: "Kriens", to: "Pilatus Kulm" },
+    titlis: { from: "Engelberg", to: "Titlis" },
+    stoos: { from: "Schwyz", to: "Stoos" },
+    klewenalp: { from: "Beckenried", to: "Klewenalp" },
+    brunni_engelberg: { from: "Engelberg", to: "Brunni" },
+    stanserhorn: { from: "Stans", to: "Stanserhorn" },
+    harder_kulm: { from: "Interlaken Ost", to: "Harder Kulm" },
+    eiger_express: { from: "Grindelwald Terminal", to: "Eigergletscher" },
+    eiger_jungfraujoch: { from: "Eigergletscher", to: "Jungfraujoch" },
+    grindelwald_first: { from: "Grindelwald", to: "First" },
+    mannlichen_wengen: { from: "Wengen", to: "Männlichen" },
+    mannlichen_grindelwald: { from: "Grindelwald", to: "Männlichen" },
+    lauterbrunnen_murren: { from: "Lauterbrunnen", to: "Mürren" },
+    allmendhubel: { from: "Mürren", to: "Allmendhubel" },
+    schynige_platte: { from: "Wilderswil", to: "Schynige Platte" },
+    schilthorn: { from: "Mürren", to: "Schilthorn" },
+    gornergrat: { from: "Zermatt", to: "Gornergrat" },
+    sunnegga: { from: "Zermatt", to: "Sunnegga" },
+    mggp: { from: "Zermatt", to: "Matterhorn Glacier Paradise" },
+    centovalli: { from: "Locarno", to: "Domodossola" },
+    albula: { from: "Chur", to: "St. Moritz" },
+    bernina_express: { from: "St. Moritz", to: "Tirano" },
+    arosa_line: { from: "Chur", to: "Arosa" },
+    lucerne_interlaken_express: { from: "Luzern", to: "Interlaken Ost" },
+    glacier_express: { from: "Zermatt", to: "St. Moritz" },
+    zrh_lucerne: { from: "Zürich HB", to: "Luzern" },
+    zrh_interlaken: { from: "Zürich HB", to: "Interlaken Ost" },
+    zrh_basel: { from: "Zürich HB", to: "Basel SBB" },
+    basel_bern: { from: "Basel SBB", to: "Bern" },
+    basel_lucerne: { from: "Basel SBB", to: "Luzern" },
+    bern_interlaken: { from: "Bern", to: "Interlaken Ost" },
+    bern_thun: { from: "Bern", to: "Thun" },
+    bern_spiez: { from: "Bern", to: "Spiez" },
+    int_thun: { from: "Interlaken Ost", to: "Thun" },
+    int_spiez: { from: "Interlaken Ost", to: "Spiez" },
+    int_brienz: { from: "Interlaken Ost", to: "Brienz" },
+    int_grindelwald: { from: "Interlaken Ost", to: "Grindelwald" },
+    int_lauterbrunnen: { from: "Interlaken Ost", to: "Lauterbrunnen" },
+    lauterbrunnen_wengen: { from: "Lauterbrunnen", to: "Wengen" },
+    wengen_kleine: { from: "Wengen", to: "Kleine Scheidegg" },
+    grindelwald_kleine: { from: "Grindelwald", to: "Kleine Scheidegg" },
+    grindelwald_terminal: { from: "Grindelwald", to: "Grindelwald Terminal" },
+    visp_zermatt: { from: "Visp", to: "Zermatt" },
+    geneva_lausanne: { from: "Genève", to: "Lausanne" },
+    lausanne_montreux: { from: "Lausanne", to: "Montreux" },
+    lugano_locarno: { from: "Lugano", to: "Locarno" },
+    bellinzona_lugano: { from: "Bellinzona", to: "Lugano" },
+    liechtenstein: { from: "Sargans", to: "Vaduz" },
+    rhine_falls: { from: "Zürich HB", to: "Neuhausen Rheinfall" },
+    stein_am_rhein: { from: "Schaffhausen", to: "Stein am Rhein" },
   };
   function buildSbbLink(rt) {
     if (!rt || rt.category === "special") return SBB_HOME;
@@ -691,13 +1474,13 @@
 
   function renderStpOpts() {
     const cls = state.stpClass;
-    const clsLabel = cls === 2 ? "2nd class" : "1st class";
-    el("stp_opts").innerHTML = `<div class="row"><label><span>Class</span><select id="stp_class"><option value="2">2nd class</option><option value="1">1st class</option></select></label><span class="pill">3 / 4 / 6 / 8 / 15 days</span></div><div class="nested" id="stp_radios"></div>`;
+    const clsLabel = cls === 2 ? "2등석" : "1등석";
+    el("stp_opts").innerHTML = `<div class="row"><label><span>좌석등급</span><select id="stp_class"><option value="2">2등석</option><option value="1">1등석</option></select></label><span class="pill">3 / 4 / 6 / 8 / 15일</span></div><div class="nested" id="stp_radios"></div>`;
     el("stp_radios").innerHTML = PASS.stp.options.map((o) => {
       const adult = cls === 2 ? o.adult2 : o.adult1;
       const youth = cls === 2 ? o.youth2 : o.youth1;
       const child = cls === 2 ? o.child2 : o.child1;
-      return `<label class="row"><span><input type="radio" name="stp_opt" value="${o.id}"> ${o.label}</span><span class="muted">${clsLabel} Adult ${money(adult)} / Youth ${money(youth)} / Child ${money(child)}</span></label>`;
+      return `<label class="row"><span><input type="radio" name="stp_opt" value="${o.id}"> ${o.label}</span><span class="muted">${clsLabel} 성인 ${money(adult)} / 유스 ${money(youth)} / 아동 ${money(child)}</span></label>`;
     }).join("");
     el("stp_class").value = String(state.stpClass);
     el("stp_class").addEventListener("change", () => { state.stpClass = Number(el("stp_class").value); renderStpOpts(); recalc(); });
@@ -708,13 +1491,13 @@
   }
   function renderStpfOpts() {
     const cls = state.stpfClass;
-    const clsLabel = cls === 2 ? "2nd class" : "1st class";
-    el("stpf_opts").innerHTML = `<div class="row"><label><span>Class</span><select id="stpf_class"><option value="2">2nd class</option><option value="1">1st class</option></select></label><span class="pill">3 / 4 / 6 / 8 / 15 days</span></div><div class="nested" id="stpf_radios"></div>`;
+    const clsLabel = cls === 2 ? "2등석" : "1등석";
+    el("stpf_opts").innerHTML = `<div class="row"><label><span>좌석등급</span><select id="stpf_class"><option value="2">2등석</option><option value="1">1등석</option></select></label><span class="pill">3 / 4 / 6 / 8 / 15일</span></div><div class="nested" id="stpf_radios"></div>`;
     el("stpf_radios").innerHTML = PASS.stpf.options.map((o) => {
       const adult = cls === 2 ? o.adult2 : o.adult1;
       const youth = cls === 2 ? o.youth2 : o.youth1;
       const child = cls === 2 ? o.child2 : o.child1;
-      return `<label class="row"><span><input type="radio" name="stpf_opt" value="${o.id}"> ${o.label}</span><span class="muted">${clsLabel} Adult ${money(adult)} / Youth ${money(youth)} / Child ${money(child)}</span></label>`;
+      return `<label class="row"><span><input type="radio" name="stpf_opt" value="${o.id}"> ${o.label}</span><span class="muted">${clsLabel} 성인 ${money(adult)} / 유스 ${money(youth)} / 아동 ${money(child)}</span></label>`;
     }).join("");
     el("stpf_class").value = String(state.stpfClass);
     el("stpf_class").addEventListener("change", () => { state.stpfClass = Number(el("stpf_class").value); renderStpfOpts(); recalc(); });
@@ -730,14 +1513,30 @@
   function renderJvipRadios() {
     const s = getSeasonEffective();
     const box = el("jvip_radios");
-    box.innerHTML = getJvipTableBySeason().map((o) => `<label class="row"><span><input type="radio" name="jvip_days" value="${o.days}"> ${o.days}-day pass</span><span class="muted">${seasonLabel(s)} · Adult ${money(o.adult_coupon)} / Overlap discount ${money(o.adult_overlap)} / Child ${money(o.child_6_15)}</span></label>`).join("");
+    box.innerHTML = getJvipTableBySeason().map((o) => `<label class="row"><span><input type="radio" name="jvip_days" value="${o.days}"> ${o.days}일권</span><span class="muted">${seasonLabel(s)} · 성인 ${money(o.adult_coupon)} / 중복할인 ${money(o.adult_overlap)} / 유스 ${money(o.youth)} / 아동 ${money(o.child_6_15)}</span></label>`).join("");
     document.querySelectorAll('input[name="jvip_days"]').forEach((r) => {
       r.addEventListener("change", () => { state.jvipDays = Number(r.value); recalc(); });
       if (state.jvipDays != null && Number(r.value) === state.jvipDays) r.checked = true;
     });
   }
+  function renderJjoDiscountOpts() {
+    el("jjo_discount_opts").innerHTML = `<label><span>코스 선택</span><select id="jjo_type"><option value="long">긴 코스(인터라켄 오스트 출발)</option><option value="short">짧은 코스(그린델발트 터미널 / 라우터브루넨 출발)</option></select></label><div class="muted" id="jjo_price_hint"></div>`;
+    el("jjo_type").value = state.jjoType;
+    el("jjo_type").addEventListener("change", () => { state.jjoType = el("jjo_type").value; recalc(); });
+  }
   function initPassOptions() {
-    renderStpOpts(); renderStpfOpts(); renderJvipOpts();
+    renderStpOpts(); renderStpfOpts(); renderJvipOpts(); renderJjoDiscountOpts();
+  }
+  function syncJjoDiscountToggle() {
+    const details = el("jjo_discount_details");
+    const chk = el("pick_jjo_discount");
+    const opts = el("jjo_discount_opts");
+    const msg = el("jjo_discount_disabled_msg");
+    if (state.selected.jvip) {
+      chk.checked = false; chk.disabled = true; state.selected.jjo_discount = false; opts.style.display = "none"; details.classList.add("disabled"); msg.textContent = "VIP 패스를 선택하면, 융프라우요흐 왕복 1회가 포함되므로 이 항목은 선택할 수 없어요.";
+    } else {
+      chk.disabled = false; details.classList.remove("disabled"); msg.textContent = "";
+    }
   }
 
   function calcPassTicketTotal() {
@@ -757,8 +1556,8 @@
         const chargeableChildren = state.stpFamilyCard ? 0 : t.child;
         const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * chargeableChildren;
         total += sum;
-        lines.push({ label: `Swiss Travel Pass ${opt.label} · ${clsLabel(cls)}${state.stpFamilyCard ? " · Family Card" : ""}`, price: sum });
-      } else lines.push({ label: "Please select a Swiss Travel Pass option.", price: 0, warn: true });
+        lines.push({ label: `스위스패스(연속) ${opt.label} · ${cls}등석${state.stpFamilyCard ? " · 패밀리 카드" : ""}`, price: sum });
+      } else lines.push({ label: "스위스패스(연속) 옵션을 골라주세요", price: 0, warn: true });
     }
 
     if (state.selected.stpf) {
@@ -773,14 +1572,14 @@
         const chargeableChildren = state.stpfFamilyCard ? 0 : t.child;
         const sum = adultPrice * t.adult + youthPrice * t.youth + childPrice * chargeableChildren;
         total += sum;
-        lines.push({ label: `Swiss Travel Pass Flex ${opt.label} · ${clsLabel(cls)}${state.stpfFamilyCard ? " · Family Card" : ""}`, price: sum });
-      } else lines.push({ label: "Please select a Swiss Travel Pass Flex option.", price: 0, warn: true });
+        lines.push({ label: `플렉스 ${opt.label} · ${cls}등석${state.stpfFamilyCard ? " · 패밀리 카드" : ""}`, price: sum });
+      } else lines.push({ label: "플렉스 옵션을 골라주세요", price: 0, warn: true });
     }
 
     if (state.selected.half) {
       const sum = PASS.half.price16plus * (t.adult + t.youth);
       total += sum;
-      lines.push({ label: "Swiss Half Fare Card (1 month)", price: sum });
+      lines.push({ label: "하프페어 카드(1개월)", price: sum });
     }
 
     if (state.selected.jvip) {
@@ -789,36 +1588,33 @@
       if (opt) {
         const hasOverlap = state.selected.half || state.selected.stp || state.selected.stpf;
         const adultUnit = hasOverlap ? opt.adult_overlap : opt.adult_coupon;
-        const sum = adultUnit * t.adult + adultUnit * 0 * 0 + 0; // keep structure simple
-        const totalLine = adultUnit * t.adult + adultUnit * 0 + opt.child_6_15 * t.child + adultUnit * 0;
-        const withYouth = adultUnit * t.adult + adultUnit * 0;
-        const finalSum = adultUnit * t.adult + adultUnit * 0 + opt.child_6_15 * t.child;
-        const actualSum = adultUnit * t.adult + adultUnit * 0;
-        const vipSum = adultUnit * t.adult + adultUnit * 0 + opt.child_6_15 * t.child;
-        const youthAwareSum = adultUnit * t.adult + adultUnit * 0;
-        const correctSum = adultUnit * t.adult + opt.child_6_15 * t.child;
-        const allSum = adultUnit * t.adult + opt.child_6_15 * t.child;
-        total += adultUnit * t.adult + adultUnit * 0 + opt.child_6_15 * t.child;
-        total += opt.adult_coupon * 0;
-        total -= opt.adult_coupon * 0;
-        total += adultUnit * t.youth;
-        lines.push({ label: `Jungfrau VIP ${opt.days}-day pass · ${seasonLabel(season)}${hasOverlap ? " (overlap discount)" : ""}`, price: adultUnit * (t.adult + t.youth) + opt.child_6_15 * t.child });
-      } else lines.push({ label: "Please choose the Jungfrau VIP duration.", price: 0, warn: true });
+        const sum = adultUnit * t.adult + opt.youth * t.youth + opt.child_6_15 * t.child;
+        total += sum;
+        lines.push({ label: `융프라우 VIP ${opt.days}일권 · ${seasonLabel(season)}${hasOverlap ? " (중복할인)" : ""}`, price: sum });
+      } else lines.push({ label: "융프라우 VIP 기간을 선택해 주세요", price: 0, warn: true });
+    }
+
+    if (state.selected.jjo_discount) {
+      const season = getSeasonEffective();
+      const type = state.jjoType;
+      const p = JJO_DISCOUNT[season][type];
+      const hasOverlap = state.selected.stp || state.selected.stpf || state.selected.half;
+      const adultUnit = hasOverlap ? p.overlap : p.adult;
+      const sum = adultUnit * (t.adult + t.youth) + p.child * t.child;
+      total += sum;
+      lines.push({ label: `융프라우요흐 왕복권 · ${type === "long" ? "긴 코스" : "짧은 코스"} · ${seasonLabel(season)}${hasOverlap ? " (중복할인)" : ""}`, price: sum });
     }
 
     return { total, lines };
   }
 
-  function clsLabel(cls) {
-    return cls === 2 ? "2nd class" : "1st class";
-  }
-
   function bestUnitPrice(base, route, season) {
     const n = Number(base || 0);
-    if (isVipIncluded(route.id, season)) return { value: 0, reason: "VIP included (CHF 0)" };
-    if (isSwissPassFree(route)) return { value: 0, reason: `${swissPassLabel()} (CHF 0)` };
+    if (isVipIncluded(route.id, season)) return { value: 0, reason: "VIP 포함(0원)" };
+    if (isSwissPassFree(route)) return { value: 0, reason: `${swissPassLabel()} (0원)` };
 
-    let best = { value: n, reason: n === 0 ? "not entered yet" : money(n) };
+    let best = { value: n, reason: n === 0 ? "입력 전" : money(n) };
+
     if (state.selected.stp || state.selected.stpf) {
       let rate = null;
       if (route.stpNoDiscount === true) rate = 0;
@@ -826,15 +1622,15 @@
       else if (route.category === "mountain") rate = 0.5;
       if (rate != null) {
         const v = n * (1 - rate);
-        if (rate === 0) best = { value: n, reason: n === 0 ? "not entered yet" : money(n) };
-        else if (v < best.value) best = { value: v, reason: `Swiss Pass / Flex ${Math.round(rate * 100)}% discount` };
+        if (rate === 0) best = { value: n, reason: n === 0 ? "입력 전" : money(n) };
+        else if (v < best.value) best = { value: v, reason: `스위스패스/플렉스 ${Math.round(rate * 100)}% 할인` };
       }
     }
     if (state.selected.half) {
       const v = n * 0.5;
-      if (v < best.value) best = { value: v, reason: "Half Fare 50%" };
+      if (v < best.value) best = { value: v, reason: "하프페어 50%" };
     }
-    if (route.category === "special") return { value: n, reason: n === 0 ? "not entered yet" : money(n) };
+    if (route.category === "special") return { value: n, reason: n === 0 ? "입력 전" : money(n) };
     return best;
   }
 
@@ -842,11 +1638,14 @@
     const grouped = [];
     for (const [label, reason] of entries) {
       const last = grouped[grouped.length - 1];
-      if (last && last.reason === reason) last.labels.push(label);
-      else grouped.push({ labels: [label], reason });
+      if (last && last.reason === reason) {
+        last.labels.push(label);
+      } else {
+        grouped.push({ labels: [label], reason });
+      }
     }
     if (grouped.length === 1) return grouped[0].reason;
-    return grouped.map((g) => `${g.labels.join("/")} fare (${g.reason})`).join(" · ");
+    return grouped.map((g) => `${g.labels.join("/")} 가격 (${g.reason})`).join(" · ");
   }
 
   function calcRouteTotal() {
@@ -882,23 +1681,42 @@
       total += lineTotal;
 
       const reason = formatReasonSummary([
-        ["Adult", adultBest.reason],
-        ["Youth", youthBest.reason],
-        ["Child", childBest.reason],
-        ["Infant", infantBest.reason],
+        ["성인", adultBest.reason],
+        ["유스", youthBest.reason],
+        ["아동", childBest.reason],
+        ["유아", infantBest.reason],
       ]);
 
-      lines.push({ label: rt.label, price: lineTotal, reason });
+      lines.push({
+        label: rt.label,
+        price: lineTotal,
+        reason,
+      });
     }
 
     state.missingRouteIds = missingRouteIds;
     return { total, lines };
   }
 
+  function restoreRoutePricesForSimpleMode() {
+    ensureRoutesInit();
+    for (const region of REGIONS) {
+      for (const route of region.routes) {
+        for (const kind of ["adult", "youth", "child", "infant"]) {
+          const backup = Number(state.backup[kind].get(route.id) || 0);
+          const current = Number(state.routePrices[kind].get(route.id) || 0);
+          if (backup > 0 || current === 0) state.routePrices[kind].set(route.id, backup);
+        }
+      }
+    }
+  }
+
   function renderRoutes() {
     ensureRoutesInit();
     const season = getSeasonEffective();
-    applyLocks(season);
+    const manualMode = document.body.dataset.mode === "manual";
+    if (manualMode) applyLocks(season);
+    else restoreRoutePricesForSimpleMode();
     const q = (el("route_search")?.value || "").trim().toLowerCase();
     const showSelectedOnly = !!el("show_selected_only")?.checked;
     const container = el("routes");
@@ -923,22 +1741,24 @@
 
       for (const rt of regionRoutes) {
         const checked = state.selectedRoutes.has(rt.id);
-        const vipInc = isVipIncluded(rt.id, season);
-        const stpFree = isSwissPassFree(rt);
-        const familyFree = isFamilyCardFreeRoute(rt);
-        const locked = vipInc || stpFree;
+        const vipInc = manualMode && isVipIncluded(rt.id, season);
+        const stpFree = manualMode && isSwissPassFree(rt);
+        const familyFree = manualMode && isFamilyCardFreeRoute(rt);
+        const locked = manualMode && (vipInc || stpFree);
 
         const labelBits = [];
-        if (vipInc) labelBits.push(`<span class="pill good">VIP included</span>`);
-        else if (stpFree) {
+        if (vipInc) {
+          labelBits.push(`<span class="pill good">VIP 포함</span>`);
+        } else if (stpFree) {
           labelBits.push(`<span class="pill good">${swissPassLabel()}</span>`);
-          if (familyFree) labelBits.push(`<span class="pill">Child/Infant free</span>`);
-        } else if (state.selected.stp || state.selected.stpf) {
-          if (rt.stpNoDiscount === true) labelBits.push(`<span class="pill">No pass discount</span>`);
-          else if (rt.stpDiscount != null) labelBits.push(`<span class="pill">${Math.round(rt.stpDiscount * 100)}% discount</span>`);
-          else if (rt.category === "mountain") labelBits.push(`<span class="pill">50% discount</span>`);
+          if (familyFree) labelBits.push(`<span class="pill">아동/유아 무료</span>`);
+        } else if (manualMode && (state.selected.stp || state.selected.stpf)) {
+          if (rt.stpNoDiscount === true) labelBits.push(`<span class="pill">할인 없음</span>`);
+          else if (rt.stpDiscount != null) labelBits.push(`<span class="pill">${Math.round(rt.stpDiscount * 100)}% 할인</span>`);
+          else if (rt.category === "mountain") labelBits.push(`<span class="pill">50% 할인</span>`);
         }
-        labelBits.push(`<span class="pill">${rt.category}</span>`);
+        const categoryMeta = CATEGORY_META[rt.category] || { label: rt.category, icon: "•" };
+        labelBits.push(`<span class="pill">${categoryMeta.icon} ${categoryMeta.label}</span>`);
 
         const sbbUrl = buildSbbLink(rt);
         const adult = Number(state.routePrices.adult.get(rt.id) || 0);
@@ -947,37 +1767,40 @@
         const infant = Number(state.routePrices.infant.get(rt.id) || 0);
 
         const card = document.createElement("div");
-        card.className = `routeCard ${state.missingRouteIds.has(rt.id) ? "missingPrice" : ""}`;
+        card.className = `routeCard ${manualMode && state.missingRouteIds.has(rt.id) ? "missingPrice" : ""}`;
         card.dataset.routeId = rt.id;
         const childInfantDisabled = locked ? "disabled" : "";
-        const familyHint = familyFree && !vipInc ? `<div class="familyHint">Family Card applied: child/infant free on this route</div>` : "";
-        const missingHint = `<div class="missingHint">Fare input needed: some selected travelers still have no fare entered.</div>`;
+        const familyHint = familyFree && !vipInc ? `<div class="familyHint">패밀리 카드 적용 중: 이 구간은 아동/유아 무료</div>` : "";
+        const missingHint = `<div class="missingHint manual-only">가격 입력 필요: 선택한 인원 기준으로 아직 금액이 비어 있어요.</div>`;
         card.innerHTML = `
           <div class="routeHead">
             <div class="routeTitleWrap">
               <label class="routeTitleLabel"><input type="checkbox" class="route_chk" data-id="${rt.id}" ${checked ? "checked" : ""}><b>${rt.label}</b></label>
-              <div class="muted">Only checked routes are included in the total.</div>
+              <div class="muted simple-only">실제로 이용할 노선이라면 체크해주세요.</div><div class="muted manual-only">체크한 노선만 직접 계산 총액에 반영돼요.</div>
               ${familyHint}
               ${missingHint}
             </div>
             <div class="routeMeta">${labelBits.join("")}</div>
           </div>
 
+          <div class="simple-route-note simple-only">이 노선을 선택하면 자동 추천 분석에 바로 반영됩니다.</div>
+          <div class="manual-route-fields">
           <div class="copyBtns">
-            <button type="button" class="copyBtn copy_from_adult" data-id="${rt.id}">Copy Adult → Youth</button>
-            <button type="button" class="copyBtn copy_from_child" data-id="${rt.id}">Copy Child → Infant</button>
+            <button type="button" class="copyBtn copy_from_adult" data-id="${rt.id}">성인 → 유스 복사</button>
+            <button type="button" class="copyBtn copy_from_child" data-id="${rt.id}">아동 → 유아 복사</button>
           </div>
 
           <div class="routePriceGrid">
-            <div class="priceField"><div class="fieldTop"><span class="label">Adult</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="adult" data-id="${rt.id}" value="${adult}" ${locked ? "disabled" : ""}></div>
-            <div class="priceField"><div class="fieldTop"><span class="label">Youth</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="youth" data-id="${rt.id}" value="${youth}" ${locked ? "disabled" : ""}></div>
-            <div class="priceField"><div class="fieldTop"><span class="label">Child</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="child" data-id="${rt.id}" value="${child}" ${childInfantDisabled}></div>
-            <div class="priceField"><div class="fieldTop"><span class="label">Infant</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="infant" data-id="${rt.id}" value="${infant}" ${childInfantDisabled}></div>
+            <div class="priceField"><div class="fieldTop"><span class="label">성인</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="adult" data-id="${rt.id}" value="${adult}" ${locked ? "disabled" : ""}></div>
+            <div class="priceField"><div class="fieldTop"><span class="label">유스</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="youth" data-id="${rt.id}" value="${youth}" ${locked ? "disabled" : ""}></div>
+            <div class="priceField"><div class="fieldTop"><span class="label">아동</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="child" data-id="${rt.id}" value="${child}" ${childInfantDisabled}></div>
+            <div class="priceField"><div class="fieldTop"><span class="label">유아</span></div><input type="number" min="0" step="0.05" class="price_in" data-kind="infant" data-id="${rt.id}" value="${infant}" ${childInfantDisabled}></div>
+          </div>
           </div>
 
           <div class="row" style="margin-top:10px;">
-            <a class="btn" href="${sbbUrl}" target="_blank" rel="noopener">${sbbUrl === SBB_HOME ? "SBB (search)" : "SBB One-click"}</a>
-            <div class="mini" data-reason="${rt.id}" style="flex:1;text-align:right;"></div>
+            <a class="btn manual-only" href="${sbbUrl}" target="_blank" rel="noopener">${sbbUrl === SBB_HOME ? "SBB 직접 검색" : "SBB 원클릭"}</a>
+            <div class="mini manual-only" data-reason="${rt.id}" style="flex:1;text-align:right;"></div>
           </div>
         `;
         inner.appendChild(card);
@@ -998,6 +1821,7 @@
         recalc();
       });
     });
+
     document.querySelectorAll(".price_in").forEach((inp) => {
       inp.addEventListener("input", () => {
         const kind = inp.dataset.kind;
@@ -1008,6 +1832,7 @@
         recalc();
       });
     });
+
     document.querySelectorAll(".copy_from_adult").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.dataset.id;
@@ -1018,6 +1843,7 @@
         recalc();
       });
     });
+
     document.querySelectorAll(".copy_from_child").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.dataset.id;
@@ -1038,13 +1864,15 @@
         node.textContent = "";
         return;
       }
+
       const rt = routeById(rid);
       const reason = formatReasonSummary([
-        ["Adult", bestUnitPrice(Number(state.routePrices.adult.get(rid) || 0), rt, season).reason],
-        ["Youth", bestUnitPrice(Number(state.routePrices.youth.get(rid) || 0), rt, season).reason],
-        ["Child", bestUnitPrice(Number(state.routePrices.child.get(rid) || 0), rt, season).reason],
-        ["Infant", bestUnitPrice(Number(state.routePrices.infant.get(rid) || 0), rt, season).reason],
+        ["성인", bestUnitPrice(Number(state.routePrices.adult.get(rid) || 0), rt, season).reason],
+        ["유스", bestUnitPrice(Number(state.routePrices.youth.get(rid) || 0), rt, season).reason],
+        ["아동", bestUnitPrice(Number(state.routePrices.child.get(rid) || 0), rt, season).reason],
+        ["유아", bestUnitPrice(Number(state.routePrices.infant.get(rid) || 0), rt, season).reason],
       ]);
+
       node.textContent = reason;
     });
   }
@@ -1053,22 +1881,24 @@
     const box = el("traveler_warning");
     if (totalTravelers() === 0) {
       box.style.display = "block";
-      box.textContent = "Please enter at least 1 traveler.";
+      box.textContent = "인원을 1명 이상 입력하세요.";
     } else {
       box.style.display = "none";
       box.textContent = "";
     }
   }
+
   function updateMissingPriceUI() {
+    const manualMode = document.body.dataset.mode === "manual";
     document.querySelectorAll(".routeCard").forEach((card) => {
       const rid = card.dataset.routeId;
-      const isMissing = state.missingRouteIds.has(rid);
+      const isMissing = manualMode && state.missingRouteIds.has(rid);
       card.classList.toggle("missingPrice", isMissing);
       const hint = card.querySelector(".missingHint");
       if (hint) hint.style.display = isMissing ? "block" : "none";
     });
     const countEl = el("selected_route_count");
-    if (countEl) countEl.textContent = `Selected routes ${state.selectedRoutes.size}`;
+    if (countEl) countEl.textContent = `선택 노선 ${state.selectedRoutes.size}개`;
   }
 
   function serializeState() {
@@ -1085,8 +1915,10 @@
       stpfOpt: state.stpfOpt,
       stpfClass: state.stpfClass,
       jvipDays: state.jvipDays,
+      jjoType: state.jjoType,
       travelDate: el("travel_date")?.value || "",
       seasonMode: el("season_mode")?.value || "auto",
+      travelDays: el("travel_days")?.value || "4",
       travelers: {
         adult: el("n_adult")?.value || "0",
         youth: el("n_youth")?.value || "0",
@@ -1098,9 +1930,13 @@
       breakdownOpen: !!el("breakdown_details")?.open,
     };
   }
+
   function saveState() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(serializeState())); } catch (e) {}
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serializeState()));
+    } catch (e) {}
   }
+
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -1120,6 +1956,8 @@
       state.stpfOpt = saved.stpfOpt || null;
       state.stpfClass = saved.stpfClass || 2;
       state.jvipDays = saved.jvipDays || null;
+      state.jjoType = saved.jjoType || "long";
+
       if (saved.travelers) {
         el("n_adult").value = saved.travelers.adult ?? "0";
         el("n_youth").value = saved.travelers.youth ?? "0";
@@ -1128,47 +1966,517 @@
       }
       if (saved.travelDate) el("travel_date").value = saved.travelDate;
       if (saved.seasonMode) el("season_mode").value = saved.seasonMode;
+      if (saved.travelDays && el("travel_days")) el("travel_days").value = saved.travelDays;
       if (typeof saved.showSelectedOnly === "boolean") el("show_selected_only").checked = saved.showSelectedOnly;
       if (typeof saved.routeSearch === "string") el("route_search").value = saved.routeSearch;
       if (typeof saved.breakdownOpen === "boolean") el("breakdown_details").open = saved.breakdownOpen;
+
       el("pick_stp").checked = !!state.selected.stp;
       el("pick_stpf").checked = !!state.selected.stpf;
       el("pick_half").checked = !!state.selected.half;
       el("pick_jvip").checked = !!state.selected.jvip;
+      el("pick_jjo_discount").checked = !!state.selected.jjo_discount;
       el("pick_stp_family").checked = !!state.stpFamilyCard;
       el("pick_stpf_family").checked = !!state.stpfFamilyCard;
       el("stp_opts").style.display = state.selected.stp ? "block" : "none";
       el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
       el("jvip_opts").style.display = state.selected.jvip ? "block" : "none";
+      el("jjo_discount_opts").style.display = state.selected.jjo_discount ? "block" : "none";
       el("pick_stp_family").disabled = !state.selected.stp;
       el("pick_stpf_family").disabled = !state.selected.stpf;
     } catch (e) {}
   }
 
+  
+
+
+  function selectedTravelDays() {
+    return Math.max(1, Number(el("travel_days")?.value || 4));
+  }
+
+  function routeRegionId(routeId) {
+    for (const region of REGIONS) {
+      if (region.routes.some((route) => route.id === routeId)) return region.id;
+    }
+    return "";
+  }
+
+  function getRouteMetrics() {
+    const season = getSeasonEffective();
+    const selected = [...state.selectedRoutes].map(routeById).filter(Boolean);
+    const metrics = {
+      total: selected.length,
+      public: 0,
+      boat: 0,
+      scenic: 0,
+      mountain: 0,
+      special: 0,
+      stpFree: 0,
+      stpDiscount: 0,
+      stpNoDiscount: 0,
+      vipIncluded: 0,
+      jungfrau: 0,
+      zermattMountain: 0,
+      longDistance: 0,
+      jungfraujoch: false,
+    };
+    const longDistanceIds = new Set([
+      "zrh_interlaken","zrh_basel","basel_bern","basel_lucerne","bern_interlaken",
+      "geneva_lausanne","lausanne_montreux","visp_zermatt","lucerne_interlaken_express",
+      "glacier_express","bernina_express","albula","centovalli"
+    ]);
+    const vipSet = vipIncludedSet(season);
+
+    for (const route of selected) {
+      if (Object.prototype.hasOwnProperty.call(metrics, route.category)) metrics[route.category] += 1;
+      const regionId = routeRegionId(route.id);
+      if (regionId === "jungfrau") metrics.jungfrau += 1;
+      if (regionId === "zermatt" && route.category === "mountain") metrics.zermattMountain += 1;
+      if (longDistanceIds.has(route.id)) metrics.longDistance += 1;
+      if (route.id === "eiger_jungfraujoch") metrics.jungfraujoch = true;
+      if (vipSet.has(route.id)) metrics.vipIncluded += 1;
+
+      if (route.stpFree === true || (!["mountain","special"].includes(route.category) && route.stpDiscount == null && route.stpNoDiscount !== true)) {
+        metrics.stpFree += 1;
+      } else if (route.stpNoDiscount === true || route.category === "special") {
+        metrics.stpNoDiscount += 1;
+      } else if (route.stpDiscount != null || route.category === "mountain") {
+        metrics.stpDiscount += 1;
+      }
+    }
+    return metrics;
+  }
+
+  function optionDays(option) {
+    const value = Number(String(option?.label || "").match(/\d+/)?.[0] || 0);
+    return value;
+  }
+
+  function bestDurationOption(options, days) {
+    return options.find((option) => optionDays(option) >= days) || options[options.length - 1];
+  }
+
+
+  function passCostForCandidateWithTravelers(candidate, t, season) {
+    const canUseFamily = t.adult > 0 && t.child > 0;
+    let total = 0;
+    if (candidate.stpOpt) {
+      const opt = PASS.stp.options.find((item) => item.id === candidate.stpOpt);
+      if (opt) total += opt.adult2 * t.adult + opt.youth2 * t.youth + opt.child2 * (canUseFamily ? 0 : t.child);
+    }
+    if (candidate.stpfOpt) {
+      const opt = PASS.stpf.options.find((item) => item.id === candidate.stpfOpt);
+      if (opt) total += opt.adult2 * t.adult + opt.youth2 * t.youth + opt.child2 * (canUseFamily ? 0 : t.child);
+    }
+    if (candidate.half) total += PASS.half.price16plus * (t.adult + t.youth);
+    if (candidate.jvipDays) {
+      const opt = (PASS.jvip[season] || PASS.jvip.summer).find((item) => item.days === candidate.jvipDays);
+      if (opt) {
+        const overlap = candidate.half || candidate.stpOpt || candidate.stpfOpt;
+        total += (overlap ? opt.adult_overlap : opt.adult_coupon) * t.adult + opt.youth * t.youth + opt.child_6_15 * t.child;
+      }
+    }
+    return total;
+  }
+
+  function passCostForCandidate(candidate) {
+    return passCostForCandidateWithTravelers(candidate, travelers(), getSeasonEffective());
+  }
+
+  function referenceFare(route, season) {
+    const raw = REFERENCE_FARES[route.id];
+    if (typeof raw === "number") return raw;
+    if (raw && typeof raw === "object") return Number(raw[season] ?? raw.summer ?? raw.winter ?? 0);
+    return REFERENCE_FARE_DEFAULTS[route.category] || 32;
+  }
+
+  function isCandidateStpFree(route) {
+    if (route.stpFree === true) return true;
+    if (route.stpNoDiscount === true || route.stpDiscount != null) return false;
+    return ["public","boat","scenic"].includes(route.category);
+  }
+
+  function candidateUnitRate(candidate, route, season) {
+    if (candidate.jvipDays && vipIncludedSet(season).has(route.id)) return 0;
+    if (route.category === "special") return 1;
+    const rates = [1];
+    const hasStp = !!(candidate.stpOpt || candidate.stpfOpt);
+    if (hasStp) {
+      if (isCandidateStpFree(route)) rates.push(0);
+      else if (route.stpNoDiscount === true) rates.push(1);
+      else if (route.stpDiscount != null) rates.push(1 - route.stpDiscount);
+      else if (route.category === "mountain") rates.push(.5);
+    }
+    if (candidate.half) rates.push(.5);
+    return Math.max(0, Math.min(...rates));
+  }
+
+  function candidateRouteCost(candidate, routeIds, t, season) {
+    let total = 0;
+    for (const id of routeIds) {
+      const route = routeById(id);
+      if (!route) continue;
+      const base = referenceFare(route, season);
+      const rate = candidateUnitRate(candidate, route, season);
+      const adultYouth = (t.adult + t.youth) * base * rate;
+      const hasFamily = (candidate.stpOpt || candidate.stpfOpt) && t.adult > 0;
+      const child = hasFamily ? 0 : t.child * base * .5 * rate;
+      total += adultYouth + child;
+    }
+    return total;
+  }
+
+  function priceScore(total, cheapest) {
+    if (!Number.isFinite(total) || total <= 0) return 1;
+    if (total <= cheapest + .001) return 99;
+    const relative = (total - cheapest) / Math.max(cheapest, 1);
+    return Math.max(60, Math.min(98, 99 - Math.round(relative * 18)));
+  }
+
+  function passPriceDisplay(candidate) {
+    return candidate?.id === "tickets"
+      ? `<a class="sbb-price-link" href="${SBB_HOME}" target="_blank" rel="noopener">SBB에서 금액 직접 확인</a>`
+      : money(candidate?.passCost);
+  }
+
+  function passBreakdownDisplay(candidate) {
+    return candidate?.id === "tickets"
+      ? `패스 구매 없음 · 구간권은 <a class="sbb-price-link" href="${SBB_HOME}" target="_blank" rel="noopener">SBB에서 직접 확인</a>`
+      : `패스 ${money(candidate?.passCost)} · 추가 교통 ${money(candidate?.routeCost)}`;
+  }
+
+  function buildCandidatesForRoutes(routeIds, days, t, season) {
+    const metrics = getMetricsForRouteIds(routeIds);
+    const stpOpt = bestDurationOption(PASS.stp.options, days);
+    const flexOpt = bestDurationOption(PASS.stpf.options, days);
+    const vipDays = Math.max(1, Math.min(6, Math.min(days, Math.ceil(Math.max(1, metrics.vipIncluded) / 2))));
+    const candidates = [
+      { id:"tickets", title:"개별 구간권", badge:"패스 선구매 없음" },
+      { id:"half", title:"Swiss Half Fare Card + 구간권", half:true, badge:"산악교통 할인" },
+      { id:"stp", title:`Swiss Travel Pass ${stpOpt.label}`, stpOpt:stpOpt.id, badge:"연속 이동" },
+      { id:"stpf", title:`Swiss Travel Pass Flex ${flexOpt.label}`, stpfOpt:flexOpt.id, badge:"비연속 이동일" },
+      { id:"jvip", title:`융프라우 VIP ${vipDays}일권 + 구간권`, jvipDays:vipDays, badge:"융프라우 집중" },
+      { id:"half-jvip", title:`Half Fare Card + 융프라우 VIP ${vipDays}일권`, half:true, jvipDays:vipDays, badge:"융프라우＋타 지역" }
+    ];
+    const calculated = candidates.map((candidate) => {
+      const passCost = passCostForCandidateWithTravelers(candidate, t, season);
+      const routeCost = candidateRouteCost(candidate, routeIds, t, season);
+      return { ...candidate, passCost, routeCost, estimatedTotal: passCost + routeCost };
+    });
+    const cheapest = Math.min(...calculated.map((x) => x.estimatedTotal));
+    return calculated
+      .map((candidate) => ({ ...candidate, score:priceScore(candidate.estimatedTotal, cheapest), difference:candidate.estimatedTotal - cheapest }))
+      .sort((a,b) => a.estimatedTotal - b.estimatedTotal || a.passCost - b.passCost);
+  }
+
+  function getMetricsForRouteIds(routeIds) {
+    const before = state.selectedRoutes;
+    state.selectedRoutes = new Set(routeIds);
+    const metrics = getRouteMetrics();
+    state.selectedRoutes = before;
+    return metrics;
+  }
+
+  function buildRouteBasedCandidates(metrics) {
+    const routeIds = [...state.selectedRoutes];
+    return buildCandidatesForRoutes(routeIds, selectedTravelDays(), travelers(), getSeasonEffective()).slice(0,3);
+  }
+
+  function recommendationReason(candidate, metrics) {
+    const cost = `패스 ${money(candidate.passCost)} + 추가 교통 ${money(candidate.routeCost)}`;
+    if (candidate.id === "tickets") return `별도 패스 구매 없이 구간권을 각각 구매하는 방식입니다. 실제 구간권 금액은 SBB에서 직접 확인해야 하며, 선택 노선 수가 적거나 패스 가격을 회수하기 어려운 일정에서 유리할 수 있습니다.`;
+    if (candidate.id === "half") return `${cost}로 계산됐어요. 산악교통과 할인 대상 구간이 많아 하프페어의 50% 할인 효과가 크게 반영됐습니다.`;
+    if (candidate.id === "stp") return `${cost}로 계산됐어요. 무료 적용 가능한 일반열차·유람선·파노라마 구간이 많고 이동일이 연속된 일정에 잘 맞습니다.`;
+    if (candidate.id === "stpf") return `${cost}로 계산됐어요. 연속권보다 비싸더라도 이동일 사이에 쉬는 날이나 렌터카 일정이 있다면 선택 가치가 있습니다.`;
+    if (candidate.id === "jvip") return `${cost}로 계산됐어요. 융프라우 권역 노선 비중이 높아 VIP 포함 혜택이 총비용을 낮췄습니다.`;
+    return `${cost}로 계산됐어요. 융프라우 권역은 VIP로, 다른 지역은 하프페어로 나눠 할인받는 조합입니다.`;
+  }
+
+  function renderRecommendation() {
+    const empty = el("recommendation_empty");
+    const ready = el("recommendation_ready");
+    const totalPeople = totalTravelers();
+    const routeCount = state.selectedRoutes.size;
+    const season = getSeasonEffective();
+    const days = selectedTravelDays();
+    el("quick_summary").textContent = `여행자 ${totalPeople}명 · 선택 노선 ${routeCount}개 · 교통 이용 ${days}일 · ${seasonLabel(season)}`;
+
+    if (totalPeople === 0) {
+      latestRecommendation = null; ready.hidden = true; empty.hidden = false; empty.textContent = "먼저 여행자 인원을 입력해주세요."; return;
+    }
+    if (routeCount === 0) {
+      latestRecommendation = null; ready.hidden = true; empty.hidden = false; empty.textContent = "가격 입력 없이, 이용할 노선을 한 개 이상 체크해주세요."; return;
+    }
+
+    const metrics = getRouteMetrics();
+    const ranked = buildRouteBasedCandidates(metrics);
+    const best = ranked[0];
+    const second = ranked[1];
+    latestRecommendation = { best, ranked, metrics, season:seasonLabel(season), people:totalPeople, routes:routeCount, days };
+
+    empty.hidden = true; ready.hidden = false;
+    el("recommendation_title").textContent = best.title;
+    el("recommendation_total").textContent = `${best.score}점`;
+    el("recommendation_saving").textContent = second
+      ? `예상 총비용 ${money(best.estimatedTotal)} · 2위보다 ${money(second.estimatedTotal - best.estimatedTotal)} 저렴해요.`
+      : `예상 총비용 ${money(best.estimatedTotal)}입니다.`;
+    el("recommendation_reason").innerHTML = `<b>왜 이 조합인가요?</b><br>${recommendationReason(best, metrics)}`;
+    el("recommendation_alternatives").innerHTML = ranked.map((item,index) => `<article class="comparison-item"><span>${index+1}위 · ${item.badge}</span><b>${item.title}</b><strong class="comparison-score">${item.score}점 · ${money(item.estimatedTotal)}</strong><small class="muted">${passBreakdownDisplay(item)}</small>${item.difference > 0 ? `<span class="price-difference">최저가보다 ${money(item.difference)} 비쌈</span>` : `<span class="price-difference">예상 최저가</span>`}</article>`).join("");
+    el("recommendation_notice").textContent = "내장된 1회 이용 기준요금으로 계산한 계획용 예상치입니다. 실제 구매 전 SBB와 각 운영사에서 최종 가격을 확인해주세요.";
+  }
+
+  async function copyRecommendation() {
+    if (!latestRecommendation) return;
+    const { best, ranked, season, people, routes, days } = latestRecommendation;
+    const text = [
+      "[Swiss Fare Check 가격 비교]",
+      `여행자 ${people}명 · 선택 노선 ${routes}개 · 교통 이용 ${days}일 · ${season}`,
+      `1위 ${best.title}: ${money(best.estimatedTotal)} · 가격 점수 ${best.score}점`,
+      ...ranked.slice(1).map((item,index) => `${index+2}위 ${item.title}: ${money(item.estimatedTotal)} · 가격 점수 ${item.score}점 · 최저가보다 ${money(item.difference)} 비쌈`),
+      "※ 내장 기준요금을 사용한 여행 계획용 예상치입니다."
+    ].join("\n");
+    try { await navigator.clipboard.writeText(text); el("btn_copy_result").textContent="복사 완료"; setTimeout(()=>el("btn_copy_result").textContent="결과 복사",1600); }
+    catch(error){ window.prompt("아래 내용을 복사해주세요.",text); }
+  }
+
+  function plannerTravelers() {
+    return {
+      adult:Number(el("plan_adult")?.value || 0), youth:Number(el("plan_youth")?.value || 0),
+      child:Number(el("plan_child")?.value || 0), infant:Number(el("plan_infant")?.value || 0)
+    };
+  }
+
+  function plannerWeights(style) {
+    const map = {
+      balanced:{price:.40,iconic:.25,pass:.20,efficiency:.10,season:.05},
+      budget:{price:.55,iconic:.15,pass:.15,efficiency:.10,season:.05},
+      iconic:{price:.28,iconic:.40,pass:.17,efficiency:.10,season:.05},
+      pass:{price:.28,iconic:.17,pass:.40,efficiency:.10,season:.05},
+      relaxed:{price:.34,iconic:.18,pass:.13,efficiency:.30,season:.05}
+    };
+    return map[style] || map.balanced;
+  }
+
+  const ENDPOINT_LABELS = { zurich:"취리히", geneva:"제네바", basel:"바젤" };
+  const ENDPOINT_CONNECTORS = {
+    "zurich|lucerne":"zrh_lucerne", "basel|lucerne":"basel_lucerne", "geneva|lucerne":"geneva_lucerne",
+    "interlaken|zurich":"zrh_interlaken", "interlaken|basel":"basel_interlaken", "interlaken|geneva":"interlaken_geneva",
+    "bern|zurich":"bern_zurich", "bern|basel":"bern_basel", "bern|geneva":"bern_geneva",
+    "zermatt|zurich":"zermatt_zurich", "zermatt|basel":"zermatt_basel", "zermatt|geneva":"zermatt_geneva",
+    "montreux|zurich":"montreux_zurich", "montreux|basel":"montreux_basel", "montreux|geneva":"montreux_geneva",
+    "stmoritz|zurich":"stmoritz_zurich", "stmoritz|basel":"stmoritz_basel", "stmoritz|geneva":"stmoritz_geneva"
+  };
+
+  function corePlaceKey(label) {
+    const value = String(label || "").toLowerCase();
+    if (value.includes("고르너그라트") || value.includes("체르마트")) return "zermatt";
+    if (value.includes("인터라켄")) return "interlaken";
+    if (value.includes("베른")) return "bern";
+    if (value.includes("몽트뢰")) return "montreux";
+    if (value.includes("생모리츠")) return "stmoritz";
+    if (value.includes("루체른")) return "lucerne";
+    return "";
+  }
+
+  function adaptPresetEndpoints(preset,start,end) {
+    const startLabel = ENDPOINT_LABELS[start] || ENDPOINT_LABELS.zurich;
+    const endLabel = ENDPOINT_LABELS[end] || ENDPOINT_LABELS.zurich;
+    const plans = preset.plans.map((day) => [...day]);
+    const firstParts = String(plans[0]?.[1] || "").split("→").map((v) => v.trim());
+    const lastIndex = plans.length - 1;
+    const lastParts = String(plans[lastIndex]?.[1] || "").split("→").map((v) => v.trim());
+    const firstCoreLabel = firstParts[1] || "루체른";
+    const lastCoreLabel = lastParts[0] || "인터라켄";
+    const firstCore = corePlaceKey(firstCoreLabel) || "lucerne";
+    const lastCore = corePlaceKey(lastCoreLabel) || "interlaken";
+    const firstConnector = ENDPOINT_CONNECTORS[`${start}|${firstCore}`];
+    const lastConnector = ENDPOINT_CONNECTORS[`${lastCore}|${end}`];
+    const routeIds = [...preset.routeIds];
+    if (firstConnector && routeIds.length) routeIds[0] = firstConnector;
+    if (lastConnector && routeIds.length) routeIds[routeIds.length - 1] = lastConnector;
+
+    plans[0][1] = `${startLabel} → ${firstCoreLabel}`;
+    plans[0][2] = `${startLabel}에서 ${firstCoreLabel}(으)로 이동해 여행을 시작해요. 도착 시간에 맞춰 무리하지 않는 일정으로 둘러보세요.`;
+    plans[lastIndex][1] = `${lastCoreLabel} → ${endLabel}`;
+    plans[lastIndex][2] = `마지막 관광 후 ${endLabel}(으)로 이동해 일정을 마쳐요. 출국이나 다음 이동 시간보다 충분히 여유 있게 출발하세요.`;
+
+    const routeParts = String(preset.routeLine || "").split("→").map((v) => v.trim());
+    if (routeParts.length) { routeParts[0] = startLabel; routeParts[routeParts.length - 1] = endLabel; }
+    return { ...preset, start:[start], end:[end], routeLine:routeParts.join(" → "), routeIds, plans, endpoint:100 };
+  }
+
+  function matchingPlaceInfo(day) {
+    const source = `${day[1]} ${day[2]}`.toLowerCase();
+    const matched = [];
+    for (const [id, place] of Object.entries(PLACE_INFO)) {
+      const hit = (place.keywords || [place.name]).some((keyword) => source.includes(String(keyword).toLowerCase()));
+      if (hit) matched.push({ id, ...place });
+    }
+    // 같은 날 설명이 너무 길어지지 않도록 핵심 장소 최대 3개만 노출해요.
+    return matched.slice(0, 3);
+  }
+
+  function placeDetailHtml(place) {
+    return `<section class="place-detail-card">
+      <div class="place-detail-head"><strong>${place.name}</strong><span class="place-detail-badge">어떤 곳인가요?</span></div>
+      <p>${place.intro}</p>
+      <div class="place-facts">
+        <div class="place-fact"><span>추천 체류</span><b>${place.stay}</b></div>
+        <div class="place-fact"><span>이런 여행자에게</span><b>${place.goodFor}</b></div>
+      </div>
+      <div class="place-highlights">${place.highlights.map((item) => `<span class="place-highlight">${item}</span>`).join("")}</div>
+      <p class="place-tip"><b>여행 팁</b> · ${place.tip}</p>
+    </section>`;
+  }
+
+  function routeDescriptionHtml(preset) {
+    return preset.plans.map((day) => {
+      const places = matchingPlaceInfo(day);
+      const placeDetails = places.length
+        ? `<div class="place-detail-list">${places.map(placeDetailHtml).join("")}</div>`
+        : `<div class="place-detail-list"><section class="place-detail-card"><p>이날은 지역 간 이동과 주변 산책을 중심으로 구성된 일정이에요. 실제 열차 시간과 숙소 위치에 맞춰 출발 시간을 조정해주세요.</p></section></div>`;
+      return `<article class="day-plan"><span class="day-label">${day[0]}</span><div><b>${day[1]}</b><p class="day-summary">${day[2]}</p>${placeDetails}</div></article>`;
+    }).join("");
+  }
+
+  function buildPlannerRecommendations() {
+    const days = Number(el("plan_duration")?.value || 6);
+    const t = plannerTravelers();
+    const season = el("plan_season")?.value || "summer";
+    const style = el("plan_style")?.value || "balanced";
+    const start = el("plan_start")?.value || "zurich";
+    const end = el("plan_end")?.value || "zurich";
+    const totalPeople = t.adult + t.youth + t.child + t.infant;
+    if (!totalPeople) return [];
+
+    let presets = ROUTE_PRESETS.filter((p) => p.days === days && p.seasons.includes(season));
+    if (!presets.length) presets = ROUTE_PRESETS.filter((p) => p.seasons.includes(season)).sort((a,b)=>Math.abs(a.days-days)-Math.abs(b.days-days)).slice(0,4);
+    const adaptedPresets = presets.map((preset) => adaptPresetEndpoints(preset,start,end));
+    const enriched = adaptedPresets.map((preset) => {
+      const candidates = buildCandidatesForRoutes(preset.routeIds,days,t,season);
+      const pass = candidates[0];
+      return { ...preset, pass, estimatedTotal:pass.estimatedTotal, passCost:pass.passCost, endpoint:100 };
+    });
+    const cheapest = Math.min(...enriched.map((x)=>x.estimatedTotal));
+    const weights = plannerWeights(style);
+    return enriched.map((item) => {
+      const pScore = priceScore(item.estimatedTotal,cheapest);
+      const seasonScore = item.seasons.includes(season) ? 99 : 55;
+      const efficiency = Math.round((item.efficiency*.72)+(item.endpoint*.28));
+      const totalScore = Math.min(99,Math.round(pScore*weights.price + item.iconic*weights.iconic + item.passUse*weights.pass + efficiency*weights.efficiency + seasonScore*weights.season));
+      return { ...item, priceScore:pScore, totalScore, efficiencyScore:efficiency, difference:item.estimatedTotal-cheapest };
+    }).sort((a,b)=>b.totalScore-a.totalScore || a.estimatedTotal-b.estimatedTotal).slice(0,3);
+  }
+
+  function plannerReason(item,index) {
+    if (index === 0) return `선택한 여행 스타일에서 가격·대표 관광지·패스 활용도·동선 효율의 균형이 가장 좋습니다. 추천 패스는 ${item.pass.title}입니다.`;
+    if (item.difference <= 1) return `비슷한 가격대에서 일정 분위기와 동선이 다른 대안입니다. ${item.theme}을 중요하게 본다면 좋은 선택이에요.`;
+    return `1위보다 약 ${money(item.difference)} 더 들지만 ${item.theme}에 강점이 있어 여행 취향에 따라 선택할 가치가 있습니다.`;
+  }
+
+  function renderPlannerRecommendations() {
+    const box = el("plan_results");
+    const results = buildPlannerRecommendations();
+    if (!results.length) {
+      box.innerHTML = `<div class="plan-empty"><b>여행자를 한 명 이상 입력해주세요.</b></div>`;
+      return;
+    }
+    box.innerHTML = results.map((item,index) => `<article class="planner-result-card">
+      <div class="planner-result-head"><div><span class="planner-rank">${index===0?"🏆 ":""}${index+1}순위 · ${item.theme}</span><h3 class="planner-result-title">${item.title}</h3><div class="planner-route-line">${item.routeLine}</div></div><div class="planner-score"><small>종합 점수</small><strong>${item.totalScore}점</strong></div></div>
+      <div class="planner-metrics">
+        <div class="planner-metric"><span>${item.pass.id === "tickets" ? "구매 방식" : "추천 패스"}</span><b>${item.pass.title}</b><strong>${passPriceDisplay(item.pass)}</strong></div>
+        <div class="planner-metric"><span>예상 교통 총비용</span><b>패스＋추가 교통</b><strong>${money(item.estimatedTotal)}</strong></div>
+        <div class="planner-metric"><span>가격 비교</span><b>가격 점수 ${item.priceScore}점</b><strong>${item.difference>0?`+ ${money(item.difference)}`:"예상 최저가"}</strong></div>
+      </div>
+      <div class="planner-reason">${plannerReason(item,index)}</div>
+      <div class="planner-tags">${item.tags.map((tag)=>`<span class="pill">${tag}</span>`).join("")}<span class="pill">강도 ${item.intensity}</span></div>
+      <details class="planner-detail"><summary>일자별 일정과 장소 설명 보기</summary><div class="day-plan-list">${routeDescriptionHtml(item)}</div></details>
+      <div class="planner-actions"><span class="planner-disclaimer">기준요금 기반 예상치 · 운영일과 날씨에 따라 일부 일정은 조정이 필요해요.</span><button class="btn btn-primary apply-plan-route" data-plan-id="${item.id}" type="button">이 루트로 패스 비교</button></div>
+    </article>`).join("");
+  }
+
+  function applyPlannerRoute(id) {
+    const basePreset = ROUTE_PRESETS.find((p)=>p.id===id);
+    if (!basePreset) return;
+    const preset = adaptPresetEndpoints(basePreset, el("plan_start")?.value || "zurich", el("plan_end")?.value || "zurich");
+    const t = plannerTravelers();
+    el("n_adult").value=t.adult; el("n_youth").value=t.youth; el("n_child").value=t.child; el("n_infant").value=t.infant;
+    el("season_mode").value=el("plan_season").value;
+    el("travel_days").value=String(preset.days>8?8:preset.days);
+    state.selectedRoutes = new Set(preset.routeIds);
+    state.openRegions = new Set(REGIONS.filter((r)=>r.routes.some((route)=>state.selectedRoutes.has(route.id))).map((r)=>r.id));
+    setMode("simple"); renderRoutes(); recalc();
+    el("calculator")?.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  function setMode(mode) {
+    const next = ["plan","simple","manual"].includes(mode) ? mode : "plan";
+    document.body.dataset.mode = next;
+    for (const name of ["plan","simple","manual"]) {
+      const button = el(`mode_${name}`);
+      if (!button) continue;
+      button.classList.toggle("active", next === name);
+      button.setAttribute("aria-selected", String(next === name));
+    }
+    if (next !== "plan" && el("routes")) { renderRoutes(); recalc(); }
+  }
+
+  function scrollToCalculator(mode) {
+    setMode(mode);
+    el("calculator")?.scrollIntoView({ behavior:"smooth", block:"start" });
+  }
+
+  function bindShell() {
+    el("mode_plan")?.addEventListener("click", () => setMode("plan"));
+    el("mode_simple")?.addEventListener("click", () => setMode("simple"));
+    el("mode_manual")?.addEventListener("click", () => setMode("manual"));
+    el("btn_start_plan")?.addEventListener("click", () => scrollToCalculator("plan"));
+    el("btn_start_simple")?.addEventListener("click", () => scrollToCalculator("simple"));
+    el("btn_start_manual")?.addEventListener("click", () => scrollToCalculator("manual"));
+    el("btn_copy_result")?.addEventListener("click", copyRecommendation);
+    el("btn_plan_routes")?.addEventListener("click", renderPlannerRecommendations);
+    el("plan_results")?.addEventListener("click", (event) => {
+      const button = event.target.closest(".apply-plan-route");
+      if (button) applyPlannerRoute(button.dataset.planId);
+    });
+  }
+
+
   function recalc() {
     const season = getSeasonEffective();
-    el("season_hint").textContent = `Current season: ${seasonLabel(season)} (${el("travel_date")?.value || "No date selected"})`;
+    el("season_hint").textContent = `현재 시즌: ${seasonLabel(season)} (${el("travel_date")?.value || "날짜 미선택"})`;
+    const hintEl = el("jjo_price_hint");
+    if (hintEl) {
+      const hasOverlap = state.selected.stp || state.selected.stpf || state.selected.half;
+      const p = JJO_DISCOUNT[season][state.jjoType];
+      hintEl.textContent = `성인 ${money(hasOverlap ? p.overlap : p.adult)} / 아동 ${money(p.child)}${hasOverlap ? " · 중복할인 적용" : ""}`;
+    }
+
     updateTravelerWarning();
     const pass = calcPassTicketTotal();
     const route = calcRouteTotal();
     const grand = pass.total + route.total;
+
     el("pass_total").textContent = money(pass.total);
     el("route_total").textContent = money(route.total);
     el("grand_total").textContent = money(grand);
     updateMissingPriceUI();
     updateRouteReasonTexts();
-    const passLines = pass.lines.map((x) => `<div class="line"><div><div class="k">${x.label}</div>${x.warn ? `<div class="warnText">Please select an option.</div>` : ``}</div><div><b>${money(x.price)}</b></div></div>`).join("") || `<div class="muted">No pass or ticket selected.</div>`;
-    const routeLines = route.lines.map((x) => `<div class="line"><div><div class="k">${x.label}</div><div class="muted">${x.reason}</div></div><div><b>${money(x.price)}</b></div></div>`).join("") || `<div class="muted">No route selected.</div>`;
-    const passPills = (state.selected.stp || state.selected.stpf || state.selected.half || state.selected.jvip)
-      ? ["stp","stpf","half","jvip"].filter((k) => state.selected[k]).map((k) => `<span class="pill">${PASS[k]?.label}</span>`).join(" ")
+    renderRecommendation();
+
+    const passLines = pass.lines.map((x) => `<div class="line"><div><div class="k">${x.label}</div>${x.warn ? `<div class="warnText">옵션을 선택해 주세요.</div>` : ``}</div><div><b>${money(x.price)}</b></div></div>`).join("") || `<div class="muted">선택된 패스/티켓이 없습니다.</div>`;
+    const routeLines = route.lines.map((x) => `<div class="line"><div><div class="k">${x.label}</div><div class="muted">${x.reason}</div></div><div><b>${money(x.price)}</b></div></div>`).join("") || `<div class="muted">선택된 노선이 없습니다.</div>`;
+    const passPills = (state.selected.stp || state.selected.stpf || state.selected.half || state.selected.jvip || state.selected.jjo_discount)
+      ? ["stp","stpf","half","jvip","jjo_discount"].filter((k) => state.selected[k]).map((k) => `<span class="pill">${k === "jjo_discount" ? "융프라우요흐 왕복권" : PASS[k]?.label}</span>`).join(" ")
       : "-";
-    el("breakdown").innerHTML = `<div class="pill">Selected passes: ${passPills}</div><div class="hr"></div><div class="k">Passes / Tickets</div><div>${passLines}</div><div class="hr"></div><div class="k">Routes</div><div>${routeLines}</div>`;
+    el("breakdown").innerHTML = `<div class="pill">선택 패스: ${passPills}</div><div class="hr"></div><div class="k">패스 / 티켓</div><div>${passLines}</div><div class="hr"></div><div class="k">노선</div><div>${routeLines}</div>`;
     saveState();
   }
 
   function bind() {
     el("travel_date").addEventListener("change", () => { renderJvipRadios(); renderRoutes(); recalc(); });
     el("season_mode").addEventListener("change", () => { renderJvipRadios(); renderRoutes(); recalc(); });
+    el("travel_days")?.addEventListener("change", recalc);
     ["n_adult","n_youth","n_child","n_infant"].forEach((id) => {
       el(id).addEventListener("input", recalc);
       el(id).addEventListener("change", recalc);
@@ -1177,63 +2485,58 @@
     el("show_selected_only").addEventListener("change", renderRoutes);
     el("btn_open_all").addEventListener("click", () => document.querySelectorAll("#routes details").forEach((d) => d.open = true));
     el("btn_close_all").addEventListener("click", () => document.querySelectorAll("#routes details").forEach((d) => d.open = false));
-    el("pick_stp").addEventListener("change", () => {
-      state.selected.stp = el("pick_stp").checked;
+    el("pick_stp").addEventListener("change", () => { 
+      state.selected.stp = el("pick_stp").checked; 
       el("stp_opts").style.display = state.selected.stp ? "block" : "none";
-      el("pick_stp_family").disabled = !state.selected.stp;
+      el("pick_stp_family").disabled = !state.selected.stp; 
       if (!state.selected.stp) {
         state.stpFamilyCard = false;
         el("pick_stp_family").checked = false;
       }
-      renderRoutes();
-      recalc();
+      renderRoutes(); 
+      recalc(); 
     });
     el("pick_stp_family").addEventListener("change", () => {
       state.stpFamilyCard = el("pick_stp_family").checked;
       renderRoutes();
       recalc();
     });
-    el("pick_stpf").addEventListener("change", () => {
-      state.selected.stpf = el("pick_stpf").checked;
+    el("pick_stpf").addEventListener("change", () => { 
+      state.selected.stpf = el("pick_stpf").checked; 
       el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
-      el("pick_stpf_family").disabled = !state.selected.stpf;
+      el("pick_stpf_family").disabled = !state.selected.stpf; 
       if (!state.selected.stpf) {
         state.stpfFamilyCard = false;
         el("pick_stpf_family").checked = false;
       }
-      renderRoutes();
-      recalc();
+      renderRoutes(); 
+      recalc(); 
     });
     el("pick_stpf_family").addEventListener("change", () => {
       state.stpfFamilyCard = el("pick_stpf_family").checked;
       renderRoutes();
       recalc();
     });
-    el("pick_half").addEventListener("change", () => {
-      state.selected.half = el("pick_half").checked;
-      recalc();
-    });
-    el("pick_jvip").addEventListener("change", () => {
-      state.selected.jvip = el("pick_jvip").checked;
-      el("jvip_opts").style.display = state.selected.jvip ? "block" : "none";
-      renderRoutes();
-      recalc();
-    });
+    el("pick_half").addEventListener("change", () => { state.selected.half = el("pick_half").checked; recalc(); });
+    el("pick_jvip").addEventListener("change", () => { state.selected.jvip = el("pick_jvip").checked; el("jvip_opts").style.display = state.selected.jvip ? "block" : "none"; syncJjoDiscountToggle(); renderRoutes(); recalc(); });
+    el("pick_jjo_discount").addEventListener("change", () => { state.selected.jjo_discount = el("pick_jjo_discount").checked; el("jjo_discount_opts").style.display = state.selected.jjo_discount ? "block" : "none"; recalc(); });
 
     el("btn_reset_passes").addEventListener("click", () => {
-      state.selected = { stp: false, stpf: false, half: false, jvip: false };
+      state.selected = { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false };
       state.stpFamilyCard = false;
       state.stpfFamilyCard = false;
       state.stpOpt = null;
       state.stpfOpt = null;
       state.jvipDays = null;
-      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
+      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
       el("pick_stp_family").disabled = true;
       el("pick_stpf_family").disabled = true;
-      ["stp_opts","stpf_opts","jvip_opts"].forEach((id) => { el(id).style.display = "none"; });
+      ["stp_opts","stpf_opts","jvip_opts","jjo_discount_opts"].forEach((id) => { el(id).style.display = "none"; });
+      syncJjoDiscountToggle();
       renderRoutes();
       recalc();
     });
+
     el("btn_reset_routes").addEventListener("click", () => {
       state.selectedRoutes.clear();
       state.missingRouteIds.clear();
@@ -1245,22 +2548,24 @@
       renderRoutes();
       recalc();
     });
+
     el("btn_reset").addEventListener("click", () => {
       state.selectedRoutes.clear();
       state.openRegions.clear();
       state.missingRouteIds.clear();
-      state.selected = { stp: false, stpf: false, half: false, jvip: false };
+      state.selected = { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false };
       state.stpFamilyCard = false;
       state.stpfFamilyCard = false;
-      state.stpOpt = null; state.stpfOpt = null; state.stpClass = 2; state.stpfClass = 2; state.jvipDays = null;
+      state.stpOpt = null; state.stpfOpt = null; state.stpClass = 2; state.stpfClass = 2; state.jvipDays = null; state.jjoType = "long";
       state.routePrices = { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() };
       state.backup = { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() };
       ensureRoutesInit();
-      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
+      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
       el("pick_stp_family").disabled = true;
       el("pick_stpf_family").disabled = true;
-      ["stp_opts","stpf_opts","jvip_opts"].forEach((id) => { el(id).style.display = "none"; });
-      renderStpOpts(); renderStpfOpts(); renderJvipOpts();
+      ["stp_opts","stpf_opts","jvip_opts","jjo_discount_opts"].forEach((id) => { el(id).style.display = "none"; });
+      syncJjoDiscountToggle();
+      renderStpOpts(); renderStpfOpts(); renderJvipOpts(); renderJjoDiscountOpts();
       renderRoutes(); recalc();
     });
   }
@@ -1270,12 +2575,17 @@
     ensureRoutesInit();
     initPassOptions();
     bind();
+    bindShell();
+    setMode("plan");
     el("pick_stp_family").disabled = true;
     el("pick_stpf_family").disabled = true;
     loadState();
+    syncJjoDiscountToggle();
     renderRoutes();
     recalc();
+    renderPlannerRecommendations();
   }
+
   boot();
 })();
 </script>
