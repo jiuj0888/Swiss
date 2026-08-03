@@ -670,7 +670,7 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div><a class="brand" href="/"><span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check 로고" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check<small>스위스 교통비 비교 웹사이트</small></span></a><p>노선 유효범위, 요금, 할인 규칙과 티켓 조건은 변경될 수 있습니다. 실제 예약 전 반드시 SBB 및 각 공식 운영사 사이트에서 최종 내용을 확인해주세요.</p><div class="contact-line"><b>제보 및 문의</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>개발자에게 커피 사주기</b> · 토스 1000-3296-6395</div></div>
+    <div><a class="brand" href="/"><span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check 로고" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check<small>독립적인 스위스 교통비 비교 도구</small></span></a><p>노선 유효범위, 요금, 할인 규칙과 티켓 조건은 변경될 수 있습니다. 실제 예약 전 반드시 SBB 및 각 공식 운영사 사이트에서 최종 내용을 확인해주세요.</p><div class="contact-line"><b>제보 및 문의</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>개발자에게 커피 사주기</b> · 토스 1000-3296-6395</div></div>
     <nav class="footer-links" aria-label="하단 메뉴"><a href="/privacy">개인정보처리방침</a><a href="/faq">FAQ</a><a href="/terms">이용약관·면책고지</a><a href="/en/">English</a></nav>
   </div>
 </footer>
@@ -901,7 +901,12 @@
     gotthard_base: 52, lucerne_interlaken_express: 36, glacier_express: 168, seat_reservation: 49,
     stgallen: 38, appenzell: 28, saentis: 58, liechtenstein: 22, neuchatel: 36, lac_neuchatel_boat: 38, la_chaux: 21,
     interlaken_zermatt: 78, zermatt_zurich: 126, interlaken_montreux: 58, montreux_zermatt: 72, montreux_geneva: 32,
-    zurich_stmoritz: 92, stmoritz_zurich: 92
+    zurich_stmoritz: 92, stmoritz_zurich: 92,
+    geneva_lucerne: 92, basel_interlaken: 62, interlaken_geneva: 74,
+    bern_zurich: 52, bern_basel: 41, bern_geneva: 58,
+    zermatt_geneva: 102, zermatt_basel: 118,
+    montreux_zurich: 81, montreux_basel: 71,
+    stmoritz_geneva: 148, stmoritz_basel: 132
   };
 
   const EXTRA_ROUTES = [
@@ -912,7 +917,19 @@
     { regionId: "geneva_lake", route: { id: "interlaken_montreux", label: "인터라켄 ↔ 몽트뢰", category: "scenic" } },
     { regionId: "geneva_lake", route: { id: "montreux_geneva", label: "몽트뢰 ↔ 제네바", category: "public" } },
     { regionId: "graubuenden", route: { id: "zurich_stmoritz", label: "취리히 ↔ 생모리츠", category: "public" } },
-    { regionId: "graubuenden", route: { id: "stmoritz_zurich", label: "생모리츠 ↔ 취리히", category: "public" } }
+    { regionId: "graubuenden", route: { id: "stmoritz_zurich", label: "생모리츠 ↔ 취리히", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "geneva_lucerne", label: "제네바 ↔ 루체른", category: "public" } },
+    { regionId: "basel", route: { id: "basel_interlaken", label: "바젤 ↔ 인터라켄", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "interlaken_geneva", label: "인터라켄 ↔ 제네바", category: "public" } },
+    { regionId: "bern", route: { id: "bern_zurich", label: "베른 ↔ 취리히", category: "public" } },
+    { regionId: "bern", route: { id: "bern_basel", label: "베른 ↔ 바젤", category: "public" } },
+    { regionId: "bern", route: { id: "bern_geneva", label: "베른 ↔ 제네바", category: "public" } },
+    { regionId: "zermatt", route: { id: "zermatt_geneva", label: "체르마트 ↔ 제네바", category: "public" } },
+    { regionId: "zermatt", route: { id: "zermatt_basel", label: "체르마트 ↔ 바젤", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "montreux_zurich", label: "몽트뢰 ↔ 취리히", category: "public" } },
+    { regionId: "geneva_lake", route: { id: "montreux_basel", label: "몽트뢰 ↔ 바젤", category: "public" } },
+    { regionId: "graubuenden", route: { id: "stmoritz_geneva", label: "생모리츠 ↔ 제네바", category: "public" } },
+    { regionId: "graubuenden", route: { id: "stmoritz_basel", label: "생모리츠 ↔ 바젤", category: "public" } }
   ];
   for (const item of EXTRA_ROUTES) {
     const region = REGIONS.find((r) => r.id === item.regionId);
@@ -2240,11 +2257,52 @@
     return map[style] || map.balanced;
   }
 
-  function routeEndpointScore(preset,start,end) {
-    let score = 72;
-    if (preset.start.includes(start)) score += 14;
-    if (preset.end.includes(end)) score += 14;
-    return Math.min(100,score);
+  const ENDPOINT_LABELS = { zurich:"취리히", geneva:"제네바", basel:"바젤" };
+  const ENDPOINT_CONNECTORS = {
+    "zurich|lucerne":"zrh_lucerne", "basel|lucerne":"basel_lucerne", "geneva|lucerne":"geneva_lucerne",
+    "interlaken|zurich":"zrh_interlaken", "interlaken|basel":"basel_interlaken", "interlaken|geneva":"interlaken_geneva",
+    "bern|zurich":"bern_zurich", "bern|basel":"bern_basel", "bern|geneva":"bern_geneva",
+    "zermatt|zurich":"zermatt_zurich", "zermatt|basel":"zermatt_basel", "zermatt|geneva":"zermatt_geneva",
+    "montreux|zurich":"montreux_zurich", "montreux|basel":"montreux_basel", "montreux|geneva":"montreux_geneva",
+    "stmoritz|zurich":"stmoritz_zurich", "stmoritz|basel":"stmoritz_basel", "stmoritz|geneva":"stmoritz_geneva"
+  };
+
+  function corePlaceKey(label) {
+    const value = String(label || "").toLowerCase();
+    if (value.includes("고르너그라트") || value.includes("체르마트")) return "zermatt";
+    if (value.includes("인터라켄")) return "interlaken";
+    if (value.includes("베른")) return "bern";
+    if (value.includes("몽트뢰")) return "montreux";
+    if (value.includes("생모리츠")) return "stmoritz";
+    if (value.includes("루체른")) return "lucerne";
+    return "";
+  }
+
+  function adaptPresetEndpoints(preset,start,end) {
+    const startLabel = ENDPOINT_LABELS[start] || ENDPOINT_LABELS.zurich;
+    const endLabel = ENDPOINT_LABELS[end] || ENDPOINT_LABELS.zurich;
+    const plans = preset.plans.map((day) => [...day]);
+    const firstParts = String(plans[0]?.[1] || "").split("→").map((v) => v.trim());
+    const lastIndex = plans.length - 1;
+    const lastParts = String(plans[lastIndex]?.[1] || "").split("→").map((v) => v.trim());
+    const firstCoreLabel = firstParts[1] || "루체른";
+    const lastCoreLabel = lastParts[0] || "인터라켄";
+    const firstCore = corePlaceKey(firstCoreLabel) || "lucerne";
+    const lastCore = corePlaceKey(lastCoreLabel) || "interlaken";
+    const firstConnector = ENDPOINT_CONNECTORS[`${start}|${firstCore}`];
+    const lastConnector = ENDPOINT_CONNECTORS[`${lastCore}|${end}`];
+    const routeIds = [...preset.routeIds];
+    if (firstConnector && routeIds.length) routeIds[0] = firstConnector;
+    if (lastConnector && routeIds.length) routeIds[routeIds.length - 1] = lastConnector;
+
+    plans[0][1] = `${startLabel} → ${firstCoreLabel}`;
+    plans[0][2] = `${startLabel}에서 ${firstCoreLabel}(으)로 이동해 여행을 시작해요. 도착 시간에 맞춰 무리하지 않는 일정으로 둘러보세요.`;
+    plans[lastIndex][1] = `${lastCoreLabel} → ${endLabel}`;
+    plans[lastIndex][2] = `마지막 관광 후 ${endLabel}(으)로 이동해 일정을 마쳐요. 출국이나 다음 이동 시간보다 충분히 여유 있게 출발하세요.`;
+
+    const routeParts = String(preset.routeLine || "").split("→").map((v) => v.trim());
+    if (routeParts.length) { routeParts[0] = startLabel; routeParts[routeParts.length - 1] = endLabel; }
+    return { ...preset, start:[start], end:[end], routeLine:routeParts.join(" → "), routeIds, plans, endpoint:100 };
   }
 
   function matchingPlaceInfo(day) {
@@ -2293,10 +2351,11 @@
 
     let presets = ROUTE_PRESETS.filter((p) => p.days === days && p.seasons.includes(season));
     if (!presets.length) presets = ROUTE_PRESETS.filter((p) => p.seasons.includes(season)).sort((a,b)=>Math.abs(a.days-days)-Math.abs(b.days-days)).slice(0,4);
-    const enriched = presets.map((preset) => {
+    const adaptedPresets = presets.map((preset) => adaptPresetEndpoints(preset,start,end));
+    const enriched = adaptedPresets.map((preset) => {
       const candidates = buildCandidatesForRoutes(preset.routeIds,days,t,season);
       const pass = candidates[0];
-      return { ...preset, pass, estimatedTotal:pass.estimatedTotal, passCost:pass.passCost, endpoint:routeEndpointScore(preset,start,end) };
+      return { ...preset, pass, estimatedTotal:pass.estimatedTotal, passCost:pass.passCost, endpoint:100 };
     });
     const cheapest = Math.min(...enriched.map((x)=>x.estimatedTotal));
     const weights = plannerWeights(style);
@@ -2337,8 +2396,9 @@
   }
 
   function applyPlannerRoute(id) {
-    const preset = ROUTE_PRESETS.find((p)=>p.id===id);
-    if (!preset) return;
+    const basePreset = ROUTE_PRESETS.find((p)=>p.id===id);
+    if (!basePreset) return;
+    const preset = adaptPresetEndpoints(basePreset, el("plan_start")?.value || "zurich", el("plan_end")?.value || "zurich");
     const t = plannerTravelers();
     el("n_adult").value=t.adult; el("n_youth").value=t.youth; el("n_child").value=t.child; el("n_infant").value=t.infant;
     el("season_mode").value=el("plan_season").value;
