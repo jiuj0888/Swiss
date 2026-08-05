@@ -283,7 +283,7 @@
     .line:last-child{border-bottom:none}
 
     .guide-section{max-width:var(--max);margin:0 auto;padding:32px 18px 70px}
-    .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:start}
     .guide-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.8);box-shadow:var(--shadow-sm)}
     .guide-card summary{font-size:15px}
     .guide-card p,.guide-card li{color:#5b6873;font-size:13px}
@@ -660,7 +660,7 @@
   <section class="guide-section" id="guide" aria-labelledby="guide-title">
     <div class="section-heading"><div><p class="eyebrow">Before you book</p><h2 id="guide-title">Please read before calculating</h2><p>Fares and validity rules can change. Use these results for trip planning and verify the final details with the official operator before purchasing.</p></div></div>
     <div class="guide-grid">
-      <details class="guide-card">
+      <details class="guide-card" open>
         <summary>How to use the planner</summary>
         <ol class="small"><li>Enter the number and ages of travellers and your travel date.</li><li>For itinerary ideas, enter your duration, season and travel style in Route Planner.</li><li>Compare the top three routes and their suggested pass costs.</li><li>For an existing itinerary, choose the routes in Compare My Route.</li><li>For more precise current prices, enter official point-to-point fares in Manual Calculator.</li></ol>
         <div class="category-legend"><span class="pill">🚆 Train & bus</span><span class="pill">⛴️ Boat</span><span class="pill">🚞 Panoramic train</span><span class="pill">🏔️ Mountain transport</span><span class="pill">🎟️ Extra ticket</span></div>
@@ -676,7 +676,7 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div><a class="brand" href="/en/"><span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check logo" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check<small>INDEPENDENT SWISS TRANSPORT COMPARISON TOOL</small></span></a><p>Route validity, fares, discounts and ticket conditions may change. Always verify the final details with SBB and the relevant official operators before booking.</p><div class="contact-line"><b>Feedback and enquiries</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>Buy the developer a coffee</b> · Toss 1000-3296-6395</div></div>
+    <div><a class="brand" href="/en/"><span class="brand-logo-wrap"><img class="brand-logo" src="/logo-512.png" alt="Swiss Fare Check logo" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check</span></a><p>Route validity, fares, discounts and ticket conditions may change. Always verify the final details with SBB and the relevant official operators before booking.</p><div class="contact-line"><b>Feedback and enquiries</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>Buy the developer a coffee</b> · Toss 1000-3296-6395</div></div>
     <nav class="footer-links" aria-label="Footer navigation"><a href="/en/privacy">Privacy policy</a><a href="/en/faq">FAQ</a><a href="/en/terms">Terms & disclaimer</a><a href="/">Korean</a></nav>
   </div>
 </footer>
@@ -684,6 +684,13 @@
 <script>
 (() => {
   const el = (id) => document.getElementById(id);
+  document.querySelectorAll(".guide-grid").forEach((grid) => {
+    const cards = [...grid.querySelectorAll(":scope > details.guide-card")];
+    cards.forEach((card) => card.addEventListener("toggle", () => {
+      if (!card.open) return;
+      cards.forEach((other) => { if (other !== card) other.open = false; });
+    }));
+  });
   const money = (n) => `CHF ${Number(n || 0).toFixed(2)}`;
   const SBB_HOME = "https://www.sbb.ch/en";
   const SBB_FP = "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml";
