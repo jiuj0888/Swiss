@@ -581,7 +581,12 @@
               </details>
               <details>
                 <summary>Swiss Half Fare Card</summary>
-                <div class="nested"><div class="muted">Provides about 50% off most public transport tickets.</div><label><input type="checkbox" id="pick_half"> Use this card</label></div>
+                <div class="nested">
+                  <div class="muted">Provides about 50% off most public transport tickets.</div>
+                  <label><input type="checkbox" id="pick_half"> Use this card</label>
+                  <label><input type="checkbox" id="pick_half_family"> Add a Swiss Family Card</label>
+                  <div class="mini">Applies only to eligible children aged 6 to under 16 travelling with a parent resident outside Switzerland or Liechtenstein who also holds a valid ticket. Verify the final conditions in the <a href="https://www.sbb.ch/en/offers/swiss-family-card" target="_blank" rel="noopener noreferrer">official SBB guidance</a>.</div>
+                </div>
               </details>
               <details>
                 <summary>Jungfrau VIP Pass</summary>
@@ -676,7 +681,7 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div><a class="brand" href="/en/"><span class="brand-logo-wrap"><img class="brand-logo" src="/favicon.png" alt="Swiss Fare Check logo" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check</span></a><p>Route validity, fares, discounts and ticket conditions may change. Always verify the final details with SBB and the relevant official operators before booking.</p><div class="contact-line"><b>Feedback and enquiries</b> · jiuj0888@gmail.com &nbsp; | &nbsp; <b>Buy the developer a coffee</b> · Toss 1000-3296-6395</div></div>
+    <div><a class="brand" href="/en/"><span class="brand-logo-wrap"><img class="brand-logo" src="/favicon.png" alt="Swiss Fare Check logo" width="42" height="42" loading="lazy"></span><span class="brand-copy">Swiss Fare Check</span></a><p>Route validity, fares, discounts and ticket conditions may change. Always verify the final details with SBB and the relevant official operators before booking.</p><div class="contact-line"><b>Feedback and enquiries</b> · <a href="mailto:jiuj0888@gmail.com">jiuj0888@gmail.com</a> &nbsp; | &nbsp; <b>Buy the developer a coffee</b> · Toss 1000-3296-6395</div></div>
     <nav class="footer-links" aria-label="Footer navigation"><a href="/en/privacy">Privacy policy</a><a href="/en/faq">FAQ</a><a href="/en/terms">Terms & disclaimer</a><a href="https://www.instagram.com/swissfarecheck/" target="_blank" rel="noopener noreferrer">Instagram @swissfarecheck</a><a href="/">Korean</a></nav>
   </div>
 </footer>
@@ -1350,6 +1355,7 @@
     selected: { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false },
     stpFamilyCard: false,
     stpfFamilyCard: false,
+    halfFamilyCard: false,
     stpOpt: null,
     stpClass: 2,
     stpfOpt: null,
@@ -1398,10 +1404,17 @@
     return state.selected.jvip ? vipIncludedSet(season).has(routeId) : false;
   }
   function isFamilyCardActive() {
-    return (state.selected.stp && state.stpFamilyCard) || (state.selected.stpf && state.stpfFamilyCard);
+    return (state.selected.stp && state.stpFamilyCard)
+      || (state.selected.stpf && state.stpfFamilyCard)
+      || (state.selected.half && state.halfFamilyCard);
+  }
+  function isFamilyCardCoveredRoute(route) {
+    if (route.stpFree === true) return true;
+    if (route.stpNoDiscount === true || route.stpDiscount != null) return false;
+    return ["public","boat","scenic"].includes(route.category);
   }
   function isFamilyCardFreeRoute(route) {
-    return isFamilyCardActive() && isSwissPassFree(route);
+    return isFamilyCardActive() && isFamilyCardCoveredRoute(route);
   }
   function applyLocks(season) {
     ensureRoutesInit();
@@ -1592,7 +1605,7 @@
     if (state.selected.half) {
       const sum = PASS.half.price16plus * (t.adult + t.youth);
       total += sum;
-      lines.push({ label: "Swiss Half Fare Card (1 month)", price: sum });
+      lines.push({ label: `Swiss Half Fare Card (1 month)${state.halfFamilyCard ? " · Family Card" : ""}`, price: sum });
     }
 
     if (state.selected.jvip) {
@@ -1923,6 +1936,7 @@
       selected: state.selected,
       stpFamilyCard: state.stpFamilyCard,
       stpfFamilyCard: state.stpfFamilyCard,
+      halfFamilyCard: state.halfFamilyCard,
       stpOpt: state.stpOpt,
       stpClass: state.stpClass,
       stpfOpt: state.stpfOpt,
@@ -1964,6 +1978,7 @@
       state.selected = { ...state.selected, ...(saved.selected || {}) };
       state.stpFamilyCard = !!saved.stpFamilyCard;
       state.stpfFamilyCard = !!saved.stpfFamilyCard;
+      state.halfFamilyCard = !!saved.halfFamilyCard;
       state.stpOpt = saved.stpOpt || null;
       state.stpClass = saved.stpClass || 2;
       state.stpfOpt = saved.stpfOpt || null;
@@ -1991,12 +2006,14 @@
       el("pick_jjo_discount").checked = !!state.selected.jjo_discount;
       el("pick_stp_family").checked = !!state.stpFamilyCard;
       el("pick_stpf_family").checked = !!state.stpfFamilyCard;
+      el("pick_half_family").checked = !!state.halfFamilyCard;
       el("stp_opts").style.display = state.selected.stp ? "block" : "none";
       el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
       el("jvip_opts").style.display = state.selected.jvip ? "block" : "none";
       el("jjo_discount_opts").style.display = state.selected.jjo_discount ? "block" : "none";
       el("pick_stp_family").disabled = !state.selected.stp;
       el("pick_stpf_family").disabled = !state.selected.stpf;
+      el("pick_half_family").disabled = !state.selected.half;
     } catch (e) {}
   }
 
@@ -2132,7 +2149,9 @@
       const base = referenceFare(route, season);
       const rate = candidateUnitRate(candidate, route, season);
       const adultYouth = (t.adult + t.youth) * base * rate;
-      const hasFamily = (candidate.stpOpt || candidate.stpfOpt) && t.adult > 0;
+      const hasFamily = (candidate.half || candidate.stpOpt || candidate.stpfOpt)
+        && t.adult > 0
+        && isCandidateStpFree(route);
       const child = hasFamily ? 0 : t.child * base * .5 * rate;
       total += adultYouth + child;
     }
@@ -2517,7 +2536,8 @@
     el("pick_stpf").addEventListener("change", () => { 
       state.selected.stpf = el("pick_stpf").checked; 
       el("stpf_opts").style.display = state.selected.stpf ? "block" : "none";
-      el("pick_stpf_family").disabled = !state.selected.stpf; 
+      el("pick_stpf_family").disabled = !state.selected.stpf;
+      el("pick_half_family").disabled = !state.selected.half; 
       if (!state.selected.stpf) {
         state.stpfFamilyCard = false;
         el("pick_stpf_family").checked = false;
@@ -2530,7 +2550,21 @@
       renderRoutes();
       recalc();
     });
-    el("pick_half").addEventListener("change", () => { state.selected.half = el("pick_half").checked; recalc(); });
+    el("pick_half").addEventListener("change", () => {
+      state.selected.half = el("pick_half").checked;
+      el("pick_half_family").disabled = !state.selected.half;
+      if (!state.selected.half) {
+        state.halfFamilyCard = false;
+        el("pick_half_family").checked = false;
+      }
+      renderRoutes();
+      recalc();
+    });
+    el("pick_half_family").addEventListener("change", () => {
+      state.halfFamilyCard = el("pick_half_family").checked;
+      renderRoutes();
+      recalc();
+    });
     el("pick_jvip").addEventListener("change", () => { state.selected.jvip = el("pick_jvip").checked; el("jvip_opts").style.display = state.selected.jvip ? "block" : "none"; syncJjoDiscountToggle(); renderRoutes(); recalc(); });
     el("pick_jjo_discount").addEventListener("change", () => { state.selected.jjo_discount = el("pick_jjo_discount").checked; el("jjo_discount_opts").style.display = state.selected.jjo_discount ? "block" : "none"; recalc(); });
 
@@ -2538,12 +2572,14 @@
       state.selected = { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false };
       state.stpFamilyCard = false;
       state.stpfFamilyCard = false;
+      state.halfFamilyCard = false;
       state.stpOpt = null;
       state.stpfOpt = null;
       state.jvipDays = null;
-      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
+      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family","pick_half_family"].forEach((id) => { el(id).checked = false; });
       el("pick_stp_family").disabled = true;
       el("pick_stpf_family").disabled = true;
+      el("pick_half_family").disabled = true;
       ["stp_opts","stpf_opts","jvip_opts","jjo_discount_opts"].forEach((id) => { el(id).style.display = "none"; });
       syncJjoDiscountToggle();
       renderRoutes();
@@ -2569,13 +2605,15 @@
       state.selected = { stp: false, stpf: false, half: false, jvip: false, jjo_discount: false };
       state.stpFamilyCard = false;
       state.stpfFamilyCard = false;
+      state.halfFamilyCard = false;
       state.stpOpt = null; state.stpfOpt = null; state.stpClass = 2; state.stpfClass = 2; state.jvipDays = null; state.jjoType = "long";
       state.routePrices = { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() };
       state.backup = { adult: new Map(), youth: new Map(), child: new Map(), infant: new Map() };
       ensureRoutesInit();
-      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family"].forEach((id) => { el(id).checked = false; });
+      ["pick_stp","pick_stpf","pick_half","pick_jvip","pick_jjo_discount","pick_stp_family","pick_stpf_family","pick_half_family"].forEach((id) => { el(id).checked = false; });
       el("pick_stp_family").disabled = true;
       el("pick_stpf_family").disabled = true;
+      el("pick_half_family").disabled = true;
       ["stp_opts","stpf_opts","jvip_opts","jjo_discount_opts"].forEach((id) => { el(id).style.display = "none"; });
       syncJjoDiscountToggle();
       renderStpOpts(); renderStpfOpts(); renderJvipOpts(); renderJjoDiscountOpts();
@@ -2592,6 +2630,7 @@
     setMode(document.body.dataset.startMode || "plan");
     el("pick_stp_family").disabled = true;
     el("pick_stpf_family").disabled = true;
+    el("pick_half_family").disabled = true;
     loadState();
     syncJjoDiscountToggle();
     renderRoutes();
