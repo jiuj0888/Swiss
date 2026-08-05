@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="naver-site-verification" content="671fede5571a5401600d131f2b0baa89ad70318e" />
+  <title>Swiss Fare Manual Calculator | Swiss Fare Check</title>
+  <meta name="description" content="Enter official route fares to calculate the most economical Swiss transport-pass combination." />
+  <meta name="keywords" content="Swiss Travel Pass comparison, Swiss Half Fare Card, Jungfrau VIP Pass, Switzerland train pass, Swiss rail pass calculator, Switzerland itinerary planner" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://swissfarecheck.com/en/manual-calculator/" />
+  <link rel="alternate" hreflang="ko" href="https://swissfarecheck.com/" />
+  <link rel="alternate" hreflang="en" href="https://swissfarecheck.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://swissfarecheck.com/" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Swiss Fare Check" />
+  <meta property="og:title" content="Swiss Fare Check | Compare Swiss Travel Pass Options" />
+  <meta property="og:description" content="Compare Swiss Travel Pass, Half Fare Card and Jungfrau VIP Pass options for your Switzerland itinerary." />
+  <meta property="og:url" content="https://swissfarecheck.com/en/" />
+  <meta property="og:image" content="https://swissfarecheck.com/logo-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="Swiss Fare Check logo" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Swiss Travel Pass Comparison | Half Fare & Jungfrau VIP Calculator" />
+  <meta name="twitter:description" content="Compare Swiss Travel Pass, Half Fare Card and Jungfrau VIP Pass options for your itinerary." />
+  <meta name="twitter:image" content="https://swissfarecheck.com/logo-512.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Swiss Fare Check",
+    "alternateName": "Swiss Travel Pass Checker",
+    "url": "https://swissfarecheck.com/en/"
+  }
+  </script>
+
+  <style>
+    :root{
+      --red:#d52b1e;
+      --red-dark:#a82017;
+      --red-soft:#fff1ef;
+      --ink:#17212b;
+      --muted:#687683;
+      --line:#e2e7e4;
+      --bg:#f5f7f4;
+      --surface:#ffffff;
+      --surface-soft:#f9faf8;
+      --navy:#17324d;
+      --green:#18715c;
+      --green-soft:#e9f5f0;
+      --amber:#9a650f;
+      --amber-soft:#fff6df;
+      --danger:#a12626;
+      --shadow:0 20px 60px rgba(23,50,77,.09);
+      --shadow-sm:0 10px 30px rgba(23,50,77,.07);
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:14px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(213,43,30,.08), transparent 28%),
+        radial-gradient(circle at 95% 12%, rgba(23,50,77,.08), transparent 26%),
+        var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:15px;
+      line-height:1.65;
+    }
+    body[data-mode="plan"] .simple-only,
+    body[data-mode="plan"] .manual-only,
+    body[data-mode="plan"] .compare-shell{display:none!important}
+    body[data-mode="simple"] .plan-only,
+    body[data-mode="simple"] .manual-only,
+    body[data-mode="simple"] .manual-route-fields{display:none!important}
+    body[data-mode="manual"] .plan-only,
+    body[data-mode="manual"] .simple-only{display:none!important}
+    button,input,select{font:inherit}
+    button,a,input,select,summary{outline-offset:3px}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid rgba(213,43,30,.24)}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(34px,5vw,62px);line-height:1.12;letter-spacing:-.045em;margin-bottom:20px}
+    h2{font-size:clamp(25px,3vw,38px);line-height:1.22;letter-spacing:-.035em;margin-bottom:12px}
+    h3{font-size:18px;line-height:1.4;letter-spacing:-.015em;margin-bottom:8px}
+    ul{padding-left:20px}
+    label{cursor:pointer}
+    [hidden]{display:none!important}
+
+    .skip-link{position:fixed;left:16px;top:-60px;z-index:9999;padding:11px 16px;border-radius:12px;background:var(--ink);color:#fff;font-weight:900}
+    .skip-link:focus{top:16px}
+    .site-header{position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(226,231,228,.9);background:rgba(255,255,255,.86);backdrop-filter:blur(18px)}
+    .header-inner{max-width:var(--max);margin:0 auto;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:-.025em}
+    .brand-mark{width:37px;height:37px;border-radius:12px;background:var(--red);color:#fff;display:grid;place-items:center;font-size:23px;box-shadow:0 8px 20px rgba(213,43,30,.22)}
+    .brand-logo-wrap{width:42px;height:42px;border-radius:13px;overflow:hidden;display:grid;place-items:center;background:#fff;box-shadow:0 8px 22px rgba(23,50,77,.15);border:1px solid rgba(226,231,228,.95);flex:none}
+    .brand-logo{width:100%;height:100%;object-fit:cover;display:block}
+    .simple-route-note{margin-top:10px;padding:9px 11px;border-radius:12px;background:var(--green-soft);color:var(--green);font-size:12px;font-weight:850}
+    .auto-condition{margin-top:12px;padding:12px;border:1px solid #dce7e2;border-radius:15px;background:#f7fbf9}
+    .auto-condition label{display:flex;flex-direction:column;gap:6px}
+    .score-help{font-size:12px;color:var(--muted);margin-top:5px}
+    .comparison-score{font-size:14px;color:var(--green);font-weight:950}
+    .brand-copy{display:flex;flex-direction:column;line-height:1.1}
+    .brand-copy small{margin-top:5px;color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:800}
+    .header-nav{display:flex;align-items:center;gap:7px}
+    .header-nav a{padding:9px 11px;border-radius:11px;color:#475563;font-weight:800;font-size:13px}
+    .header-nav a:hover{background:#f1f3f1;color:var(--ink)}
+    .header-nav .nav-cta{background:var(--ink);color:#fff;padding-inline:15px}
+    .header-nav .nav-cta:hover{background:var(--navy);color:#fff}
+
+    .hero{max-width:var(--max);margin:0 auto;padding:78px 18px 50px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr);gap:48px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;color:var(--red);font-size:12px;font-weight:950;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:28px;height:2px;background:currentColor;border-radius:9px}
+    .hero-copy>p{max-width:650px;color:#556471;font-size:18px;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:13px;margin-top:22px;color:var(--muted);font-size:12px;font-weight:800}
+    .hero-meta span{display:inline-flex;align-items:center;gap:6px}
+    .hero-meta span:before{content:"âœ“";color:var(--green);font-weight:950}
+    .hero-visual{min-height:420px;position:relative;border-radius:32px;overflow:hidden;background:linear-gradient(145deg,#17324d 0%,#224a67 48%,#d52b1e 140%);box-shadow:0 32px 80px rgba(23,50,77,.23)}
+    .hero-visual:before{content:"";position:absolute;inset:auto -15% -22% -15%;height:75%;background:#f7faf8;clip-path:polygon(0 100%,0 72%,13% 53%,27% 72%,47% 28%,61% 56%,74% 38%,100% 72%,100% 100%)}
+    .hero-visual:after{content:"";position:absolute;inset:auto -10% -12% -10%;height:52%;background:#dfe8e5;opacity:.86;clip-path:polygon(0 100%,0 80%,18% 45%,30% 74%,49% 38%,65% 78%,82% 52%,100% 76%,100% 100%)}
+    .visual-sun{position:absolute;width:84px;height:84px;right:54px;top:50px;border-radius:50%;background:#fff5dc;box-shadow:0 0 55px rgba(255,245,220,.55)}
+    .visual-train{position:absolute;z-index:3;left:42px;right:42px;bottom:40px;padding:19px 20px;border:1px solid rgba(255,255,255,.52);border-radius:20px;background:rgba(255,255,255,.9);box-shadow:var(--shadow-sm)}
+    .visual-train-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .visual-train b{font-size:18px;letter-spacing:-.02em}
+    .visual-route{display:flex;align-items:center;gap:9px;margin-top:13px;color:var(--muted);font-size:12px;font-weight:800}
+    .visual-route i{height:2px;flex:1;background:linear-gradient(90deg,var(--red),var(--navy));border-radius:10px}
+    .visual-price{margin-top:14px;display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .visual-price strong{font-size:29px;line-height:1;color:var(--navy)}
+    .visual-price span{font-size:12px;color:var(--green);font-weight:900;background:var(--green-soft);padding:5px 9px;border-radius:999px}
+
+    .trust-wrap{max-width:var(--max);margin:0 auto;padding:0 18px 34px}
+    .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.78);box-shadow:var(--shadow-sm);overflow:hidden}
+    .trust-item{padding:20px 22px;display:flex;align-items:center;gap:13px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:none}
+    .trust-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--red-soft);font-size:20px}
+    .trust-item b{display:block;font-size:14px}
+    .trust-item small{display:block;margin-top:2px;color:var(--muted);font-size:11px}
+
+    .section-shell{max-width:var(--max);margin:0 auto;padding:54px 18px}
+    .section-heading{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}
+    .section-heading p{margin:0;color:var(--muted);max-width:660px}
+    .mode-tabs{display:inline-flex;gap:5px;padding:5px;border:1px solid var(--line);border-radius:14px;background:#eef1ef}
+    .mode-tab{border:0;border-radius:10px;padding:10px 14px;background:transparent;color:#667581;cursor:pointer;font-weight:900;font-size:13px}
+    .mode-tab.active{background:#fff;color:var(--ink);box-shadow:0 3px 12px rgba(23,50,77,.09)}
+
+    .calculator-grid{display:grid;grid-template-columns:390px minmax(0,1fr);gap:18px;align-items:start}
+    .panel,.card{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);box-shadow:var(--shadow-sm)}
+    .panel{padding:18px}
+    .sticky{position:sticky;top:82px}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .panel-title h3{margin:0}
+    .step-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:10px;background:var(--red-soft);color:var(--red);font-size:12px;font-weight:950}
+    .col{display:flex;flex-direction:column;gap:12px}
+    .subCard{padding:15px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft)}
+    .subCard+.subCard{margin-top:0}
+    .subCard .section-mini-title{display:flex;align-items:center;gap:9px;font-weight:950;margin-bottom:4px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .grid2>label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:12px;color:#465461}
+    .grid2>label span{display:flex;justify-content:space-between;gap:8px}
+    input[type="number"],input[type="date"],input[type="text"],select{
+      width:100%;min-height:43px;padding:10px 11px;border:1px solid #d8dfdc;border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s
+    }
+    input:hover,select:hover{border-color:#bfc9c5}
+    input:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(213,43,30,.08)}
+    input[disabled]{background:#eef1ef;color:#95a09b}
+    input[type="checkbox"],input[type="radio"]{accent-color:var(--red)}
+
+    .muted{color:var(--muted);font-size:12px}
+    .small{font-size:13px}
+    .mini{font-size:11.5px;color:var(--muted)}
+    .k{font-weight:950}
+    .big{font-size:31px;font-weight:950;line-height:1.15;letter-spacing:-.035em}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .btnRow,.actionBtns,.topControls,.copyBtns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .hr{border-top:1px solid var(--line);margin:14px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:41px;padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);cursor:pointer;font-weight:900;font-size:13px;transition:transform .15s,box-shadow .15s,border-color .15s,background .15s}
+    .btn:hover{transform:translateY(-1px);border-color:#c9d0cd;box-shadow:0 7px 18px rgba(23,50,77,.08)}
+    .btn-primary{border-color:var(--red);background:var(--red);color:#fff;padding-inline:18px}
+    .btn-primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+    .btn-dark{background:var(--ink);border-color:var(--ink);color:#fff;padding-inline:18px}
+    .btn-ghost{background:rgba(255,255,255,.72)}
+    .danger{border-color:#f3c8c8;background:#fff5f5;color:var(--danger)}
+    .icon-button{width:41px;padding:0}
+
+    details{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}
+    details[open]{border-color:#d3dad7}
+    summary{cursor:pointer;font-weight:900;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details>summary:after{content:"ï¼‹";float:right;color:var(--muted);font-weight:500}
+    details[open]>summary:after{content:"âˆ’"}
+    .nested{margin:10px 0 0 8px;padding:2px 0 0 13px;border-left:2px solid #edf0ee;display:flex;flex-direction:column;gap:9px}
+    .pass-stack{display:flex;flex-direction:column;gap:8px;margin-top:11px}
+    .pass-stack details{background:#fff}
+
+    .statusBox{display:none;margin-top:9px;padding:10px 12px;border:1px solid #f1d28e;border-radius:12px;background:var(--amber-soft);color:var(--amber);font-weight:800;font-size:12px}
+    .disabled{opacity:.55;pointer-events:none;filter:grayscale(.2)}
+    .warnText{color:var(--amber);font-weight:900}
+    .familyHint{margin-top:6px;font-size:12px;color:var(--green);font-weight:900}
+    .toggleRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    .routeCount{font-size:12px;color:var(--muted);font-weight:900;padding:6px 9px;border-radius:999px;background:#f0f3f1}
+    .copyBtns{margin-top:1ãŽöÒÚ$z{-®éÜj×6öç7BÆ6W2ÒÖF6†–æuÆ6T–æfò†F’“°¢6öç7BÆ6TFWF–Ç2ÒÆ6W2æÆVæwF€¢òÆF—b6Æ73Ò'Æ6RÖFWF–ÂÖÆ—7B#âG·Æ6W2æÖ‡Æ6TFWF–Ä‡FÖÂ’æ¦ö–â‚""—ÓÂöF—cæ ¢¢ÆF—b6Æ73Ò'Æ6RÖFWF–ÂÖÆ—7B#ãÇ6V7F–öâ6Æ73Ò'Æ6RÖFWF–ÂÖ6&B#ãÇåF†—2F’fö7W6W2öâG&fVÆÆ–ær&WGvVVâ&Vv–öç2æBF¶–ær6†÷'BvÆ²æV&'’âF§W7BFW'GW&RF–ÖW2FòF†R7GVÂF–ÖWF&ÆRæB–÷W"66öÖÖöFF–öâÆö6F–öâãÂ÷ãÂ÷6V7F–öããÂöF—cæ°¢&WGW&âÆ'F–6ÆR6Æ73Ò&F’×Æâ#ãÇ7â6Æ73Ò&F’ÖÆ&VÂ#âG¶F•³×ÓÂ÷7ããÆF—cãÆ#âG¶F•³×ÓÂö#ãÇ6Æ73Ò&F’×7VÖÖ'’#âG¶F•³%×ÓÂ÷âG·Æ6TFWF–Ç7ÓÂöF—cãÂö'F–6ÆSæ°¢Ò’æ¦ö–â‚""“°¢Ð ¢gVæ7F–öâ'V–ÆEÆææW%&V6öÖÖVæFF–öç2‚’°¢6öç7BF—2ÒçVÖ&W"†VÂ‚'ÆåöGW&F–öâ"“òçfÇVRÇÂb“°¢6öç7BBÒÆææW%G&fVÆW'2‚“°¢6öç7B6V6öâÒVÂ‚'Æå÷6V6öâ"“òçfÇVRÇÂ'7VÖÖW"#°¢6öç7B7G–ÆRÒVÂ‚'Æå÷7G–ÆR"“òçfÇVRÇÂ&&Ææ6VB#°¢6öç7B7F'BÒVÂ‚'Æå÷7F'B"“òçfÇVRÇÂ'§W&–6‚#°¢6öç7BVæBÒVÂ‚'ÆåöVæB"“òçfÇVRÇÂ'§W&–6‚#°¢6öç7BF÷FÅV÷ÆRÒBæGVÇB²Bç–÷WF‚²Bæ6†–ÆB²Bæ–æfçC°¢–b‚F÷FÅV÷ÆR’&WGW&âµÓ° ¢ÆWB&W6WG2Ò$õUDUõ$U4UE2æf–ÇFW"‚‡’ÓâæF—2ÓÓÒF—2bbç6V6öç2æ–æ6ÇVFW2‡6V6öâ’“°¢–b‚&W6WG2æÆVæwF‚’&W6WG2Ò$õUDUõ$U4UE2æf–ÇFW"‚‡’Óâç6V6öç2æ–æ6ÇVFW2‡6V6öâ’’ç6÷'B‚†Æ"“ÓäÖF‚æ'2†æF—2ÖF—2’ÔÖF‚æ'2†"æF—2ÖF—2’’ç6Æ–6RƒÃB“°¢6öç7BFFVE&W6WG2Ò&W6WG2æÖ‚‡&W6WB’ÓâFE&W6WDVæGö–çG2‡&W6WBÇ7F'BÆVæB’“°¢6öç7BVç&–6†VBÒFFVE&W6WG2æÖ‚‡&W6WB’Óâ°¢6öç7B6æF–FFW2Ò'V–ÆD6æF–FFW4f÷%&÷WFW2‡&W6WBç&÷WFT–G2ÆF—2ÇBÇ6V6öâ“°¢6öç7B72Ò6æF–FFW5³Ó°¢&WGW&â²ââç&W6WBÂ72ÂW7F–ÖFVEF÷FÃ§72æW7F–ÖFVEF÷FÂÂ746÷7C§72ç746÷7BÂVæGö–çC£Ó°¢Ò“°¢6öç7B6†VW7BÒÖF‚æÖ–â‚ââæVç&–6†VBæÖ‚‡‚“Óç‚æW7F–ÖFVEF÷FÂ’“°¢6öç7BvV–v‡G2ÒÆææW%vV–v‡G2‡7G–ÆR“°¢&WGW&âVç&–6†VBæÖ‚†—FVÒ’Óâ°¢6öç7B66÷&RÒ&–6U66÷&R†—FVÒæW7F–ÖFVEF÷FÂÆ6†VW7B“°¢6öç7B6V6öå66÷&RÒ—FVÒç6V6öç2æ–æ6ÇVFW2‡6V6öâ’ò“’¢SS°¢6öç7BVff–6–Væ7’ÒÖF‚ç&÷VæB‚†—FVÒæVff–6–Væ7’¢ãs"’²†—FVÒæVæGö–çB¢ã#‚’“°¢6öç7BF÷FÅ66÷&RÒÖF‚æÖ–âƒ“’ÄÖF‚ç&÷VæB‡66÷&R§vV–v‡G2ç&–6R²—FVÒæ–6öæ–2§vV–v‡G2æ–6öæ–2²—FVÒç75W6R§vV–v‡G2ç72²Vff–6–Væ7’§vV–v‡G2æVff–6–Væ7’²6V6öå66÷&R§vV–v‡G2ç6V6öâ’“°¢&WGW&â²ââæ—FVÒÂ&–6U66÷&S§66÷&RÂF÷FÅ66÷&RÂVff–6–Væ7•66÷&S¦Vff–6–Væ7’ÂF–ffW&Væ6S¦—FVÒæW7F–ÖFVEF÷FÂÖ6†VW7BÓ°¢Ò’ç6÷'B‚†Æ"“Óæ"çF÷FÅ66÷&RÖçF÷FÅ66÷&RÇÂæW7F–ÖFVEF÷FÂÖ"æW7F–ÖFVEF÷FÂ’ç6Æ–6RƒÃ2“°¢Ð ¢gVæ7F–öâÆææW%&V6öâ†—FVÒÆ–æFW‚’°¢–b†–æFW‚ÓÓÒ’&WGW&âF†—2&÷WFRöffW'2F†R7G&öævW7B&Ææ6Röb6÷7BÂ–6öæ–26–v‡G2Â72fÇVRæB&÷WFRVff–6–Væ7’f÷"–÷W"6VÆV7FVBG&fVÂ7G–ÆRâF†R7VvvW7FVB72—2G¶—FVÒç72çF—FÆWÒæ°¢–b†—FVÒæF–ffW&Væ6RÃÒ’&WGW&âF†—2ÇFW&æF—fR—2–â6–Ö–Æ"&–6R&ævR'WBöffW'2F–ffW&VçB6RæB&÷WFRâ—B—2vööB6†ö–6R–bG¶—FVÒçF†VÖRçFôÆ÷vW$66R‚—ÒÖGFW'2Fò–÷Ræ°¢&WGW&â—B6÷7G2&÷WBG¶ÖöæW’†—FVÒæF–ffW&Væ6R—ÒÖ÷&RF†âF†RF÷×&æ¶VB&÷WFR'WB—27G&öævW"f÷"G¶—FVÒçF†VÖRçFôÆ÷vW$66R‚—ÒÂ6ò—BÖ’7V—B–÷W"&VfW&Væ6W2&WGFW"æ°¢Ð ¢gVæ7F–öâ&VæFW%ÆææW%&V6öÖÖVæFF–öç2‚’°¢6öç7B&÷‚ÒVÂ‚'Æå÷&W7VÇG2"“°¢6öç7B&W7VÇG2Ò'V–ÆEÆææW%&V6öÖÖVæFF–öç2‚“°¢–b‚&W7VÇG2æÆVæwF‚’°¢&÷‚æ–ææW$…DÔÂÒÆF—b6Æ73Ò'ÆâÖV×G’#ãÆ#äVçFW"BÆV7BöæRG&fVÆÆW"ãÂö#ãÂöF—cæ°¢&WGW&ã°¢Ð¢&÷‚æ–ææW$…DÔÂÒ&W7VÇG2æÖ‚†—FVÒÆ–æFW‚’ÓâÆ'F–6ÆR6Æ73Ò'ÆææW"×&W7VÇBÖ6&B#à¢ÆF—b6Æ73Ò'ÆææW"×&W7VÇBÖ†VB#ãÆF—cãÇ7â6Æ73Ò'ÆææW"×&æ²#âG¶–æFWƒÓÓÓò/	øøb#¢"'Ò2G¶–æFW‚³Ò+rG¶—FVÒçF†VÖWÓÂ÷7ããÆƒ26Æ73Ò'ÆææW"×&W7VÇB×F—FÆR#âG¶—FVÒçF—FÆWÓÂöƒ3ãÆF—b6Æ73Ò'ÆææW"×&÷WFRÖÆ–æR#âG¶—FVÒç&÷WFTÆ–æWÓÂöF—cãÂöF—cãÆF—b6Æ73Ò'ÆææW"×66÷&R#ãÇ6ÖÆÃä÷fW&ÆÂ66÷&SÂ÷6ÖÆÃãÇ7G&öæsâG¶—FVÒçF÷FÅ66÷&WÒG3Â÷7G&öæsãÂöF—cãÂöF—cà¢ÆF—b6Æ73Ò'ÆææW"ÖÖWG&–72#à¢ÆF—b6Æ73Ò'ÆææW"ÖÖWG&–2#ãÇ7ãâG¶—FVÒç72æ–BÓÓÒ'F–6¶WG2"ò%W&6†6RÖWF†öB"¢%7VvvW7FVB72'ÓÂ÷7ããÆ#âG¶—FVÒç72çF—FÆWÓÂö#ãÇ7G&öæsâG·75&–6TF—7Æ’†—FVÒç72—ÓÂ÷7G&öæsãÂöF—cà¢ÆF—b6Æ73Ò'ÆææW"ÖÖWG&–2#ãÇ7ãäW7F–ÖFVBF÷FÂG&ç7÷'B6÷7CÂ÷7ããÆ#å72²FF—F–öæÂG&ç7÷'CÂö#ãÇ7G&öæsâG¶ÖöæW’†—FVÒæW7F–ÖFVEF÷FÂ—ÓÂ÷7G&öæsãÂöF—cà¢ÆF—b6Æ73Ò'ÆææW"ÖÖWG&–2#ãÇ7ãå&–6R6ö×&—6öãÂ÷7ããÆ#å&–6R66÷&RG¶—FVÒç&–6U66÷&WÓÂö#ãÇ7G&öæsâG¶—FVÒæF–ffW&Væ6Sãö²G¶ÖöæW’†—FVÒæF–ffW&Væ6R—Ö¢$Æ÷vW7BW7F–ÖFR'ÓÂ÷7G&öæsãÂöF—cà¢ÂöF—cà¢ÆF—b6Æ73Ò'ÆææW"×&V6öâ#âG·ÆææW%&V6öâ†—FVÒÆ–æFW‚—ÓÂöF—cà¢ÆF—b6Æ73Ò'ÆææW"×Fw2#âG¶—FVÒçFw2æÖ‚‡Fr“ÓæÇ7â6Æ73Ò'–ÆÂ#âG·FwÓÂ÷7ãæ’æ¦ö–â‚""—ÓÇ7â6Æ73Ò'–ÆÂ#å6S¢G¶—FVÒæ–çFVç6—G—ÓÂ÷7ããÂöF—cà¢ÆFWF–Ç26Æ73Ò'ÆææW"ÖFWF–Â#ãÇ7VÖÖ'“åf–WrF’Ö'’ÖF’—F–æW&'’æBÆ6RFWF–Ç3Â÷7VÖÖ'“ãÆF—b6Æ73Ò&F’×ÆâÖÆ—7B#âG·&÷WFTFW67&—F–öä‡FÖÂ†—FVÒ—ÓÂöF—cãÂöFWF–Ç3à¢ÆF—b6Æ73Ò'ÆææW"Ö7F–öç2#ãÇ7â6Æ73Ò'ÆææW"ÖF—66Æ–ÖW"#å&VfW&Væ6RÖf&RW7F–ÖFR+r6öÖR7F—f—F–W2Ö’æVVBF§W7FÖVçBf÷"÷W&F–ærFFW2æBvVF†W"ãÂ÷7ããÆ'WGFöâ6Æ73Ò&'Fâ'Fâ×&–Ö'’Ç’×Æâ×&÷WFR"FF×ÆâÖ–CÒ"G¶—FVÒæ–GÒ"G—SÒ&'WGFöâ#ä6ö×&R76W2f÷"F†—2&÷WFSÂö'WGFöããÂöF—cà¢Âö'F–6ÆSæ’æ¦ö–â‚""“°¢Ð ¢gVæ7F–öâÇ•ÆææW%&÷WFR†–B’°¢6öç7B&6U&W6WBÒ$õUDUõ$U4UE2æf–æB‚‡“Óçæ–CÓÓÖ–B“°¢–b‚&6U&W6WB’&WGW&ã°¢6öç7B&W6WBÒFE&W6WDVæGö–çG2†&6U&W6WBÂVÂ‚'Æå÷7F'B"“òçfÇVRÇÂ'§W&–6‚"ÂVÂ‚'ÆåöVæB"“òçfÇVRÇÂ'§W&–6‚"“°¢6öç7BBÒÆææW%G&fVÆW'2‚“°¢VÂ‚&åöGVÇB"’çfÇVS×BæGVÇC²VÂ‚&å÷–÷WF‚"’çfÇVS×Bç–÷WFƒ²VÂ‚&åö6†–ÆB"’çfÇVS×Bæ6†–ÆC²VÂ‚&åö–æfçB"’çfÇVS×Bæ–æfçC°¢VÂ‚'6V6öåöÖöFR"’çfÇVSÖVÂ‚'Æå÷6V6öâ"’çfÇVS°¢VÂ‚'G&fVÅöF—2"’çfÇVSÕ7G&–ær‡&W6WBæF—3ãƒóƒ§&W6WBæF—2“°¢7FFRç6VÆV7FVE&÷WFW2ÒæWr6WB‡&W6WBç&÷WFT–G2“°¢7FFRæ÷Vå&Vv–öç2ÒæWr6WB…$Tt”ôå2æf–ÇFW"‚‡"“Óç"ç&÷WFW2ç6öÖR‚‡&÷WFR“Óç7FFRç6VÆV7FVE&÷WFW2æ†2‡&÷WFRæ–B’’’æÖ‚‡"“Óç"æ–B’“°¢6WDÖöFR‚'6–×ÆR"“²&VæFW%&÷WFW2‚“²&V6Æ2‚“°¢VÂ‚&6Æ7VÆF÷""“òç67&öÆÄ–çFõf–Wr‡¶&V†f–÷#¢'6Öö÷F‚"Æ&Æö6³¢'7F'B'Ò“°¢Ð ¢gVæ7F–öâ6WDÖöFR†ÖöFR’°¢6öç7BæW‡BÒ²'Æâ"Â'6–×ÆR"Â&ÖçVÂ%Òæ–æ6ÇVFW2†ÖöFR’òÖöFR¢'Æâ#°¢Fö7VÖVçBæ&öG’æFF6WBæÖöFRÒæW‡C°¢f÷"†6öç7BæÖRöb²'Æâ"Â'6–×ÆR"Â&ÖçVÂ%Ò’°¢6öç7B'WGFöâÒVÂ†ÖöFUòG¶æÖWÖ“°¢–b‚'WGFöâ’6öçF–çVS°¢'WGFöâæ6Æ74Æ—7BçFövvÆR‚&7F—fR"ÂæW‡BÓÓÒæÖR“°¢'WGFöâç6WDGG&–'WFR‚&&–×6VÆV7FVB"Â7G&–ær†æW‡BÓÓÒæÖR’“°¢Ð¢–b†æW‡BÓÒ'Æâ"bbVÂ‚'&÷WFW2"’’²&VæFW%&÷WFW2‚“²&V6Æ2‚“²Ð¢Ð ¢gVæ7F–öâ67&öÆÅFô6Æ7VÆF÷"†ÖöFR’°¢6WDÖöFR†ÖöFR“°¢VÂ‚&6Æ7VÆF÷""“òç67&öÆÄ–çFõf–Wr‡²&V†f–÷#¢'6Öö÷F‚"Â&Æö6³¢'7F'B"Ò“°¢Ð ¢gVæ7F–öâ&–æE6†VÆÂ‚’°¢VÂ‚&ÖöFU÷Æâ"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ6WDÖöFR‚'Æâ"’“°¢VÂ‚&ÖöFU÷6–×ÆR"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ6WDÖöFR‚'6–×ÆR"’“°¢VÂ‚&ÖöFUöÖçVÂ"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ6WDÖöFR‚&ÖçVÂ"’“°¢VÂ‚&'Få÷7F'E÷Æâ"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ67&öÆÅFô6Æ7VÆF÷"‚'Æâ"’“°¢VÂ‚&'Få÷7F'E÷6–×ÆR"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ67&öÆÅFô6Æ7VÆF÷"‚'6–×ÆR"’“°¢VÂ‚&'Få÷7F'EöÖçVÂ"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ67&öÆÅFô6Æ7VÆF÷"‚&ÖçVÂ"’“°¢VÂ‚&'Fåö6÷•÷&W7VÇB"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â6÷•&V6öÖÖVæFF–öâ“°¢VÂ‚&'Få÷Æå÷&÷WFW2"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â&VæFW%ÆææW%&V6öÖÖVæFF–öç2“°¢VÂ‚'Æå÷&W7VÇG2"“òæFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â†WfVçB’Óâ°¢6öç7B'WGFöâÒWfVçBçF&vWBæ6Æ÷6W7B‚"æÇ’×Æâ×&÷WFR"“°¢–b†'WGFöâ’Ç•ÆææW%&÷WFR†'WGFöâæFF6WBçÆä–B“°¢Ò“°¢Ð  ¢gVæ7F–öâ&V6Æ2‚’°¢6öç7B6V6öâÒvWE6V6öäVffV7F—fR‚“°¢VÂ‚'6V6öåö†–çB"’çFW‡D6öçFVçBÒ7W'&VçB6V6öã¢G·6V6öäÆ&VÂ‡6V6öâ—Ò‚G¶VÂ‚'G&fVÅöFFR"“òçfÇVRÇÂ&æòFFR6VÆV7FVB'Ò–°¢6öç7B†–çDVÂÒVÂ‚&¦¦õ÷&–6Uö†–çB"“°¢–b††–çDVÂ’°¢6öç7B†4÷fW&ÆÒ7FFRç6VÆV7FVBç7GÇÂ7FFRç6VÆV7FVBç7GbÇÂ7FFRç6VÆV7FVBæ†Æc°¢6öç7BÒ¤¤õôD•44õTåE·6V6öåÕ·7FFRæ¦¦õG—UÓ°¢†–çDVÂçFW‡D6öçFVçBÒGVÇBG¶ÖöæW’††4÷fW&Æòæ÷fW&Æ¢æGVÇB—Òò6†–ÆBG¶ÖöæW’‡æ6†–ÆB—ÒG¶†4÷fW&Æò"+r6öÖ&–æVBF—66÷VçBÆ–VB"¢"'Ö°¢Ð ¢WFFUG&fVÆW%v&æ–ær‚“°¢6öç7B72Ò6Æ575F–6¶WEF÷FÂ‚“°¢6öç7B&÷WFRÒ6Æ5&÷WFUF÷FÂ‚“°¢6öç7Bw&æBÒ72çF÷FÂ²&÷WFRçF÷FÃ° ¢VÂ‚'75÷F÷FÂ"’çFW‡D6öçFVçBÒÖöæW’‡72çF÷FÂ“°¢VÂ‚'&÷WFU÷F÷FÂ"’çFW‡D6öçFVçBÒÖöæW’‡&÷WFRçF÷FÂ“°¢VÂ‚&w&æE÷F÷FÂ"’çFW‡D6öçFVçBÒÖöæW’†w&æB“°¢WFFTÖ—76–æu&–6UT’‚“°¢WFFU&÷WFU&V6öåFW‡G2‚“°¢&VæFW%&V6öÖÖVæFF–öâ‚“° ¢6öç7B74Æ–æW2Ò72æÆ–æW2æÖ‚‡‚’ÓâÆF—b6Æ73Ò&Æ–æR#ãÆF—cãÆF—b6Æ73Ò&²#âG·‚æÆ&VÇÓÂöF—câG·‚çv&âòÆF—b6Æ73Ò'v&åFW‡B#ä6†ö÷6Râ÷F–öâãÂöF—cæ¢ÓÂöF—cãÆF—cãÆ#âG¶ÖöæW’‡‚ç&–6R—ÓÂö#ãÂöF—cãÂöF—cæ’æ¦ö–â‚""’ÇÂÆF—b6Æ73Ò&×WFVB#äæò76W2÷"F–6¶WG26VÆV7FVBãÂöF—cæ°¢6öç7B&÷WFTÆ–æW2Ò&÷WFRæÆ–æW2æÖ‚‡‚’ÓâÆF—b6Æ73Ò&Æ–æR#ãÆF—cãÆF—b6Æ73Ò&²#âG·‚æÆ&VÇÓÂöF—cãÆF—b6Æ73Ò&×WFVB#âG·‚ç&V6öçÓÂöF—cãÂöF—cãÆF—cãÆ#âG¶ÖöæW’‡‚ç&–6R—ÓÂö#ãÂöF—cãÂöF—cæ’æ¦ö–â‚""’ÇÂÆF—b6Æ73Ò&×WFVB#äæò&÷WFW26VÆV7FVBãÂöF—cæ°¢6öç7B75–ÆÇ2Ò‡7FFRç6VÆV7FVBç7GÇÂ7FFRç6VÆV7FVBç7GbÇÂ7FFRç6VÆV7FVBæ†ÆbÇÂ7FFRç6VÆV7FVBæ§f—ÇÂ7FFRç6VÆV7FVBæ¦¦õöF—66÷VçB¢ò²'7G"Â'7Gb"Â&†Æb"Â&§f—"Â&¦¦õöF—66÷VçB%Òæf–ÇFW"‚†²’Óâ7FFRç6VÆV7FVE¶µÒ’æÖ‚†²’ÓâÇ7â6Æ73Ò'–ÆÂ#âG¶²ÓÓÒ&¦¦õöF—66÷VçB"ò$§Vævg&V¦ö6‚&WGW&âF–6¶WB"¢55¶µÓòæÆ&VÇÓÂ÷7ãæ’æ¦ö–â‚""¢¢"Ò#°¢VÂ‚&'&V¶F÷vâ"’æ–ææW$…DÔÂÒÆF—b6Æ73Ò'–ÆÂ#å6VÆV7FVB76W3¢G·75–ÆÇ7ÓÂöF—cãÆF—b6Æ73Ò&‡"#ãÂöF—cãÆF—b6Æ73Ò&²#å76W2òF–6¶WG3ÂöF—cãÆF—câG·74Æ–æW7ÓÂöF—cãÆF—b6Æ73Ò&‡"#ãÂöF—cãÆF—b6Æ73Ò&²#å&÷WFW3ÂöF—cãÆF—câG·&÷WFTÆ–æW7ÓÂöF—cæ°¢6fU7FFR‚“°¢Ð ¢gVæ7F–öâ&–æB‚’°¢VÂ‚'G&fVÅöFFR"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ²&VæFW$§f—&F–÷2‚“²&VæFW%&÷WFW2‚“²&V6Æ2‚“²Ò“°¢VÂ‚'6V6öåöÖöFR"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ²&VæFW$§f—&F–÷2‚“²&VæFW%&÷WFW2‚“²&V6Æ2‚“²Ò“°¢VÂ‚'G&fVÅöF—2"“òæFDWfVçDÆ—7FVæW"‚&6†ævR"Â&V6Æ2“°¢²&åöGVÇB"Â&å÷–÷WF‚"Â&åö6†–ÆB"Â&åö–æfçB%Òæf÷$V6‚‚†–B’Óâ°¢VÂ†–B’æFDWfVçDÆ—7FVæW"‚&–çWB"Â&V6Æ2“°¢VÂ†–B’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â&V6Æ2“°¢Ò“°¢VÂ‚'&÷WFU÷6V&6‚"’æFDWfVçDÆ—7FVæW"‚&–çWB"Â&VæFW%&÷WFW2“°¢VÂ‚'6†÷u÷6VÆV7FVEööæÇ’"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â&VæFW%&÷WFW2“°¢VÂ‚&'Fåö÷VåöÆÂ"’æFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’ÓâFö7VÖVçBçVW'•6VÆV7F÷$ÆÂ‚"7&÷WFW2FWF–Ç2"’æf÷$V6‚‚†B’ÓâBæ÷VâÒG'VR’“°¢VÂ‚&'Fåö6Æ÷6UöÆÂ"’æFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’ÓâFö7VÖVçBçVW'•6VÆV7F÷$ÆÂ‚"7&÷WFW2FWF–Ç2"’æf÷$V6‚‚†B’ÓâBæ÷VâÒfÇ6R’“°¢VÂ‚'–6µ÷7G"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ² ¢7FFRç6VÆV7FVBç7GÒVÂ‚'–6µ÷7G"’æ6†V6¶VC² ¢VÂ‚'7Gö÷G2"’ç7G–ÆRæF—7Æ’Ò7FFRç6VÆV7FVBç7Gò&&Æö6²"¢&æöæR#°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æF—6&ÆVBÒ7FFRç6VÆV7FVBç7G² ¢–b‚7FFRç6VÆV7FVBç7G’°¢7FFRç7GfÖ–Ç”6&BÒfÇ6S°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æ6†V6¶VBÒfÇ6S°¢Ð¢&VæFW%&÷WFW2‚“² ¢&V6Æ2‚“² ¢Ò“°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ°¢7FFRç7GfÖ–Ç”6&BÒVÂ‚'–6µ÷7GöfÖ–Ç’"’æ6†V6¶VC°¢&VæFW%&÷WFW2‚“°¢&V6Æ2‚“°¢Ò“°¢VÂ‚'–6µ÷7Gb"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ² ¢7FFRç6VÆV7FVBç7GbÒVÂ‚'–6µ÷7Gb"’æ6†V6¶VC² ¢VÂ‚'7Geö÷G2"’ç7G–ÆRæF—7Æ’Ò7FFRç6VÆV7FVBç7Gbò&&Æö6²"¢&æöæR#°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æF—6&ÆVBÒ7FFRç6VÆV7FVBç7Gc² ¢–b‚7FFRç6VÆV7FVBç7Gb’°¢7FFRç7GdfÖ–Ç”6&BÒfÇ6S°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æ6†V6¶VBÒfÇ6S°¢Ð¢&VæFW%&÷WFW2‚“² ¢&V6Æ2‚“² ¢Ò“°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ°¢7FFRç7GdfÖ–Ç”6&BÒVÂ‚'–6µ÷7GeöfÖ–Ç’"’æ6†V6¶VC°¢&VæFW%&÷WFW2‚“°¢&V6Æ2‚“°¢Ò“°¢VÂ‚'–6µö†Æb"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ²7FFRç6VÆV7FVBæ†ÆbÒVÂ‚'–6µö†Æb"’æ6†V6¶VC²&V6Æ2‚“²Ò“°¢VÂ‚'–6µö§f—"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ²7FFRç6VÆV7FVBæ§f—ÒVÂ‚'–6µö§f—"’æ6†V6¶VC²VÂ‚&§f—ö÷G2"’ç7G–ÆRæF—7Æ’Ò7FFRç6VÆV7FVBæ§f—ò&&Æö6²"¢&æöæR#²7–æ4¦¦ôF—66÷VçEFövvÆR‚“²&VæFW%&÷WFW2‚“²&V6Æ2‚“²Ò“°¢VÂ‚'–6µö¦¦õöF—66÷VçB"’æFDWfVçDÆ—7FVæW"‚&6†ævR"Â‚’Óâ²7FFRç6VÆV7FVBæ¦¦õöF—66÷VçBÒVÂ‚'–6µö¦¦õöF—66÷VçB"’æ6†V6¶VC²VÂ‚&¦¦õöF—66÷VçEö÷G2"’ç7G–ÆRæF—7Æ’Ò7FFRç6VÆV7FVBæ¦¦õöF—66÷VçBò&&Æö6²"¢&æöæR#²&V6Æ2‚“²Ò“° ¢VÂ‚&'Få÷&W6WE÷76W2"’æFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ°¢7FFRç6VÆV7FVBÒ²7G¢fÇ6RÂ7Gc¢fÇ6RÂ†Æc¢fÇ6RÂ§f—¢fÇ6RÂ¦¦õöF—66÷VçC¢fÇ6RÓ°¢7FFRç7GfÖ–Ç”6&BÒfÇ6S°¢7FFRç7GdfÖ–Ç”6&BÒfÇ6S°¢7FFRç7G÷BÒçVÆÃ°¢7FFRç7Gd÷BÒçVÆÃ°¢7FFRæ§f—F—2ÒçVÆÃ°¢²'–6µ÷7G"Â'–6µ÷7Gb"Â'–6µö†Æb"Â'–6µö§f—"Â'–6µö¦¦õöF—66÷VçB"Â'–6µ÷7GöfÖ–Ç’"Â'–6µ÷7GeöfÖ–Ç’%Òæf÷$V6‚‚†–B’Óâ²VÂ†–B’æ6†V6¶VBÒfÇ6S²Ò“°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢²'7Gö÷G2"Â'7Geö÷G2"Â&§f—ö÷G2"Â&¦¦õöF—66÷VçEö÷G2%Òæf÷$V6‚‚†–B’Óâ²VÂ†–B’ç7G–ÆRæF—7Æ’Ò&æöæR#²Ò“°¢7–æ4¦¦ôF—66÷VçEFövvÆR‚“°¢&VæFW%&÷WFW2‚“°¢&V6Æ2‚“°¢Ò“° ¢VÂ‚&'Få÷&W6WE÷&÷WFW2"’æFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ°¢7FFRç6VÆV7FVE&÷WFW2æ6ÆV"‚“°¢7FFRæÖ—76–æu&÷WFT–G2æ6ÆV"‚“°¢f÷"†6öç7B¶–æBöb²&GVÇB"Â'–÷WF‚"Â&6†–ÆB"Â&–æfçB%Ò’°¢7FFRç&÷WFU&–6W5¶¶–æEÒæ6ÆV"‚“°¢7FFRæ&6·W¶¶–æEÒæ6ÆV"‚“°¢Ð¢Vç7W&U&÷WFW4–æ—B‚“°¢&VæFW%&÷WFW2‚“°¢&V6Æ2‚“°¢Ò“° ¢VÂ‚&'Få÷&W6WB"’æFDWfVçDÆ—7FVæW"‚&6Æ–6²"Â‚’Óâ°¢7FFRç6VÆV7FVE&÷WFW2æ6ÆV"‚“°¢7FFRæ÷Vå&Vv–öç2æ6ÆV"‚“°¢7FFRæÖ—76–æu&÷WFT–G2æ6ÆV"‚“°¢7FFRç6VÆV7FVBÒ²7G¢fÇ6RÂ7Gc¢fÇ6RÂ†Æc¢fÇ6RÂ§f—¢fÇ6RÂ¦¦õöF—66÷VçC¢fÇ6RÓ°¢7FFRç7GfÖ–Ç”6&BÒfÇ6S°¢7FFRç7GdfÖ–Ç”6&BÒfÇ6S°¢7FFRç7G÷BÒçVÆÃ²7FFRç7Gd÷BÒçVÆÃ²7FFRç7G6Æ72Ò#²7FFRç7Gd6Æ72Ò#²7FFRæ§f—F—2ÒçVÆÃ²7FFRæ¦¦õG—RÒ&Æöær#°¢7FFRç&÷WFU&–6W2Ò²GVÇC¢æWrÖ‚’Â–÷WFƒ¢æWrÖ‚’Â6†–ÆC¢æWrÖ‚’Â–æfçC¢æWrÖ‚’Ó°¢7FFRæ&6·WÒ²GVÇC¢æWrÖ‚’Â–÷WFƒ¢æWrÖ‚’Â6†–ÆC¢æWrÖ‚’Â–æfçC¢æWrÖ‚’Ó°¢Vç7W&U&÷WFW4–æ—B‚“°¢²'–6µ÷7G"Â'–6µ÷7Gb"Â'–6µö†Æb"Â'–6µö§f—"Â'–6µö¦¦õöF—66÷VçB"Â'–6µ÷7GöfÖ–Ç’"Â'–6µ÷7GeöfÖ–Ç’%Òæf÷$V6‚‚†–B’Óâ²VÂ†–B’æ6†V6¶VBÒfÇ6S²Ò“°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢²'7Gö÷G2"Â'7Geö÷G2"Â&§f—ö÷G2"Â&¦¦õöF—66÷VçEö÷G2%Òæf÷$V6‚‚†–B’Óâ²VÂ†–B’ç7G–ÆRæF—7Æ’Ò&æöæR#²Ò“°¢7–æ4¦¦ôF—66÷VçEFövvÆR‚“°¢&VæFW%7G÷G2‚“²&VæFW%7Gd÷G2‚“²&VæFW$§f—÷G2‚“²&VæFW$¦¦ôF—66÷VçD÷G2‚“°¢&VæFW%&÷WFW2‚“²&V6Æ2‚“°¢Ò“°¢Ð ¢gVæ7F–öâ&ö÷B‚’°¢–b‚VÂ‚'G&fVÅöFFR"’çfÇVR’VÂ‚'G&fVÅöFFR"’çfÇVRÒÆö6Ä•4ôFFR‚“°¢Vç7W&U&÷WFW4–æ—B‚“°¢–æ—E74÷F–öç2‚“°¢&–æB‚“°¢&–æE6†VÆÂ‚“°¢6WDÖöFR†Fö7VÖVçBæ&öG’æFF6WBç7F'DÖöFRÇÂ'Æâ"“°¢VÂ‚'–6µ÷7GöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢VÂ‚'–6µ÷7GeöfÖ–Ç’"’æF—6&ÆVBÒG'VS°¢ÆöE7FFR‚“°¢7–æ4¦¦ôF—66÷VçEFövvÆR‚“°¢&VæFW%&÷WFW2‚“°¢&V6Æ2‚“°¢&VæFW%ÆææW%&V6öÖÖVæFF–öç2‚“°¢Ð ¢&ö÷B‚“°§Ò’‚“°£Â÷67&—Cà£Âö&öG“à£Âö‡FÖÃà
